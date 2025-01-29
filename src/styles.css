@@ -1,0 +1,187 @@
+/* Основен стил */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+  }
+  
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  /* Горна част */
+  .header {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  
+  .title {
+    font-size: 2.5rem;
+    color: #333;
+  }
+  
+  .search-bar {
+    margin-top: 10px;
+    padding: 10px;
+    width: 100%;
+    max-width: 500px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+  }
+  .search-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin: 20px 0;
+  }
+  
+.search-input, textarea {  
+  width: 40%;
+  max-width: 500px; /* но не повече от 500 пиксела */
+  min-width: 300px; /* и не по-малко от 300 пиксела */
+  padding: 10px;
+  box-sizing: border-box; /* включва границите и padding-а в ширината */
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.search-button {
+  padding: 8px 16px;
+  font-size: 16px;
+  color: #fff;
+  background-color: #00e1ff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s ease;
+}
+
+.search-button:hover {
+  background-color: #008cb3;
+}
+
+/* Подреждане с flexbox */
+.search-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+  
+  /* Средна част */
+
+  .category-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px; /* Разстояние между елементите */
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  .category-item {
+    background: #f0f0f0;
+    text-align: center;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+  }
+  
+  .category-item:hover {
+    transform: translateY(-5px);
+  }
+
+  /* .categories {
+    margin-bottom: 30px;
+  }
+  
+  .section-title {
+    font-size: 1.8rem;
+    color: #444;
+    margin-bottom: 15px;
+  }
+  
+  .category-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 20px;
+  }
+  
+  .category {
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    padding: 15px;
+    text-align: center;
+    border-radius: 8px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: transform 0.2s;
+  }
+  
+  .category:hover {
+    transform: scale(1.05);
+  } */
+  
+  /* Долна част */
+/* Центриране на секцията „Любими рецепти“ */
+.favorites {
+  margin: 0 auto;
+  text-align: center;
+  padding: 20px;
+  max-width: 600px;
+  background-color: #f4f4f4;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Оформление на бутона за показване/скриване */
+.toggle-favorites-button {
+
+  display: block;
+  margin: 30px auto;
+  background-color: #ffcccb;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.toggle-favorites-button:hover {
+  background-color: #ffa6a5;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Оформление на текста за описание на рецептата */
+.recipe-description {
+  font-style: italic;
+  color: #666;
+  margin-bottom: 10px;
+}
+
+/* Бутон за преглед на конкретната рецепта */
+.view-recipe-button {
+  background-color: #87ceeb;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  margin: 10px 0;
+}

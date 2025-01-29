@@ -1,0 +1,29 @@
+<h1>{{ title }}</h1>
+
+<!-- Бутон за превключване на видимостта на категориите -->
+<button (click)="toggleCategories()">
+  {{ showCategories ? 'Скрий категории' : 'Покажи категории' }}
+</button>
+
+<!-- Категории -->
+<div *ngIf="showCategories">
+  <div *ngFor="let category of categories" class="category-card">
+    <img [src]="category.image" alt="{{ category.name }}">
+    <!-- <button [routerLink]="['/' + category.name.toLowerCase()]">
+      Отиди към {{ category.name }} </button>-->
+      <button [routerLink]="['/soup']">Отиди към Супи</button>
+    
+  </div>
+</div>
+
+<!-- Любими рецепти -->
+<button (click)="toggleFavorites()">
+  {{ showFavorites ? 'Скрий любими рецепти' : 'Покажи любими рецепти' }}
+</button>
+
+<ul *ngIf="showFavorites">
+  <li *ngFor="let recipe of favoriteRecipes">
+    <h3>{{ recipe.name }}</h3>
+    <p>{{ recipe.description }}</p>
+  </li>
+</ul>

@@ -1,0 +1,20 @@
+.category-card {
+    display: inline-block;
+    margin: 10px;
+    text-align: center;
+  }
+  
+  .category-card img {
+    width: 150px;
+    height: 150px;
+    border-radius: 10px;
+  }
+  
+  button {
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    cursor: pointer;
+    border-radius: 5px;
+  }
