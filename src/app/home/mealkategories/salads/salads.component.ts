@@ -1,12 +1,13 @@
 import { Component } from '@angular/core';
 import { NavigationComponent } from '../../../navigation/navigation.component';
 
+
 @Component({
-  selector: 'app-desserts',
+  selector: 'app-salads',
   imports: [NavigationComponent],
-  templateUrl: './desserts.component.html',
-  styleUrl: './desserts.component.css'
+  templateUrl: './salads.component.html',
+  styleUrl: './salads.component.css'
 })
-export class DessertsComponent {
+export class SaladsComponent {
 
 }

@@ -1,18 +1,16 @@
 <h1>{{ title }}</h1>
 
 <!-- Бутон за превключване на видимостта на категориите -->
-<button (click)="toggleCategories()">
-  {{ showCategories ? 'Скрий категории' : 'Покажи категории' }}
-</button>
+<button (click)="toggleCategories()">{{ showCategories ? 'Скрий категории' : 'Покажи категории' }} </button>
 
 <!-- Категории -->
-<div *ngIf="showCategories">
-  <div *ngFor="let category of categories" class="category-card">
-    <img [src]="category.image" alt="{{ category.name }}">
-    <!-- <button [routerLink]="['/' + category.name.toLowerCase()]">
-      Отиди към {{ category.name }} </button>-->
-      <button [routerLink]="['/soup']">Отиди към Супи</button>
-    
+<!-- това тук работи и за бутона покажи скрий категории -->
+<div *ngIf="showCategories" class="category-list">
+  <div *ngFor="let category of categories" class="category-item">
+    <a [routerLink]="getCategoryRoute(category.name)">
+      <img [src]="category.image" alt="{{ category.name }}">
+      <p>{{ category.name }}</p>
+    </a>
   </div>
 </div>
 

@@ -1,0 +1,10 @@
+<nav class="navigation-bar">
+    <button routerLink="/">Начало</button>
+  
+    <!-- to ask -->
+    <ng-container *ngFor="let item of navItems">
+      <button *ngIf="activePage !== item.path" [routerLink]="item.path">
+        {{ item.label }}
+      </button>
+    </ng-container>
+  </nav>

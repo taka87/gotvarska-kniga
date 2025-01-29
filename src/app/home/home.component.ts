@@ -11,13 +11,24 @@ import { RouterModule } from '@angular/router';
 })
 export class HomeComponent {
   title = 'Любими рецепти';
+  // new
+  getCategoryRoute(categoryName: string): string {
+    switch (categoryName) {
+      case 'Супи': return '/soups';
+      case 'Основни ястия': return '/main-dishes';
+      case 'Десерти': return '/desserts';
+      case 'Салати': return '/salads';
+      default: return '/';
+    }
+  }
+
   showCategories = true;
 
   categories = [
-    { id: 1, name: 'Супи', image: 'assets/soups.jpg' },
+    { id: 1, name: 'Супи', image: 'assets/soups.jpg' },  //ако смениш "супи"-> се чупи пътя ??
     { id: 2, name: 'Основни ястия', image: 'assets/main-dishes.jpg' },
     { id: 3, name: 'Десерти', image: 'assets/desserts.jpg' },
-    { id: 4, name: 'Гарнитури', image: 'assets/side-dishes.jpg' },
+    { id: 4, name: 'Салати', image: 'assets/salads.jpg' },
   ];
 
   toggleCategories() {
