@@ -6,8 +6,10 @@ import { NavigationComponent } from '../../../navigation/navigation.component';
   selector: 'app-salads',
   imports: [NavigationComponent],
   templateUrl: './salads.component.html',
-  styleUrl: './salads.component.css'
+  styleUrl: '../soup/soup.component.css',
+
 })
 export class SaladsComponent {
+  title = 'Добре дошли в нашия кулинарен свят';
 
 }

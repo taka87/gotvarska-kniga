@@ -1,39 +1,53 @@
-<div class="salads-screen">
-    <!-- Заглавие на екрана -->
-    <h1 class="screen-title">Салати</h1>
-  
-    <!-- Навигационни бутони -->
-    <app-navigation [activePage]="'/salads'"></app-navigation>
-  
-    <hr class="divider-line">
-  
-    <div class="content-container">
-      <!-- Лява част: списък със салати -->
-      <div class="salad-list">
-        <ul>
-          <li>Гръцка салата</li>
-          <li>Цезар салата</li>
-          <li>Капрезе</li>
-          <li>Руска салата</li>
-          <li>Шопска салата</li>
-          <li>Табуле</li>
-          <li>Салата с киноа</li>
-          <li>Рукола и пармезан</li>
-          <li>Салата от спанак</li>
-          <li>Плодова салата</li>
-        </ul>
-      </div>
-  
-      <!-- Средна част: текст с рецепта -->
-      <div class="recipe-details">
-        <p>Тук ще бъде описанието на рецептата за избраната салата. Засега това е формален текст.</p>
-      </div>
-  
-      <!-- Дясна част: снимки на салати -->
-      <div class="salad-images">
-        <img src="https://via.placeholder.com/150" alt="Снимка на салата">
-        <img src="https://via.placeholder.com/150" alt="Снимка на салата">
-        <img src="https://via.placeholder.com/150" alt="Снимка на салата">
-      </div>
+<div class="categories-screen">
+  <!-- Заглавие на екрана -->
+  <h1>{{title}}</h1>
+
+  <h2 class="screen-title">Салати</h2>
+
+  <!-- Навигационни бутони -->
+  <app-navigation [activePage]="'/salads'"></app-navigation>
+
+  <!-- Хоризонтална линия -->
+  <hr class="divider-line">
+
+  <div class="content-container">
+    <!-- Лява част: списък със салати -->
+    <div class="categories-list">
+      <ul>
+        <li>Гръцка салата</li>
+        <li>Цезар салата</li>
+        <li>Капрезе</li>
+        <li>Руска салата</li>
+        <li>Шопска салата</li>
+        <li>Табуле</li>
+        <li>Салата с киноа</li>
+        <li>Рукола и пармезан</li>
+        <li>Салата от спанак</li>
+        <li>Плодова салата</li>
+      </ul>
+    </div>
+
+    <!-- Средна част: текст с рецепта -->
+    <div class="recipe-details">
+      <p>Тук ще бъде описанието на рецептата за избраната салата. Засега това е формален текст.</p>
+    </div>
+
+    <!-- Дясна част: снимки на салати -->
+    <div class="salad-images">
+      <img src="https://via.placeholder.com/150" alt="Снимка на салата">
+      <img src="https://via.placeholder.com/150" alt="Снимка на салата">
+      <img src="https://via.placeholder.com/150" alt="Снимка на салата">
     </div>
   </div>
+
+  <div class="footer">
+    <h2>За нас</h2>
+    <p>Следвайте ни в социалните мрежи:</p>
+    <div class="social-icons">
+      <img src="facebook-icon.png" alt="Facebook">
+      <img src="instagram-icon.png" alt="Instagram">
+      <img src="youtube-icon.png" alt="YouTube">
+      <img src="pinterest-icon.png" alt="Pinterest">
+    </div>
+  </div>
+</div>

@@ -1,20 +1,242 @@
-.category-card {
-    display: inline-block;
-    margin: 10px;
-    text-align: center;
-  }
-  
-  .category-card img {
-    width: 150px;
-    height: 150px;
-    border-radius: 10px;
-  }
-  
-  button {
-    background-color: #4caf50;
-    color: white;
-    border: none;
-    padding: 8px 16px;
-    cursor: pointer;
-    border-radius: 5px;
-  }
+/* Основен стил за цялата страница */
+.page-wrapper {
+  max-width: 90%; /* Ограничаваме ширината до 90% от екрана */
+  margin: 40px auto; /* Центрираме блока хоризонтално и добавяме вертикално отстояние */
+  padding: 40px;
+  background-color: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  border: 2px solid #ddd;
+}
+
+/* Заглавие със стил */
+h1 {
+  text-align: center;
+  font-size: 3rem;
+  color: #ffffff;
+  background-color: #007bff;
+  padding: 15px;
+  border-radius: 8px;
+  margin-bottom: 30px;
+}
+
+.menu-selectors {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin: 20px 0;
+}
+
+.menu-selectors select {
+  padding: 10px;
+  font-size: 1.2rem;
+  background-color: #f0f0f0;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+button {
+  padding: 12px 24px;
+  font-size: 16px;
+  color: white;
+  background-color: #007bff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  margin: 10px;
+  display: block;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Общи стилове */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f9f9f9;
+}
+
+.main-container {
+  max-width: 90%;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: white;
+  border: 2px solid #ddd;
+  border-radius: 12px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Заглавие със син фон */
+h1 {
+  text-align: center;
+  font-size: 3rem;
+  color: #ffffff;
+  background-color: #007bff;
+  padding: 10px;
+  border-radius: 8px;
+  margin: 0;
+}
+
+h2 {
+  text-align: center;
+  font-size: 2rem;
+  color: #666;
+  margin-top: 20px;
+}
+
+/* Падащи менюта */
+.menu-selectors {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin: 20px 0;
+}
+
+.menu-selectors select {
+  padding: 10px;
+  font-size: 1.2rem;
+  background-color: #f0f0f0;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.menu-selectors select:hover {
+  background-color: #e0e0e0;
+}
+
+/* Бутоните */
+button {
+  padding: 10px 20px;
+  font-size: 16px;
+  color: white;
+  background-color: #007bff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s ease, transform 0.2s;
+  margin: 10px;
+}
+
+button:hover {
+  background-color: #0056b3;
+  transform: translateY(-2px);
+}
+
+/* Категории като грид */
+.category-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #f4f4f4;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.category-item {
+  background: #f0f0f0;
+  text-align: center;
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.category-item:hover {
+  transform: translateY(-5px);
+}
+
+.category-item img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.category-item p {
+  margin-top: 10px;
+  font-size: 1rem;
+  color: #333;
+}
+
+/* Любими рецепти секция */
+.favorites {
+  margin: 30px auto;
+  text-align: center;
+  padding: 20px;
+  max-width: 600px;
+  background-color: #f4f4f4;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.toggle-favorites-button {
+  display: block;
+  margin: 30px auto;
+  background-color: #ffcccb;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.toggle-favorites-button:hover {
+  background-color: #ffa6a5;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.recipe-description {
+  font-style: italic;
+  color: #666;
+  margin-bottom: 10px;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  margin: 10px 0;
+}
+
+/* Секция „За нас“ и социални връзки */
+.footer {
+  background-color: #eebcbc;
+  color: white;
+  text-align: center;
+  padding: 20px;
+  margin-top: 40px;
+  border-radius: 8px;
+}
+
+.footer .social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.footer .social-icons img {
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.footer .social-icons img:hover {
+  transform: scale(1.2);
+}
+
+
+

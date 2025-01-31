@@ -1,39 +1,50 @@
-<div class="deserts-screen">
-    <!-- Заглавие на екрана -->
-    <h1 class="screen-title">Десерти</h1>
-  
-    <!-- Навигационни бутони -->
-    <app-navigation [activePage]="'/desserts'"></app-navigation>
-  
-    <hr class="divider-line">
-  
-    <div class="content-container">
-      <!-- Лява част: списък с десерти -->
-      <div class="desert-list">
-        <ul>
-          <li>Тирамису</li>
-          <li>Шоколадов мус</li>
-          <li>Ябълков пай</li>
-          <li>Чийзкейк</li>
-          <li>Крем карамел</li>
-          <li>Еклерова торта</li>
-          <li>Пана кота</li>
-          <li>Домашни бисквити</li>
-          <li>Кейк с моркови</li>
-          <li>Плодова салата</li>
-        </ul>
-      </div>
-  
-      <!-- Средна част: текст с рецепта -->
-      <div class="recipe-details">
-        <p>Тук ще бъде описанието на рецептата за избрания десерт. Засега това е формален текст.</p>
-      </div>
-  
-      <!-- Дясна част: снимки на десерти -->
-      <div class="desert-images">
-        <img src="https://via.placeholder.com/150" alt="Снимка на десерт">
-        <img src="https://via.placeholder.com/150" alt="Снимка на десерт">
-        <img src="https://via.placeholder.com/150" alt="Снимка на десерт">
-      </div>
+<div class="categories-screen">
+  <h1>{{ title }}</h1>
+
+  <h2 class="screen-title">Десерти</h2>
+
+  <app-navigation [activePage]="'/desserts'"></app-navigation>
+
+  <hr class="divider-line">
+
+  <div class="content-container">
+    <!-- Лява част: списък с десерти -->
+    <div class="categories-list">
+      <ul>
+        <li>Тирамису</li>
+        <li>Шоколадов мус</li>
+        <li>Ябълков пай</li>
+        <li>Чийзкейк</li>
+        <li>Крем карамел</li>
+        <li>Еклерова торта</li>
+        <li>Пана кота</li>
+        <li>Домашни бисквити</li>
+        <li>Кейк с моркови</li>
+        <li>Плодова салата</li>
+      </ul>
+    </div>
+
+    <!-- Средна част: текст с рецепта -->
+    <div class="recipe-details">
+      <p>Тук ще бъде описанието на рецептата за избрания десерт. Засега това е формален текст.</p>
+    </div>
+
+    <!-- Дясна част: снимки на десерти -->
+    <div class="desert-images">
+      <img src="https://via.placeholder.com/150" alt="Снимка на десерт">
+      <img src="https://via.placeholder.com/150" alt="Снимка на десерт">
+      <img src="https://via.placeholder.com/150" alt="Снимка на десерт">
     </div>
   </div>
+
+  <div class="footer">
+    <h2>За нас</h2>
+    <p>Следвайте ни в социалните мрежи:</p>
+    <div class="social-icons">
+      <img src="facebook-icon.png" alt="Facebook">
+      <img src="instagram-icon.png" alt="Instagram">
+      <img src="youtube-icon.png" alt="YouTube">
+      <img src="pinterest-icon.png" alt="Pinterest">
+    </div>
+  </div>
+</div>

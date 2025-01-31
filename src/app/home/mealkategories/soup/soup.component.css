@@ -1,5 +1,160 @@
+/* Общ стил за цялата страница */
+body {
+  font-family: 'Georgia', serif;
+  margin: 0;
+  background-color: #f3f3f3;
+  padding: 2rem;
+  display: flex;
+  justify-content: center;
+}
+
+.categories-screen {
+  max-width: 90%;
+  background-color: white;
+  padding: 2rem;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  border-left: 6px solid #dedede;
+  border-right: 6px solid #dedede;
+  position: relative;
+}
+
+/* Заглавие на категорията */
+.categories-screen h1 {
+  text-align: center;
+  font-size: 3.5rem;
+  background-color: #f0f8ff;
+  padding: 1rem;
+  color: #007bff;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  border-radius: 12px;
+  margin-bottom: 30px;
+}
+
+.screen-title {
+  font-size: 2.5rem;
+  text-align: center;
+  background-color: #fdf5e6;
+  padding: 0.5rem;
+  color: #ff7f50;
+  margin-bottom: 20px;
+  border-radius: 8px;
+}
+
+/* Контейнер за съдържание */
 .content-container {
-    display: grid;
-    grid-template-columns: 1fr 2fr 2fr;
-    gap: 20px;
-  }
+  display: grid;
+  grid-template-columns: 1fr 2fr 2fr;
+  gap: 20px;
+}
+
+/* Лява част - списък със супи */
+.categories-list ul {
+  background-color: #fafafa;
+  padding: 1rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.categories-list li {
+  padding: 10px;
+  margin: 5px 0;
+  background-color: #fdf5e6;
+  border-radius: 8px;
+  font-size: 1.2rem;
+  font-family: 'Courier New', Courier, monospace;
+  transition: background-color 0.3s ease;
+}
+
+.soup-list li:hover {
+  background-color: #ffefd5;
+  cursor: pointer;
+}
+
+/* Средна част - текст с рецепта */
+.recipe-details {
+  background-color: #f9f9f9;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  font-style: italic;
+}
+
+/* Дясна част - изображения */
+.soup-images img {
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 10px;
+  border-radius: 12px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Навигационни бутони */
+.navigation-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+button.nav-btn {
+  padding: 10px 20px;
+  font-size: 1.1rem;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+button.nav-btn:hover {
+  background-color: #0056b3;
+  transform: translateY(-3px);
+}
+
+button.back-to-home-btn {
+  padding: 10px 20px;
+  font-size: 1.2rem;
+  background-color: #ff6347;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+button.back-to-home-btn:hover {
+  background-color: #cd5c5c;
+  transform: translateY(-3px);
+}
+
+/* Footer */
+.footer {
+  background-color: #333;
+  color: white;
+  text-align: center;
+  padding: 20px;
+  margin-top: 40px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.footer .social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 10px;
+}
+
+.footer .social-icons img {
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.footer .social-icons img:hover {
+  transform: scale(1.2);
+}

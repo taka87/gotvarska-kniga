@@ -5,8 +5,10 @@ import { NavigationComponent } from '../../../navigation/navigation.component';
   selector: 'app-desserts',
   imports: [NavigationComponent],
   templateUrl: './desserts.component.html',
-  styleUrl: './desserts.component.css'
+  styleUrl: '../soup/soup.component.css',
+
 })
 export class DessertsComponent {
+  title = 'Добре дошли в нашия кулинарен свят';
 
 }

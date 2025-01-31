@@ -10,7 +10,7 @@ import { RouterModule } from '@angular/router';
   imports: [CommonModule,RouterModule]
 })
 export class HomeComponent {
-  title = 'Любими рецепти';
+  title = 'Добре дошли в нашия кулинарен свят';
   // new
   getCategoryRoute(categoryName: string): string {
     switch (categoryName) {

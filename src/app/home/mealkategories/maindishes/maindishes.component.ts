@@ -6,8 +6,10 @@ import { NavigationComponent } from '../../../navigation/navigation.component';
   selector: 'app-maindishes',
   imports: [NavigationComponent],
   templateUrl: './maindishes.component.html',
-  styleUrl: './maindishes.component.css'
+  styleUrl: '../soup/soup.component.css',
+
 })
 export class MaindishesComponent {
+  title = 'Добре дошли в нашия кулинарен свят';
 
 }

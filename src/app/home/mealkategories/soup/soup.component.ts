@@ -12,5 +12,6 @@ import { NavigationComponent } from '../../../navigation/navigation.component';
   standalone: true,
 })
 export class SoupComponent {
+  title = 'Добре дошли в нашия кулинарен свят';
 
 }

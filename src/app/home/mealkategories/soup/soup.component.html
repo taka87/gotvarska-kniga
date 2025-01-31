@@ -1,6 +1,8 @@
-<div class="soup-screen">
+<div class="categories-screen">
   <!-- Заглавие на екрана -->
-  <h1 class="screen-title">Супи</h1>
+  <h1>{{title}}</h1>
+
+  <h2 class="screen-title">Супи</h2>
 
   <!-- Навигационни бутони -->
   <app-navigation [activePage]="'/soups'"></app-navigation>
@@ -16,7 +18,7 @@
 
   <div class="content-container">
     <!-- Лява част: списък със супи -->
-    <div class="soup-list">
+    <div class="categories-list ">
       <ul>
         <li>Супа топчета</li>
         <li>Шкембе чорба</li>
@@ -43,5 +45,15 @@
       <img src="https://via.placeholder.com/150" alt="Снимка на супа">
     </div>
   </div>
+  <div class="footer">
+    <h2>За нас</h2>
+    <p>Следвайте ни в социалните мрежи:</p>
+    <div class="social-icons">
+      <img src="facebook-icon.png" alt="Facebook">
+      <img src="instagram-icon.png" alt="Instagram">
+      <img src="youtube-icon.png" alt="YouTube">
+      <img src="pinterest-icon.png" alt="Pinterest">
+    </div>
+  </div>  
 </div>
 
