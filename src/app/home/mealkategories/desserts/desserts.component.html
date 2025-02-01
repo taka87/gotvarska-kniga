@@ -7,11 +7,19 @@
 
   <hr class="divider-line">
 
+  <!-- филтър салати -->
+  <div class="search-box-container">
+    <input class="search-input" type="text" [(ngModel)]="searchQuery" placeholder="Търси супа">
+    <button  class="search-button" (click)="filterDesserts()">Търси 🔍</button>
+  </div>
+
+  <hr class="divider-line">
+
   <div class="content-container">
     <!-- Лява част: списък със салати -->
     <div class="categories-list">
       <ul>
-        <li *ngFor="let dessert of desserts" (click)="selectDessert(dessert)"> {{ dessert.name }} </li>
+        <li *ngFor="let dessert of filteredDesserts" (click)="selectedDessert(dessert)"> {{ dessert.name }} </li>
       </ul>
     </div>
 

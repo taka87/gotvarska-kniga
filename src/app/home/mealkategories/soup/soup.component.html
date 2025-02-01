@@ -6,21 +6,35 @@
 
   <!-- Навигационни бутони -->
   <app-navigation [activePage]="'/soups'"></app-navigation>
-  <!-- <div class="navigation-buttons">
-    <button routerLink="/" class="back-to-home-btn">Начало</button>
-    <button class="nav-btn">Основни ястия</button>
-    <button class="nav-btn">Десерти</button>
-    <button class="nav-btn">Гарнитури</button>
-  </div> -->
 
-  <!-- Хоризонтална линия -->
+  <!-- search-section -->
+  <hr class="divider-line">
+
+  <!-- Филтър за супите -->
+  <div class="search-box-container">
+    <input class="search-input" type="text" [(ngModel)]="searchQuery" placeholder="Търси супа">
+    <button  class="search-button" (click)="filterSoups()">Търси 🔍</button>
+   
+    <!-- <ul>  
+        <li *ngFor="let soup of filteredSoups" (click)="selectSoup(soup)">
+    {{ soup.name }}
+        </li>
+      </ul> -->
+  </div>
+
   <hr class="divider-line">
 
   <div class="content-container">
     <!-- Лява част: списък със супи -->
     <div class="categories-list">
-      <ul>
+      <!-- <ul>
         <li *ngFor="let soup of soups" (click)="selectSoup(soup)">
+          {{ soup.name }}
+        </li>
+      </ul> -->
+      <ul>
+        <!-- филтрираните супи по критерии изобразява с бутона в новата логика -->
+        <li *ngFor="let soup of filteredSoups" (click)="selectSoup(soup)">
           {{ soup.name }}
         </li>
       </ul>
@@ -41,33 +55,7 @@
       <p>{{ selectedSoup.description }}</p>
     </div>
   
-  <!-- <div class="content-container">
-    <!- Лява част: списък със супи -->
-    <!-- <div class="categories-list ">
-      <ul>
-        <li>Супа топчета</li>
-        <li>Шкембе чорба</li>
-        <li>Боб чорба</li>
-        <li>Леща супа</li>
-        <li>Картофена крем супа</li>
-        <li>Гъбена супа</li>
-        <li>Пилешка супа</li>
-        <li>Зеленчукова супа</li>
-        <li>Рибена супа</li>
-        <li>Тиквена супа</li>
-      </ul>
-    </div>
 
-    <!- Средна част: текст с рецепта -->
-    <!--<div class="recipe-details">
-      <p>Тук ще бъде описанието на рецептата за избраната супа. Засега това е формален текст.</p>
-    </div> -->
-
-    <!-- Дясна част: снимки на супи -->
-     <!-- изолираме стария вариант с цикъл -->
-    <!-- <div class="soup-images">
-      <img *ngIf="selectedSoup" [src]="selectedSoup.image" [alt]="'Снимка на ' + selectedSoup.name">
-    </div> -->
     <div *ngIf="selectedSoup?.images && selectedSoup?.images.length > 0">
       <div class="category-images-grid">
         <img *ngFor="let image of selectedSoup.images" [src]="image" [alt]="'Снимка на ' + selectedSoup.name">

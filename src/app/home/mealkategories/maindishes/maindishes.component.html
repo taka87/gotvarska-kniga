@@ -6,12 +6,27 @@
   <app-navigation [activePage]="'/main-dishes'"></app-navigation>
 
   <hr class="divider-line">
+  
+  <!-- филтър салати -->
+  <div class="search-box-container">
+    <input class="search-input" type="text" [(ngModel)]="searchQuery" placeholder="Търси супа">
+    <button  class="search-button" (click)="filterMainDishes()">Търси 🔍</button>
+   
+    <!-- тест за филтрациите -->
+    <!-- <ul>  
+        <li *ngFor="let salad of filteredSalads" (click)="selectSalad(salad)">
+    {{ salad.name }}
+        </li>
+      </ul> -->
+  </div>
+
+  <hr class="divider-line">
 
   <div class="content-container">
     <!-- Лява част: списък със салати -->
     <div class="categories-list">
       <ul>
-        <li *ngFor="let mainDish of mainDishes" (click)="selectMainDishes(mainDish)"> {{ mainDish.name }} </li>
+        <li *ngFor="let mainDish of filteredMainDishes" (click)="selectMainDishes(mainDish)"> {{ mainDish.name }} </li>
       </ul>
     </div>
 

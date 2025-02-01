@@ -4,11 +4,12 @@ import { RouterModule } from '@angular/router';
 import { Navigation } from '@angular/router';
 import { NavigationComponent } from '../../../navigation/navigation.component';
 import { SaladService } from '../../../services/salads.service';
+import { FormsModule } from '@angular/forms';
 
 
 @Component({
   selector: 'app-salads',
-  imports: [CommonModule, RouterModule,NavigationComponent],  
+  imports: [CommonModule, RouterModule,NavigationComponent, FormsModule],  
   templateUrl: './salads.component.html',
   styleUrl: '../soup/soup.component.css',
 
@@ -18,16 +19,26 @@ export class SaladsComponent {
 
     salads: any[] = [];
     selectedSalad: any = null;
+    filteredSalads: any[] = [];
   
     constructor(private saladService: SaladService) {} //inject) SaladService-> извлича данните от json
   
     ngOnInit(): void {
       this.saladService.getSalads().subscribe((data) => {
         this.salads = data;
+        this.filteredSalads=[...this.salads];
       });
     }
   
     selectSalad(salad: any): void {
       this.selectedSalad = salad;
+    }
+
+    searchQuery: string = '';
+
+    filterSalads(): void {
+      this.filteredSalads = this.salads.filter(salad => 
+        salad.name.toLowerCase().includes(this.searchQuery.toLowerCase())
+      );
     }
 }
