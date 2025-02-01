@@ -1,0 +1,32 @@
+[
+    {
+      "id": 1,
+      "name": "Пилешко с картофи",      
+      "images": [
+        "assets/images/maindishes/pileshko1.jpg",
+        "assets/images/maindishes/pileshko2.jpg"
+      ],
+      "ingredients": [
+        "500 г кайма",
+        "1 яйце",
+        "2 моркова",
+        "1 глава лук"
+      ],
+      "description": "Класическо основно ястие с пилешко месо и картофи."
+    },
+    {      
+      "id": 2,
+      "name": "Кюфтета с доматен сос",      
+      "images": [
+        "assets/images/maindishes/kyufteta1.jpg",
+        "assets/images/maindishes/kyufteta2.jpg"
+      ],
+      "ingredients": [
+        "500 г кайма",
+        "1 яйце",
+        "2 моркова",
+        "1 глава лук"
+      ],
+      "description": "Сочно свинско месо с ароматен доматен сос."
+    }
+  ]

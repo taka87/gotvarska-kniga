@@ -14,29 +14,30 @@
     <!-- Лява част: списък със салати -->
     <div class="categories-list">
       <ul>
-        <li>Гръцка салата</li>
-        <li>Цезар салата</li>
-        <li>Капрезе</li>
-        <li>Руска салата</li>
-        <li>Шопска салата</li>
-        <li>Табуле</li>
-        <li>Салата с киноа</li>
-        <li>Рукола и пармезан</li>
-        <li>Салата от спанак</li>
-        <li>Плодова салата</li>
+        <li *ngFor="let salad of salads" (click)="selectSalad(salad)"> {{ salad.name }} </li>
       </ul>
     </div>
 
     <!-- Средна част: текст с рецепта -->
-    <div class="recipe-details">
-      <p>Тук ще бъде описанието на рецептата за избраната салата. Засега това е формален текст.</p>
+    <div class="recipe-details" *ngIf="selectedSalad">
+      <h2>{{ selectedSalad.name }}</h2>
+      <!-- изолираме изображението защото не ни трябва -->
+      <!-- <img [src]="selectedSoup.image" alt="{{ selectedSoup.name }}" /> -->
+      <h3>Съставки:</h3>
+      <ul>
+        <li *ngFor="let ingredient of selectedSalad.ingredients">
+          {{ ingredient }}
+        </li>
+      </ul>
+      <h3>Описание:</h3>
+      <p>{{ selectedSalad.description }}</p>
     </div>
 
     <!-- Дясна част: снимки на салати -->
-    <div class="salad-images">
-      <img src="https://via.placeholder.com/150" alt="Снимка на салата">
-      <img src="https://via.placeholder.com/150" alt="Снимка на салата">
-      <img src="https://via.placeholder.com/150" alt="Снимка на салата">
+    <div *ngIf="selectedSalad?.images && selectedSalad?.images.length > 0">
+      <div class="category-images-grid">
+        <img *ngFor="let image of selectedSalad.images" [src]="image" [alt]="'Снимка на ' + selectedSalad.name">
+      </div>
     </div>
   </div>
 

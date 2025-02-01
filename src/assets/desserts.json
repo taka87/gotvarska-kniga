@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1,
+    "name": "Тирамису с шоколад и канела ",      
+    "images": [
+      "assets/images/desserts/dessert1.jpg",
+      "assets/images/desserts/dessert2.jpg"
+    ],
+    "ingredients": [
+      "500 г кайма",
+      "1 яйце",
+      "2 моркова",
+      "1 глава лук"
+    ],
+    "description": "Класическо основно ястие с пилешко месо и картофи."
+  },
+  {      
+    "id": 2,
+    "name": "Бисквитена торта с крем",      
+    "images": [
+      "assets/images/desserts/tirsmisu1.jpg",
+      "assets/images/desserts/tiramisu2.jpg"
+    ],
+    "ingredients": [
+      "500 г кайма",
+      "1 яйце",
+      "2 моркова",
+      "1 глава лук"
+    ],
+    "description": "Тирамисуто е хубав десерт за похапване с всякакви условия"
+  }
+]

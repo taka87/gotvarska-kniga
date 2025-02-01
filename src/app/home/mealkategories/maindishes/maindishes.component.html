@@ -8,32 +8,33 @@
   <hr class="divider-line">
 
   <div class="content-container">
-    <!-- Лява част: списък с основни ястия -->
+    <!-- Лява част: списък със салати -->
     <div class="categories-list">
       <ul>
-        <li>Мусака</li>
-        <li>Пълнени чушки</li>
-        <li>Кебап</li>
-        <li>Свински пържоли</li>
-        <li>Пилешко филе с картофи</li>
-        <li>Гювеч</li>
-        <li>Сарми</li>
-        <li>Телешко със зеленчуци</li>
-        <li>Ориз с морски дарове</li>
-        <li>Патешко със зеле</li>
+        <li *ngFor="let mainDish of mainDishes" (click)="selectMainDishes(mainDish)"> {{ mainDish.name }} </li>
       </ul>
     </div>
 
     <!-- Средна част: текст с рецепта -->
-    <div class="recipe-details">
-      <p>Тук ще бъде описанието на рецептата за избраното основно ястие. Засега това е формален текст.</p>
+    <div class="recipe-details" *ngIf="selectedMainDishes">
+      <h2>{{ selectedMainDishes.name }}</h2>
+      <!-- изолираме изображението защото не ни трябва -->
+      <!-- <img [src]="selectedSoup.image" alt="{{ selectedSoup.name }}" /> -->
+      <h3>Съставки:</h3>
+      <ul>
+        <li *ngFor="let ingredient of selectedMainDishes.ingredients">
+          {{ ingredient }}
+        </li>
+      </ul>
+      <h3>Описание:</h3>
+      <p>{{ selectedMainDishes.description }}</p>
     </div>
 
-    <!-- Дясна част: снимки на ястия -->
-    <div class="dish-images">
-      <img src="https://via.placeholder.com/150" alt="Снимка на ястие">
-      <img src="https://via.placeholder.com/150" alt="Снимка на ястие">
-      <img src="https://via.placeholder.com/150" alt="Снимка на ястие">
+    <!-- Дясна част: снимки на салати -->
+    <div *ngIf="selectedMainDishes?.images && selectedMainDishes?.images.length > 0">
+      <div class="category-images-grid">
+        <img *ngFor="let image of selectedMainDishes.images" [src]="image" [alt]="'Снимка на ' + selectedMainDishes.name">
+      </div>
     </div>
   </div>
 

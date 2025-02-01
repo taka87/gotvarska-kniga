@@ -18,7 +18,32 @@
 
   <div class="content-container">
     <!-- Лява част: списък със супи -->
-    <div class="categories-list ">
+    <div class="categories-list">
+      <ul>
+        <li *ngFor="let soup of soups" (click)="selectSoup(soup)">
+          {{ soup.name }}
+        </li>
+      </ul>
+    </div>
+  
+    <!-- Средна част: текст с рецепта -->
+    <div class="recipe-details" *ngIf="selectedSoup">
+      <h2>{{ selectedSoup.name }}</h2>
+      <!-- изолираме изображението защото не ни трябва -->
+      <!-- <img [src]="selectedSoup.image" alt="{{ selectedSoup.name }}" /> -->
+      <h3>Съставки:</h3>
+      <ul>
+        <li *ngFor="let ingredient of selectedSoup.ingredients">
+          {{ ingredient }}
+        </li>
+      </ul>
+      <h3>Описание:</h3>
+      <p>{{ selectedSoup.description }}</p>
+    </div>
+  
+  <!-- <div class="content-container">
+    <!- Лява част: списък със супи -->
+    <!-- <div class="categories-list ">
       <ul>
         <li>Супа топчета</li>
         <li>Шкембе чорба</li>
@@ -33,18 +58,24 @@
       </ul>
     </div>
 
-    <!-- Средна част: текст с рецепта -->
-    <div class="recipe-details">
+    <!- Средна част: текст с рецепта -->
+    <!--<div class="recipe-details">
       <p>Тук ще бъде описанието на рецептата за избраната супа. Засега това е формален текст.</p>
-    </div>
+    </div> -->
 
     <!-- Дясна част: снимки на супи -->
-    <div class="soup-images">
-      <img src="https://via.placeholder.com/150" alt="Снимка на супа">
-      <img src="https://via.placeholder.com/150" alt="Снимка на супа">
-      <img src="https://via.placeholder.com/150" alt="Снимка на супа">
+     <!-- изолираме стария вариант с цикъл -->
+    <!-- <div class="soup-images">
+      <img *ngIf="selectedSoup" [src]="selectedSoup.image" [alt]="'Снимка на ' + selectedSoup.name">
+    </div> -->
+    <div *ngIf="selectedSoup?.images && selectedSoup?.images.length > 0">
+      <div class="category-images-grid">
+        <img *ngFor="let image of selectedSoup.images" [src]="image" [alt]="'Снимка на ' + selectedSoup.name">
+      </div>
     </div>
   </div>
+
+  <!-- долна част меню -->
   <div class="footer">
     <h2>За нас</h2>
     <p>Следвайте ни в социалните мрежи:</p>

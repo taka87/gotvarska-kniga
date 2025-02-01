@@ -1,8 +1,10 @@
 [
     {
       "id": 1,
-      "name": "Супа топчета",
-      "image": "assets/images/soup1.jpg",
+      "name": "Супа копчета",
+      "images": [
+        "assets/images/soups/soup-topcheta.jpg"
+      ],
       "ingredients": [
         "500 г кайма",
         "1 яйце",
@@ -13,8 +15,10 @@
     },
     {
       "id": 2,
-      "name": "Шкембе чорба",
-      "image": "assets/images/soup2.jpg",
+      "name": "Шкембе със торта",
+      "images": [
+        "assets/images/soups/pileshka-supa.jpg"
+      ],
       "ingredients": [
         "1 кг шкембе",
         "100 мл мляко",

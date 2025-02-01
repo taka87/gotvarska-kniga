@@ -15,7 +15,7 @@ export class NavigationComponent {
   navItems = [
     { path: '/soups', label: 'Супи' },
     { path: '/main-dishes', label: 'Основни ястия' },
-    { path: '/desserts', label: 'Десерти' },
-    { path: '/salads', label: 'Салати' }
+    { path: '/salads', label: 'Салати' },
+    { path: '/desserts', label: 'Десерти' }
   ];
 }

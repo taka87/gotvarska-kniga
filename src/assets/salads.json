@@ -1,0 +1,34 @@
+[
+    {
+      "id": 1,
+      "name": "Шопска салата",
+      "images": [
+        "assets/images/salads/salad1.jpg",
+        "assets/images/salads/salad2.jpg"
+      ],
+      "ingredients": [
+        "500 г кайма",
+        "1 яйце",
+        "2 моркова",
+        "1 глава лук"
+      ],
+      "description": "Класическа българска салата с домати, краставици и сирене."
+      
+    },
+    {
+      "id": 2,
+      "name": "Цезар салата",
+      "images": [
+        "assets/images/salads/cezar1.jpg",
+        "assets/images/salads/cezar2.jpg"
+      ],
+      "ingredients": [
+        "500 г кайма",
+        "1 яйце",
+        "2 моркова",
+        "1 глава лук"
+      ],
+      "description": "Хрупкава салата с пилешко месо и пармезан."
+
+    }
+  ]

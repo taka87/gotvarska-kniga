@@ -16,8 +16,9 @@ export class HomeComponent {
     switch (categoryName) {
       case 'Супи': return '/soups';
       case 'Основни ястия': return '/main-dishes';
-      case 'Десерти': return '/desserts';
       case 'Салати': return '/salads';
+      case 'Десерти': return '/desserts';
+
       default: return '/';
     }
   }
@@ -27,8 +28,9 @@ export class HomeComponent {
   categories = [
     { id: 1, name: 'Супи', image: 'assets/soups.jpg' },  //ако смениш "супи"-> се чупи пътя ??
     { id: 2, name: 'Основни ястия', image: 'assets/main-dishes.jpg' },
-    { id: 3, name: 'Десерти', image: 'assets/desserts.jpg' },
     { id: 4, name: 'Салати', image: 'assets/salads.jpg' },
+    { id: 3, name: 'Десерти', image: 'assets/desserts.jpg' },
+
   ];
 
   toggleCategories() {
