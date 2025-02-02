@@ -19,7 +19,7 @@
     <!-- Лява част: списък със салати -->
     <div class="categories-list">
       <ul>
-        <li *ngFor="let dessert of filteredDesserts" (click)="selectedDessert(dessert)"> {{ dessert.name }} </li>
+        <li *ngFor="let dessert of filteredDesserts" (click)="selectDessert(dessert)"> {{ dessert.name }} </li>
       </ul>
     </div>
 
