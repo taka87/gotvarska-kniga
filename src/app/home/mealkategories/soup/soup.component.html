@@ -10,28 +10,36 @@
   <!-- search-section -->
   <hr class="divider-line">
 
-  <!-- Филтър за супите -->
-  <div class="search-box-container">
-    <input class="search-input" type="text" [(ngModel)]="searchQuery" placeholder="Търси супа">
-    <button  class="search-button" (click)="filterSoups()">Търси 🔍</button>
-   
-    <!-- <ul>  
-        <li *ngFor="let soup of filteredSoups" (click)="selectSoup(soup)">
-    {{ soup.name }}
-        </li>
-      </ul> -->
+  <!-- Търсачка/Филтър за супите -->
+  <div class="search-box-wrapper">
+    <div class="search-box-container">
+      <input class="search-input" type="text" [(ngModel)]="searchQuery" (input)="filterSoups()" placeholder="Търси супа">
+      <!-- <button class="search-button" (click)="filterSoups()">Търси 🔍</button> -->
+    </div>
+  
+    <ul *ngIf="autocompleteSuggestions.length > 0 && searchQuery.trim() !== ''" class="autocomplete-list">
+      <li *ngFor="let suggestion of autocompleteSuggestions" (click)="selectSuggestedSoup(suggestion)">
+        {{ suggestion.name }}
+      </li>
+    </ul>
   </div>
 
+  
+  <!-- <input   type="text"   [(ngModel)]="searchQuery"   (input)="filterSoups()"   placeholder="Търсете супа..." />
+
+<ul *ngIf="autocompleteSuggestions.length > 0" class="autocomplete-list">
+  <li 
+    *ngFor="let suggestion of autocompleteSuggestions" (click)="selectSuggestedSoup(suggestion)">
+    {{ suggestion.name }}
+  </li>
+</ul> -->
+  
   <hr class="divider-line">
 
-  <div class="content-container">
     <!-- Лява част: списък със супи -->
+  <div class="content-container">
     <div class="categories-list">
-      <!-- <ul>
-        <li *ngFor="let soup of soups" (click)="selectSoup(soup)">
-          {{ soup.name }}
-        </li>
-      </ul> -->
+
       <ul>
         <!-- филтрираните супи по критерии изобразява с бутона в новата логика -->
         <li *ngFor="let soup of filteredSoups" (click)="selectSoup(soup)">

@@ -34,10 +34,20 @@ export class SoupComponent {
   }
   
   searchQuery: string = '';
+  autocompleteSuggestions: any[] = [];
 
   filterSoups(): void {
     this.filteredSoups = this.soups.filter(soup => 
       soup.name.toLowerCase().includes(this.searchQuery.toLowerCase())
     );
+
+    // Генериране на подсказки
+  this.autocompleteSuggestions = this.filteredSoups.slice(0, 5); // Ограничаваме до 5 предложения
+  }
+
+  selectSuggestedSoup(soup: any): void {
+    this.searchQuery = soup.name;
+    this.filteredSoups = [soup]; // Показваме само избраната супа
+    this.autocompleteSuggestions = [];
   }
 }

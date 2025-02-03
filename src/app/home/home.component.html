@@ -4,23 +4,17 @@
   <!-- <h2>Нашите рецепти</h2> -->
 
   <!-- Падащи менюта -->
-  <div class="menu-selectors">
-    <select>
-      <option>Меню за закуска</option>
-    </select>
-    <select>
-      <option>Меню за обяд</option>
-    </select>
-    <select>
-      <option>Меню за вечеря</option>
-    </select>
-  </div>
+  <app-menu-details></app-menu-details>
 
+  <!-- Логин -->
+  <app-user-control></app-user-control>
+  <router-outlet></router-outlet>
+  
   <!-- Бутон за показване/скриване на категории -->
   <button (click)="toggleCategories()">
     {{ showCategories ? 'Скрий категории' : 'Покажи категории' }}
   </button>
-
+  <!-- категории -->
   <div *ngIf="showCategories" class="category-grid">
     <div *ngFor="let category of categories" class="category-item">
       <a [routerLink]="getCategoryRoute(category.name)">

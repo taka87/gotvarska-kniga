@@ -1,0 +1,15 @@
+<div class="login-container">
+  <hr>
+  <h2>Вход</h2>
+  <label>Имейл:</label>
+  <input [(ngModel)]="email" type="email">
+  <label>Парола:</label>
+  <input [(ngModel)]="password" type="password">
+  <br>
+  <button (click)="login()">Вход</button>
+  <!-- <button routerLink="/register" class="register-button">Регистрация</button> -->
+  <button (click)="navigateToRegister()" class="register-button">
+    Регистрация
+  </button>
+  <hr>
+</div>

@@ -1,13 +1,16 @@
-import { Component } from '@angular/core';
+import { Component,OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { FormBuilder,FormGroup,Validators } from '@angular/forms';
+import { UserControlComponent } from "../user-control/user-control.component";
+import { MenuDetailsComponent } from '../menu-details/menu-details.component';
 
 @Component({
   selector: 'app-home',
   standalone: true,
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'],
-  imports: [CommonModule,RouterModule]
+  imports: [CommonModule, RouterModule, UserControlComponent,MenuDetailsComponent]
 })
 export class HomeComponent {
   title = 'Добре дошли в нашия кулинарен свят';

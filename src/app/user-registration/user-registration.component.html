@@ -1,0 +1,26 @@
+<div class="registration-container">
+    <h2>Регистрация на потребител</h2>
+    <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
+      <label>Име:</label>
+      <input formControlName="firstName" type="text">
+      
+      <label>Фамилия:</label>
+      <input formControlName="lastName" type="text">
+      
+      <label>Имейл:</label>
+      <input formControlName="email" type="email">
+      
+      <label>Парола:</label>
+      <input formControlName="password" type="password">
+      
+      <label>Повторете паролата:</label>
+      <input formControlName="confirmPassword" type="password">
+  
+      <button type="submit">Регистрация</button>
+      <p>
+       Прозорец за -><a routerLink="/register">Регистрация</a>
+      </p>
+      <button (click)="goBack()">Назад към Началната страница</button>
+
+    </form>
+  </div>
