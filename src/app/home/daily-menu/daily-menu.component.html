@@ -1,0 +1,55 @@
+<div class="menu-selectors">
+  <div>
+    <label>Супа:</label>
+    <input 
+      list="soupsList" 
+      (input)="filterItems($any($event.target).value, 'soups')" 
+      [(ngModel)]="selectedMenu.soup" 
+      name="soup"
+    >
+    <datalist id="soupsList">
+      <option *ngFor="let soup of filteredSoups" [value]="soup.name">{{ soup.name }}</option>
+    </datalist>
+  </div>
+
+  <div>
+    <label>Десерт:</label>
+    <input 
+      list="dessertsList" 
+      (input)="filterItems($any($event.target).value, 'desserts')" 
+      [(ngModel)]="selectedMenu.dessert" 
+      name="dessert"
+    >
+    <datalist id="dessertsList">
+      <option *ngFor="let dessert of filteredDesserts" [value]="dessert.name">{{ dessert.name }}</option>
+    </datalist>
+  </div>
+
+  <div>
+    <label>Напитка:</label>
+    <input 
+      list="drinksList" 
+      (input)="filterItems($any($event.target).value, 'drinks')" 
+      [(ngModel)]="selectedMenu.drink" 
+      name="drink"
+    >
+    <datalist id="drinksList">
+      <option *ngFor="let drink of filteredDrinks" [value]="drink.name">{{ drink.name }}</option>
+    </datalist>
+  </div>
+
+  <div>
+    <label>Салата:</label>
+    <input 
+      list="saladsList" 
+      (input)="filterItems($any($event.target).value, 'salads')" 
+      [(ngModel)]="selectedMenu.salad" 
+      name="salad"
+    >
+    <datalist id="saladsList">
+      <option *ngFor="let salad of filteredSalads" [value]="salad.name">{{ salad.name }}</option>
+    </datalist>
+  </div>
+
+  <button (click)="submitMenu()">Избери</button>
+</div>

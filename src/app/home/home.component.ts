@@ -4,13 +4,14 @@ import { RouterModule } from '@angular/router';
 import { FormBuilder,FormGroup,Validators } from '@angular/forms';
 import { UserControlComponent } from "../user-control/user-control.component";
 import { MenuDetailsComponent } from '../menu-details/menu-details.component';
+import { DailyMenuComponent } from './daily-menu/daily-menu.component';
 
 @Component({
   selector: 'app-home',
   standalone: true,
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'],
-  imports: [CommonModule, RouterModule, UserControlComponent,MenuDetailsComponent]
+  imports: [CommonModule, RouterModule, UserControlComponent,DailyMenuComponent]
 })
 export class HomeComponent {
   title = 'Добре дошли в нашия кулинарен свят';

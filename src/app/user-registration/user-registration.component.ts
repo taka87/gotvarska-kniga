@@ -11,6 +11,8 @@ import { Router } from '@angular/router';
   imports: [CommonModule,ReactiveFormsModule ],
 })
 export class UserRegistrationComponent implements OnInit {
+  title ='Добре дошли в нашия кулинарен свят ... ';
+  
   registrationForm!: FormGroup;
 
   constructor(private fb: FormBuilder, private router: Router) {}

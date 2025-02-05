@@ -1,26 +1,52 @@
-<div class="registration-container">
-    <h2>Регистрация на потребител</h2>
+<div class="page-wrapper">
+  <h1>{{ title }}</h1>
+  <div class="registration-container">
+    <h2 class="page-title">Регистрация на потребител</h2>
     <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
-      <label>Име:</label>
-      <input formControlName="firstName" type="text">
-      
-      <label>Фамилия:</label>
-      <input formControlName="lastName" type="text">
-      
-      <label>Имейл:</label>
-      <input formControlName="email" type="email">
-      
-      <label>Парола:</label>
-      <input formControlName="password" type="password">
-      
-      <label>Повторете паролата:</label>
-      <input formControlName="confirmPassword" type="password">
-  
-      <button type="submit">Регистрация</button>
-      <p>
-       Прозорец за -><a routerLink="/register">Регистрация</a>
-      </p>
-      <button (click)="goBack()">Назад към Началната страница</button>
+      <div class="form-group">
+        <label>Име:</label>
+        <input formControlName="firstName" type="text">
+      </div>
 
+      <div class="form-group">
+        <label>Фамилия:</label>
+        <input formControlName="lastName" type="text">
+      </div>
+
+      <div class="form-group">
+        <label>Имейл:</label>
+        <input formControlName="email" type="email">
+      </div>
+
+      <div class="form-group">
+        <label>Парола:</label>
+        <input formControlName="password" type="password">
+      </div>
+
+      <div class="form-group">
+        <label>Повторете паролата:</label>
+        <input formControlName="confirmPassword" type="password">
+      </div>
+
+      <div class="button-group">
+        <button type="submit" class="primary-btn">Регистрация</button>
+        <button type="button" (click)="goBack()" class="secondary-btn">Назад към Началната страница</button>
+      </div>
+
+      <p class="link-container">
+        Прозорец за <a routerLink="/register">Регистрация</a>
+      </p>
     </form>
   </div>
+   <!-- най-долна част , за инфо на приложението -->
+   <div class="footer">
+    <h2>За нас</h2>
+    <p>Следвайте ни в социалните мрежи:</p>
+    <div class="social-icons">
+      <img src="assets/images/logos/download.jpg" alt="Facebook">
+      <img src="instagram-icon.png" alt="Instagram">
+      <img src="youtube-icon.png" alt="YouTube">
+      <img src="pinterest-icon.png" alt="Pinterest">
+    </div>
+  </div>
+</div>

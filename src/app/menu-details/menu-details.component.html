@@ -1,14 +1,73 @@
-<div class="menu-selectors">
-    <select>
-      <option>Супа</option>
-    </select>
-    <select>
-      <option>Основно ястие</option>
-    </select>
-    <select>
-      <option>Десерт</option>
-    </select>
-    <select>
-        <option>Напитка</option>
-      </select>
+
+
+<div class="menu-container">
+  <h1>{{ title }}</h1>
+  <h2 class="page-title">Меню по избор с рецепти:</h2>
+
+  <!-- Супи -->
+  <div class="menu-section">
+    <h3 class="menu-title">Супа: {{ selectedMenu.soup }}</h3>
+    <div class="section-content">
+      <div class="ingredients">
+        <p *ngIf="soupDetails">{{ soupDetails.ingredients }}</p>
+      </div>
+      <div class="description">
+        <p *ngIf="soupDetails">{{ soupDetails.description }}</p>
+      </div>
+      <div class="image-placeholder">Място за снимка</div>
+    </div>
   </div>
+
+  <!-- Десерт -->
+  <div class="menu-section">
+    <h3 class="menu-title">Десерт: {{ selectedMenu.dessert }}</h3>
+    <div class="section-content">
+      <div class="ingredients">
+        <p *ngIf="dessertDetails">{{ dessertDetails.ingredients }}</p>
+      </div>
+      <div class="description">
+        <p *ngIf="dessertDetails">{{ dessertDetails.description }}</p>
+      </div>
+      <div class="image-placeholder">Място за снимка</div>
+    </div>
+  </div>
+
+  <!-- Напитка -->
+  <div class="menu-section">
+    <h3 class="menu-title">Напитка: {{ selectedMenu.drink }}</h3>
+    <div class="section-content">
+      <div class="ingredients">
+        <p *ngIf="drinkDetails">{{ drinkDetails.ingredients }}</p>
+      </div>
+      <div class="description">
+        <p *ngIf="drinkDetails">{{ drinkDetails.description }}</p>
+      </div>
+      <div class="image-placeholder">Място за снимка</div>
+    </div>
+  </div>
+
+  <!-- Салата -->
+  <div class="menu-section">
+    <h3 class="menu-title">Салата: {{ selectedMenu.salad }}</h3>
+    <div class="section-content">
+      <div class="ingredients">
+        <p *ngIf="saladDetails">{{ saladDetails.ingredients }}</p>
+      </div>
+      <div class="description">
+        <p *ngIf="saladDetails">{{ saladDetails.description }}</p>
+      </div>
+      <div class="image-placeholder">Място за снимка</div>
+    </div>
+  </div>
+     <!-- най-долна част , за инфо на приложението -->
+     <div class="footer">
+      <h2>За нас</h2>
+      <p>Следвайте ни в социалните мрежи:</p>
+      <div class="social-icons">
+        <img src="assets/images/logos/download.jpg" alt="Facebook">
+        <img src="instagram-icon.png" alt="Instagram">
+        <img src="youtube-icon.png" alt="YouTube">
+        <img src="pinterest-icon.png" alt="Pinterest">
+      </div>
+    </div>
+</div>
