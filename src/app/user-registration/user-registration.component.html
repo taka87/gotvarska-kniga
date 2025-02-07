@@ -2,30 +2,54 @@
   <h1>{{ title }}</h1>
   <div class="registration-container">
     <h2 class="page-title">Регистрация на потребител</h2>
+
     <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
       <div class="form-group">
         <label>Име:</label>
         <input formControlName="firstName" type="text">
+        <!-- Грешка за празно име -->
+        <p *ngIf="registrationForm.controls['firstName'].invalid && registrationForm.controls['firstName'].touched" class="error-message">
+          Моля, попълнете име.
+        </p>
       </div>
 
       <div class="form-group">
         <label>Фамилия:</label>
         <input formControlName="lastName" type="text">
+        <p *ngIf="registrationForm.controls['lastName'].invalid && registrationForm.controls['lastName'].touched" class="error-message">
+          Фамилията е задължителна!
+        </p>
+
       </div>
+      <!-- <div *ngIf="registrationForm.get('lastName')?.touched && registrationForm.get('lastName')?.invalid">
+        <small class="error">Фамилията е задължителна!</small>
+      </div> -->
 
       <div class="form-group">
         <label>Имейл:</label>
         <input formControlName="email" type="email">
+        <!-- Грешка за празен или некоректен имейл -->
+        <p *ngIf="registrationForm.controls['email'].invalid && registrationForm.controls['email'].touched" class="error-message">
+          Моля, попълнете валиден имейл адрес.
+        </p>
       </div>
-
+      
       <div class="form-group">
         <label>Парола:</label>
         <input formControlName="password" type="password">
+        <!-- Грешка за празна или твърде кратка парола -->
+        <p *ngIf="registrationForm.controls['password'].invalid && registrationForm.controls['password'].touched" class="error-message">
+          Паролата трябва да бъде поне 6 символа.
+        </p>
       </div>
-
+      
       <div class="form-group">
         <label>Повторете паролата:</label>
         <input formControlName="confirmPassword" type="password">
+        <!-- Грешка при несъвпадение на паролите -->
+        <p *ngIf="passwordsDoNotMatch" class="error-message">
+          Паролите не съвпадат!
+        </p>
       </div>
 
       <div class="button-group">
@@ -36,7 +60,7 @@
       <p class="link-container">
         Прозорец за <a routerLink="/register">Регистрация</a>
       </p>
-    </form>
+  </form>
   </div>
    <!-- най-долна част , за инфо на приложението -->
    <div class="footer">

@@ -5,16 +5,20 @@ import { FormBuilder,FormGroup,Validators } from '@angular/forms';
 import { UserControlComponent } from "../user-control/user-control.component";
 import { MenuDetailsComponent } from '../menu-details/menu-details.component';
 import { DailyMenuComponent } from './daily-menu/daily-menu.component';
+import { LoggedButtonComponent } from '../logged-button/logged-button.component';
+import { UserSessionService } from '../services/user-session.service';
 
 @Component({
   selector: 'app-home',
   standalone: true,
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'],
-  imports: [CommonModule, RouterModule, UserControlComponent,DailyMenuComponent]
+  imports: [CommonModule, RouterModule, UserControlComponent,DailyMenuComponent,LoggedButtonComponent]
 })
 export class HomeComponent {
   title = 'Добре дошли в нашия кулинарен свят';
+  constructor(private userSession: UserSessionService) {}
+  
   // new
   getCategoryRoute(categoryName: string): string {
     switch (categoryName) {
@@ -51,5 +55,19 @@ export class HomeComponent {
 
   toggleFavorites() {
     this.showFavorites = !this.showFavorites;
+  }
+
+  // секция за логин/регистрация логика
+  isLogged = false;
+  userName = '';
+  
+  ngOnInit(): void {
+    this.userSession.currentUser$.subscribe(userData => {
+      this.isLogged = !!userData;
+      if (this.isLogged && userData) {
+        const user = JSON.parse(userData);
+        this.userName = user.firstName;
+      }
+    });
   }
 }

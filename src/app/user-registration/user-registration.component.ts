@@ -3,6 +3,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
+import { UserSessionService } from '../services/user-session.service';
 
 @Component({
   selector: 'app-user-registration',
@@ -11,11 +13,18 @@ import { Router } from '@angular/router';
   imports: [CommonModule,ReactiveFormsModule ],
 })
 export class UserRegistrationComponent implements OnInit {
-  title ='Добре дошли в нашия кулинарен свят ... ';
-  
-  registrationForm!: FormGroup;
+  title = 'Добре дошли в нашия кулинарен свят ... ';
 
-  constructor(private fb: FormBuilder, private router: Router) {}
+  registrationForm!: FormGroup;
+  passwordsDoNotMatch: boolean = false;
+  apiUrl: string = 'http://localhost:3000/users'; // URL за JSON сървъра
+
+  constructor(
+    private fb: FormBuilder,
+    private router: Router,
+    private http: HttpClient,
+    private userSession: UserSessionService
+  ) {}
 
   ngOnInit(): void {
     this.registrationForm = this.fb.group({
@@ -23,17 +32,44 @@ export class UserRegistrationComponent implements OnInit {
       lastName: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]],
-      confirmPassword: ['', Validators.required]
+      confirmPassword: ['', Validators.required],
+    });
+
+    // Следим дали паролите съвпадат при промяна
+    this.registrationForm.valueChanges.subscribe(() => {
+      this.passwordsDoNotMatch = this.checkPasswordMismatch();
     });
   }
 
+  // Проверка дали паролите съвпадат
+  private checkPasswordMismatch(): boolean {
+    const password = this.registrationForm.get('password')?.value;
+    const confirmPassword = this.registrationForm.get('confirmPassword')?.value;
+    return password !== confirmPassword;
+  }
+
   onSubmit(): void {
-    if (this.registrationForm.valid) {
-      alert('Регистрацията е успешна!');
-      console.log(this.registrationForm.value);
-    } else {
-      alert('Моля, попълнете всички полета коректно!');
+    // Ако формулярът е невалиден или паролите не съвпадат, показваме грешките.
+    if (this.registrationForm.invalid || this.passwordsDoNotMatch) {
+      // Маркираме всички полета като проверени, за да покажем грешките
+      this.registrationForm.markAllAsTouched(); 
+      return;
     }
+  
+    const formData = this.registrationForm.value;
+  
+    const newUser = {
+      firstName: formData.firstName,
+      lastName: formData.lastName,
+      email: formData.email,
+      password: formData.password,
+    };
+  
+    this.http.post(this.apiUrl, newUser).subscribe(() => {
+      this.userSession.setUser(JSON.stringify(newUser));
+      alert('Регистрацията е успешна!');
+      this.router.navigate(['/']);
+    });
   }
 
   goBack(): void {

@@ -1,17 +1,26 @@
 <div class="page-wrapper">
   <h1>{{ title }}</h1>
+  <hr>
 
   <!-- <h2>Нашите рецепти</h2> -->
 
   <!-- Падащи менюта -->
   <!-- <app-menu-details></app-menu-details> -->
-   <br>
+  <div *ngIf="!isLogged">
+    <!-- Секция за Вход и Регистрация -->
+    <app-user-control></app-user-control>
+  </div>
+  
+  <div *ngIf="isLogged">
+    <h2>Добре дошли, {{ userName }}!</h2>
+    <app-logged-button></app-logged-button>
+  </div>
 <hr>
   <!-- ПАДАЩИ МЕНЮТА нов -->
   <app-daily-menu></app-daily-menu>
 
   <!-- Логин -->
-  <app-user-control></app-user-control>
+  
   <router-outlet></router-outlet>
   
   <!-- Бутон за показване/скриване на категории -->
