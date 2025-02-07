@@ -1,0 +1,41 @@
+<div class="page-wrapper">
+    <h1>{{ title }}</h1>
+  
+    
+    <h2>Добави нова рецепта</h2>
+
+    <!-- <label>Име на рецептата:</label>
+    <input [(ngModel)]="recipe.name" type="text" />
+    
+    <label>Съставки:</label>
+    <textarea [(ngModel)]="recipe.ingredients"></textarea>
+    
+    <label>Описание:</label>
+    <textarea [(ngModel)]="recipe.description"></textarea>
+    
+    <button (click)="saveRecipe()">Запази</button>
+    <!- <button (click) = "goBack()">Назад към начална страница</button> -->
+    <!--<button routerLink="/" routerLinkActive="active">Назад към начална страница</button> -->
+
+    <!-- защо не работи ?? -->
+    <form (ngSubmit)="saveRecipe()">
+        <input type="text" placeholder="Име на рецепта" [(ngModel)]="newRecipe.name" name="name" required />
+        <textarea placeholder="Съставки" [(ngModel)]="newRecipe.ingredients" name="ingredients"></textarea>
+        <textarea placeholder="Описание" [(ngModel)]="newRecipe.description" name="description"></textarea>
+        <button type="submit">Запази</button>
+        <button (click) = "goBack()">Назад към начална страница</button>
+      </form>
+
+  
+     <!-- най-долна част , за инфо на приложението -->
+     <div class="footer">
+      <h2>За нас</h2>
+      <p>Следвайте ни в социалните мрежи:</p>
+      <div class="social-icons">
+        <img src="assets/images/logos/download.jpg" alt="Facebook">
+        <img src="instagram-icon.png" alt="Instagram">
+        <img src="youtube-icon.png" alt="YouTube">
+        <img src="pinterest-icon.png" alt="Pinterest">
+      </div>
+    </div>
+  </div>

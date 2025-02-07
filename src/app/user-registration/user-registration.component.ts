@@ -67,7 +67,7 @@ export class UserRegistrationComponent implements OnInit {
   
     this.http.post(this.apiUrl, newUser).subscribe(() => {
       this.userSession.setUser(JSON.stringify(newUser));
-      alert('Регистрацията е успешна!');
+      //alert('Регистрацията е успешна!');
       this.router.navigate(['/']);
     });
   }

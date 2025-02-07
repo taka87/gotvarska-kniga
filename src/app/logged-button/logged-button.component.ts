@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-logged-button',
@@ -9,6 +10,8 @@ import { CommonModule } from '@angular/common';
 })
 export class LoggedButtonComponent {
   loggedUser: any;
+  
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
     const userData = localStorage.getItem('loggedUser');
@@ -18,5 +21,9 @@ export class LoggedButtonComponent {
   logOut(): void {
     localStorage.removeItem('loggedUser');
     window.location.reload();
+  }
+
+  addRecipe(): void {
+    this.router.navigate(['/add-recipe']);
   }
 }

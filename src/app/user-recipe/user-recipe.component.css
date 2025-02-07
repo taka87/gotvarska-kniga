@@ -1,0 +1,118 @@
+/* Основен стил за цялата страница */
+.page-wrapper {
+    max-width: 90%; /* Ограничаваме ширината до 90% от екрана */
+    margin: 40px auto; /* Центрираме блока хоризонтално и добавяме вертикално отстояние */
+    padding: 40px;
+    background-color: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    border: 2px solid #ddd;
+  }
+  
+  /* Заглавие със стил */
+  h1 {
+    text-align: center;
+    font-size: 3rem;
+    color: #ffffff;
+    background-color: #007bff;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 30px;
+  }
+  
+  .menu-selectors {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin: 20px 0;
+  }
+  
+  .menu-selectors select {
+    padding: 10px;
+    font-size: 1.2rem;
+    background-color: #f0f0f0;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+  
+  button {
+    padding: 12px 24px;
+    font-size: 16px;
+    color: white;
+    background-color: #007bff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    margin: 10px;
+    display: block;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Общи стилове */
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+  }
+  
+  .main-container {
+    max-width: 90%;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: white;
+    border: 2px solid #ddd;
+    border-radius: 12px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+  }
+  
+  /* Заглавие със син фон */
+  h1 {
+    text-align: center;
+    font-size: 3rem;
+    color: #ffffff;
+    background-color: #007bff;
+    padding: 10px;
+    border-radius: 8px;
+    margin: 0;
+  }
+  
+  h2 {
+    text-align: center;
+    font-size: 2rem;
+    color: #666;
+    margin-top: 20px;
+  }
+
+  /* ОСНБОВНА ЧАСТ ТУК */
+
+
+
+/* Секция „За нас“ и социални връзки */
+.footer {
+    background-color: #eebcbc;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    margin-top: 40px;
+    border-radius: 8px;
+  }
+  
+  .footer .social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 10px;
+  }
+  
+  .footer .social-icons img {
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    transition: transform 0.2s;
+  }
+  
+  .footer .social-icons img:hover {
+    transform: scale(1.2);
+  }

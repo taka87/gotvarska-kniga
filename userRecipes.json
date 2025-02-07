@@ -1,0 +1,25 @@
+{
+  "userRecipes": [
+    {
+      "id": "1",
+      "name": "брокол",
+      "ingredients": "3 брокола",
+      "description": "обелете броколитУ\n",
+      "createdBy": ""
+    },
+    {
+      "id": "2",
+      "name": "броеколи ",
+      "ingredients": "картофи",
+      "description": "моркови\n",
+      "createdBy": "Няма потребител"
+    },
+    {
+      "id": 0,
+      "name": "асдяве",
+      "ingredients": "асдяве",
+      "description": "асдасд",
+      "createdBy": "Няма потребител"
+    }
+  ]
+}

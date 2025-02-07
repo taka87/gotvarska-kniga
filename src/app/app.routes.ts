@@ -6,6 +6,7 @@ import { DessertsComponent } from './home/mealkategories/desserts/desserts.compo
 import { SaladsComponent } from './home/mealkategories/salads/salads.component';
 import { UserRegistrationComponent } from './user-registration/user-registration.component';
 import { MenuDetailsComponent } from './menu-details/menu-details.component';
+import { UserRecipeComponent } from './user-recipe/user-recipe.component';
 
 
 export const routes: Routes = [
@@ -15,7 +16,8 @@ export const routes: Routes = [
   { path: 'desserts', component: DessertsComponent },
   { path: 'salads', component: SaladsComponent },
   { path: 'register', component: UserRegistrationComponent },
-  { path: 'menu-details', component: MenuDetailsComponent }
+  { path: 'menu-details', component: MenuDetailsComponent },
+  {path: "add-recipe", component:UserRecipeComponent}
 ];
 
 // old but gold

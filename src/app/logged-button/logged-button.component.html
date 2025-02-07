@@ -1,5 +1,5 @@
 <div *ngIf="loggedUser" class="user-greeting">
     <p>Добре дошъл, {{ loggedUser.name }}!</p>
-    <button routerLink="/add-recipe">Добави рецепта</button>
+    <button (click)="addRecipe()"   routerLink="/add-recipe">Добави рецепта</button>
     <button (click)="logOut()">Изход</button>
 </div>

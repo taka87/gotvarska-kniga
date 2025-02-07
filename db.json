@@ -1,109 +1,25 @@
 {
   "users": [
     {
-      "id": "c392",
+      "id": "1",
       "firstName": "asd",
       "lastName": "asd",
       "email": "asd@asd",
       "password": "asdasd"
     },
     {
-      "id": "3c66",
-      "firstName": "asd",
-      "lastName": "asd",
-      "email": "asd@asd",
-      "password": "asdasd"
-    },
-    {
-      "id": "cfee",
-      "firstName": "asd1",
-      "lastName": "asd",
-      "email": "asd1@asd1",
-      "password": "asdasd"
-    },
-    {
-      "id": "d78d",
-      "firstName": "asd",
-      "lastName": "asd",
-      "email": "asd@asd",
-      "password": "asdasd"
-    },
-    {
-      "id": "6e44",
-      "firstName": "asd",
-      "lastName": "asd",
-      "email": "asd@asd",
-      "password": "asdasd"
-    },
-    {
-      "id": "c348",
-      "firstName": "asd",
-      "lastName": "asd",
-      "email": "asd@asd",
-      "password": "asdasd"
-    },
-    {
-      "id": "625f",
-      "firstName": "asd",
-      "lastName": "asd",
-      "email": "asd@asdasd",
-      "password": "asdasd"
-    },
-    {
-      "id": "454c",
-      "firstName": "asd2",
-      "lastName": "asd3",
-      "email": "asd@asd",
-      "password": "asdasd"
-    },
-    {
-      "id": "41c4",
-      "firstName": "asd3",
-      "lastName": "asd3",
-      "email": "asd@asd",
-      "password": "asdasd"
-    },
-    {
-      "id": "a41b",
-      "firstName": "asd",
-      "lastName": "asd",
-      "email": "as@asd",
-      "password": "asdasd"
-    },
-    {
-      "id": "245a",
-      "firstName": "asd",
-      "lastName": "asd",
-      "email": "asd@asd",
-      "password": "asdasd"
-    },
-    {
-      "id": "ddc7",
+      "id": "2",
       "firstName": "asd",
       "lastName": "asdasd",
       "email": "asd@asd",
       "password": "asdasd"
     },
     {
-      "id": "8ebd",
-      "firstName": "asd",
-      "lastName": "asd",
-      "email": "asd@asd",
-      "password": "asdasd"
-    },
-    {
-      "id": "60df",
-      "firstName": "asd",
-      "lastName": "asdasd",
-      "email": "asd@asd",
-      "password": "asdasd"
-    },
-    {
-      "id": "1487",
-      "firstName": "asd",
-      "lastName": "asd",
-      "email": "asd@asd",
-      "password": "asdasd"
+      "id": "f6cd",
+      "firstName": "асдяве",
+      "lastName": "асдасд",
+      "email": "asd@qwe",
+      "password": "асдасд"
     }
   ]
 }
