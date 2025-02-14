@@ -1,78 +1,75 @@
 <div class="page-wrapper">
-  <h1>{{ title }}</h1>
-  <div class="registration-container">
-    <h2 class="page-title">Регистрация на потребител</h2>
+    <h1>{{ title }}</h1>
+    <div class="registration-container">
+      <h2 class="page-title">Регистрация в SQL-DB</h2>
+
+
 
     
 
     <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
       <div class="form-group">
-        <label>Име:</label>
+        <label>First Name:</label>
         <input formControlName="firstName" type="text">
-        <!-- Грешка за празно име -->
         <p *ngIf="registrationForm.controls['firstName'].invalid && registrationForm.controls['firstName'].touched" class="error-message">
           Моля, попълнете име.
         </p>
       </div>
-
+    
       <div class="form-group">
-        <label>Фамилия:</label>
+        <label>Last Name:</label>
         <input formControlName="lastName" type="text">
         <p *ngIf="registrationForm.controls['lastName'].invalid && registrationForm.controls['lastName'].touched" class="error-message">
           Фамилията е задължителна!
         </p>
-
       </div>
-      <!-- <div *ngIf="registrationForm.get('lastName')?.touched && registrationForm.get('lastName')?.invalid">
-        <small class="error">Фамилията е задължителна!</small>
-      </div> -->
-
+    
       <div class="form-group">
-        <label>Имейл:</label>
+        <label>Email:</label>
         <input formControlName="email" type="email">
-        <!-- Грешка за празен или некоректен имейл -->
         <p *ngIf="registrationForm.controls['email'].invalid && registrationForm.controls['email'].touched" class="error-message">
           Моля, попълнете валиден имейл адрес.
         </p>
       </div>
-      
+    
       <div class="form-group">
-        <label>Парола:</label>
+        <label>Password:</label>
         <input formControlName="password" type="password">
-        <!-- Грешка за празна или твърде кратка парола -->
         <p *ngIf="registrationForm.controls['password'].invalid && registrationForm.controls['password'].touched" class="error-message">
           Паролата трябва да бъде поне 6 символа.
         </p>
       </div>
-      
+    
       <div class="form-group">
-        <label>Повторете паролата:</label>
+        <label>Confirm Password:</label>
         <input formControlName="confirmPassword" type="password">
-        <!-- Грешка при несъвпадение на паролите -->
         <p *ngIf="passwordsDoNotMatch" class="error-message">
           Паролите не съвпадат!
         </p>
       </div>
-
+    
       <div class="button-group">
         <button type="submit" class="primary-btn">Регистрация</button>
-        <button type="button" (click)="goBack()" class="secondary-btn">Назад към Началната страница</button>
+        <button type="button" (click)="goBack()" class="secondary-btn">Назад</button>
       </div>
-
-      <p class="link-container">
-        Прозорец за <a routerLink="/register">Регистрация</a>
-      </p>
-  </form>
+    </form>
   </div>
-   <!-- най-долна част , за инфо на приложението -->
-   <div class="footer">
-    <h2>За нас</h2>
-    <p>Следвайте ни в социалните мрежи:</p>
-    <div class="social-icons">
-      <img src="assets/images/logos/download.jpg" alt="Facebook">
-      <img src="instagram-icon.png" alt="Instagram">
-      <img src="youtube-icon.png" alt="YouTube">
-      <img src="pinterest-icon.png" alt="Pinterest">
+
+
+
+
+
+
+
+     <!-- най-долна част , за инфо на приложението -->
+     <div class="footer">
+      <h2>За нас</h2>
+      <p>Следвайте ни в социалните мрежи:</p>
+      <div class="social-icons">
+        <img src="assets/images/logos/download.jpg" alt="Facebook">
+        <img src="instagram-icon.png" alt="Instagram">
+        <img src="youtube-icon.png" alt="YouTube">
+        <img src="pinterest-icon.png" alt="Pinterest">
+      </div>
     </div>
   </div>
-</div>

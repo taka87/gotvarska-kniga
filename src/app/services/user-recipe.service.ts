@@ -14,7 +14,7 @@ export class UserRecipeService {
 
   addRecipe(recipe: Recipe): Observable<Recipe> {
     // Това ще се преработи при MySQL
-    return this.http.post<Recipe>(this.apiUrl, recipe);
+    return this.http.post<Recipe>(this.apiUrl, {...recipe, id:undefined});  //тест за Id то да зпаочна от 0 и да продължи нестана ... 
   }
 
   getRecipes(): Observable<Recipe[]> {

@@ -1,25 +1,39 @@
 {
   "userRecipes": [
     {
-      "id": "1",
-      "name": "брокол",
-      "ingredients": "3 брокола",
-      "description": "обелете броколитУ\n",
-      "createdBy": ""
-    },
-    {
-      "id": "2",
-      "name": "броеколи ",
-      "ingredients": "картофи",
-      "description": "моркови\n",
+      "id": 0,
+      "name": "asdasdasd",
+      "ingredients": "asdasdas",
+      "description": "asdasd",
       "createdBy": "Няма потребител"
     },
     {
       "id": 0,
-      "name": "асдяве",
-      "ingredients": "асдяве",
-      "description": "асдасд",
-      "createdBy": "Няма потребител"
+      "name": "asdasd",
+      "ingredients": "asdasd",
+      "description": "asdasd",
+      "createdBy": ""
+    },
+    {
+      "id": 0,
+      "name": "eqfwef",
+      "ingredients": "wefwef",
+      "description": "wefwef",
+      "createdBy": ""
+    },
+    {
+      "id": "051b",
+      "name": "asdasdasd",
+      "ingredients": "asdasda",
+      "description": "adsdasd",
+      "createdBy": ""
+    },
+    {
+      "id": "8594",
+      "name": "asdasds",
+      "ingredients": "asdasd",
+      "description": "asdasd",
+      "createdBy": ""
     }
   ]
 }

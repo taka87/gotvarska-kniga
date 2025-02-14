@@ -28,7 +28,7 @@ export class UserRecipeComponent {
 
   resetForm() {
     this.newRecipe = {
-      id: 0,
+      id: Date.now(), // временно решение за уникално ID
       name: '',
       ingredients: '',
       description: '',
@@ -39,22 +39,26 @@ export class UserRecipeComponent {
   constructor(private recipeService: UserRecipeService, private router: Router, private authService: AuthService) {}
 
   saveRecipe() {
-    this.authService.getCurrentUser().subscribe((user) => {
-      this.newRecipe.createdBy = user.name || 'Няма потребител';
-      this.recipeService.addRecipe(this.newRecipe).subscribe(() => {
-        alert('Рецептата е успешно добавена!');
-        this.resetForm();
-      });
+    const currentUserId = localStorage.getItem('currentUserId');
+    if (currentUserId) {
+      this.newRecipe.createdBy = currentUserId;
+    }
+    this.recipeService.addRecipe(this.newRecipe).subscribe(() => {
+      alert('Рецептата е успешно добавена!');
+      this.resetForm();
     });
   }
       // OLD-hard codded USER
-  // saveRecipe() {
-  //   this.newRecipe.createdBy = this.authService.getCurrentUser();
-  //   this.recipeService.addRecipe(this.newRecipe).subscribe(() => {
-  //     alert('Рецептата е успешно добавена!');
-  //     this.resetForm();
-  //   });
-  // }
+      // saveRecipe() {
+      //   this.authService.getCurrentUser().subscribe((user) => {
+      //     this.newRecipe.createdBy = user.name || 'Няма потребител';
+      //     this.recipeService.addRecipe(this.newRecipe).subscribe(() => {
+      //       alert('Рецептата е успешно добавена!');
+      //       this.resetForm();
+      //     });
+      //   });
+      // }
+
   goBack(): void {
     this.router.navigate(['/']);
   }
