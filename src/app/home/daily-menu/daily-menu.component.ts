@@ -46,7 +46,7 @@ export class DailyMenuComponent implements OnInit {
   private loadData(property: string, fileName: string): void {
     this.menuDataService.getMenuData(fileName).subscribe(
       data => {
-        console.log(`Заредени данни за ${property}:`, data); // Проверка на данните
+        //console.log(`Заредени данни за ${property}:`, data); // Проверка на данните
         (this as any)[property] = data;
         this.resetFilters(property);
       },

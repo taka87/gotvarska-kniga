@@ -7,10 +7,15 @@
 
   <hr class="divider-line">
 
+  <div class="container">
+    <label class="search_info">Умишлено оставих активна предната логика в този екран</label>
+</div>
   <!-- филтър салати -->
-  <div class="search-box-container">
-    <input class="search-input" type="text" [(ngModel)]="searchQuery" placeholder="Търси супа">
+  <div class="search-box-wrapper">
+    <div class="search-box-container">
+    <input class="search-input" type="text" [(ngModel)]="searchQuery" placeholder="Търси десерти">  
     <button  class="search-button" (click)="filterDesserts()">Търси 🔍</button>
+  </div>
   </div>
 
   <hr class="divider-line">

@@ -1,0 +1,115 @@
+/* Стил за рамката */
+.page-wrapper {
+    max-width: 90%;
+    margin: 40px auto;
+    padding: 40px;
+    background-color: #f8f9fa;
+    border-radius: 16px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    border: 2px solid #ddd;
+  }
+  h1 {
+    text-align: center;
+    font-size: 3rem;
+    color: #ffffff;
+    background-color: #007bff;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 30px;
+  }
+  
+  /* Заглавие */
+  .page-title {
+    text-align: center;
+    font-size: 28px;
+    color: #444;
+    margin-bottom: 30px;
+  }
+
+
+/* Тук Е ЗА оснвоната част  */
+
+
+
+
+/* Бутоните */
+.button-group {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+  }
+  
+  .primary-btn {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+  }
+  
+  .primary-btn:hover {
+    background-color: #0056b3;
+  }
+  
+  .secondary-btn {
+    background-color: #6c757d;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+  }
+  
+  .secondary-btn:hover {
+    background-color: #5a6268;
+  }
+  
+  /* Линк */
+  .link-container {
+    margin-top: 15px;
+    text-align: center;
+  }
+  
+  .link-container a {
+    color: #007bff;
+    text-decoration: none;
+  }
+  
+  .link-container a:hover {
+    text-decoration: underline;
+  }
+  /* Секция „За нас“ и социални връзки */
+.footer {
+    background-color: #eebcbc;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    margin-top: 40px;
+    border-radius: 8px;
+  }
+  
+  .footer .social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 10px;
+  }
+  
+  .footer .social-icons img {
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    transition: transform 0.2s;
+  }
+  
+  .footer .social-icons img:hover {
+    transform: scale(1.2);
+  }
+  .error-message {
+    color: red;
+    font-size: 0.9rem;
+    margin-top: 5px;
+  }

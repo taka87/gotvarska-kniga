@@ -20,6 +20,8 @@ export class SaladsComponent {
     salads: any[] = [];
     selectedSalad: any = null;
     filteredSalads: any[] = [];
+    autocompleteSuggestions: any[] = [];
+
   
     constructor(private saladService: SaladService) {} //inject) SaladService-> извлича данните от json
   
@@ -40,5 +42,15 @@ export class SaladsComponent {
       this.filteredSalads = this.salads.filter(salad => 
         salad.name.toLowerCase().includes(this.searchQuery.toLowerCase())
       );
-    }
+    
+
+        // Генериране на подсказки
+  this.autocompleteSuggestions = this.filteredSalads.slice(0, 5); // Ограничаваме до 5 предложения
+}
+
+selectSuggestedSalad(salad: any): void {
+  this.searchQuery = salad.name;
+  this.filteredSalads = [salad]; // Показваме само избраната супа
+  this.autocompleteSuggestions = [];
+}
 }

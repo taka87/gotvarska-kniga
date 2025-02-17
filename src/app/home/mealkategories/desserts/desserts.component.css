@@ -1,0 +1,11 @@
+.container {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end; /* Избутва съдържанието в дясно */
+}
+
+.search_info {
+    background: #f0f0f0; /* За по-добра видимост */
+    padding: 10px;
+    border-radius: 5px;
+}

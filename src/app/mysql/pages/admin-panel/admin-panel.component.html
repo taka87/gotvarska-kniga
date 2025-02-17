@@ -1,0 +1,60 @@
+<div class="page-wrapper">
+    <h1>{{ title }}</h1>
+  
+    
+    <div class="admin-panel">
+      <h1>Админ Панел</h1>
+    
+      <h2>Управление на потребители</h2>
+      <table>
+        <tr>
+          <th>ID</th>
+          <th>Име</th>
+          <th>Имейл</th>
+          <th>Роля</th>
+          <th>Действия</th>
+        </tr>
+        <tr *ngFor="let user of users">
+          <td>{{ user.id }}</td>
+          <td>{{ user.firstName }} {{ user.lastName }}</td>
+          <td>{{ user.email }}</td>
+          <td>{{ user.role }}</td>
+          <td>
+            <button (click)="deleteUser(user.id)">Изтрий</button>
+          </td>
+        </tr>
+      </table>
+    
+      <h2>Управление на рецепти</h2>
+      <table>
+        <tr>
+          <th>ID</th>
+          <th>Име</th>
+          <th>Автор</th>
+          <th>Действия</th>
+        </tr>
+        <tr *ngFor="let recipe of recipes">
+          <td>{{ recipe.id }}</td>
+          <td>{{ recipe.recipeName }}</td>
+          <td>{{ recipe.author }}</td>
+          <td>
+            <button (click)="editRecipe(recipe.id)">Редактирай</button>
+            <button (click)="deleteRecipe(recipe.id)">Изтрий</button>
+          </td>
+        </tr>
+      </table>
+    
+      <button routerLink="/">⬅ Върни се към началната страница</button>
+    </div>
+      
+     <div class="footer">
+      <h2>За нас</h2>
+      <p>Следвайте ни в социалните мрежи:</p>
+      <div class="social-icons">
+        <img src="assets/images/logos/download.jpg" alt="Facebook">
+        <img src="instagram-icon.png" alt="Instagram">
+        <img src="youtube-icon.png" alt="YouTube">
+        <img src="pinterest-icon.png" alt="Pinterest">
+      </div>
+    </div>
+  </div>

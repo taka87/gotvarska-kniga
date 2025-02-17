@@ -8,16 +8,17 @@
   <hr class="divider-line">
   
   <!-- филтър салати -->
-  <div class="search-box-container">
-    <input class="search-input" type="text" [(ngModel)]="searchQuery" placeholder="Търси супа">
-    <button  class="search-button" (click)="filterMainDishes()">Търси 🔍</button>
+  <div class="search-box-wrapper">
+    <div class="search-box-container">
+    <input class="search-input" type="text" [(ngModel)]="searchQuery" placeholder="Търси ястие">
+  </div>
    
     <!-- тест за филтрациите -->
-    <!-- <ul>  
-        <li *ngFor="let salad of filteredSalads" (click)="selectSalad(salad)">
-    {{ salad.name }}
-        </li>
-      </ul> -->
+    <ul *ngIf="autocompleteSuggestions.length > 0 && searchQuery.trim() !== ''" class="autocomplete-list">
+      <li *ngFor="let suggestion of autocompleteSuggestions" (click)="selectSuggestedMainDishes(suggestion)">
+        {{ suggestion.name }}
+      </li>
+    </ul>
   </div>
 
   <hr class="divider-line">

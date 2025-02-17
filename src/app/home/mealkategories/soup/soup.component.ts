@@ -18,7 +18,9 @@ export class SoupComponent {
 
   soups: any[] = [];
   selectedSoup: any = null;
+  searchQuery: string = '';
   filteredSoups: any[] = [];
+  autocompleteSuggestions: any[] = [];
   
   constructor(private soupService: SoupService) {}
   
@@ -32,9 +34,6 @@ export class SoupComponent {
   selectSoup(soup: any): void {
     this.selectedSoup = soup;
   }
-  
-  searchQuery: string = '';
-  autocompleteSuggestions: any[] = [];
 
   filterSoups(): void {
     this.filteredSoups = this.soups.filter(soup => 

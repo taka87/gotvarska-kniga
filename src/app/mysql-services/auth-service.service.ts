@@ -14,15 +14,24 @@ export class AuthService {
   constructor(private http: HttpClient) {}
 
   login(email: string, password: string) {
-    return this.http.post<{ token: string; firstName: string }>(`${this.apiUrl}/login`, { email, password }).pipe(
+    return this.http.post<{ token: string; firstName: string; role: string; id: number }>(  // ❗️ Поправен тип
+      `${this.apiUrl}/login`, 
+      { email, password }
+    ).pipe(
       tap((response) => {
         localStorage.setItem('token', response.token);
-        localStorage.setItem('loggedUser', JSON.stringify({ firstName: response.firstName }));
-        this.userLoggedIn.next(true); // 🔥 Изпращаме сигнал, че потребителят е логнат
+        localStorage.setItem('loggedUser', JSON.stringify({
+          userId: response.id,  // ✅ response.id вместо response.userId
+          firstName: response.firstName,
+          role: response.role
+        }));
+       // console.log("🔹 Записан потребител:", response);
+        this.userLoggedIn.next(true); // 🔥 Сигнализираме, че потребителят е логнат
       })
     );
   }
 
+  
   logout() {
     localStorage.removeItem('token');
     localStorage.removeItem('loggedUser');

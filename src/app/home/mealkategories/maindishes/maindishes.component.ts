@@ -18,6 +18,9 @@ export class MaindishesComponent {
     mainDishes: any[] = [];
     selectedMainDishes: any = null;
     filteredMainDishes: any[] = [];
+    searchQuery: string = '';
+    autocompleteSuggestions: any[] = [];
+
   
     constructor(private mainDishService: MainDishService) {}
   
@@ -32,11 +35,21 @@ export class MaindishesComponent {
       this.selectedMainDishes = maindishe;
     }
 
-      searchQuery: string = '';
+   
 
       filterMainDishes(): void {
         this.filteredMainDishes = this.mainDishes.filter(mainDish => 
           mainDish.name.toLowerCase().includes(this.searchQuery.toLowerCase())
         );  
-      }
+
+         // Генериране на подсказки
+  this.autocompleteSuggestions = this.filteredMainDishes.slice(0, 5); // Ограничаваме до 5 предложения
 }
+
+    selectSuggestedMainDishes(mainDish: any): void {
+      this.searchQuery = mainDish.name;
+      this.filteredMainDishes = [mainDish]; // Показваме само избраната супа
+      this.autocompleteSuggestions = [];
+    }
+}
+

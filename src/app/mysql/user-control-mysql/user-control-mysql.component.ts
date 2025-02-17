@@ -23,11 +23,20 @@ export class UserControlMysqlComponent {
   login() {
     this.authService.login(this.email, this.password).subscribe({
       next: (response) => {
-        console.log("✅ Успешен вход:", response);
-        localStorage.setItem("token", response.token); // 📌 Запазваме токена
+        //console.log("✅ Успешен вход:", response);
+  
+        // 🔹 Запазваме цялата информация за потребителя
+        localStorage.setItem("token", response.token);
+        localStorage.setItem("loggedUser", JSON.stringify({
+          userId: response.id,  // 👈 Запазваме userId
+          firstName: response.firstName,
+          role: response.role
+        }));
+  
+        //console.log("🔥 Запазени данни в localStorage:", localStorage.getItem("loggedUser"));
       },
       error: (err) => {
-        alert(err.message); // 📌 Показваме грешката
+        alert(err.message);
       }
     });
   }
