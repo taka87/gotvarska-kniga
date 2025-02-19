@@ -41,29 +41,6 @@ export class UserControlMysqlComponent {
     });
   }
 
-
-  // email: string = '';
-  // password: string = '';
-  // apiUrl = 'http://localhost:5000/api/user/login'; // Сложи правилния URL за логин
-
-  // constructor(private http: HttpClient, private router: Router) {}
-
-  // login() {
-  //   const userData = { email: this.email, password: this.password };
-
-  //   this.http.post<{ token: string }>(this.apiUrl, userData).subscribe({
-  //     next: (response) => {
-  //       localStorage.setItem('token', response.token); // Запазване на токена
-  //       console.log('Login successful, token:', response.token);
-  //       this.router.navigate(['/']); // Пренасочване към началната страница
-  //     },
-  //     error: (error) => {
-  //       console.error('Login failed:', error);
-  //       alert('Грешен имейл или парола!');
-  //     }
-  //   });
-  // }
-
   navigateToRegister() {
     this.router.navigate(['/user-register-mysql']); // Навигация към страницата за регистрация
   }

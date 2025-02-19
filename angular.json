@@ -36,7 +36,10 @@
             "outputMode": "server",
             "ssr": {
               "entry": "src/server.ts"
-            }
+            },
+            "styles": [
+              "@angular/material/prebuilt-themes/magenta-violet.css"
+            ]
           },
           "configurations": {
             "production": {
@@ -97,7 +100,10 @@
 
 
 
-            "scripts": []
+            "scripts": [],
+            "styles": [
+              "@angular/material/prebuilt-themes/magenta-violet.css"
+            ]
           }
         }
       }

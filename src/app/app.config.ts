@@ -15,12 +15,13 @@ import { withInterceptorsFromDi } from '@angular/common/http';
 import { AuthInterceptor } from './auth.interceptor';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { withInterceptors } from '@angular/common/http';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideHttpClient(withInterceptors([AuthInterceptor])), //⬅️ Включваме интерцептора
-    provideRouter(routes)
+    provideRouter(routes), provideAnimationsAsync()
   ]
 };
 

@@ -1,18 +1,19 @@
 import { Injectable } from '@angular/core';
 import { CanActivate, Router } from '@angular/router';
+import { AuthService } from './mysql-services/auth-service.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthGuard implements CanActivate {
-  constructor(private router: Router) {}
+  constructor(private router: Router, private authService: AuthService) {}
 
   canActivate(): boolean {
-    const userData = JSON.parse(localStorage.getItem('loggedUser') || '{}');
-    if (userData.role === 'admin') {
-      return true;
+    const isLoggedIn = this.authService.userLoggedIn.getValue();
+    if (!isLoggedIn) {
+      this.router.navigate(["/login"]);
+      return false;
     }
-    this.router.navigate(['/login']);
-    return false;
+    return true;
   }
 }

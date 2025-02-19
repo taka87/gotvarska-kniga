@@ -6,6 +6,7 @@ import { HttpClient } from '@angular/common/http';
 import { UserSessionService } from '../../services/user-session.service';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
+import { tap } from 'rxjs';
 
 @Component({
   selector: 'app-user-register-mysql',
@@ -58,15 +59,18 @@ export class UserRegisterMysqlComponent implements OnInit {
     };
 
     this.http.post('http://localhost:5000/api/user/register', userData)
-      .subscribe({
-        next: (response) => {
-          console.log('Регистрация успешна!', response);
-          this.registrationForm.reset();
-        },
-        error: (error) => {
-          console.error('Грешка при регистрация:', error);
-        }
-      });
+    .pipe(
+      tap(() => {
+        console.log('✅ Регистрация успешна! Пренасочваме...');
+        this.registrationForm.reset();
+        this.router.navigate(['/']); // 🔥 Пренасочване към началната страница
+      })
+    )
+    .subscribe({
+      next: (response) => console.log('Регистрация успешна!', response),
+      error: (error) => console.error('Грешка при регистрация:', error)
+    });
+
   }
 
   goBack(): void {

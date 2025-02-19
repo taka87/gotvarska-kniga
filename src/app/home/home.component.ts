@@ -105,6 +105,13 @@ export class HomeComponent {
       this.isLoggedMySQL = false;
       this.userNameMySQL = null;
     }
+    // tap((response) => {
+    //   console.log("🔹 Login Response:", response);
+    //   localStorage.setItem('token', response.token);
+    //   localStorage.setItem('loggedUser', JSON.stringify({ firstName: response.firstName, role: response.role }));
+    //   this.userLoggedIn$.next(true);
+    //   window.location.reload(); // 🔄 Презареждане, ако не работи без него
+    // })
   }
 
   logOut(): void {
