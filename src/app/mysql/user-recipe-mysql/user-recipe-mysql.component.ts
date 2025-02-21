@@ -20,7 +20,6 @@ export class UserRecipeMysqlComponent {
  constructor(private authService: AuthService, private router: Router,private userRecipeService: UserRecipeService) {}
 
  ngOnInit(): void {
-
   //Check user is in cash or not
   const user = this.authService.getUserInfo();
   if (!user) {
@@ -28,7 +27,7 @@ export class UserRecipeMysqlComponent {
   }
 
   //  const user = this.authService.getUserInfo();
-  //  this.userName = user ? user.firstName : null;
+  this.userName = user.firstName || 'Гост';
  }
 
  newRecipe = { recipeName: '', ingredients: '', description: '' };

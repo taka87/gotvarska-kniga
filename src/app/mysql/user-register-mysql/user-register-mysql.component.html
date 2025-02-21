@@ -1,65 +1,11 @@
 <div class="page-wrapper">
     <h1>{{ title }}</h1>
     <div class="registration-container">
-      <h2 class="page-title">Регистрация в SQL-DB</h2>
-
-
-
-    
-
-    <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
-      <div class="form-group">
-        <label>First Name:</label>
-        <input formControlName="firstName" type="text">
-        <p *ngIf="registrationForm.controls['firstName'].invalid && registrationForm.controls['firstName'].touched" class="error-message">
-          Моля, попълнете име.
-        </p>
-      </div>
-    
-      <div class="form-group">
-        <label>Last Name:</label>
-        <input formControlName="lastName" type="text">
-        <p *ngIf="registrationForm.controls['lastName'].invalid && registrationForm.controls['lastName'].touched" class="error-message">
-          Фамилията е задължителна!
-        </p>
-      </div>
-    
-      <div class="form-group">
-        <label>Email:</label>
-        <input formControlName="email" type="email">
-        <p *ngIf="registrationForm.controls['email'].invalid && registrationForm.controls['email'].touched" class="error-message">
-          Моля, попълнете валиден имейл адрес.
-        </p>
-      </div>
-    
-      <div class="form-group">
-        <label>Password:</label>
-        <input formControlName="password" type="password">
-        <p *ngIf="registrationForm.controls['password'].invalid && registrationForm.controls['password'].touched" class="error-message">
-          Паролата трябва да бъде поне 6 символа.
-        </p>
-      </div>
-    
-      <div class="form-group">
-        <label>Confirm Password:</label>
-        <input formControlName="confirmPassword" type="password">
-        <p *ngIf="passwordsDoNotMatch" class="error-message">
-          Паролите не съвпадат!
-        </p>
-      </div>
-    
-      <div class="button-group">
-        <button type="submit" class="primary-btn">Регистрация</button>
-        <button type="button" (click)="goBack()" class="secondary-btn">Назад</button>
-      </div>
-    </form>
+      <h2 class="page-title">Регистрация в SQL-DB</h2>   
   </div>
-
-
-
-
-
-
+  
+  <!-- register form -->
+    <app-register-form-component-my-sql></app-register-form-component-my-sql>
 
      <!-- най-долна част , за инфо на приложението -->
      <div class="footer">

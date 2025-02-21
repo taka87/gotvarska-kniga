@@ -1,8 +1,8 @@
 <div class="page-wrapper">
   <h1>{{ title }}</h1>
   <hr>
-  <!-- показва записи от базата -->
-  <app-user-mysql></app-user-mysql>
+  <!-- показва записи от базата упражнение-->
+  <!-- <app-user-mysql></app-user-mysql> -->
 
 
     <!-- Секция за Вход и Регистрация .JSON LOCAL ISOLATED-->
@@ -16,9 +16,7 @@
   </div> -->
 
   <!-- секция MYSQL LOGIN/REGISTER-->
-<hr>
-<div *ngIf="!isLoggedMySQL">
-  <!-- Секция за Вход и Регистрация -->
+<div *ngIf="!isLoggedMySQL">  
   <app-user-control-mysql></app-user-control-mysql>
 </div>
 
@@ -32,8 +30,7 @@
 <!-- ПАДАЩИ МЕНЮТА нов -->
   <app-daily-menu></app-daily-menu>
 
-  <!-- Логин -->
-  
+  <!-- Логин -->  
   <router-outlet></router-outlet>
   
   <!-- Бутон за показване/скриване на категории -->
@@ -54,7 +51,6 @@
   <button (click)="toggleFavorites()" class="toggle-favorites-button">
     {{ showFavorites ? 'Скрий любими рецепти' : 'Покажи любими рецепти' }}
   </button>
-
   <ul *ngIf="showFavorites">
     <li *ngFor="let recipe of favoriteRecipes">
       <h3>{{ recipe.name }}</h3>

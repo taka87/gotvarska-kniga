@@ -16,8 +16,8 @@ import { AuthService } from '../mysql-services/auth-service.service';
   standalone: true,
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'],
-  imports: [CommonModule, RouterModule,  DailyMenuComponent,  UserMysqlComponent, UserControlMysqlComponent, LoggedButtonMysqlComponent]
-  //imports: [UserControlComponent, LoggedButtonComponent, LoggedButtonMysqlqlComponent]
+  imports: [CommonModule, RouterModule,  DailyMenuComponent, UserControlMysqlComponent, LoggedButtonMysqlComponent]
+  //imports: [UserControlComponent, LoggedButtonComponent, LoggedButtonMysqlqlComponent,  UserMysqlComponent]
 })
 export class HomeComponent {
   title = 'Добре дошли в нашия кулинарен свят';
@@ -39,10 +39,10 @@ export class HomeComponent {
   showCategories = true;
 
   categories = [
-    { id: 1, name: 'Супи', image: 'assets/soups.jpg' },  //ако смениш "супи"-> се чупи пътя ??
-    { id: 2, name: 'Основни ястия', image: 'assets/main-dishes.jpg' },
-    { id: 4, name: 'Салати', image: 'assets/salads.jpg' },
-    { id: 3, name: 'Десерти', image: 'assets/desserts.jpg' },
+    { id: 1, name: 'Супи', image: 'assets/Soups/pustra_zelenchukova_supa.jpg' },  //ако смениш "супи"-> се чупи пътя ??
+    { id: 2, name: 'Основни ястия', image: 'assets/Maindishes/maindish.jpg' },
+    { id: 4, name: 'Салати', image: 'assets/Salads/salad.jpg' },
+    { id: 3, name: 'Десерти', image: 'assets/Desserts/dessert.jpg' },
 
   ];
 
@@ -61,20 +61,6 @@ export class HomeComponent {
   toggleFavorites() {
     this.showFavorites = !this.showFavorites;
   }
-
-  // секция за логин/регистрация логика
-  // isLogged = false;
-  // userName = '';
-  
-  // ngOnInit(): void {
-  //   this.userSession.currentUser$.subscribe(userData => {
-  //     this.isLogged = !!userData;
-  //     if (this.isLogged && userData) {
-  //       const user = JSON.parse(userData);
-  //       this.userName = user.firstName;
-  //     }
-  //   });
-  // }
 
   // секция за логин/регистрация MYSQL
   isLoggedMySQL = false;  
@@ -105,13 +91,6 @@ export class HomeComponent {
       this.isLoggedMySQL = false;
       this.userNameMySQL = null;
     }
-    // tap((response) => {
-    //   console.log("🔹 Login Response:", response);
-    //   localStorage.setItem('token', response.token);
-    //   localStorage.setItem('loggedUser', JSON.stringify({ firstName: response.firstName, role: response.role }));
-    //   this.userLoggedIn$.next(true);
-    //   window.location.reload(); // 🔄 Презареждане, ако не работи без него
-    // })
   }
 
   logOut(): void {

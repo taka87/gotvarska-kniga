@@ -41,6 +41,12 @@ export class LoggedButtonMysqlComponent {
 
 
   deleteAccount() {
+
+    const confirmation = confirm("Сигурен ли си, че искаш да изтриеш акаунта си?");
+    if (!confirmation) {
+      return;
+    }
+
     const userData = localStorage.getItem('loggedUser');
     console.log("📌 Взет потребител преди изтриване:", userData);  
   
@@ -61,7 +67,7 @@ export class LoggedButtonMysqlComponent {
         localStorage.removeItem('token');
         localStorage.removeItem('loggedUser');
   
-        console.log("🗑️ LocalStorage след изтриване:", localStorage.getItem('token'), localStorage.getItem('loggedUser'));
+        //console.log("🗑️ LocalStorage след изтриване:", localStorage.getItem('token'), localStorage.getItem('loggedUser'));
   
         this.authService.userLoggedIn.next(false);
         this.router.navigate(['/']);

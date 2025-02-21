@@ -1,10 +1,26 @@
 <div class="page-wrapper">
     <h1>{{ title }}</h1>
   
-    
+    <!-- средна част за стилизиране -->
     <div class="admin-panel">
-      <h1>Админ Панел</h1>
+      <p>Логнат като:"{{ userName }}"</p>
+      <!-- <h1>Админ Панел</h1> -->
+
+      <div class="admin-register-container">
+        <button (click)="showAdminForm = !showAdminForm" class="toggle-btn">
+            {{ showAdminForm ? 'Скрий регистрацията' : 'Регистрирай Админ или Потребител' }}
+        </button>
     
+        <div  *ngIf="showAdminForm"  class="checkbox-box">
+            <input type="checkbox" [(ngModel)]="isAdmin" id="adminCheck">
+            <label for="adminCheck">Регистрация като администратор</label>
+        </div>
+    </div>    
+    <!-- Показва регистрационната форма само ако showAdminForm е true -->
+    <app-register-form-component-my-sql *ngIf="showAdminForm" [isAdmin]="isAdmin"></app-register-form-component-my-sql>
+    <hr *ngIf="showAdminForm">
+
+      <!-- таблици -->
       <h2>Управление на потребители</h2>
       <table>
         <tr>
@@ -25,28 +41,51 @@
         </tr>
       </table>
     
+      <br>
+      <hr>
       <h2>Управление на рецепти</h2>
       <table>
         <tr>
-          <th>ID</th>
-          <th>Име</th>
-          <th>Автор</th>
+          <th>Автор рецепта</th>
+          <th>Име Рецепта</th>
+          <th>Съставки</th>
+          <th>Начин приготвяне</th>
           <th>Действия</th>
         </tr>
+        
         <tr *ngFor="let recipe of recipes">
-          <td>{{ recipe.id }}</td>
-          <td>{{ recipe.recipeName }}</td>
           <td>{{ recipe.author }}</td>
+          <td>{{ recipe.recipeName }}</td>
+          <td>{{ recipe.ingredients }}</td>
+          <td>{{ recipe.description }}</td>
           <td>
-            <button (click)="editRecipe(recipe.id)">Редактирай</button>
+            <button (click)="editRecipe(recipe)">Редактирай</button>
             <button (click)="deleteRecipe(recipe.id)">Изтрий</button>
           </td>
         </tr>
       </table>
+
+      <!-- редактиране на рецепти -->
+      <div *ngIf="showEditForm">
+        <h3>Редактиране на рецепта</h3>
+        <label>Име:</label>
+        <input [(ngModel)]="selectedRecipe.recipeName" />
+      
+        <label>Съставки:</label>
+        <input [(ngModel)]="selectedRecipe.ingredients" />
+      
+        <label>Описание:</label>
+        <textarea [(ngModel)]="selectedRecipe.description"></textarea>
+      
+        <button (click)="updateRecipe()">Запази</button>
+        <button (click)="cancelEdit()">Откажи</button>
+      </div>
+
     
       <button routerLink="/">⬅ Върни се към началната страница</button>
     </div>
       
+    <!-- Долна част стилизирана не я барам -->
      <div class="footer">
       <h2>За нас</h2>
       <p>Следвайте ни в социалните мрежи:</p>
