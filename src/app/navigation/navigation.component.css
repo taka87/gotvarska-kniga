@@ -7,10 +7,21 @@
     border-bottom: 1px solid #ddd;
   }
   
+  .navigation-bar button:first-child {
+    background-color: #eebcbc;
+    color: white;
+    font-weight: bold;
+    padding: 10px 20px;
+    border-radius: 8px;
+  }
+  .navigation-bar button:first-child:hover {
+    background-color: #ffa6a5;
+  }
+
   button {
     padding: 8px 16px;
     border: none;
-    background-color: #007bff;
+    background-color: #63b3ed;
     color: white;
     cursor: pointer;
     border-radius: 4px;

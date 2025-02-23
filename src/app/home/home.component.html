@@ -16,18 +16,24 @@
   </div> -->
 
   <!-- секция MYSQL LOGIN/REGISTER-->
-<div *ngIf="!isLoggedMySQL">  
-  <app-user-control-mysql></app-user-control-mysql>
+  <button 
+  *ngIf="!isLoggedMySQL" 
+  (click)="toggleMySqlRegistrationForm()" 
+  class="toggle-favorites-button">
+    {{ showRegisterForm ? 'Скрий ВХОД/Регистрация' : 'ВХОД / Регистрация' }}
+</button>
+<div *ngIf="showRegisterForm || isLoggedMySQL">
+  <div *ngIf="!isLoggedMySQL">  
+    <app-user-control-mysql></app-user-control-mysql>
+  </div>
+  <div *ngIf="isLoggedMySQL">
+    <h2>Добре дошъл, {{ userNameMySQL }}!</h2>
+    <app-logged-button-mysql></app-logged-button-mysql>
+  </div>
 </div>
+    <hr>
 
-<div *ngIf="isLoggedMySQL">
-  <h2>Добре дошъл, {{ userNameMySQL }}!</h2>
-  <app-logged-button-mysql></app-logged-button-mysql>
-</div>
-
-<hr>
-
-<!-- ПАДАЩИ МЕНЮТА нов -->
+    <!-- ПАДАЩИ МЕНЮТА нов -->
   <app-daily-menu></app-daily-menu>
 
   <!-- Логин -->  
@@ -51,22 +57,39 @@
   <button (click)="toggleFavorites()" class="toggle-favorites-button">
     {{ showFavorites ? 'Скрий любими рецепти' : 'Покажи любими рецепти' }}
   </button>
-  <ul *ngIf="showFavorites">
+  <!-- <ul *ngIf="showFavorites">
     <li *ngFor="let recipe of favoriteRecipes">
       <h3>{{ recipe.name }}</h3>
       <p>{{ recipe.description }}</p>
     </li>
-  </ul>
+  </ul> -->
+
+  <div class="favorites-section" *ngIf="showFavorites">
+    <h2>Любими Рецепти ❤️ </h2>
+    <ul>
+      <li *ngFor="let recipe of favoriteRecipes">
+        <h3>{{ recipe.name }}</h3>
+        <p>{{ recipe.description }}</p>
+      </li>
+    </ul>
+  </div>
 
   <!-- най-долна част , за инфо на приложението -->
   <div class="footer">
-    <h2>За нас</h2>
-    <p>Следвайте ни в социалните мрежи:</p>
+    <a routerLink="/map" class="about-link">
+      <h2> 🔗 За нас 🔗  </h2>
+    </a>
+    <p class="nadpis">Следвайте ни в социалните мрежи:</p>
     <div class="social-icons">
-      <img src="assets/images/logos/download.jpg" alt="Facebook">
-      <img src="instagram-icon.png" alt="Instagram">
-      <img src="youtube-icon.png" alt="YouTube">
-      <img src="pinterest-icon.png" alt="Pinterest">
+      <img src="assets/images/logos/facebook.jpg" alt="Facebook">
+      <img src="assets/images/logos/instagram.jpg" alt="Instagram">
+      <img src="assets/images/logos/youtube.jpg" alt="YouTube">
+      <img src="assets/images/logos/pinterest.jpg" alt="Pinterest">
     </div>
+  </div>
+  
+  <div class="site-footer">
+    <p>© 2024 MyRecipeBook. Всички права запазени.</p>
+    <p class="project-note">Проект за демонстрационни цели</p>
   </div>
 </div>

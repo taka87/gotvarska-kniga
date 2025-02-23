@@ -7,7 +7,7 @@
 <div *ngIf="loggedUser" class="user-greeting">
        <!-- 🔥 Бутон за админ, който се показва само за администратори -->
     <button *ngIf="loggedUser.role === 'admin'" routerLink="admin-panel">Админ панел</button>
-    <button (click)="addRecipe()">Добави рецепта</button>
-    <button (click)="logOut()">Изход</button>
+    <button (click)="addRecipe()">Добави рецепта</button>    
     <button (click)="deleteAccount()">Изтрий акаунта</button>
+    <button (click)="logOut()">Изход</button>
 </div>

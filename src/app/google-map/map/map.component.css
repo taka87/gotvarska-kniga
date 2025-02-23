@@ -1,0 +1,378 @@
+/* Стил за рамката */
+.page-wrapper {
+    max-width: 90%;
+    margin: 40px auto;
+    padding: 40px;
+    background-color: #f8f9fa;
+    border-radius: 16px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    border: 2px solid #ddd;
+  }
+  h1 {
+    text-align: center;
+    font-size: 3rem;
+    color: #ffffff;
+    background-color: #007bff;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 30px;
+  }
+  
+  /* Заглавие */
+  .page-title {
+    text-align: center;
+    font-size: 28px;
+    color: #444;
+    margin-bottom: 30px;
+  }
+
+  /* бутон за главна страница  */
+  .home-button {
+    background: #efaeae; 
+    color: white;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(99,179,237,0.3);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    /* position: fixed; */
+    bottom: 100px;
+    right: 20px;
+    z-index: 1000;
+  }
+  
+  .home-button:hover {
+    background: #f38686;
+    transform: translateY(-2px);
+    box-shadow: 
+      0 6px 16px rgba(66,153,225,0.4),
+      0 2px 4px rgba(255,255,255,0.2) inset;
+  }
+  
+  .home-button:active {
+    transform: translateY(1px);
+  }
+  
+  /* .material-icons {
+    font-size: 1.2em;
+  } */
+
+
+  /* основна част */
+  .contact-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 100vh;
+  }
+  
+  /* Лява колона */
+  .contact-info {
+    background: linear-gradient(145deg, #f8fafb 0%, #eef2f6 100%);
+    padding: 2rem;
+    border-right: 1px solid rgba(0,0,0,0.1);
+  }
+  
+  .content-wrapper {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  
+  .brand-title {
+    color: #2c3e50;
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    text-align: center;
+  }
+  
+  .description-box {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+    margin-bottom: 2rem;
+  }
+  
+  .contact-details {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+    margin-bottom: 2rem;
+  }
+  
+  .contact-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin: 1rem 0;
+    color: #4a5568;
+  }
+  
+  .contact-item i {
+    color: #63b3ed;
+    width: 25px;
+    text-align: center;
+  }
+  
+ /* Корекции за контактната форма */
+.contact-form {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+    box-sizing: border-box; /* Важно */
+    overflow: hidden; /* Предотвратява излизане */
+  }
+  
+  .form-group {
+    margin-bottom: 1.5rem;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  
+  input, textarea {
+    width: calc(100% - 2px); /* Корекция за границите */
+    padding: 1rem;
+    border: 2px solid #e2e8f0;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    box-sizing: border-box; /* Решава проблема с размерите */
+    max-width: 100%; /* Гарантира че няма да надхвърлят */
+    display: block;
+    margin: 0 auto;
+  }
+  
+  input:focus, textarea:focus {
+    outline: none;
+    border-color: #63b3ed;
+    box-shadow: 0 0 0 3px rgba(99,179,237,0.2);
+  }
+  
+  button[type="submit"] {
+    background: #63b3ed;
+    color: white;
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    width: 100%;
+  }
+  
+  button[type="submit"]:hover {
+    background: #4299e1;
+    transform: translateY(-2px);
+  }
+  
+  /* Дясна колона с карта */
+/* Основен контейнер */
+.contact-container {
+  display: flex;
+  gap: 30px;
+  padding: 30px;
+  align-items: flex-start; /* Променено от center */
+}
+
+/* Лява колона */
+.contact-info {
+  flex: 1;
+  max-width: 600px;
+  margin-top: 40px; /* Добавено */
+}
+
+/* Дясна колона - карта */
+.map-wrapper {
+    /* margin-top: 350px; */
+  /* padding-top: 350px; */
+  position: relative;
+  /* top: 200px; Бута надолу */
+  left: 70px;
+
+  flex: 0.7; /* Променено от 1 */
+  margin-top: 300px; /* Добавено */
+  margin-right: 100px;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+  height: 75vh; /* Променено */
+  min-height: 500px;
+  max-height: 650px;
+  align-self: flex-start; /* Важно */
+}
+
+/* Оверлей за текста */
+.map-overlay {
+
+
+
+  /* top: 50px; Променено от 20px */
+  top: 100px; /* Променено от 20px */  
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  text-align: center;
+}
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .contact-container {
+      grid-template-columns: 1fr;
+    }
+    
+    .map-container {
+      height: 500px;
+    }
+  }
+
+
+
+
+
+
+  
+  /* Линк */
+  .link-container {
+    margin-top: 15px;
+    text-align: center;
+  }
+  
+  .link-container a {
+    color: #007bff;
+    text-decoration: none;
+  }
+  
+  .link-container a:hover {
+    text-decoration: underline;
+  }
+  /* Секция „За нас“ и социални връзки */
+  .footer {
+    background-color: #eebcbc;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    margin-top: 40px;
+    border-radius: 8px;
+  }
+  
+  .footer .social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 10px;
+  }
+  
+  .footer .social-icons img {
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    transition: transform 0.2s;
+  }
+  
+  .footer .social-icons img:hover {
+    transform: scale(1.2);
+  }
+  .about-link {
+    text-decoration: none;
+    color: #2c3e50;
+    transition: all 0.3s ease;
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    margin: 1rem 0;
+  }
+  
+  .about-link h2 {
+    margin: 0;
+    padding: 0.5rem 1.5rem;
+    border-radius: 8px;
+    background: linear-gradient(145deg, #f8f9fa 0%, #e9ecef 100%);
+    box-shadow: 
+      0 4px 12px rgba(0,0,0,0.08),
+      inset 0 0 0 1px rgba(255,255,255,0.4);
+  }
+  
+  .about-link:hover {
+    transform: translateY(-2px);
+  }
+  
+  .nadpis {
+    color:  rgba(0, 0, 0, 0.531);
+  }
+  
+  .about-link:hover h2 {
+    color: #2b6cb0;
+    box-shadow: 
+      0 6px 16px rgba(43,108,176,0.15),
+      inset 0 0 0 1px rgba(66,153,225,0.2);
+  }
+  
+  .about-link:active {
+    transform: translateY(1px);
+  }
+  
+  /* bottom */
+  .site-footer {
+    background: linear-gradient(145deg, #f8fafb 0%, #eef2f6 100%);
+    padding: 1.5rem 2rem;
+    text-align: center;
+    border-top: 1px solid rgba(255,255,255,0.4);
+    box-shadow: 0 -4px 16px rgba(0,0,0,0.05);
+    margin-top: 4rem;
+    border-radius: 12px 12px 0 0;
+    position: relative;
+  }
+  
+  .site-footer::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60%;
+    height: 4px;
+    background: #63b3ed;
+    border-radius: 2px;
+    opacity: 0.3;
+  }
+  
+  .site-footer p {
+    margin: 0.4rem 0;
+    color: #4a5568;
+    font-size: 0.9rem;
+    letter-spacing: 0.3px;
+  }
+  
+  .project-note {
+    font-size: 0.8rem !important;
+    color: #718096 !important;
+    font-style: italic;
+  }
+  
+  /* Анимация при скрол */
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  .site-footer {
+    animation: fadeInUp 0.6s ease-out;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .site-footer {
+      padding: 1rem;
+      margin-top: 2rem;
+    }
+    
+    .site-footer p {
+      font-size: 0.85rem;
+    }
+  }

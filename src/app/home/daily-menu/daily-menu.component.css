@@ -1,0 +1,102 @@
+.menu-selectors {
+    display: flex;
+    gap: 1.5rem;
+    align-items: flex-end;
+    padding: 2rem;
+    background: linear-gradient(145deg, #f8f9fa 0%, #e9ecef 100%);
+    border-radius: 16px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+    border: 1px solid rgba(255,255,255,0.3);
+    margin: 20px;
+  }
+  
+  .menu-selectors > div {
+    position: relative;
+    flex: 1;
+    min-width: 180px;
+  }
+  
+  .menu-selectors label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #495057;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  
+  .menu-selectors input {
+    width: 100%;
+    padding: 12px 16px;
+    font-size: 1rem;
+    border: 2px solid #dee2e6;
+    border-radius: 8px;
+    background: #ffffff;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  }
+  
+  .menu-selectors input:focus {
+    outline: none;
+    border-color: #a5d8ff;
+    box-shadow: 0 4px 12px rgba(165,216,255,0.4);
+    background: #f8f9fa;
+  }
+  
+  .menu-selectors button {
+    padding: 12px 24px;
+    background: #74c0fc;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(116,192,252,0.3);
+    height: 44px;
+    flex-shrink: 0;
+  }
+  
+  .menu-selectors button:hover {
+    background: #4dabf7;
+    transform: translateY(-1px);
+    box-shadow: 0 6px 16px rgba(77,171,247,0.4);
+  }
+  
+  datalist {
+    position: absolute;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    margin-top: 4px;
+    max-height: 200px;
+    overflow-y: auto;
+  }
+  
+  /* Анимация при фокусиране */
+  @keyframes inputGlow {
+    from { box-shadow: 0 0 0 rgba(165,216,255,0); }
+    to { box-shadow: 0 0 10px rgba(165,216,255,0.4); }
+  }
+  
+  .menu-selectors input:focus {
+    animation: inputGlow 0.5s ease-out;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 1200px) {
+    .menu-selectors {
+      flex-wrap: wrap;
+    }
+    
+    .menu-selectors > div {
+      flex: 1 1 45%;
+    }
+    
+    .menu-selectors button {
+      margin-left: auto;
+    }
+  }

@@ -4,10 +4,11 @@ import { Navigation } from '@angular/router';
 import { NavigationComponent } from '../../../navigation/navigation.component';
 import { MainDishService } from '../../../services/maindishes.service';
 import { FormsModule } from '@angular/forms';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-maindishes',
-  imports: [NavigationComponent,CommonModule,FormsModule],
+  imports: [NavigationComponent,CommonModule,FormsModule, RouterLink],
   templateUrl: './maindishes.component.html',
   styleUrl: '../soup/soup.component.css',
 

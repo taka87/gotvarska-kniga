@@ -10,17 +10,19 @@ import { UserMysqlComponent } from '../mysql/user-mysql/user-mysql.component';
 import { UserControlMysqlComponent } from '../mysql/user-control-mysql/user-control-mysql.component';
 import { LoggedButtonMysqlComponent } from '../mysql/logged-button-mysql/logged-button-mysql.component';
 import { AuthService } from '../mysql-services/auth-service.service';
+import { MapComponent } from "../google-map/map/map.component";
 
 @Component({
   selector: 'app-home',
   standalone: true,
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'],
-  imports: [CommonModule, RouterModule,  DailyMenuComponent, UserControlMysqlComponent, LoggedButtonMysqlComponent]
-  //imports: [UserControlComponent, LoggedButtonComponent, LoggedButtonMysqlqlComponent,  UserMysqlComponent]
+  imports: [CommonModule, RouterModule, DailyMenuComponent, UserControlMysqlComponent, LoggedButtonMysqlComponent]
+  //imports: [UserControlComponent, LoggedButtonComponent, LoggedButtonMysqlqlComponent,  UserMysqlComponent, MapComponent]
 })
 export class HomeComponent {
   title = 'Добре дошли в нашия кулинарен свят';
+  showRegisterForm = false;
   
   constructor(private userSession: UserSessionService, private authService: AuthService) {}
   
@@ -60,6 +62,10 @@ export class HomeComponent {
 
   toggleFavorites() {
     this.showFavorites = !this.showFavorites;
+  }
+
+  toggleMySqlRegistrationForm() {
+    this.showRegisterForm = !this.showRegisterForm;
   }
 
   // секция за логин/регистрация MYSQL

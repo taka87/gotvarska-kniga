@@ -17,6 +17,7 @@
     "@angular/compiler": "^19.1.0",
     "@angular/core": "^19.1.0",
     "@angular/forms": "^19.1.0",
+    "@angular/google-maps": "^19.1.5",
     "@angular/language-service": "^19.1.4",
     "@angular/material": "^19.1.4",
     "@angular/platform-browser": "^19.1.0",

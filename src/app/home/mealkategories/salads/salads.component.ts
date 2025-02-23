@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
+import { RouterLink, RouterModule } from '@angular/router';
 import { Navigation } from '@angular/router';
 import { NavigationComponent } from '../../../navigation/navigation.component';
 import { SaladService } from '../../../services/salads.service';
@@ -9,7 +9,7 @@ import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-salads',
-  imports: [CommonModule, RouterModule,NavigationComponent, FormsModule],  
+  imports: [CommonModule, RouterModule,NavigationComponent, FormsModule, RouterLink],  
   templateUrl: './salads.component.html',
   styleUrl: '../soup/soup.component.css',
 

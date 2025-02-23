@@ -1,0 +1,88 @@
+<div class="page-wrapper">
+    <h1>{{ title }}</h1>
+    <hr> 
+    <!-- <div id="map" style="height: 500px; width: 100%;"></div> -->
+
+
+    <div class="contact-container">
+        <!-- Лява колона с информация -->
+        <div class="contact-info">
+          <div class="content-wrapper">
+            <!-- Добавете някъде в шаблона -->
+            <button class="home-button" routerLink="/">
+                <i class="material-icons">home</i>Начална страница
+            </button>
+            <h1 class="brand-title">🍳 Готварска Книга</h1>
+            
+            <div class="description-box">
+              <p>Нашият сайт предлага богата колекция от професионално подбрани рецепти, внимателно обновявани и категоризирани за ваше удобство.</p>
+            </div>
+      
+            <div class="contact-details">
+              <h2>📍 Нашият офис</h2>
+              <div class="contact-item">
+                <i class="fas fa-phone"></i>
+                <span>Телефон: +359 ххх ххх ххх</span>
+              </div>
+              <div class="contact-item">
+                <i class="fas fa-mobile-alt"></i>
+                <!-- <span>Мобилен: +359 899 987 654</span> -->
+                <span>Мобилен: +359 ххх ххх ххх</span>
+              </div>
+              <div class="contact-item">
+                <i class="fas fa-envelope"></i>
+                <!-- <span>Имейл: recipes@gotvarka.com</span> -->
+                <span>Имейл: gotvarska_kniga&commat;ххххххх.ххх</span>
+              </div>
+            </div>
+      
+            <div class="contact-form">
+              <h2>📩 Свържете се с нас</h2>
+              <form>
+                <div class="form-group">
+                  <input type="text" placeholder="Вашето име" required>
+                </div>
+                <div class="form-group">
+                  <input type="email" placeholder="Вашият имейл" required>
+                </div>
+                <div class="form-group">
+                  <textarea rows="4" placeholder="Вашето съобщение..."></textarea>
+                </div>
+                <button type="submit">Изпрати съобщение</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      
+        <!-- Дясна колона с карта -->
+        <div class="map-wrapper">
+          <div class="map-container">
+            <div id="map"></div>
+            <div class="map-overlay">
+              <h2>🗺️ Нашето местоположение</h2>
+              <p>Бургас, Морска Градина</p>
+            </div>
+          </div>
+        </div>
+
+
+    <!-- най-долна част , за инфо на приложението -->
+
+  </div>
+  <div class="footer">
+    <a routerLink="/map" class="about-link">
+        <h2>За нас</h2>
+      </a>
+  <p>Следвайте ни в социалните мрежи:</p>
+  <div class="social-icons">
+    <img src="assets/images/logos/facebook.jpg" alt="Facebook">
+    <img src="assets/images/logos/instagram.jpg" alt="Instagram">
+    <img src="assets/images/logos/youtube.jpg" alt="YouTube">
+    <img src="assets/images/logos/pinterest.jpg" alt="Pinterest">
+  </div>
+</div>
+
+<div class="site-footer">
+  <p>© 2024 MyRecipeBook. Всички права запазени.</p>
+  <p class="project-note">Проект за демонстрационни цели</p>
+</div>

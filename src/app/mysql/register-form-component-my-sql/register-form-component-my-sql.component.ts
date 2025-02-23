@@ -7,6 +7,7 @@ import { UserSessionService } from '../../services/user-session.service';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { tap } from 'rxjs';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-register-form-component-my-sql',
@@ -25,8 +26,17 @@ export class RegisterFormComponentMySqlComponent implements OnInit{
   constructor(
     private fb: FormBuilder,
     private router: Router,
-    private http: HttpClient
+    private http: HttpClient,
+    private snackBar: MatSnackBar
   ) {}
+
+  showMessage(message: string) {
+    this.snackBar.open(message, 'Затвори', {
+      duration: 3000, // 3 секунди
+      horizontalPosition: 'center',
+      verticalPosition: 'top'
+    });
+  }
 
   ngOnInit(): void {
     this.apiUrl = this.isAdmin
@@ -69,14 +79,17 @@ export class RegisterFormComponentMySqlComponent implements OnInit{
     this.http.post(this.apiUrl, userData)
       .pipe(
         tap(() => {
-          console.log('✅ Регистрация успешна! Пренасочваме...');
+          this.showMessage('✅ Регистрация успешна! Пренасочваме...')
+          // console.log('✅ Регистрация успешна! Пренасочваме...');
           this.registrationForm.reset();
           this.router.navigate(['/']);
         })
       )
       .subscribe({
-        next: (response) => console.log('Регистрация успешна!', response),
-        error: (error) => console.error('Грешка при регистрация:', error)
+        next: (response) => this.showMessage('Регистрация успешна!'),
+        error: (error) => this.showMessage('Грешка при регистрация:')
+        // next: (response) => console.log('Регистрация успешна!', response),
+        // error: (error) => console.error('Грешка при регистрация:', error)
       });
   }
 

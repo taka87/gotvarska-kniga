@@ -12,6 +12,7 @@ import { UserRecipeMysqlComponent } from './mysql/user-recipe-mysql/user-recipe-
 import { AdminPanelComponent } from './mysql/pages/admin-panel/admin-panel.component';
 import { AdminGuard } from './mysql/guards/admin.guard';
 import { UserRecipeGuard } from './mysql/guards/user-recipe.guard';
+import { MapComponent } from './google-map/map/map.component';
 
 
 export const routes: Routes = [
@@ -26,6 +27,8 @@ export const routes: Routes = [
   { path: 'user-register-mysql', component: UserRegisterMysqlComponent }, 
   { path: 'admin-panel', component: AdminPanelComponent, canActivate: [AdminGuard] },
   { path: 'user-recipe-mysql', component:  UserRecipeMysqlComponent, canActivate: [UserRecipeGuard]},
+  { path: 'map', component: MapComponent }, 
+
 ];
 
 // old but gold

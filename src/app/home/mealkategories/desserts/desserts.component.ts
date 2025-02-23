@@ -3,11 +3,12 @@ import { NavigationComponent } from '../../../navigation/navigation.component';
 import { CommonModule } from '@angular/common';
 import { DesertService } from '../../../services/desert.service';
 import { FormsModule } from '@angular/forms';
+import { RouterLink } from '@angular/router';
 
 
 @Component({
   selector: 'app-desserts',
-  imports: [NavigationComponent,CommonModule,FormsModule],
+  imports: [NavigationComponent,CommonModule,FormsModule,RouterLink],
   templateUrl: './desserts.component.html',
   styleUrl: '../soup/soup.component.css',
 
