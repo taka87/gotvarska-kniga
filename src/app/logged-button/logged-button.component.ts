@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-logged-button',
-  imports: [CommonModule],
+  imports: [CommonModule, RouterLink],
   templateUrl: './logged-button.component.html',
   styleUrl: './logged-button.component.css'
 })

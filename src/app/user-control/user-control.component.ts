@@ -6,49 +6,51 @@ import { Router } from '@angular/router';
 import { provideRouter } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { UserSessionService } from '../services/user-session.service';
+import { RouterLink } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-user-control',
-  imports: [CommonModule,ReactiveFormsModule,FormsModule  ],
+  imports: [CommonModule,ReactiveFormsModule,FormsModule, RouterLink  ],
   templateUrl: './user-control.component.html',
   styleUrl: './user-control.component.css',
   standalone: true,
 })
 export class UserControlComponent {
+  constructor(
+    private userSession: UserSessionService, 
+    private router: Router,
+    private http: HttpClient,
+    private snackBar: MatSnackBar
+  ) {}
 
-  constructor(private userSession: UserSessionService, private router: Router,private http: HttpClient) {}
-
-  navigateToRegister() {
-    this.router.navigate(['/register']);  //просто така работи Ангулар и той помага ... 
+  showMessage(message: string) {
+    this.snackBar.open(message, 'Затвори', {
+      duration: 3000, // 3 секунди
+      horizontalPosition: 'center',
+      verticalPosition: 'top'
+    });
   }
 
   email: string = '';
   password: string = '';
 
-  // new to be Tested
   login(): void {
+    //console.log("Изпращам заявка за логин:", { email: this.email, password: this.password });
+
     this.http.get<any[]>('http://localhost:3000/users').subscribe(users => {
       const user = users.find(u => u.email === this.email && u.password === this.password);
       
       if (user) {
-        // Съхраняваме потребителя в състоянието и LocalStorage
+        // console.log("Успешен логин!", user);
+        this.showMessage("Успешен логин!");
         this.userSession.setUser(JSON.stringify(user));
-        this.router.navigate(['/']); // Пренасочване към началната страница
+        this.router.navigate(['/']);
       } else {
         alert('Грешен имейл или парола.');
       }
+    }, error => {
+      console.error("Грешка при логин заявката:", error);
     });
   }
-    // new to be Tested
-  // login(): void {
-  //   this.http.get<any[]>('http://localhost:3000/users').subscribe(users => {
-  //     const user = users.find(u => u.email === this.email && u.password === this.password);
-  //     if (user) {
-  //       //alert(`Добре дошли, ${user.firstName} ${user.lastName}!`);
-  //       localStorage.setItem('loggedUser', JSON.stringify(user));
-  //     } else {
-  //       //alert('Грешен имейл или парола.');
-  //     }
-  //   });
-  // }
 }

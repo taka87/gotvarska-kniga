@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterLink } from '@angular/router';
 // import { Router } from '@angular/router';
 import { MenuDataService } from '../services/menu-data.service';
 import { CommonModule } from '@angular/common';
  
 @Component({
   selector: 'app-menu-details',
-  imports:[CommonModule],
+  imports:[CommonModule,RouterLink],
   templateUrl: './menu-details.component.html',
   styleUrls: ['./menu-details.component.css']
 })

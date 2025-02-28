@@ -7,6 +7,7 @@ import { provideRouter } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { UserSessionService} from '../../services/user-session.service';
 import { AuthService } from '../../mysql-services/auth-service.service';   //следвай пътя за SQL
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-user-control-mysql',
@@ -18,7 +19,19 @@ export class UserControlMysqlComponent {
   email = '';
   password = '';
 
-  constructor(private authService: AuthService,private router: Router) {}
+  constructor(private authService: AuthService,
+    private router: Router,
+    private snackBar: MatSnackBar
+  ) {}
+
+  showMessage(message: string): void {
+    this.snackBar.open(message, 'Затвори', {
+      duration: 3000, // 3 секунди
+      horizontalPosition: 'center',
+      verticalPosition: 'top',
+      panelClass: ['custom-snackbar']
+    });
+  }
 
   login() {
     this.authService.login(this.email, this.password).subscribe({
@@ -36,7 +49,8 @@ export class UserControlMysqlComponent {
         //console.log("🔥 Запазени данни в localStorage:", localStorage.getItem("loggedUser"));
       },
       error: (err) => {
-        alert(err.message);
+        this.showMessage('❌ Грешно потребителско име или парола!');
+        // alert(err.message);
       }
     });
   }

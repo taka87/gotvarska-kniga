@@ -5,6 +5,7 @@ import { RouterLink } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { RegisterFormComponentMySqlComponent } from '../../register-form-component-my-sql/register-form-component-my-sql.component';
 import { AuthService } from '../../../mysql-services/auth-service.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-admin-panel',
@@ -29,7 +30,19 @@ export class AdminPanelComponent implements OnInit {
   //edit recipe
   showEditForm: boolean = false;
 
-  constructor(private adminService: AdminService, private authService: AuthService) {}
+  constructor(
+    private adminService: AdminService, 
+    private authService: AuthService,
+    private snackBar:MatSnackBar
+  ) {}
+
+  showMessage(message: string) {
+    this.snackBar.open(message, 'Затвори', {
+      duration: 3000, // 3 секунди
+      horizontalPosition: 'center',
+      verticalPosition: 'top'
+    });
+  }
 
   ngOnInit(): void {
     this.loadUsers();
@@ -55,11 +68,13 @@ export class AdminPanelComponent implements OnInit {
   deleteUser(userId: number) {
     this.adminService.deleteUser(userId).subscribe({
       next: (response) => {
-        console.log("✅ Потребителят е изтрит успешно!", response);
+        this.showMessage("✅ Потребителят е изтрит успешно!");
+        // console.log("✅ Потребителят е изтрит успешно!", response);
         this.loadUsers();
       },
       error: (error) => {
-        console.warn("⚠️ Получихме грешка, но ще обновим списъка", error);
+        this.showMessage("⚠️ Получихме грешка, но ще обновим списъка");
+        // console.warn("⚠️ Получихме грешка, но ще обновим списъка", error);
         if (error.status === 200) {
           this.loadUsers(); // Дори при "грешка" с 200, презареждаме списъка
         }
@@ -70,10 +85,12 @@ export class AdminPanelComponent implements OnInit {
   deleteRecipe(recipeId: number) {
     this.adminService.deleteRecipe(recipeId).subscribe(
       () => {
-        console.log("✅ Рецептата е изтрита успешно!");
+        this.showMessage("✅ Рецептата е изтрита успешно!");
+        // console.log("✅ Рецептата е изтрита успешно!");
         this.loadRecipes(); // 🔄 Обновяваме списъка
       },
-      (error) => console.error("❌ Грешка при изтриване:", error)
+      // (error) => console.error("❌ Грешка при изтриване:", error)
+      (error) => this.showMessage("❌ Грешка при изтриване:")
     );
   }
 
@@ -84,22 +101,25 @@ export class AdminPanelComponent implements OnInit {
   }
   
   updateRecipe() {
-    console.log(this.selectedRecipe)
+    // console.log(this.selectedRecipe)
 
     if (!this.selectedRecipe || !this.selectedRecipe.id) {
-      console.error('Няма избрана рецепта за редакция!');
+      // console.error('Няма избрана рецепта за редакция!');
+      this.showMessage('Няма избрана рецепта за редакция!');
       return;
     }
   
     console.log(this.selectedRecipe)
     this.adminService.updateRecipe(this.selectedRecipe.id, this.selectedRecipe).subscribe({
       next: (response) => {
-        console.log('Рецептата е обновена успешно!', response);
+        //console.log('Рецептата е обновена успешно!', response);
+        this.showMessage('Рецептата е обновена успешно!');
         this.showEditForm = false; // Скриваме формата след успешна редакция
         this.fetchRecipes(); // Презареждаме списъка с рецепти
       },
       error: (error) => {
-        console.error('Грешка при обновяване на рецептата:', error);
+        // console.error('Грешка при обновяване на рецептата:', error);
+        this.showMessage('Грешка при обновяване на рецептата:');
       }
     });
   }
@@ -110,20 +130,23 @@ export class AdminPanelComponent implements OnInit {
         this.recipes = recipes;
       },
       error: (error) => {
-        console.error('Грешка при зареждане на рецептите:', error);
+        // console.error('Грешка при зареждане на рецептите:', error);
+        this.showMessage('Грешка при зареждане на рецептите:');
       }
     });
   }
 
   saveRecipe() {
-    console.log(this.selectedRecipe)
+    // console.log(this.selectedRecipe)
     this.adminService.updateRecipe(this.selectedRecipe.id, this.selectedRecipe).subscribe(
       (response) => {
-        console.log("✅ Успешно редактирана рецепта:", response);
+        // console.log("✅ Успешно редактирана рецепта:", response);
+        this.showMessage("✅ Успешно редактирана рецепта:");
         this.loadRecipes(); // Презареждаме списъка
         this.selectedRecipe = null; // Скриваме формата
       },
-      (error) => console.error("❌ Грешка при редактиране:", error)
+      // (error) => console.error("❌ Грешка при редактиране:", error)
+      (error) => this.showMessage("❌ Грешка при редактиране:")
     );
   }
 
@@ -138,61 +161,5 @@ export class AdminPanelComponent implements OnInit {
   }
 
   registerAdmin() {
-
   }
 }
-
-//добави админ логика 
-
-
-
-// import { Component, OnInit } from '@angular/core';
-// import { HttpClient } from '@angular/common/http';
-// import { CommonModule } from '@angular/common';
-
-// @Component({
-//   selector: 'app-admin-panel',
-//   templateUrl: './admin-panel.component.html',
-//   styleUrls: ['./admin-panel.component.css'],
-//   imports:[CommonModule]
-// })
-// export class AdminPanelComponent implements OnInit {
-//   title = "admin PANEL";
-//   users: any[] = [];
-//   recipes: any[] = [];
-
-//   constructor(private http: HttpClient) {}
-
-//   ngOnInit(): void {
-//     this.fetchUsers();
-//     this.fetchRecipes();
-//   }
-
-//   fetchUsers() {
-//     this.http.get<any[]>('http://localhost:5000/api/users').subscribe(data => {
-//       this.users = data;
-//     });
-//   }
-
-//   fetchRecipes() {
-//     this.http.get<any[]>('http://localhost:5000/api/recipes').subscribe(data => {
-//       this.recipes = data;
-//     });
-//   }
-
-//   deleteUser(userId: number) {
-//     if (confirm('Сигурен ли си, че искаш да изтриеш този потребител?')) {
-//       this.http.delete(`http://localhost:5000/api/users/${userId}`).subscribe(() => {
-//         this.users = this.users.filter(u => u.id !== userId);
-//       });
-//     }
-//   }
-
-//   deleteRecipe(recipeId: number) {
-//     if (confirm('Сигурен ли си, че искаш да изтриеш тази рецепта?')) {
-//       this.http.delete(`http://localhost:5000/api/recipes/${recipeId}`).subscribe(() => {
-//         this.recipes = this.recipes.filter(r => r.id !== recipeId);
-//       });
-//     }
-//   }
-// }

@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { RecipeMysqlComponent } from './recipe-mysql.component';
+import { UserPanelComponent } from './user-panel.component';
 
-describe('RecipeMysqlComponent', () => {
-  let component: RecipeMysqlComponent;
-  let fixture: ComponentFixture<RecipeMysqlComponent>;
+describe('UserPanelComponent', () => {
+  let component: UserPanelComponent;
+  let fixture: ComponentFixture<UserPanelComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [RecipeMysqlComponent]
+      imports: [UserPanelComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(RecipeMysqlComponent);
+    fixture = TestBed.createComponent(UserPanelComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

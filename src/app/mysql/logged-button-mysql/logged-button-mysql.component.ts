@@ -7,6 +7,7 @@ import { UserSessionService } from '../../mysql-services/user-session.service';
 import { BehaviorSubject } from 'rxjs';
 import { Observable } from 'rxjs';
 import { Subscription } from 'rxjs';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 
 @Component({
@@ -19,7 +20,21 @@ export class LoggedButtonMysqlComponent {
   loggedUser: any;
   private userLoggedIn = new BehaviorSubject<boolean>(false); // за взимане loggedInUser данните
   
-  constructor(private router: Router,private authService: AuthService, private userSessionService: UserSessionService) { }
+  constructor(
+    private router: Router,
+    private authService: AuthService, 
+    private userSessionService: UserSessionService,
+    private snackBar: MatSnackBar
+  ) { }
+
+  showMessage(message: string): void {
+    this.snackBar.open(message, 'Затвори', {
+      duration: 3000, // 3 секунди
+      horizontalPosition: 'center',
+      verticalPosition: 'top',
+      panelClass: ['custom-snackbar']
+    });
+  }
 
   get userLoggedIn$(): Observable<boolean> {
     return this.userLoggedIn.asObservable();
@@ -41,17 +56,16 @@ export class LoggedButtonMysqlComponent {
 
 
   deleteAccount() {
-
     const confirmation = confirm("Сигурен ли си, че искаш да изтриеш акаунта си?");
     if (!confirmation) {
       return;
     }
 
     const userData = localStorage.getItem('loggedUser');
-    console.log("📌 Взет потребител преди изтриване:", userData);  
+    //console.log("📌 Взет потребител преди изтриване:", userData);  
   
     if (!userData) {
-      console.error('❌ Не е намерен потребител!');
+      this.showMessage('❌ Грешно потребителско име или парола!');
       return;
     }
   
@@ -60,7 +74,7 @@ export class LoggedButtonMysqlComponent {
   
     this.userSessionService.deleteOwnAccount(userId).subscribe({
       next: () => {
-        console.log('✅ Потребител изтрит успешно!');
+        //console.log('✅ Потребител изтрит успешно!');
   
           //тука изобщо не влиза !!!
 

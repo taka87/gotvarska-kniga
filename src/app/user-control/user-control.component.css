@@ -1,45 +1,98 @@
-.user-control-container {
-    border: 1px solid #ccc;
-    padding: 20px;
-    max-width: 400px;
-    margin: 0 auto;
-  }
-  
-  label {
-    display: block;
-    margin: 10px 0;
-  }
-  
-  input {
-    width: 300px;
-    padding: 8px;
-    margin-top: 5px;
-    border: 2px solid #ddd;
-    box-sizing: border-box;
+.login-container {
+  width: 100%;
+  max-width: 400px; /* Ограничаваме ширината */
+  margin: 50px auto;
+  padding: 2rem;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  text-align: center;
+}
+
+.login-container h2 {
+  margin-bottom: 1.5rem;
+  color: #495057;
+  font-size: 1.5rem;
+}
+
+.input-group {
+  display: flex;
+  margin-right: 9%;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+}
+
+.input-group label {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 5px;
+  color: #495057;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ced4da;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: border 0.3s;
+}
+
+.input-group input:focus {
+  border-color: #007bff;
+  outline: none;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
+}
+
+.button-group {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1.5rem;
+}
+
+.button-group button {
+  flex: 1;
+  padding: 12px;
+  font-size: 1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.button-group button:first-child {
+  background: #007bff;
+  color: white;
+  margin-right: 10px;
+}
+
+.button-group button:first-child:hover {
+  background: #0056b3;
+}
+
+.button-group .register-button {
+  background: #6c757d;
+  color: white;
+}
+
+.button-group .register-button:hover {
+  background: #5a6268;
+}
+
+/* Responsive стилове */
+@media (max-width: 480px) {
+  .login-container {
+    padding: 1.5rem;
   }
 
-  
-  button {
-    margin-top: 15px;
-    padding: 10px 15px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    cursor: pointer;
+  .button-group {
+    flex-direction: column;
+    gap: 10px;
   }
 
-  /* вметнато за Register button виж дали е свързано */
-  .register-button {
-    background-color: #ff6600;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    cursor: pointer;
-    font-size: 16px;
-    border-radius: 5px;
-    transition: background-color 0.3s;
+  .button-group button {
+    width: 100%;
   }
-  
-  .register-button:hover {
-    background-color: #e65c00;
-  }
+}

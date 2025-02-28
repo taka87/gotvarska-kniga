@@ -40,7 +40,8 @@
               "entry": "src/server.ts"
             },
             "styles": [
-              "@angular/material/prebuilt-themes/magenta-violet.css"
+              "@angular/material/prebuilt-themes/magenta-violet.css",
+              "node_modules/swiper/swiper-bundle.min.css"
             ]
           },
           "configurations": {

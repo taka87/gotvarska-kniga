@@ -1,102 +1,130 @@
-.menu-selectors {
-    display: flex;
-    gap: 1.5rem;
-    align-items: flex-end;
-    padding: 2rem;
-    background: linear-gradient(145deg, #f8f9fa 0%, #e9ecef 100%);
-    border-radius: 16px;
-    box-shadow: 0 8px 24px rgba(0,0,0,0.1);
-    border: 1px solid rgba(255,255,255,0.3);
-    margin: 20px;
-  }
-  
-  .menu-selectors > div {
-    position: relative;
-    flex: 1;
-    min-width: 180px;
-  }
-  
-  .menu-selectors label {
-    display: block;
-    margin-bottom: 8px;
-    font-weight: 600;
-    color: #495057;
-    font-size: 0.9rem;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-  }
-  
-  .menu-selectors input {
-    width: 100%;
-    padding: 12px 16px;
-    font-size: 1rem;
-    border: 2px solid #dee2e6;
-    border-radius: 8px;
-    background: #ffffff;
-    transition: all 0.3s ease;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
-  }
-  
-  .menu-selectors input:focus {
-    outline: none;
-    border-color: #a5d8ff;
-    box-shadow: 0 4px 12px rgba(165,216,255,0.4);
-    background: #f8f9fa;
-  }
-  
-  .menu-selectors button {
-    padding: 12px 24px;
-    background: #74c0fc;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 12px rgba(116,192,252,0.3);
-    height: 44px;
-    flex-shrink: 0;
-  }
-  
-  .menu-selectors button:hover {
-    background: #4dabf7;
-    transform: translateY(-1px);
-    box-shadow: 0 6px 16px rgba(77,171,247,0.4);
-  }
-  
-  datalist {
-    position: absolute;
-    background: white;
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    margin-top: 4px;
-    max-height: 200px;
-    overflow-y: auto;
-  }
-  
-  /* Анимация при фокусиране */
-  @keyframes inputGlow {
-    from { box-shadow: 0 0 0 rgba(165,216,255,0); }
-    to { box-shadow: 0 0 10px rgba(165,216,255,0.4); }
-  }
-  
-  .menu-selectors input:focus {
-    animation: inputGlow 0.5s ease-out;
-  }
-  
-  /* Responsive adjustments */
-  @media (max-width: 1200px) {
-    .menu-selectors {
-      flex-wrap: wrap;
-    }
-    
-    .menu-selectors > div {
-      flex: 1 1 45%;
-    }
-    
-    .menu-selectors button {
-      margin-left: auto;
-    }
-  }
+.menu-container {
+  display: grid;
+  max-width: 1500px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: #f8f9fa42;
+  border-radius: 12px;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+}
+
+.header {
+  margin-bottom: 1.5rem;
+  border-bottom: 2px solid #ffa6a5;
+  padding-bottom: 1rem;
+}
+
+.header h3 {
+  color: #2c3e50;
+  font-size: 1.5rem;
+  margin: 0;
+  font-weight: 600;
+}
+
+.form-section {
+  /* top:100%; */
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 10px;
+  gap: 1.5rem;
+  align-items: flex-start;
+  /* overflow-x: auto; */
+  padding-bottom: 1rem;
+}
+
+.input-container {
+  margin-right: 2%;
+  position: relative;
+  flex: 1 1 250px;
+  min-width: 250px;
+}
+
+label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: #495057;
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+
+input {
+  width: 100%;
+  padding: 0.8rem;
+  border: 2px solid #e9ecef;
+  border-radius: 8px;
+  background: white;
+  transition: all 0.3s ease;
+  font-size: 0.95rem;
+}
+
+input:focus {
+  border-color: #ffcccb;
+  box-shadow: 0 0 0 3px  #ffa6a5;;
+  outline: none;
+}
+
+.custom-dropdown {
+  position: absolute;
+  /*top: 100%; /* Пада върху другите елементи */
+  left: 0;
+  margin-left: 10px;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.98);
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  max-height: 150px;
+  overflow-y: auto;
+  z-index: 1000;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.dropdown-item {
+  padding: 0.75rem 1rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  color: #212529;
+  font-size: 0.9rem;
+}
+
+.dropdown-item:hover {
+  background: #ffcccb;
+  color: white;
+  transform: translateX(4px);
+}
+
+button {
+  background: #ffcccb;
+  color: rgba(0, 0, 0, 0.5);
+  padding: 0.8rem 2rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 1rem;
+  font-weight: 500;
+  flex-shrink: 0;
+  align-self: flex-end;
+  margin-left: auto;
+}
+
+button:hover {
+  background: #ffa6a5;;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0,123,255,0.35);
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  height: 15px;
+  width: 15px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #ffcccb;
+  border-radius: 9px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}

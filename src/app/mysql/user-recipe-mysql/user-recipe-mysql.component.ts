@@ -1,23 +1,37 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { Recipe } from '../../../models/userRecipe';
 import { FormsModule } from '@angular/forms';
 import { AuthService } from '../../mysql-services/auth-service.service';
 import { UserRecipeService } from '../../mysql-services/user-recipe.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-user-recipe-mysql',
-  imports: [FormsModule],
+  imports: [FormsModule, RouterLink],
   templateUrl: './user-recipe-mysql.component.html',
   styleUrl: './user-recipe-mysql.component.css'
 })
 export class UserRecipeMysqlComponent {
- title= "Добре дошли в начия кулинарен свят";
+ title= "Добавете рецепта в нашата кулинарна книга";
 
  userName: string | null = null;
 
- constructor(private authService: AuthService, private router: Router,private userRecipeService: UserRecipeService) {}
+ constructor(
+    private authService: AuthService,
+    private router: Router,
+    private userRecipeService: UserRecipeService,
+    private snackBar: MatSnackBar
+  ) {}
+
+  showMessage(message: string) {
+    this.snackBar.open(message, 'Затвори', {
+      duration: 3000, // 3 секунди
+      horizontalPosition: 'center',
+      verticalPosition: 'top'
+    });
+  }
 
  ngOnInit(): void {
   //Check user is in cash or not
@@ -35,7 +49,8 @@ export class UserRecipeMysqlComponent {
  saveRecipe() {
    this.userRecipeService.addRecipe(this.newRecipe).subscribe({
      next: (response) => {
-       alert(response.message);
+      //  alert(response.message);
+       this.showMessage('Рецептата добавена успешно!')
        this.newRecipe = { recipeName: '', ingredients: '', description: '' }; // ✅ Зануляваме формата
      },
      error: (err) => {

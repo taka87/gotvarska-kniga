@@ -1,4 +1,4 @@
-import { Component,OnInit } from '@angular/core';
+import { Component,OnInit,CUSTOM_ELEMENTS_SCHEMA  } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { FormBuilder,FormGroup,Validators } from '@angular/forms';
@@ -10,21 +10,61 @@ import { UserMysqlComponent } from '../mysql/user-mysql/user-mysql.component';
 import { UserControlMysqlComponent } from '../mysql/user-control-mysql/user-control-mysql.component';
 import { LoggedButtonMysqlComponent } from '../mysql/logged-button-mysql/logged-button-mysql.component';
 import { AuthService } from '../mysql-services/auth-service.service';
-import { MapComponent } from "../google-map/map/map.component";
+// import { MapComponent } from "../google-map/map/map.component";
+// import { bootstrapApplication } from '@angular/platform-browser';
+// import { provideAnimations } from '@angular/platform-browser/animations';
+// import { register } from 'swiper/element/bundle';
+import Swiper from 'swiper';
+import { Navigation, Pagination, Autoplay } from 'swiper/modules';
 
 @Component({
   selector: 'app-home',
   standalone: true,
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'],
-  imports: [CommonModule, RouterModule, DailyMenuComponent, UserControlMysqlComponent, LoggedButtonMysqlComponent]
+  imports: [
+    CommonModule, 
+    RouterModule,
+    DailyMenuComponent, 
+    UserControlMysqlComponent, 
+    LoggedButtonMysqlComponent,
+    UserControlComponent, LoggedButtonComponent
+  ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA], // Добави този ред
+
   //imports: [UserControlComponent, LoggedButtonComponent, LoggedButtonMysqlqlComponent,  UserMysqlComponent, MapComponent]
 })
 export class HomeComponent {
-  title = 'Добре дошли в нашия кулинарен свят';
+  title = 'Потопете се в магията на нашия кулинарен свят';
   showRegisterForm = false;
+  swiper: Swiper | null = null;
+
+  isLoggedMySQL = false;  
+  isLogged = false;  
+  userNameMySQL: string | null = null;  
+  userName = 'user'; 
+
+  showFavorites = false;
+  showCategories = true;
+  isMenuOpen = false; // Контролира видимостта на менюто
+
+  //swiper
+  swiperKey = 0;
+  images = [
+    'assets/images/swiper/image1.jpg',
+    'assets/images/swiper/maindish.jpg',
+    'assets/images/swiper/salad.jpg'
+  ];
   
-  constructor(private userSession: UserSessionService, private authService: AuthService) {}
+  constructor(
+    private userSession: UserSessionService, 
+    private authService: AuthService,
+
+  ) {}
+
+  ngOnChanges() {
+    this.swiperKey++;
+  }
   
   // new
   getCategoryRoute(categoryName: string): string {
@@ -38,8 +78,6 @@ export class HomeComponent {
     }
   }
 
-  showCategories = true;
-
   categories = [
     { id: 1, name: 'Супи', image: 'assets/Soups/pustra_zelenchukova_supa.jpg' },  //ако смениш "супи"-> се чупи пътя ??
     { id: 2, name: 'Основни ястия', image: 'assets/Maindishes/maindish.jpg' },
@@ -51,8 +89,6 @@ export class HomeComponent {
   toggleCategories() {
     this.showCategories = !this.showCategories;
   }
-
-  showFavorites = false;
 
   favoriteRecipes = [
     { name: 'Торта Гараш', description: 'Класическа шоколадова торта с богат вкус.' },
@@ -69,15 +105,40 @@ export class HomeComponent {
   }
 
   // секция за логин/регистрация MYSQL
-  isLoggedMySQL = false;  
-  userNameMySQL: string | null = null;  
-
   ngOnInit(): void {
     this.checkLoginStatus();
 
     // Следим в реално време, ако AuthService засече промяна
     this.authService.userLoggedIn$.subscribe(() => {
       this.checkLoginStatus();
+    });
+
+    //try JSON Server
+    this.isLogged = this.userSession.isLoggedIn(); // Проверяваме дали потребителят е логнат
+
+    if (this.isLogged) {
+      const userData = JSON.parse(localStorage.getItem('loggedUser') || '{}');
+      this.userName = userData.firstName || 'Гост';
+    }
+
+    if (this.isLogged) {
+      this.isMenuOpen = false;
+    }
+
+    this.userSession.currentUser$.subscribe(userData => {
+      this.isLogged = userData !== null;
+      if (this.isLogged) {
+        const user = JSON.parse(userData || '{}');
+        this.userName = user.firstName || 'Гост';
+      }
+    });
+  
+
+    this.swiper = new Swiper('.swiper', {
+      modules: [Navigation, Pagination, Autoplay],
+      navigation: true,
+      pagination: { clickable: true },
+      autoplay: { delay: 3000 },
     });
   }
 
@@ -105,5 +166,28 @@ export class HomeComponent {
     this.isLoggedMySQL = false;
     this.userNameMySQL = null;
     window.location.reload();
+  }
+
+    // swiper - slide
+  ngAfterViewInit() {
+    new Swiper('.swiper', {
+      modules: [Navigation, Pagination, Autoplay],
+      loop: true, // За безкрайно въртене
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev'
+      },
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true
+      },
+      autoplay: {
+        delay: 3000, // Върти снимките автоматично на всеки 3 сек
+        disableOnInteraction: false
+      }
+    });
+  }  
+  toggleMenu() {
+    this.isMenuOpen = !this.isMenuOpen;
   }
 }

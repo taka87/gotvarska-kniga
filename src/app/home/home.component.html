@@ -1,36 +1,62 @@
+
 <div class="page-wrapper">
+  
+  <div class="swiper">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide" *ngFor="let img of images">
+        <img [src]="img" alt="Swiper image" />
+      </div>
+    </div>
+    <div class="swiper-pagination"></div>
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-button-next"></div>
+  </div>
+
+  <br>
   <h1>{{ title }}</h1>
   <hr>
+
   <!-- показва записи от базата упражнение-->
   <!-- <app-user-mysql></app-user-mysql> -->
 
 
-    <!-- Секция за Вход и Регистрация .JSON LOCAL ISOLATED-->
-  <!-- <div *ngIf="!isLogged">
-    <app-user-control></app-user-control>
-  </div>
-  
-  <div *ngIf="isLogged">
-    <h2>Добре дошли, {{ userName }}!</h2>
-    <app-logged-button></app-logged-button>
-  </div> -->
+  <!-- Секция за Вход и Регистрация .JSON LOCAL ISOLATED-->
+    <!-- Бутон за вход (видим само ако НЕ е логнат) -->
+  <!-- <div class="register-menu-position">    -->
+    <button class="toggle-favorites-button" *ngIf="!isLogged" (click)="toggleMenu()">Вход/Регистрация локален сървър</button>
+    <!-- Менюто (показва се само при отворено меню) -->
+    <div *ngIf="!isLogged && isMenuOpen">
+      <app-user-control></app-user-control>
+    </div>
+    <!-- След логин се показва само logged button -->
+    <div *ngIf="isLogged">
+      <h2>Привет - {{ userName }}</h2>
+      <app-logged-button></app-logged-button>
+    </div>
+  <!-- </div> -->
 
+  <hr>
+    
   <!-- секция MYSQL LOGIN/REGISTER-->
-  <button 
-  *ngIf="!isLoggedMySQL" 
-  (click)="toggleMySqlRegistrationForm()" 
-  class="toggle-favorites-button">
-    {{ showRegisterForm ? 'Скрий ВХОД/Регистрация' : 'ВХОД / Регистрация' }}
-</button>
-<div *ngIf="showRegisterForm || isLoggedMySQL">
-  <div *ngIf="!isLoggedMySQL">  
-    <app-user-control-mysql></app-user-control-mysql>
+   <div class="register-menu-position">
+    <button 
+      *ngIf="!isLoggedMySQL" 
+      (click)="toggleMySqlRegistrationForm()" 
+      class="toggle-favorites-button"
+      >
+      {{ showRegisterForm ? 'Скрий ВХОД/Регистрация &uArr;' : 'ВХОД / Регистрация &dArr;' }}
+    </button>
+    <div *ngIf="showRegisterForm || isLoggedMySQL">
+      <div *ngIf="!isLoggedMySQL">  
+        <app-user-control-mysql></app-user-control-mysql>
+      </div>
+      <div *ngIf="isLoggedMySQL">
+        <h2>Добре дошъл: {{ userNameMySQL }}</h2>
+       <app-logged-button-mysql></app-logged-button-mysql>
+      </div>
+    </div>
   </div>
-  <div *ngIf="isLoggedMySQL">
-    <h2>Добре дошъл, {{ userNameMySQL }}!</h2>
-    <app-logged-button-mysql></app-logged-button-mysql>
-  </div>
-</div>
+
     <hr>
 
     <!-- ПАДАЩИ МЕНЮТА нов -->
@@ -40,9 +66,10 @@
   <router-outlet></router-outlet>
   
   <!-- Бутон за показване/скриване на категории -->
-  <button (click)="toggleCategories()">
+  <!-- <button (click)="toggleCategories()">
     {{ showCategories ? 'Скрий категории' : 'Покажи категории' }}
-  </button>
+  </button> -->
+  <br>
   <!-- категории -->
   <div *ngIf="showCategories" class="category-grid">
     <div *ngFor="let category of categories" class="category-item">
@@ -76,7 +103,7 @@
 
   <!-- най-долна част , за инфо на приложението -->
   <div class="footer">
-    <a routerLink="/map" class="about-link">
+    <a routerLink="/contact-info" class="about-link">
       <h2> 🔗 За нас 🔗  </h2>
     </a>
     <p class="nadpis">Следвайте ни в социалните мрежи:</p>

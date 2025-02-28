@@ -17,4 +17,9 @@ export class UserSessionService {
     localStorage.removeItem('loggedUser');
     this.loggedInUser.next(null); // Нулираме потребителя
   }
+
+  //взима данни за логнат потребител...
+  isLoggedIn(): boolean {
+    return localStorage.getItem('loggedUser') !== null;
+  }
 }

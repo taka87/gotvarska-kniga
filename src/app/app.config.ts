@@ -21,7 +21,8 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 export const appConfig: ApplicationConfig = {
   providers: [
     provideHttpClient(withInterceptors([AuthInterceptor])), //⬅️ Включваме интерцептора
-    provideRouter(routes), provideAnimationsAsync()
+    provideRouter(routes), 
+    provideAnimationsAsync()
   ]
 };
 

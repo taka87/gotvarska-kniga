@@ -9,6 +9,60 @@
   border: 2px solid #ddd;
 }
 
+/* swiper */
+@import 'swiper/swiper-bundle.css';
+/* .swiper-container {
+  width: 100%;
+  height: 400px;
+}
+
+.swiper-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+  color: white;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 20px;
+  border-radius: 50%;
+}
+
+.swiper-pagination-bullet {
+  background: white;
+  opacity: 0.5;
+}
+
+.swiper-pagination-bullet-active {
+  background: #007bff;
+  opacity: 1;
+} */
+
+.swiper {
+  width: 100%;
+  height: 300px;
+  border-radius: 12px;
+  overflow: hidden; 
+}
+
+.swiper-slide {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  background: #f1f1f1;
+  border: 1px solid #ccc;
+}
+
+.swiper-slide img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 12px; 
+}
+
 /* Заглавие със стил */
 h1 {
   text-align: center;
@@ -153,6 +207,10 @@ button:hover {
   color: #333;
 }
 
+/* .register-menu-position {
+  padding-right: 70%;
+} */
+
 /* Любими рецепти секция */
 /* .favorites {
   margin: 30px auto;
@@ -174,7 +232,12 @@ button:hover {
   border-radius: 5px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: background-color 0.3s ease; /* Плавен преход */
+
+
+  color: rgba(0, 0, 0, 0.531);              /* Бял текст */
+  font-size: 20px;           /* Размер на текста */
+  cursor: pointer;           /* Промяна на курсора */
 }
 
 .toggle-favorites-button:hover {
@@ -197,41 +260,7 @@ li {
   margin: 10px 0;
 }
 
-/* Секция „За нас“ и социални връзки */
-.footer {
-  background-color: #eebcbc;
-  color: white;
-  text-align: center;
-  padding: 20px;
-  margin-top: 40px;
-  border-radius: 8px;
-}
 
-.footer .social-icons {
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-  margin-top: 10px;
-}
-
-.footer .social-icons img {
-  width: 30px;
-  height: 30px;
-  cursor: pointer;
-  transition: transform 0.2s;
-}
-
-.footer .social-icons img:hover {
-  transform: scale(1.2);
-}
-
-.footer .social-icons img {
-  width: 30px;
-  height: 30px;
-  cursor: pointer;
-  transition: transform 0.2s;
-  animation: pulse 3s infinite;
-}
 
 
 /* NEW */
@@ -382,9 +411,44 @@ h1 {
   }
 }
 
+
+/* Секция „За нас“ и социални връзки */
+.footer {
+  background-color: #eebcbc;
+  color: white;
+  text-align: center;
+  padding: 20px;
+  margin-top: 40px;
+  border-radius: 8px;
+}
+
+.footer .social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.footer .social-icons img {
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.footer .social-icons img:hover {
+  transform: scale(1.2);
+}
+
+.footer .social-icons img {
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  transition: transform 0.2s;
+  animation: pulse 3s infinite;
+}
+
 /* Потрепване на социални икони */
-
-
 @keyframes pulse {
   0%, 100% {
     transform: scale(1);

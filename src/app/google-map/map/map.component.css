@@ -189,35 +189,28 @@
 
 /* Дясна колона - карта */
 .map-wrapper {
-    /* margin-top: 350px; */
-  /* padding-top: 350px; */
   position: relative;
-  /* top: 200px; Бута надолу */
-  left: 70px;
-
-  flex: 0.7; /* Променено от 1 */
-  margin-top: 300px; /* Добавено */
-  margin-right: 100px;
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 8px 24px rgba(0,0,0,0.1);
-  height: 75vh; /* Променено */
-  min-height: 500px;
-  max-height: 650px;
-  align-self: flex-start; /* Важно */
+  width: 100%;
+  max-width: 700px; /* Увеличаваме ширината */
+  max-height: 100%;
+  height: 500px; /* ⬆️ Увеличаваме височината на картата */
+  margin: 150px auto 0 auto; /* ⬇️ Премества картата надолу */
+  display: flex;
+  justify-content: center; /* Центрира по хоризонтала */
+  align-items: center; /* Центрира по вертикала ако е нужно */
 }
 
-/* Оверлей за текста */
 .map-overlay {
-
-
-
-  /* top: 50px; Променено от 20px */
-  top: 100px; /* Променено от 20px */  
+  position: absolute;
+  top: 30px; /* ⬇️ Избутва текста надолу, за да не закрива картата */
   left: 50%;
   transform: translateX(-50%);
-  width: 90%;
+  background: rgba(0, 0, 0, 0.6);
+  color: white;
+  padding: 10px 20px;
+  border-radius: 10px;
   text-align: center;
+  z-index: 10; /* 🛠 Уверяваме се, че е върху картата */
 }
   
   /* Responsive Design */

@@ -8,7 +8,8 @@ import { Recipe } from '../../models/userRecipe';
 })
 export class UserRecipeService {
 
-  private apiUrl = 'http://localhost:3001/userRecipes'; // Адаптирай според API-то ти
+  // private apiUrl = 'http://localhost:3001/userRecipes'; // Адаптирай според API-то ти
+  private apiUrl = 'http://localhost:3000/userRecipes'; // Адаптирай според API-то ти
 
   constructor(private http: HttpClient) {}
 

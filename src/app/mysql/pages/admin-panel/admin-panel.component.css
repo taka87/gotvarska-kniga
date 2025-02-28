@@ -114,6 +114,7 @@ th, td {
 }
 
 th {
+  text-align: center;
   background: #007bff;
   color: white;
   font-weight: bold;
@@ -133,6 +134,9 @@ button {
   cursor: pointer;
   transition: all 0.3s ease;
   margin-right: 5px;
+}
+.back-position{
+  margin-top: 20px;
 }
 
 button:hover {

@@ -14,7 +14,7 @@ import { RouterLink } from '@angular/router';
 
 })
 export class DessertsComponent {
-  title = 'Добре дошли в нашия кулинарен свят';
+  title = 'Раздел готови рецепти за:';
 
     desserts: any[] = [];
     selectedDessert: any = null;

@@ -13,6 +13,10 @@ import { AdminPanelComponent } from './mysql/pages/admin-panel/admin-panel.compo
 import { AdminGuard } from './mysql/guards/admin.guard';
 import { UserRecipeGuard } from './mysql/guards/user-recipe.guard';
 import { MapComponent } from './google-map/map/map.component';
+import { RawMapComponent } from './google-map/raw-map/raw-map.component';
+import { UserPanelComponent } from './mysql/pages/user-panel/user-panel.component';
+import { AuthGuard } from './auth.guard';
+import { ShowLocalRecipesComponent } from './show-local-recipes/show-local-recipes.component';
 
 
 export const routes: Routes = [
@@ -24,10 +28,14 @@ export const routes: Routes = [
   { path: 'register', component: UserRegistrationComponent },
   { path: 'menu-details', component: MenuDetailsComponent },
   { path: "add-recipe", component:UserRecipeComponent},
+  { path: "all-recipe", component:ShowLocalRecipesComponent},
   { path: 'user-register-mysql', component: UserRegisterMysqlComponent }, 
   { path: 'admin-panel', component: AdminPanelComponent, canActivate: [AdminGuard] },
   { path: 'user-recipe-mysql', component:  UserRecipeMysqlComponent, canActivate: [UserRecipeGuard]},
-  { path: 'map', component: MapComponent }, 
+  // { path: 'user-panel', component:  UserPanelComponent, canActivate: [AuthGuard]},
+  { path: 'user-panel', component:  UserPanelComponent, canActivate: [UserRecipeGuard]},
+  { path: 'contact-info', component: MapComponent }, 
+  { path: 'raw-map', component: RawMapComponent }, 
 
 ];
 

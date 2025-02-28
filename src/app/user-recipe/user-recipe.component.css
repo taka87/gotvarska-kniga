@@ -86,7 +86,111 @@
   }
 
   /* ОСНБОВНА ЧАСТ ТУК */
-
+  .recipe-container {
+    width: 90%;
+    max-width: 700px;
+    margin: 50px auto;
+    padding: 2rem;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.12);
+  }
+  
+  .recipe-title {
+    text-align: center;
+    padding: 10px;
+    background: rgba(0, 123, 255, 0.2);
+    border-radius: 8px;
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #007bff;
+  }
+  
+  .recipe-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-top: 20px;
+  }
+  
+  .recipe-form input,
+  .recipe-form textarea {
+    width: 100%;
+    padding: 14px;
+    border-radius: 8px;
+    font-size: 1rem;
+    border: 1px solid #ced4da;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: 0.3s;
+  }
+  
+  .recipe-form input {
+    padding-right: 0px;
+    height: 50px;
+  }
+  
+  .recipe-form textarea {
+    padding-right: 0px;
+    height: 120px;
+    resize: none;
+  }
+  
+  .recipe-form textarea[name="description"] {
+    height: 160px;
+  }
+  
+  .recipe-form input:focus,
+  .recipe-form textarea:focus {
+    border-color: #007bff;
+    outline: none;
+    box-shadow: 0 0 10px rgba(0, 123, 255, 0.3);
+  }
+  
+  .button-group {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1.5rem;
+  }
+  
+  .button-group button {
+    padding: 12px 20px;
+    font-size: 1rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+  
+  .back-button {
+    background: #6c757d;
+    color: white;
+  }
+  
+  .back-button:hover {
+    background: #5a6268;
+  }
+  
+  .save-button {
+    background: #007bff;
+    color: white;
+  }
+  
+  .save-button:hover {
+    background: #0056b3;
+  }
+  
+  /* Responsive стилове */
+  @media (max-width: 600px) {
+    .button-group {
+      flex-direction: column;
+      gap: 10px;
+    }
+  
+    .button-group button {
+      width: 100%;
+    }
+  }
 
 
 /* Секция „За нас“ и социални връзки */

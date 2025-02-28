@@ -127,6 +127,15 @@ input, textarea {
   font-size: 1rem;
   transition: 0.3s;
 }
+textarea:first-of-type {
+  min-height: 80px; /* По-малко поле за първото */
+}
+
+textarea:nth-of-type(2),
+textarea:nth-of-type(3) {
+  min-height: 200px; /* По-големи полета за второто и третото */
+}
+
 
 input:focus, textarea:focus {
   border-color: #007bff;

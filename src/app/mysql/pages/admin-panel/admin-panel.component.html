@@ -15,10 +15,10 @@
             <input type="checkbox" [(ngModel)]="isAdmin" id="adminCheck">
             <label for="adminCheck">Регистрация като администратор</label>
         </div>
-    </div>    
-    <!-- Показва регистрационната форма само ако showAdminForm е true -->
-    <app-register-form-component-my-sql *ngIf="showAdminForm" [isAdmin]="isAdmin"></app-register-form-component-my-sql>
-    <hr *ngIf="showAdminForm">
+      </div>    
+      <!-- Показва регистрационната форма само ако showAdminForm е true -->
+      <app-register-form-component-my-sql *ngIf="showAdminForm" [isAdmin]="isAdmin"></app-register-form-component-my-sql>
+      <hr *ngIf="showAdminForm">
 
       <!-- таблици -->
       <h2>Управление на потребители</h2>
@@ -82,7 +82,7 @@
       </div>
 
     
-      <button routerLink="/">⬅ Върни се към началната страница</button>
+      <button class="back-position" routerLink="/">⬅ Върни се към началната страница</button>
     </div>
       
     <!-- Долна част стилизирана не я барам -->
@@ -101,5 +101,5 @@
     <div class="site-footer">
       <p>© 2024 MyRecipeBook. Всички права запазени.</p>
       <p class="project-note">Проект за демонстрационни цели</p>
-    </div>
   </div>
+</div>

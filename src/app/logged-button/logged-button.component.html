@@ -1,5 +1,11 @@
-<div *ngIf="loggedUser" class="user-greeting">
-    <p>Добре дошъл, {{ loggedUser.name }}!</p>
-    <button (click)="addRecipe()"   routerLink="/add-recipe">Добави рецепта</button>
-    <button (click)="logOut()">Изход</button>
-</div>
+<div *ngIf="loggedUser" class="user-menu">
+    <div class="user-greeting">
+      <!-- <p>Добре дошъл, {{ userName }}!</p> -->
+    </div>
+  
+    <div class="user-actions">
+      <button routerLink="/all-recipe">Всички рецепти</button>
+      <button (click)="addRecipe()" routerLink="/add-recipe">Добави рецепта</button>
+      <button (click)="logOut()">Изход</button>
+    </div>
+  </div>

@@ -1,56 +1,89 @@
-<div class="menu-selectors">
-  <div>
-    <label>Супа:</label>
-    <input 
-      list="soupsList" 
-      (input)="filterItems($any($event.target).value, 'soups')" 
-      [(ngModel)]="selectedMenu.soup" 
-      name="soup"
-    >
-    <datalist id="soupsList">
-      <option *ngFor="let soup of filteredSoups" [value]="soup.name">{{ soup.name }}</option>
-    </datalist>
+<div class="menu-container">
+  <div class="header">
+    <h3>Изберете вашите рецепти като меню за деня:</h3>
   </div>
 
-  <div>
-    <label>Десерт:</label>
-    <input 
-      list="dessertsList" 
-      (input)="filterItems($any($event.target).value, 'desserts')" 
-      [(ngModel)]="selectedMenu.dessert" 
-      name="dessert"
-    >
-    <datalist id="dessertsList">
-      <option *ngFor="let dessert of filteredDesserts" [value]="dessert.name">{{ dessert.name }}</option>
-    </datalist>
-  </div>
+  <div class="form-section">
+    <!-- Супи -->
+    <div class="input-container">
+      <label>Супа:</label>
+      <input 
+        type="text"
+        (input)="filterItems($any($event.target).value, 'soups')" 
+        [(ngModel)]="selectedMenu['soup']" 
+        (focus)="showDropdown('soups')"
+        (blur)="hideDropdown('soups')"
+        placeholder="Изберете супа"
+      >
+      <div *ngIf="dropdownVisible['soups'] && filteredSoups.length" class="custom-dropdown">
+        <div *ngFor="let soup of filteredSoups" 
+             (mousedown)="selectItem('soup', soup.name)" 
+             class="dropdown-item">
+          {{ soup.name }}
+        </div>
+      </div>
+    </div>
 
-  <div>
-    <label>Напитка:</label>
-    <input 
-      list="drinksList" 
-      (input)="filterItems($any($event.target).value, 'drinks')" 
-      [(ngModel)]="selectedMenu.drink" 
-      name="drink"
-    >
-    <datalist id="drinksList">
-      <option *ngFor="let drink of filteredDrinks" [value]="drink.name">{{ drink.name }}</option>
-    </datalist>
-  </div>
+    <!-- Десерти -->
+    <div class="input-container">
+      <label>Десерт:</label>
+      <input 
+        type="text"
+        (input)="filterItems($any($event.target).value, 'dessert')" 
+        [(ngModel)]="selectedMenu['dessert']" 
+        (focus)="showDropdown('dessert')"
+        (blur)="hideDropdown('dessert')"
+        placeholder="Изберете десерт"
+      >
+      <div *ngIf="dropdownVisible['dessert'] && filteredDesserts.length" class="custom-dropdown">
+        <div *ngFor="let dessert of filteredDesserts" 
+             (mousedown)="selectItem('dessert', dessert.name)" 
+             class="dropdown-item">
+          {{ dessert.name }}
+        </div>
+      </div>
+    </div>
 
-  <div>
-    <label>Салата:</label>
-    <input 
-      list="saladsList" 
-      (input)="filterItems($any($event.target).value, 'salads')" 
-      [(ngModel)]="selectedMenu.salad" 
-      name="salad"
-    >
-    <datalist id="saladsList">
-      <option *ngFor="let salad of filteredSalads" [value]="salad.name">{{ salad.name }}</option>
-    </datalist>
-  </div>
+    <!-- Напитки -->
+    <div class="input-container">
+      <label>Напитка:</label>
+      <input 
+        type="text"
+        (input)="filterItems($any($event.target).value, 'filteredDrinks')" 
+        [(ngModel)]="selectedMenu['drink']" 
+        (focus)="showDropdown('drink')"
+        (blur)="hideDropdown('drink')"
+        placeholder="Изберете напитка"
+      >
+      <div *ngIf="dropdownVisible['drink'] && filteredDrinks.length" class="custom-dropdown">
+        <div *ngFor="let drink of filteredDrinks" 
+             (mousedown)="selectItem('drink', drink.name)" 
+             class="dropdown-item">
+          {{ drink.name }}
+        </div>
+      </div>
+    </div>
 
-  <!-- <button mat-raised-button color="primary" (click)="submitMenu()"></button> -->
-  <button (click)="submitMenu()">Избери</button>
+    <!-- Салати -->
+    <div class="input-container">
+      <label>Салата:</label>
+      <input 
+        type="text"
+        (input)="filterItems($any($event.target).value, 'filteredSalads')" 
+        [(ngModel)]="selectedMenu['salad']" 
+        (focus)="showDropdown('salad')"
+        (blur)="hideDropdown('salad')"
+        placeholder="Изберете салата"
+      >
+      <div *ngIf="dropdownVisible['salad'] && filteredSalads.length" class="custom-dropdown">
+        <div *ngFor="let salad of filteredSalads" 
+             (mousedown)="selectItem('salad', salad.name)" 
+             class="dropdown-item">
+          {{ salad.name }}
+        </div>
+      </div>
+    </div>
+
+    <button (click)="submitMenu()">Избери</button>
+  </div>
 </div>

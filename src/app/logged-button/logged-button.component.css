@@ -1,0 +1,74 @@
+.user-menu {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end; /* Подравнява към дясната страна */
+    padding: 1.5rem 2rem;
+    background: #f8f9fa;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+    margin: 20px;
+  }
+  
+  .user-greeting {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #495057;
+    margin-bottom: 1rem;
+  }
+  
+  .user-actions {
+    display: flex;
+    gap: 1.5rem; /* Разстояние между бутоните */
+  }
+  
+  .user-actions button {
+    padding: 14px 28px;
+    min-width: 180px; /* Фиксирана ширина */
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background: #ffffff;
+    color: #495057;
+    box-shadow: 
+      0 3px 8px rgba(0, 0, 0, 0.08),
+      inset 0 0 0 1px rgba(0, 0, 0, 0.08);
+    position: relative;
+    font-size: 0.95rem;
+  }
+  
+  .user-actions button:hover {
+    transform: translateY(-2px);
+    box-shadow: 
+      0 6px 16px rgba(0, 0, 0, 0.1),
+      inset 0 0 0 1px rgba(0, 0, 0, 0.1);
+    background: #f8f9fa;
+  }
+  
+  .user-actions button:active {
+    transform: translateY(1px);
+    box-shadow: 
+      0 2px 4px rgba(0, 0, 0, 0.05),
+      inset 0 0 0 1px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Responsive стилове */
+  @media (max-width: 768px) {
+    .user-menu {
+      align-items: center;
+      text-align: center;
+    }
+  
+    .user-actions {
+      flex-direction: column;
+      width: 100%;
+    }
+  
+    .user-actions button {
+      min-width: 100%;
+      width: 100%;
+    }
+  }
+  

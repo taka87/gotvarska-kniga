@@ -1,0 +1,51 @@
+<div class="page-wrapper">
+    <h1>{{ title }}</h1>
+  
+    <div class="page-wrapper">
+      
+    
+
+        <!-- Основна част -->
+    <div class="admin-register-container">
+    <div class="showEditForm">
+      <h2>Управление на рецепти</h2>
+  
+      <table>
+        <tr>
+          <th>Име Рецепта</th>
+          <th>Съставки</th>
+          <th>Начин приготвяне</th>
+        </tr>
+        <tr *ngFor="let recipe of recipes">
+          <td>{{ recipe.name }}</td>
+          <td>{{ recipe.ingredients }}</td>
+          <td>{{ recipe.description }}</td>
+        </tr>
+      </table>    
+  
+      <button class="back-position" routerLink="/">⬅ Назад към началната страница</button>
+    </div>
+    </div>
+
+
+
+  
+     <!-- най-долна част , за инфо на приложението -->
+    <div class="footer">
+      <a routerLink="/contact-info" class="about-link">
+        <h2> 🔗 За нас 🔗  </h2>
+      </a>
+      <p class="nadpis">Следвайте ни в социалните мрежи:</p>
+      <div class="social-icons">
+        <img src="assets/images/logos/facebook.jpg" alt="Facebook">
+        <img src="assets/images/logos/instagram.jpg" alt="Instagram">
+        <img src="assets/images/logos/youtube.jpg" alt="YouTube">
+        <img src="assets/images/logos/pinterest.jpg" alt="Pinterest">
+      </div>
+    </div>
+    
+    <div class="site-footer">
+      <p>© 2024 MyRecipeBook. Всички права запазени.</p>
+      <p class="project-note">Проект за демонстрационни цели</p>
+    </div>
+</div>
