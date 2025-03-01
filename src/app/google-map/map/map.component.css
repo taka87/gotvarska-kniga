@@ -1,8 +1,8 @@
 /* Стил за рамката */
 .page-wrapper {
     max-width: 90%;
-    margin: 40px auto;
-    padding: 40px;
+    margin: 20px auto;
+    padding: 20px;
     background-color: #f8f9fa;
     border-radius: 16px;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
@@ -58,9 +58,9 @@
     transform: translateY(1px);
   }
   
-  /* .material-icons {
-    font-size: 1.2em;
-  } */
+  .material-icons {
+    font-size: 2.2rem;
+  }
 
 
   /* основна част */
@@ -73,7 +73,7 @@
   /* Лява колона */
   .contact-info {
     background: linear-gradient(145deg, #f8fafb 0%, #eef2f6 100%);
-    padding: 2rem;
+    padding: 5rem;
     border-right: 1px solid rgba(0,0,0,0.1);
   }
   
@@ -172,7 +172,7 @@
   }
   
   /* Дясна колона с карта */
-/* Основен контейнер */
+  /* Основен контейнер */
 .contact-container {
   display: flex;
   gap: 30px;
@@ -191,7 +191,7 @@
 .map-wrapper {
   position: relative;
   width: 100%;
-  max-width: 700px; /* Увеличаваме ширината */
+  max-width: 600px; /* Увеличаваме ширината */
   max-height: 100%;
   height: 500px; /* ⬆️ Увеличаваме височината на картата */
   margin: 150px auto 0 auto; /* ⬇️ Премества картата надолу */
@@ -202,7 +202,7 @@
 
 .map-overlay {
   position: absolute;
-  top: 30px; /* ⬇️ Избутва текста надолу, за да не закрива картата */
+  top: 20px; /* ⬇️ Избутва текста надолу, за да не закрива картата */
   left: 50%;
   transform: translateX(-50%);
   background: rgba(0, 0, 0, 0.6);
@@ -223,10 +223,6 @@
       height: 500px;
     }
   }
-
-
-
-
 
 
   
