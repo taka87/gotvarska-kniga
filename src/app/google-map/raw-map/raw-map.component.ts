@@ -4,7 +4,8 @@ import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-raw-map',
-  imports: [GoogleMapsModule],
+  imports: [],
+  // imports: [GoogleMapsModule],
   templateUrl: './raw-map.component.html',
   styleUrl: './raw-map.component.css'
 })
@@ -12,7 +13,7 @@ export class RawMapComponent implements OnInit {
   private map!: google.maps.Map; // Запазваме картата в свойство
 
   ngOnInit(): void {
-    //console.log('Google Maps API Key:', environment.googleMapsApiKey); // Провери дали се зарежда правилно
+    console.log('Google Maps API Key:', environment.googleMapsApiKey); // Провери дали се зарежда правилно
     this.loadGoogleMaps(); // Зареждаме API-то
   }
 
