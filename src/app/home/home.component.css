@@ -1,3 +1,6 @@
+/* swiper */
+@import 'swiper/swiper-bundle.css';
+
 /* Основен стил за цялата страница */
 .page-wrapper {
   max-width: 90%; /* Ограничаваме ширината до 90% от екрана */
@@ -578,5 +581,3 @@ h1 {
     font-size: 0.85rem;
   }
 }
-/* swiper */
-@import 'swiper/swiper-bundle.css';
