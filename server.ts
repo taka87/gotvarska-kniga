@@ -3,7 +3,7 @@ import express from 'express';
 import { existsSync } from 'fs';
 import { join } from 'path';
 import { renderApplication } from '@angular/platform-server';
-import bootstrap from './main.server';
+import bootstrap from './src/main.server';
 
 export function app(): express.Express {
   const server = express();

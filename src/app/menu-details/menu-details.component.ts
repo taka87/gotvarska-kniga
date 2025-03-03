@@ -6,12 +6,13 @@ import { CommonModule } from '@angular/common';
  
 @Component({
   selector: 'app-menu-details',
-  imports:[CommonModule,RouterLink],
+  imports:[CommonModule,RouterLink,RouterLink],
   templateUrl: './menu-details.component.html',
   styleUrls: ['./menu-details.component.css']
 })
 export class MenuDetailsComponent implements OnInit {
-  title = 'Добре дошли в нашия кулинарен свят';
+  title = 'Потопете се в магията на нашия кулинарен свят';
+  
   selectedMenu: { soup?: string; dessert?: string; drink?: string; salad?: string } = {};
 
   // Отделни променливи за различните рецепти
