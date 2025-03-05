@@ -5,6 +5,18 @@ import { join } from 'path';
 import { renderApplication } from '@angular/platform-server';
 import bootstrap from './src/main.server';
 
+////ако н ипотрябва за SSR ??
+// // DOM имитация
+// import * as domino from 'domino';
+// const template = existsSync(join(process.cwd(), 'dist/gotvarska-kniga/browser/index.html')) 
+//   ? join(process.cwd(), 'dist/gotvarska-kniga/browser/index.html') 
+//   : '<!DOCTYPE html><html><head></head><body></body></html>';
+// const win = domino.createWindow(template);
+// (global as any).window = win;
+// // (global as any).window = win as unknown as Window & typeof globalThis;
+// (global as any).document = win.document;
+// (global as any).navigator = win.navigator;
+
 export function app(): express.Express {
   const server = express();
   const browserDistFolder = join(process.cwd(), 'dist/gotvarska-kniga/browser');
