@@ -13,13 +13,13 @@ export class RawMapComponent implements OnInit {
   private map!: google.maps.Map; // Запазваме картата в свойство
 
   ngOnInit(): void {
-    console.log('Google Maps API Key:', environment.googleMapsApiKey); // Провери дали се зарежда правилно
+    //console.log('Google Maps API Key:', environment.googleMapsApiKey); // Провери дали се зарежда правилно
     this.loadGoogleMaps(); // Зареждаме API-то
   }
 
   loadGoogleMaps(): void {
     if (window['google'] && window['google'].maps) {
-      console.log('Google Maps API вече е зареден.');
+      //console.log('Google Maps API вече е зареден.');
       this.loadMap(); // Ако API-то е заредено, директно зареждаме картата
       return;
     }
@@ -30,7 +30,7 @@ export class RawMapComponent implements OnInit {
     script.async = true;
     script.defer = true;
     script.onload = () => {
-      console.log('Google Maps API зареден успешно!');
+      // console.log('Google Maps API зареден успешно!');
       this.loadMap(); // Когато API-то се зареди, създаваме картата
     };
 
@@ -41,6 +41,7 @@ export class RawMapComponent implements OnInit {
     const mapElement = document.getElementById('map');
     
     if (!mapElement) {
+
       console.error("Картата не е намерена в DOM-а.");
       return;
     }

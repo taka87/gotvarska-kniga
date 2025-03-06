@@ -17,7 +17,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   styleUrl: './user-panel.component.css'
 })
 export class UserPanelComponent {
-  title = "Добре дошли в Админ Панела на MYSQL";
+  title = "Управлявайте своите рецепти тук(MYSQL)";
   userName: string = '';
   userRecipes: any[] = [];
 

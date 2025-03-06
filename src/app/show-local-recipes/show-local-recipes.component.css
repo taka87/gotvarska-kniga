@@ -83,143 +83,63 @@
     font-size: 2rem;
     color: #666;
     margin-top: 20px;
+  }  
+    
+/* Контейнер за таблицата */
+.table-container {
+  overflow-x: auto; /* Хоризонтално превъртане */
+  margin-top: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Таблица */
+table {
+  width: 100%;
+  min-width: 600px; /* Минимална ширина за таблицата */
+  border-collapse: collapse;
+}
+
+th, td {
+  border: 1px solid #ddd;
+  padding: 12px;
+  text-align: left;
+}
+
+th {
+  text-align: center;
+  background: #007bff;
+  color: white;
+  font-weight: bold;
+}
+
+tr:nth-child(even) {
+  background: #f8f9fa;
+}
+
+/* Бутони в таблицата */
+table button {
+  padding: 8px 12px;
+  font-size: 0.9rem;
+  margin: 2px;
+}
+
+/* Адаптивни корекции за малки екрани */
+@media (max-width: 768px) {
+  .table-container {
+    margin-top: 10px;
   }
 
-  /* ОСНБОВНА ЧАСТ ТУК */
-  .admin-panel {
-    background: #fff;
-    padding: 30px;
-    border-radius: 12px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-    margin-top: 20px;
-    }
-    
-    /* Стил за таблиците */
-    table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
-    }
-    
-    th, td {
-    border: 1px solid #ddd;
-    padding: 12px;
-    text-align: left;
-    }
-    
-    th {
-    text-align: center;
-    background: #007bff;
-    color: white;
-    font-weight: bold;
-    }
-    
-    tr:nth-child(even) {
-    background: #f8f9fa;
-    }
-    
-    /* Бутоните */
-    button {
-    background: #007bff;
-    color: white;
-    border: none;
-    padding: 10px 15px;
-    border-radius: 6px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    margin-right: 5px;
-    }
-    .back-position{
-    margin-top: 20px;
-    }
-    
-    button:hover {
-    background: #0056b3;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-    }
-    
-    button.delete {
-    background: #dc3545;
-    }
-    
-    button.delete:hover {
-    background: #a71d2a;
-    }
-    
-    /* Стил за формите */
-    input, textarea {
-    width: 100%;
-    padding: 10px;
-    margin-top: 5px;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    }
-    
-    input:focus, textarea:focus {
-    border-color: #007bff;
-    outline: none;
-    box-shadow: 0px 0px 5px rgba(0, 123, 255, 0.5);
-    }
-    
-    /* Подреждане на формите */
-    label {
-    font-weight: bold;
-    margin-top: 10px;
-    display: block;
-    }
-    
-    /* Секция за редактиране */
-    .showEditForm {
-    background: #f8f9fa;
-    padding: 20px;
-    border-radius: 8px;
-    margin-top: 15px;
-    }
-    
-    /* Оформление на админ панела */
-    .admin-panel h2 {
-    color: #333;
-    margin-top: 20px;
-    }
-    
-    
-    
-    
-    /* Бутоните */
-    .button-group {
-      display: flex;
-      justify-content: space-between;
-      margin-top: 20px;
-    }
-    
-    .primary-btn {
-      background-color: #007bff;
-      color: white;
-      border: none;
-      padding: 10px 20px;
-      border-radius: 8px;
-      cursor: pointer;
-      font-size: 14px;
-    }
-    
-    .primary-btn:hover {
-      background-color: #0056b3;
-    }
-    
-    .secondary-btn {
-      background-color: #6c757d;
-      color: white;
-      border: none;
-      padding: 10px 20px;
-      border-radius: 8px;
-      cursor: pointer;
-      font-size: 14px;
-    }
-    
-    .secondary-btn:hover {
-      background-color: #5a6268;
-    }
+  th, td {
+    padding: 8px;
+    font-size: 0.9rem;
+  }
 
+  table button {
+    padding: 6px 10px;
+    font-size: 0.8rem;
+  }
+}
 
 /* Секция „За нас“ и социални връзки */
 .footer {

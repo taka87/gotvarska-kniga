@@ -89,11 +89,15 @@
   .recipe-container {
     width: 90%;
     max-width: 700px;
-    margin: 50px auto;
+    margin: 5% auto;
     padding: 2rem;
     background: #ffffff;
     border-radius: 12px;
     box-shadow: 0 6px 24px rgba(0, 0, 0, 0.12);
+ /* overflow: hidden; /* Предотвратява излизане на съдържанието */
+  box-sizing: border-box; /* Предотвратява излизане на съдържанието */
+
+
   }
   
   .recipe-title {

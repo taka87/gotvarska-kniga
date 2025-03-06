@@ -10,7 +10,7 @@ import { HttpClient } from '@angular/common/http';
   styleUrl: './show-local-recipes.component.css'
 })
 export class ShowLocalRecipesComponent implements OnInit {
-  title = "Рецпти в локалния сървър:"
+  title = "Рецепти в локалния сървър:"
   recipes: any[] = []; // Масив за рецепти
 
   constructor(private http: HttpClient) {}

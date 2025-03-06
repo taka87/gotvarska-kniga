@@ -5,6 +5,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { UserSessionService } from '../services/user-session.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-user-registration',
@@ -23,8 +24,17 @@ export class UserRegistrationComponent implements OnInit {
     private fb: FormBuilder,
     private router: Router,
     private http: HttpClient,
-    private userSession: UserSessionService
-  ) {}
+    private userSession: UserSessionService,
+    private snackBar: MatSnackBar
+  ) {}  
+
+  showMessage(message: string) {
+    this.snackBar.open(message, 'Затвори', {
+      duration: 3000, // 3 секунди
+      horizontalPosition: 'center',
+      verticalPosition: 'top'
+    });
+  }
 
   ngOnInit(): void {
     this.registrationForm = this.fb.group({
@@ -68,6 +78,7 @@ export class UserRegistrationComponent implements OnInit {
     this.http.post(this.apiUrl, newUser).subscribe(() => {
       this.userSession.setUser(JSON.stringify(newUser));
       //alert('Регистрацията е успешна!');
+      this.showMessage('Регистрацията е успешна!');
       this.router.navigate(['/']);
     });
   }
