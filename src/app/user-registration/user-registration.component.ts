@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { UserSessionService } from '../services/user-session.service';
 
@@ -10,7 +10,7 @@ import { UserSessionService } from '../services/user-session.service';
   selector: 'app-user-registration',
   templateUrl: './user-registration.component.html',
   styleUrls: ['./user-registration.component.css'],
-  imports: [CommonModule,ReactiveFormsModule ],
+  imports: [CommonModule,ReactiveFormsModule,RouterLink ],
 })
 export class UserRegistrationComponent implements OnInit {
   title = 'Добре дошли в нашия кулинарен свят ... ';

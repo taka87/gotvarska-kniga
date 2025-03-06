@@ -188,6 +188,7 @@ button:hover {
   /* border: 2px solid red; Ще видиш рамките на всеки елемент */
   max-width: 1200px; /* Увеличаваме максималната ширина*/
   grid-template-columns: repeat(2, 1fr); /* Оставяме 2 колони */
+  overflow: hidden; /* Предотвратява излизане на съдържанието */
 }
 
 .category-item:hover {

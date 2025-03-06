@@ -195,28 +195,168 @@
 
 /* Секция „За нас“ и социални връзки */
 .footer {
-    background-color: #eebcbc;
-    color: white;
-    text-align: center;
-    padding: 20px;
-    margin-top: 40px;
-    border-radius: 8px;
+  background-color: #eebcbc;
+  color: white;
+  text-align: center;
+  padding: 20px;
+  margin-top: 40px;
+  border-radius: 8px;
+}
+
+.footer .social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.footer .social-icons img {
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.footer .social-icons img:hover {
+  transform: scale(1.2);
+}
+
+.footer .social-icons img {
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  transition: transform 0.2s;
+  animation: pulse 3s infinite;
+}
+
+/* Потрепване на социални икони */
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+}
+
+/* Footer анимация */
+.footer {
+  background-color: #eebcbc;
+  color: white;
+  text-align: center;
+  padding: 20px;
+  margin-top: 40px;
+  border-radius: 8px;
+  animation: slideUp 1.5s ease-out;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Линка "ЗА НАС" */
+.about-link {
+  text-decoration: none;
+  color: #2c3e50;
+  transition: all 0.3s ease;
+  display: inline-block;
+  position: relative;
+  cursor: pointer;
+  margin: 1rem 0;
+}
+
+.about-link h2 {
+  margin: 0;
+  padding: 0.5rem 1.5rem;
+  border-radius: 8px;
+  background: linear-gradient(145deg, #f8f9fa 0%, #e9ecef 100%);
+  box-shadow: 
+    0 4px 12px rgba(0,0,0,0.08),
+    inset 0 0 0 1px rgba(255,255,255,0.4);
+}
+
+.about-link:hover {
+  transform: translateY(-2px);
+}
+
+.nadpis {
+  color:  rgba(0, 0, 0, 0.531);
+}
+
+.about-link:hover h2 {
+  color: #2b6cb0;
+  box-shadow: 
+    0 6px 16px rgba(43,108,176,0.15),
+    inset 0 0 0 1px rgba(66,153,225,0.2);
+}
+
+.about-link:active {
+  transform: translateY(1px);
+}
+
+/* bottom */
+.site-footer {
+  background: linear-gradient(145deg, #f8fafb 0%, #eef2f6 100%);
+  padding: 1.5rem 2rem;
+  text-align: center;
+  border-top: 1px solid rgba(255,255,255,0.4);
+  box-shadow: 0 -4px 16px rgba(0,0,0,0.05);
+  margin-top: 4rem;
+  border-radius: 12px 12px 0 0;
+  position: relative;
+}
+
+.site-footer::before {
+  content: '';
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60%;
+  height: 4px;
+  background: #63b3ed;
+  border-radius: 2px;
+  opacity: 0.3;
+}
+
+.site-footer p {
+  margin: 0.4rem 0;
+  color: #4a5568;
+  font-size: 0.9rem;
+  letter-spacing: 0.3px;
+}
+
+.project-note {
+  font-size: 0.8rem !important;
+  color: #718096 !important;
+  font-style: italic;
+}
+
+/* Анимация при скрол */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.site-footer {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .site-footer {
+    padding: 1rem;
+    margin-top: 2rem;
   }
   
-  .footer .social-icons {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    margin-top: 10px;
+  .site-footer p {
+    font-size: 0.85rem;
   }
-  
-  .footer .social-icons img {
-    width: 30px;
-    height: 30px;
-    cursor: pointer;
-    transition: transform 0.2s;
-  }
-  
-  .footer .social-icons img:hover {
-    transform: scale(1.2);
-  }
+}
