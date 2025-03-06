@@ -172,32 +172,36 @@
   }
   
   /* Дясна колона с карта */
-  /* Основен контейнер */
+/* Основен контейнер */
 .contact-container {
   display: flex;
-  gap: 30px;
-  padding: 30px;
-  align-items: flex-start; /* Променено от center */
+  flex-direction: column; /* Променено на колона за мобилни устройства */
+  gap: 20px;
+  padding: 20px;
+  max-width: 1200px; /* Ограничава максималната ширина */
+  margin: 0 auto; /* Центрира контейнера */
+  box-sizing: border-box; /* Предотвратява излизане на съдържанието */
+  align-items: center;
 }
 
 /* Лява колона */
 .contact-info {
   flex: 1;
-  max-width: 600px;
-  margin-top: 40px; /* Добавено */
+  background: linear-gradient(145deg, #f8fafb 0%, #eef2f6 100%);
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
 }
 
 /* Дясна колона - карта */
 .map-wrapper {
+  flex: 1;
   position: relative;
+  align-items: center;
   width: 100%;
-  max-width: 600px; /* Увеличаваме ширината */
-  max-height: 100%;
-  height: 500px; /* ⬆️ Увеличаваме височината на картата */
-  margin: 150px auto 0 auto; /* ⬇️ Премества картата надолу */
-  display: flex;
-  justify-content: center; /* Центрира по хоризонтала */
-  align-items: center; /* Центрира по вертикала ако е нужно */
+  height: 400px; /* Фиксирана височина за картата */
+  border-radius: 12px;
+  overflow: hidden; /* Предотвратява излизане на съдържанието */
 }
 
 .map-overlay {
@@ -213,16 +217,16 @@
   z-index: 10; /* 🛠 Уверяваме се, че е върху картата */
 }
   
-  /* Responsive Design */
-  @media (max-width: 768px) {
-    .contact-container {
-      grid-template-columns: 1fr;
-    }
-    
-    .map-container {
-      height: 500px;
-    }
+/* Responsive Design */
+@media (min-width: 768px) {
+  .contact-container {
+    flex-direction: row; /* Връщаме редовете за по-широки екрани */
   }
+
+  .map-wrapper {
+    height: 700px; /* Увеличаваме височината за по-широки екрани */
+  }
+}
 
 
   
