@@ -106,45 +106,7 @@ export class RegisterFormComponentMySqlComponent implements OnInit{
       this.showMessage('❌ Грешка при регистрация SUPA!');
     }
   }
-
-  // async onSubmit() {
-  //   if (this.registrationForm.invalid || this.passwordsDoNotMatch) {
-  //     return;
-  //   }
-
-  //   const userData = {
-  //     first_name: this.registrationForm.value.firstName,
-  //     last_name: this.registrationForm.value.lastName,
-  //     email: this.registrationForm.value.email,
-  //     password_hash: this.registrationForm.value.password,
-  //     role: this.isAdmin ? 'admin' : 'user' // 👈 Задаваме правилната роля
-  //   };
-
-  //   //console.log('dawaj datata', userData);
-  //   this.http.post(this.apiUrl, userData)
-  //     .pipe(
-  //       tap(() => {
-  //         this.showMessage('✅ Регистрация успешна! Пренасочваме...')
-  //         // console.log('✅ Регистрация успешна! Пренасочваме...');
-  //         this.registrationForm.reset();
-  //         this.router.navigate(['/']);
-  //       })
-  //     )
-  //     .subscribe({
-  //       next: (response) => this.showMessage('Регистрация успешна!'),
-  //       error: (error) => this.showMessage('Грешка при регистрация:')
-  //       // next: (response) => console.log('Регистрация успешна!', response),
-  //       // error: (error) => console.error('Грешка при регистрация:', error)
-  //     });
-
-  //     //supabase
-  //     if (this.registrationForm.invalid) return;
-
-  //     await this.registerUserWithSupabase();
-      
-  //     //console.log("Локална регистрация също може да се изпълни тук");
-  // }
-
+  
   goBack(): void {
     this.router.navigate(['/']);
   }
