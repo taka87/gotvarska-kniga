@@ -65,7 +65,7 @@ export class RegisterFormComponentMySqlComponent implements OnInit{
   }
 
   //supabase
-  async onSubmit() {
+  onSubmit() {
     if (this.registrationForm.invalid || this.passwordsDoNotMatch) {
       return;
     }
@@ -95,7 +95,7 @@ export class RegisterFormComponentMySqlComponent implements OnInit{
       });
   
       // 2️⃣ Регистрация в Supabase
-      await this.registerUserWithSupabase();
+      this.registerUserWithSupabase();
       this.showMessage('✅ Регистрация успешна в Supabase!');
   
       // ✅ Ако всичко мине успешно, пренасочваме потребителя
@@ -106,7 +106,7 @@ export class RegisterFormComponentMySqlComponent implements OnInit{
       this.showMessage('❌ Грешка при регистрация SUPA!');
     }
   }
-  
+
   goBack(): void {
     this.router.navigate(['/']);
   }
