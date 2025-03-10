@@ -1,10 +1,11 @@
 import { createClient } from '@supabase/supabase-js';
-import { environment } from './src/environments/environment';
 
-const supabaseUrl = environment.supabaseUrl;
-const supabaseKey = environment.supabaseKey;
-if (!supabaseUrl || !supabaseKey) {
-  throw new Error("❌ SUPABASE_URL или SUPABASE_ANON_KEY не са зададени!");
-}
+const SUPABASE_URL = 'https://your-supabase-url.supabase.co';
+const SUPABASE_KEY = 'your-public-anon-key';
 
-export const supabase = createClient(supabaseUrl, supabaseKey);
+// Проверяваме дали сме в браузър
+const isBrowser = typeof window !== 'undefined';
+
+export const supabase = isBrowser
+  ? createClient(SUPABASE_URL, SUPABASE_KEY)
+  : null;
