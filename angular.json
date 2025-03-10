@@ -16,6 +16,9 @@
             "outputPath": "dist/gotvarska-kniga/browser",
             "index": "src/index.html",
             "main": "src/main.ts",
+            "allowedCommonJsDependencies": [
+              "ws"
+            ],
             "polyfills": [
               "zone.js"
             ],
