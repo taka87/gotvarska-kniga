@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 import { tap } from 'rxjs';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { supabase } from '../../../../supabase';
-// import * as bcrypt from 'bcryptjs';
+import * as bcrypt from 'bcryptjs';
 
 @Component({
   selector: 'app-register-form-component-my-sql',
@@ -94,15 +94,9 @@ export class RegisterFormComponentMySqlComponent implements OnInit{
         }
       });
   
-      if (typeof window !== 'undefined') {
-        // Код, който използва window
-    
-        console.log("Supabase URL:", process.env['supabaseUrl']);
-        console.log("Supabase Anon Key:", process.env['supabaseKey']);
       // 2️⃣ Регистрация в Supabase
       await this.registerUserWithSupabase();
       this.showMessage('✅ Регистрация успешна в Supabase!');
-      }
   
       // ✅ Ако всичко мине успешно, пренасочваме потребителя
       this.registrationForm.reset();
@@ -155,20 +149,22 @@ export class RegisterFormComponentMySqlComponent implements OnInit{
     this.router.navigate(['/']);
   }
 
-  
   //supabase->register
   async registerUserWithSupabase() {
-    if (typeof window !== 'undefined') {
-      // Код, който използва window
-  
-    const { firstName, lastName, email, password } = this.registrationForm.value;
+    // console.log("Стойностите на формата:", this.registrationForm.value);
+
+    const first_name = this.registrationForm.value.firstName;
+    const last_name = this.registrationForm.value.lastName;
+    const email = this.registrationForm.value.email;
+    const password = this.registrationForm.value.password; // 👈 Supabase изисква `password`, не `password_hash`
     const role = this.isAdmin ? 'admin' : 'user';
 
-    console.log("Данни за регистрация:", { firstName, lastName, email, password, role });
+    // console.log("Данни за регистрация:", { first_name, last_name, email, password, role });
 
+    // 1️⃣ Регистрация в Supabase Authentication
     const { data, error } = await supabase.auth.signUp({
-      email,
-      password
+      email: email,
+      password: password
     });
 
     if (error) {
@@ -177,17 +173,27 @@ export class RegisterFormComponentMySqlComponent implements OnInit{
       return;
     }
 
+    // console.log("✅ Успешна регистрация в Authentication!", data);
+    // 2️⃣ Хеширане на паролата
+    const hashedPassword = await this.hashPassword(password);
+
+    console.log(hashedPassword);
+
+    // 2️⃣ Добавяне на потребителя в таблицата `users`
     if (data.user) {
-      const { error: dbError } = await supabase.from('users').insert([{
-        id: data.user.id,
-        first_name: firstName,
-        last_name: lastName,
-        email,
-        role
-      }]);
+      const { error: dbError } = await supabase.from('users').insert([
+        {
+          id: data.user.id, // 👈 ID-то от Supabase Auth
+          first_name: first_name,
+          last_name: last_name,
+          email: email,
+          password_hash: hashedPassword,
+          role: role
+        }
+      ]);
 
       if (dbError) {
-        console.error('❌ Грешка при запис в Supabase DB:', dbError.message);
+        console.error('❌ Грешка при запис в таблицата `users`:', dbError.message);
         this.showMessage('❌ Грешка в Supabase Database!');
         return;
       }
@@ -195,10 +201,9 @@ export class RegisterFormComponentMySqlComponent implements OnInit{
       this.showMessage('✅ Успешна регистрация в Supabase!');
     }
   }
-}
 
-  // async hashPassword(password: string): Promise<string> {
-  //   const saltRounds = 10; // Брой солени rounds за хеширане
-  //   return await bcrypt.hash(password, saltRounds);
-  // }
+  async hashPassword(password: string): Promise<string> {
+    const saltRounds = 10; // Брой солени rounds за хеширане
+    return await bcrypt.hash(password, saltRounds);
+  }
 }
