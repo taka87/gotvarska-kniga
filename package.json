@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build --configuration production",
+    "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "serve:ssr:gotvarska-kniga": "node dist/gotvarska-kniga/server/server.mjs",
@@ -12,7 +12,8 @@
     "dev:ssr": "ng run gotvarska-kniga:serve-ssr",
     "build:ssr": "ng build && ng run gotvarska-kniga:server",
     "serve:ssr": "node dist/gotvarska-kniga/server/main.js",
-    "prerender": "ng run gotvarska-kniga:prerender"
+    "prerender": "ng run gotvarska-kniga:prerender",  
+    "prebuild": "node generate-env.js"
   },
   "private": true,
   "dependencies": {
