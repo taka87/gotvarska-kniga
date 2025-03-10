@@ -20,15 +20,12 @@ export class UserSessionService {
     private http: HttpClient,
     private authService: AuthService, 
     private router: Router,
-    @Inject(PLATFORM_ID) private platformId: Object
+    // @Inject(PLATFORM_ID) private platformId: any  //SSR 
   ) { }
 
   //Това гарантира, че localStorage ще се изпълни само в браузър.
   getUserData(): string | null {
-    if (isPlatformBrowser(this.platformId)) {
       return localStorage.getItem('loggedUser');
-    }
-    return null;
   }
 
   private get authHeader() {
@@ -63,11 +60,11 @@ deleteOwnAccount(userId: number): Observable<any> {
   // );
 }
 
-// ⬇️ Изчистваме локално user-а
-clearUser(): void {
-  console.log('🧹 Изчистваме потребителската сесия');
-  
-  localStorage.removeItem('loggedUser');
-  this.loggedInUser.next(null); // Нулираме BehaviorSubject
-}
+  // ⬇️ Изчистваме локално user-а
+  clearUser(): void {
+    console.log('🧹 Изчистваме потребителската сесия');
+    
+    localStorage.removeItem('loggedUser');
+    this.loggedInUser.next(null); // Нулираме BehaviorSubject
+  }
 }
