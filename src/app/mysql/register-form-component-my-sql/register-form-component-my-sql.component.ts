@@ -97,6 +97,8 @@ export class RegisterFormComponentMySqlComponent implements OnInit{
       if (typeof window !== 'undefined') {
         // Код, който използва window
     
+        console.log("Supabase URL:", process.env['supabaseUrl']);
+        console.log("Supabase Anon Key:", process.env['supabaseKey']);
       // 2️⃣ Регистрация в Supabase
       await this.registerUserWithSupabase();
       this.showMessage('✅ Регистрация успешна в Supabase!');
