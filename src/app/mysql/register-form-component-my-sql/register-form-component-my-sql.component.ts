@@ -65,7 +65,7 @@ export class RegisterFormComponentMySqlComponent implements OnInit{
   }
 
   //supabase
-  onSubmit() {
+  async onSubmit() {
     if (this.registrationForm.invalid || this.passwordsDoNotMatch) {
       return;
     }
@@ -95,7 +95,7 @@ export class RegisterFormComponentMySqlComponent implements OnInit{
       });
   
       // 2️⃣ Регистрация в Supabase
-      this.registerUserWithSupabase();
+      await this.registerUserWithSupabase();
       this.showMessage('✅ Регистрация успешна в Supabase!');
   
       // ✅ Ако всичко мине успешно, пренасочваме потребителя
@@ -107,26 +107,58 @@ export class RegisterFormComponentMySqlComponent implements OnInit{
     }
   }
 
+  // async onSubmit() {
+  //   if (this.registrationForm.invalid || this.passwordsDoNotMatch) {
+  //     return;
+  //   }
+
+  //   const userData = {
+  //     first_name: this.registrationForm.value.firstName,
+  //     last_name: this.registrationForm.value.lastName,
+  //     email: this.registrationForm.value.email,
+  //     password_hash: this.registrationForm.value.password,
+  //     role: this.isAdmin ? 'admin' : 'user' // 👈 Задаваме правилната роля
+  //   };
+
+  //   //console.log('dawaj datata', userData);
+  //   this.http.post(this.apiUrl, userData)
+  //     .pipe(
+  //       tap(() => {
+  //         this.showMessage('✅ Регистрация успешна! Пренасочваме...')
+  //         // console.log('✅ Регистрация успешна! Пренасочваме...');
+  //         this.registrationForm.reset();
+  //         this.router.navigate(['/']);
+  //       })
+  //     )
+  //     .subscribe({
+  //       next: (response) => this.showMessage('Регистрация успешна!'),
+  //       error: (error) => this.showMessage('Грешка при регистрация:')
+  //       // next: (response) => console.log('Регистрация успешна!', response),
+  //       // error: (error) => console.error('Грешка при регистрация:', error)
+  //     });
+
+  //     //supabase
+  //     if (this.registrationForm.invalid) return;
+
+  //     await this.registerUserWithSupabase();
+      
+  //     //console.log("Локална регистрация също може да се изпълни тук");
+  // }
+
   goBack(): void {
     this.router.navigate(['/']);
   }
 
   //supabase->register
   async registerUserWithSupabase() {
-    console.log("Стойностите на формата:", this.registrationForm.value);
-
-    const first_name = this.registrationForm.value.firstName;
-    const last_name = this.registrationForm.value.lastName;
-    const email = this.registrationForm.value.email;
-    const password = this.registrationForm.value.password; // 👈 Supabase изисква `password`, не `password_hash`
+    const { firstName, lastName, email, password } = this.registrationForm.value;
     const role = this.isAdmin ? 'admin' : 'user';
 
-    console.log("Данни за регистрация:", { first_name, last_name, email, password, role });
+    console.log("Данни за регистрация:", { firstName, lastName, email, password, role });
 
-    // 1️⃣ Регистрация в Supabase Authentication
     const { data, error } = await supabase.auth.signUp({
-      email: email,
-      password: password
+      email,
+      password
     });
 
     if (error) {
@@ -135,34 +167,24 @@ export class RegisterFormComponentMySqlComponent implements OnInit{
       return;
     }
 
-    // console.log("✅ Успешна регистрация в Authentication!", data);
-    // 2️⃣ Хеширане на паролата
-    // const hashedPassword = await this.hashPassword(password);
-
-    // console.log(hashedPassword);
-
-    // 2️⃣ Добавяне на потребителя в таблицата `users`
     if (data.user) {
-      const { error: dbError } = await supabase.from('users').insert([
-        {
-          id: data.user.id, // 👈 ID-то от Supabase Auth
-          first_name: first_name,
-          last_name: last_name,
-          email: email,
-          password_hash: password,
-          role: role
-        }
-      ]);
+      const { error: dbError } = await supabase.from('users').insert([{
+        id: data.user.id,
+        first_name: firstName,
+        last_name: lastName,
+        email,
+        role
+      }]);
 
       if (dbError) {
-        console.error('❌ Грешка при запис в таблицата `users`:', dbError.message);
+        console.error('❌ Грешка при запис в Supabase DB:', dbError.message);
         this.showMessage('❌ Грешка в Supabase Database!');
         return;
       }
 
       this.showMessage('✅ Успешна регистрация в Supabase!');
     }
-  }
+}
 
   // async hashPassword(password: string): Promise<string> {
   //   const saltRounds = 10; // Брой солени rounds за хеширане
