@@ -94,9 +94,13 @@ export class RegisterFormComponentMySqlComponent implements OnInit{
         }
       });
   
+      if (typeof window !== 'undefined') {
+        // Код, който използва window
+    
       // 2️⃣ Регистрация в Supabase
       await this.registerUserWithSupabase();
       this.showMessage('✅ Регистрация успешна в Supabase!');
+      }
   
       // ✅ Ако всичко мине успешно, пренасочваме потребителя
       this.registrationForm.reset();
@@ -149,8 +153,12 @@ export class RegisterFormComponentMySqlComponent implements OnInit{
     this.router.navigate(['/']);
   }
 
+  
   //supabase->register
   async registerUserWithSupabase() {
+    if (typeof window !== 'undefined') {
+      // Код, който използва window
+  
     const { firstName, lastName, email, password } = this.registrationForm.value;
     const role = this.isAdmin ? 'admin' : 'user';
 
@@ -184,6 +192,7 @@ export class RegisterFormComponentMySqlComponent implements OnInit{
 
       this.showMessage('✅ Успешна регистрация в Supabase!');
     }
+  }
 }
 
   // async hashPassword(password: string): Promise<string> {
