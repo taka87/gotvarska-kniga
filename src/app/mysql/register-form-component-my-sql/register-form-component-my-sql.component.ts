@@ -97,6 +97,11 @@ export class RegisterFormComponentMySqlComponent implements OnInit{
         }
       });
   
+      if (typeof window !== "undefined") {
+        console.log("✅ Running in browser");
+      } else {
+        console.log("⚠️ Running on server, skipping Supabase logic");
+      }
     // 2️⃣ Проверка дали сме в браузъра преди Supabase
     if (isPlatformBrowser(this.platformId)) {
       await this.registerUserWithSupabase();
