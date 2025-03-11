@@ -158,6 +158,11 @@ export class RegisterFormComponentMySqlComponent implements OnInit{
 
   //supabase->register
   async registerUserWithSupabase() {
+
+    if (!isPlatformBrowser(this.platformId)) {
+      console.warn('⚠️ Supabase е пропуснат (SSR)');
+      return;
+    }
     // console.log("Стойностите на формата:", this.registrationForm.value);
 
     const first_name = this.registrationForm.value.firstName;
