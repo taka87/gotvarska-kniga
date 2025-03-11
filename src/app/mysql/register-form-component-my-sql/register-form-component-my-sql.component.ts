@@ -10,8 +10,6 @@ import { tap } from 'rxjs';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { supabase } from '../../../../supabase';
 import * as bcrypt from 'bcryptjs';
-import { isPlatformBrowser } from "@angular/common";
-import { PLATFORM_ID, Inject } from "@angular/core";
 
 @Component({
   selector: 'app-register-form-component-my-sql',
@@ -22,7 +20,6 @@ import { PLATFORM_ID, Inject } from "@angular/core";
 export class RegisterFormComponentMySqlComponent implements OnInit{
   @Input() isAdmin: boolean = false; // 👈 Различаваме user/admin
   // @Output() registrationSuccess = new EventEmitter<void>();
-  private platformId = Inject(PLATFORM_ID);
 
   registrationForm!: FormGroup;
   passwordsDoNotMatch: boolean = false;
@@ -97,18 +94,10 @@ export class RegisterFormComponentMySqlComponent implements OnInit{
         }
       });
   
-      if (typeof window !== "undefined") {
-        console.log("✅ Running in browser");
-      } else {
-        console.log("⚠️ Running on server, skipping Supabase logic");
-      }
-    // 2️⃣ Проверка дали сме в браузъра преди Supabase
-    if (isPlatformBrowser(this.platformId)) {
+      
+      // 2️⃣ Регистрация в Supabase
       await this.registerUserWithSupabase();
       this.showMessage('✅ Регистрация успешна в Supabase!');
-    } else {
-      console.warn('⚠️ Supabase е пропуснат, защото сме на сървър (SSR)');
-    }
   
       // ✅ Ако всичко мине успешно, пренасочваме потребителя
       this.registrationForm.reset();
@@ -163,11 +152,6 @@ export class RegisterFormComponentMySqlComponent implements OnInit{
 
   //supabase->register
   async registerUserWithSupabase() {
-
-    if (!isPlatformBrowser(this.platformId)) {
-      console.warn('⚠️ Supabase е пропуснат (SSR)');
-      return;
-    }
     // console.log("Стойностите на формата:", this.registrationForm.value);
 
     const first_name = this.registrationForm.value.firstName;
