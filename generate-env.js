@@ -7,8 +7,8 @@ const envContent = `
 export const environment = {
   production: ${process.env.NODE_ENV === 'production'},
   googleMapsApiKey: '${process.env.googleMapsApiKey}',
-  supabaseUrl: '${process.env.supabaseUrl}',
-  supabaseKey: '${process.env.supabaseKey}'
+  supabaseUrl: '${process.env.NEXT_PUBLIC_SUPABASE_URL}',
+  supabaseKey: '${process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY}'
 };
 `;
 
