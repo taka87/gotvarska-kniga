@@ -151,7 +151,7 @@ export class RegisterFormComponentMySqlComponent implements OnInit{
 
   //supabase->register
   async registerUserWithSupabase() {
-    console.log("Стойностите на формата:", this.registrationForm.value);
+    // console.log("Стойностите на формата:", this.registrationForm.value);
 
     const first_name = this.registrationForm.value.firstName;
     const last_name = this.registrationForm.value.lastName;
@@ -159,7 +159,7 @@ export class RegisterFormComponentMySqlComponent implements OnInit{
     const password = this.registrationForm.value.password; // 👈 Supabase изисква `password`, не `password_hash`
     const role = this.isAdmin ? 'admin' : 'user';
 
-    console.log("Данни за регистрация:", { first_name, last_name, email, password, role });
+    // console.log("Данни за регистрация:", { first_name, last_name, email, password, role });
 
     // 1️⃣ Регистрация в Supabase Authentication
     const { data, error } = await supabase.auth.signUp({
@@ -177,7 +177,7 @@ export class RegisterFormComponentMySqlComponent implements OnInit{
     // 2️⃣ Хеширане на паролата
     const hashedPassword = await this.hashPassword(password);
 
-    console.log(hashedPassword);
+    // console.log(hashedPassword);
 
     // 2️⃣ Добавяне на потребителя в таблицата `users`
     if (data.user) {
