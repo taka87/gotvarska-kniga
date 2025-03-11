@@ -10,6 +10,8 @@ import { tap } from 'rxjs';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { supabase } from '../../../../supabase';
 import * as bcrypt from 'bcryptjs';
+import { isPlatformBrowser } from "@angular/common";
+import { PLATFORM_ID, Inject } from "@angular/core";
 
 @Component({
   selector: 'app-register-form-component-my-sql',
@@ -29,7 +31,8 @@ export class RegisterFormComponentMySqlComponent implements OnInit{
     private fb: FormBuilder,
     private router: Router,
     private http: HttpClient,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    @Inject(PLATFORM_ID) private platformId: any
   ) {}
 
   showMessage(message: string) {
@@ -94,6 +97,9 @@ export class RegisterFormComponentMySqlComponent implements OnInit{
         }
       });
   
+      if (isPlatformBrowser(this.platformId)) {
+        // Supabase кодът тук
+      }
       // 2️⃣ Регистрация в Supabase
       await this.registerUserWithSupabase();
       this.showMessage('✅ Регистрация успешна в Supabase!');

@@ -1,8 +1,8 @@
 import { createClient } from '@supabase/supabase-js';
 import { environment } from './src/environments/environment';
 
-const supabaseUrl = environment.supabaseUrl;
-const supabaseKey = environment.supabaseKey;
+const supabaseUrl = environment.NEXT_PUBLIC_SUPABASE_URL;
+const supabaseKey = environment.NEXT_PUBLIC_SUPABASE_ANON_KEY;
 
 export const supabase = createClient(supabaseUrl, supabaseKey);
 
