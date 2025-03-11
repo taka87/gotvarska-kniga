@@ -102,6 +102,10 @@ export class LoggedButtonMysqlComponent {
     // localStorage.removeItem('token');   //additional
     // localStorage.removeItem('loggedUser');  //additional
     this.userLoggedIn.next(false);
-    window.location.href = "/";
+
+    if (typeof window !== 'undefined') {
+      window.location.href = "/";
+      console.log(window.location.href);
+    }    
   }
 }

@@ -165,7 +165,11 @@ export class HomeComponent {
     localStorage.removeItem('loggedUser'); 
     this.isLoggedMySQL = false;
     this.userNameMySQL = null;
+    if (typeof window !== 'undefined') {
+      // Кодът тук ще се изпълнява само в браузъра
     window.location.reload();
+      console.log(window.location.href);
+    }
   }
 
     // swiper - slide

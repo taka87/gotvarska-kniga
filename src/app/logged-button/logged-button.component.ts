@@ -20,7 +20,11 @@ export class LoggedButtonComponent {
 
   logOut(): void {
     localStorage.removeItem('loggedUser');
+    if (typeof window !== 'undefined') {
+      // Кодът тук ще се изпълнява само в браузъра
     window.location.reload();
+      console.log(window.location.href);
+    }
   }
 
   addRecipe(): void {

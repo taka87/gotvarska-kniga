@@ -18,6 +18,15 @@ export class RawMapComponent implements OnInit {
   }
 
   loadGoogleMaps(): void {
+    if (typeof window !== 'undefined') {
+      // Кодът тук ще се изпълнява само в браузъра
+      if (window['google'] && window['google'].maps) {
+        //console.log('Google Maps API вече е зареден.');
+        this.loadMap(); // Ако API-то е заредено, директно зареждаме картата
+        return;
+      }
+      console.log(window.location.href);
+    }
     if (window['google'] && window['google'].maps) {
       //console.log('Google Maps API вече е зареден.');
       this.loadMap(); // Ако API-то е заредено, директно зареждаме картата
