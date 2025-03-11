@@ -12,7 +12,7 @@
     "dev:ssr": "ng run gotvarska-kniga:serve-ssr",
     "build:ssr": "ng build && ng run gotvarska-kniga:server",
     "serve:ssr": "node dist/gotvarska-kniga/server/main.js",
-    "prerender": "ng run gotvarska-kniga:prerender",  
+    "prerender": "ng run gotvarska-kniga:prerender",
     "prebuild": "node generate-env.js"
   },
   "private": true,
@@ -84,7 +84,7 @@
     "ms": "^2.1.3",
     "parsejson": "^0.0.3",
     "parseuri": "^3.0.2",
-    "typescript": "~5.7.2",
+    "typescript": "^5.8.2",
     "ws": "^8.18.1",
     "xmlhttprequest": "^1.8.0",
     "yargs-parser": "^21.1.1"

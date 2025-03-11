@@ -32,7 +32,7 @@ export class RegisterFormComponentMySqlComponent implements OnInit{
     private router: Router,
     private http: HttpClient,
     private snackBar: MatSnackBar,
-    @Inject(PLATFORM_ID) private platformId: any
+    @Inject(PLATFORM_ID) private platformId: Object
   ) {}
 
   showMessage(message: string) {
