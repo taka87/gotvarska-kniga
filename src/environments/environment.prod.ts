@@ -1,6 +1,6 @@
 export const environment = {
   production: true,
-  googleMapsApiKey: 'googleMapsApiKey',
+  NEXT_PUBLIC_SUPABASE_URL: 'googleMapsApiKey',
   supabaseUrl: 'supabaseUrl',
-  supabaseKey: 'supabaseKey'
+  NEXT_PUBLIC_SUPABASE_ANON_KEY: 'supabaseKey'
 };
