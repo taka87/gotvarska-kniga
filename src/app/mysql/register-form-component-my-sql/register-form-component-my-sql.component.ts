@@ -97,12 +97,13 @@ export class RegisterFormComponentMySqlComponent implements OnInit{
         }
       });
   
-      if (isPlatformBrowser(this.platformId)) {
-        // Supabase трябва да вметнем тук 
-      }
-      // 2️⃣ Регистрация в Supabase код за isPlatformBrowser OK ??
+    // 2️⃣ Проверка дали сме в браузъра преди Supabase
+    if (isPlatformBrowser(this.platformId)) {
       await this.registerUserWithSupabase();
       this.showMessage('✅ Регистрация успешна в Supabase!');
+    } else {
+      console.warn('⚠️ Supabase е пропуснат, защото сме на сървър (SSR)');
+    }
   
       // ✅ Ако всичко мине успешно, пренасочваме потребителя
       this.registrationForm.reset();
