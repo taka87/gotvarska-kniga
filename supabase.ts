@@ -1,14 +1,20 @@
 import { createClient } from '@supabase/supabase-js';
-import { environment } from './src/environments/environment';
-
-console.log("🔍 Supabase URL:", environment.NEXT_PUBLIC_SUPABASE_URL);
-console.log("🔍 Supabase Key:", environment.NEXT_PUBLIC_SUPABASE_ANON_KEY ? "✅ Key Loaded" : "❌ Key is MISSING!");
+import { environment } from './environments/environment'; // Правилен път до environment
 
 const supabaseUrl = environment.NEXT_PUBLIC_SUPABASE_URL;
 const supabaseKey = environment.NEXT_PUBLIC_SUPABASE_ANON_KEY;
 
-export const supabase = createClient(supabaseUrl, supabaseKey);
+// ✅ Добавяме валидация за URL-a
+if (!supabaseUrl || !supabaseKey || !supabaseUrl.startsWith('https://')) {
+  console.error("❌ Грешка: Supabase URL или ключът не са валидни!", {
+    supabaseUrl,
+    supabaseKey
+  });
+} else {
+  console.log("✅ Supabase Client се стартира успешно!");
+}
 
+export const supabase = createClient(supabaseUrl, supabaseKey);
 
 // const SUPABASE_URL = 'https://your-supabase-url.supabase.co';
 // const SUPABASE_KEY = 'your-public-anon-key';
