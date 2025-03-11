@@ -85,7 +85,6 @@
     "parsejson": "^0.0.3",
     "parseuri": "^3.0.2",
     "typescript": "^5.8.2",
-    "ws": "^8.18.1",
     "xmlhttprequest": "^1.8.0",
     "yargs-parser": "^21.1.1"
   }
