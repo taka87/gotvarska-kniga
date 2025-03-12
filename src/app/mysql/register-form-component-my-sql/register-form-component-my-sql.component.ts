@@ -177,8 +177,8 @@ export class RegisterFormComponentMySqlComponent implements OnInit{
 
     // console.log("✅ Успешна регистрация в Authentication!", data);
     // 2️⃣ Хеширане на паролата
-    // const hashedPassword = await this.hashPassword(password);
-    const hashedPassword = password;
+    const hashedPassword = await this.hashPassword(password);
+    // const hashedPassword = password;
 
     // console.log(hashedPassword);
 
@@ -205,8 +205,8 @@ export class RegisterFormComponentMySqlComponent implements OnInit{
     }
   }
 
-  // async hashPassword(password: string): Promise<string> {
-  //   const saltRounds = 10; // Брой солени rounds за хеширане
-  //   return await bcrypt.hash(password, saltRounds);
-  // }
+  async hashPassword(password: string): Promise<string> {
+    const saltRounds = 10; // Брой солени rounds за хеширане
+    return await bcrypt.hash(password, saltRounds);
+  }
 }
