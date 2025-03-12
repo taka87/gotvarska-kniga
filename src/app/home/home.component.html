@@ -59,6 +59,28 @@
 
     <hr>
 
+      <!-- секция ONLINE-DB LOGIN/REGISTER-->
+   <div class="register-menu-position">
+    <button 
+      *ngIf="!isLoggedOnlineDB" 
+      (click)="toggleOnlineDBRegistrationForm()" 
+      class="toggle-favorites-button"
+      >
+      {{ showRegisterForm ? 'Скрий ВХОД/Регистрация &uArr;OnlineDB' : 'ВХОД / Регистрация &dArr; OnlineDB' }}
+    </button>
+    <div *ngIf="showRegisterFormOnlineDB || isLoggedOnlineDB">
+      <div *ngIf="!isLoggedOnlineDB">  
+        <app-user-control-online-db></app-user-control-online-db>
+      </div>
+      <div *ngIf="isLoggedOnlineDB">
+        <h2>Добре дошъл: {{ userNameMySQL }}</h2>
+        <app-logged-button-online-db></app-logged-button-online-db>
+      </div>
+    </div>
+  </div>
+
+    <hr>
+
     <!-- ПАДАЩИ МЕНЮТА нов -->
   <app-daily-menu></app-daily-menu>
 

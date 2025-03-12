@@ -1,0 +1,34 @@
+<div class="page-wrapper">
+    <h1>{{ title }}</h1>  
+    
+    <!-- средна част за стилизиране -->
+    <h2>Добави нова рецепта в MYSQL DB</h2>
+    <p>Добави рецепта, потребител: {{ userName }}</p>
+
+    <form (ngSubmit)="saveRecipe()">
+        <input type="text" placeholder="Име на рецепта" [(ngModel)]="newRecipe.recipeName" name="name" required />
+        <textarea placeholder="Съставки" [(ngModel)]="newRecipe.ingredients" name="ingredients"></textarea>
+        <textarea placeholder="Описание" [(ngModel)]="newRecipe.description" name="description"></textarea>
+        <button type="submit">Запази</button>
+        <button (click) = "goBack()">Назад към начална страница</button>
+    </form>
+
+  
+    <!-- Долна част стилизирана не я барам -->
+    <div class="footer">
+      <a routerLink="/contact-info" class="about-link">
+        <h2> 🔗 За нас 🔗  </h2>
+      </a>
+      <p>Следвайте ни в социалните мрежи:</p>
+      <div class="social-icons">
+        <img src="assets/images/logos/facebook.jpg" alt="Facebook">
+        <img src="assets/images/logos/instagram.jpg" alt="Instagram">
+        <img src="assets/images/logos/youtube.jpg" alt="YouTube">
+        <img src="assets/images/logos/pinterest.jpg" alt="Pinterest">
+      </div>
+    </div>
+    <div class="site-footer">
+      <p>© 2024 MyRecipeBook. Всички права запазени.</p>
+      <p class="project-note">Проект за демонстрационни цели</p>
+    </div>
+  </div>

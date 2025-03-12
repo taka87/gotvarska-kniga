@@ -1,0 +1,68 @@
+<div class="page-wrapper">
+  <h1>{{ title }}</h1>
+
+  <!-- Средна част -->
+    <p>Логнат като: "{{ userName }}"</p>
+
+      <div class="showEditForm">
+        <h2>Вашите рецепти:</h2>
+        <div class="table-container">
+          <table>
+            <tr>
+              <th>Име Рецепта</th>
+              <th>Съставки</th>
+              <th>Начин приготвяне</th>
+              <th>Действия</th>
+            </tr>
+            <tr *ngFor="let recipe of userRecipes">
+              <td>{{ recipe.recipeName }}</td>
+              <td>{{ recipe.ingredients }}</td>
+              <td>{{ recipe.description }}</td>
+              <td>
+                <button (click)="editRecipe(recipe)">Редактирай</button>
+                <button (click)="deleteRecipe(recipe.id)" class="delete">Изтрий</button>
+              </td>
+            </tr>
+          </table>
+
+
+        </div>   
+                          <!-- Форма за редактиране -->
+                          <div *ngIf="showEditForm">
+                            <h3>Редактиране на рецепта</h3>
+                            <label>Име:</label>
+                            <input [(ngModel)]="selectedRecipe.recipeName" />
+                  
+                            <label>Съставки:</label>
+                            <input [(ngModel)]="selectedRecipe.ingredients" />
+                  
+                            <label>Описание:</label>
+                            <textarea [(ngModel)]="selectedRecipe.description"></textarea>
+                          <div>
+                            <button (click)="updateRecipe()">Запази</button>
+                            <button (click)="cancelEdit()">Откажи</button>
+                          </div>     
+                        </div>
+
+
+        <button class="back-position" routerLink="/">⬅ Върни се към началната страница</button>
+      </div>
+
+  <!-- Долна част (не я пипаме) -->
+  <div class="footer">
+    <a routerLink="/contact-info" class="about-link">
+      <h2> 🔗 За нас 🔗 </h2>
+    </a>
+    <p>Следвайте ни в социалните мрежи:</p>
+    <div class="social-icons">
+      <img src="assets/images/logos/facebook.jpg" alt="Facebook">
+      <img src="assets/images/logos/instagram.jpg" alt="Instagram">
+      <img src="assets/images/logos/youtube.jpg" alt="YouTube">
+      <img src="assets/images/logos/pinterest.jpg" alt="Pinterest">
+    </div>
+  </div>
+  <div class="site-footer">
+    <p>© 2024 MyRecipeBook. Всички права запазени.</p>
+    <p class="project-note">Проект за демонстрационни цели</p>
+  </div>
+</div>

@@ -17,6 +17,7 @@ import { RawMapComponent } from './google-map/raw-map/raw-map.component';
 import { UserPanelComponent } from './mysql/pages/user-panel/user-panel.component';
 import { AuthGuard } from './auth.guard';
 import { ShowLocalRecipesComponent } from './show-local-recipes/show-local-recipes.component';
+import { UserRegisterOnlineDB } from './online-DB/user-register-online-DB/user-register-online-db.component';
 
 
 export const routes: Routes = [
@@ -36,7 +37,7 @@ export const routes: Routes = [
   { path: 'user-panel', component:  UserPanelComponent, canActivate: [UserRecipeGuard]},
   { path: 'contact-info', component: MapComponent }, 
   { path: 'raw-map', component: RawMapComponent }, 
-
+  { path: 'register-online-DB', component: UserRegisterOnlineDB }
 ];
 
 // old but gold

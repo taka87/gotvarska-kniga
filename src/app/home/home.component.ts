@@ -16,6 +16,9 @@ import { AuthService } from '../mysql-services/auth-service.service';
 // import { register } from 'swiper/element/bundle';
 import Swiper from 'swiper';
 import { Navigation, Pagination, Autoplay } from 'swiper/modules';
+import { UserRegisterOnlineDB } from '../online-DB/user-register-online-DB/user-register-online-db.component';
+import { LoggedButtonOnlineDBComponent } from '../online-DB/logged-button-online-DB/logged-button-online-db.component';
+import { UserControlOnlineDBComponent } from '../online-DB/user-control-online-DB/user-control-online-db.component';
 
 @Component({
   selector: 'app-home',
@@ -26,9 +29,12 @@ import { Navigation, Pagination, Autoplay } from 'swiper/modules';
     CommonModule, 
     RouterModule,
     DailyMenuComponent, 
+    UserControlComponent, 
+    LoggedButtonComponent,
     UserControlMysqlComponent, 
     LoggedButtonMysqlComponent,
-    UserControlComponent, LoggedButtonComponent
+    UserControlOnlineDBComponent,
+    LoggedButtonOnlineDBComponent
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA], // Добави този ред
 
@@ -37,12 +43,20 @@ import { Navigation, Pagination, Autoplay } from 'swiper/modules';
 export class HomeComponent {
   title = 'Потопете се в магията на нашия кулинарен свят';
   showRegisterForm = false;
+  showRegisterFormOnlineDB = false;
   swiper: Swiper | null = null;
 
+  //MYSQl
   isLoggedMySQL = false;  
   isLogged = false;  
   userNameMySQL: string | null = null;  
   userName = 'user'; 
+
+  
+  //OnlineDB
+  isLoggedOnlineDB = false;  
+  userNameOnlineDB: string | null = null;  
+
 
   showFavorites = false;
   showCategories = true;
@@ -102,6 +116,11 @@ export class HomeComponent {
 
   toggleMySqlRegistrationForm() {
     this.showRegisterForm = !this.showRegisterForm;
+  }
+
+  //ONLINE DB
+  toggleOnlineDBRegistrationForm() {
+    this.showRegisterFormOnlineDB = !this.showRegisterFormOnlineDB;
   }
 
   // секция за логин/регистрация MYSQL
@@ -165,6 +184,18 @@ export class HomeComponent {
     localStorage.removeItem('loggedUser'); 
     this.isLoggedMySQL = false;
     this.userNameMySQL = null;
+    if (typeof window !== 'undefined') {
+      // Кодът тук ще се изпълнява само в браузъра
+    window.location.reload();
+      console.log(window.location.href);
+    }
+  }
+
+  logOutOnlineDB(): void {
+    localStorage.removeItem('token');  
+    localStorage.removeItem('loggedUser'); 
+    this.isLoggedOnlineDB = false;
+    this.userNameOnlineDB = null;
     if (typeof window !== 'undefined') {
       // Кодът тук ще се изпълнява само в браузъра
     window.location.reload();
