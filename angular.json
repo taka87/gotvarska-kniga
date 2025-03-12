@@ -40,8 +40,8 @@
             "production": {
               "fileReplacements": [
                 {
-                  "replace": "src/environments/environment.ts",
-                  "with": "src/environments/environment.prod.ts"
+                  "replace": "src/environments/environment.prod.ts",
+                  "with": "src/environments/environment.ts"
                 }
               ],
               "outputHashing": "all",
@@ -54,7 +54,7 @@
               "sourceMap": true
             }
           },
-          "defaultConfiguration": "development"
+          "defaultConfiguration": "production"
         },
         "server": {
           "builder": "@angular-devkit/build-angular:server",
