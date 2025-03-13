@@ -3,7 +3,7 @@ import { AdminService } from '../../../mysql-services/admin-service.service';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { FormsModule } from '@angular/forms';
-import { RegisterFormComponentMySqlComponent } from '../../register-form-component-my-sql/register-form-component-my-sql.component';
+//import { RegisterFormComponentMySqlComponent } from '../../register-form-component-my-sql/register-form-component-my-sql.component';
 import { AuthService } from '../../../mysql-services/auth-service.service';
 import { UserPanelService } from '../../../mysql-services/user-panel.service';
 import { Observable } from 'rxjs';
@@ -11,13 +11,13 @@ import { HttpHeaders } from '@angular/common/http';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
-  selector: 'app-user-panel',
+  selector: 'app-user-panel-onlinedb',
   imports: [CommonModule,RouterLink, FormsModule],
-  templateUrl: './user-panel.component.html',
-  styleUrl: './user-panel.component.css'
+  templateUrl: './user-panel-onlinedb.component.html',
+  styleUrl: './user-panel-onlinedb.component.css'
 })
-export class UserPanelComponent {
-  title = "Управлявайте своите рецепти тук(MYSQL)";
+export class UserPanelOnlineDBComponent {
+  title = "Управлявайте своите рецепти тук Online DB";
   userName: string = '';
   userRecipes: any[] = [];
 

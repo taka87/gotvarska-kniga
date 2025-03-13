@@ -10,7 +10,7 @@ import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-logged-button-onlinedb',
-  imports: [CommonModule],
+  imports: [CommonModule,RouterLink],
   templateUrl: './logged-button-onlinedb.component.html',
   styleUrl: './logged-button-onlinedb.component.css'
 })
@@ -45,7 +45,7 @@ export class LoggedButtonOnlinedbComponent {
   }
 
   addRecipe(): void {
-    this.router.navigate(['/user-recipe-mysql']);
+    this.router.navigate(['/user-recipe-onlinedb']);
   }
 
   deleteAccount(): void {

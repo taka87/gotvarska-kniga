@@ -8,13 +8,13 @@ import { AuthService } from '../../../mysql-services/auth-service.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
-  selector: 'app-admin-panel',
-  templateUrl: './admin-panel.component.html',
-  styleUrls: ['./admin-panel.component.css'],
+  selector: 'app-admin-panel-onlinedb',
+  templateUrl: './admin-panel-onlinedb.component.html',
+  styleUrls: ['./admin-panel-onlinedb.component.css'],
   imports:[CommonModule,RouterLink, FormsModule, RegisterFormComponentOnlineDB]
 })
-export class AdminPanelComponent implements OnInit {
-  title = "Добре дошли в Админ Панела на MYSQL";
+export class AdminPanelOnlineDBComponent implements OnInit {
+  title = "Добре дошли в Админ Панела на Online DB";
   showAdminForm: boolean = false; // По подразбиране формата е скрита
 
   users: any[] = [];

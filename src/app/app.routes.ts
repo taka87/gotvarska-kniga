@@ -18,6 +18,9 @@ import { UserPanelComponent } from './mysql/pages/user-panel/user-panel.componen
 import { AuthGuard } from './auth.guard';
 import { ShowLocalRecipesComponent } from './show-local-recipes/show-local-recipes.component';
 import { UserRegisterOnlineDB } from './online-DB/user-register-online-DB/user-register-online-db.component';
+import { UserRecipeOnlineDBComponent } from './online-DB/user-recipe-online-DB/user-recipe-online-db.component';
+import { UserPanelOnlineDBComponent } from './online-DB/pages/user-panel/user-panel-onlinedb.component';
+import { AdminPanelOnlineDBComponent } from './online-DB/pages/admin-panel/admin-panel-onlinedb.component';
 
 
 export const routes: Routes = [
@@ -37,7 +40,11 @@ export const routes: Routes = [
   { path: 'user-panel', component:  UserPanelComponent, canActivate: [UserRecipeGuard]},
   { path: 'contact-info', component: MapComponent }, 
   { path: 'raw-map', component: RawMapComponent }, 
-  { path: 'register-online-DB', component: UserRegisterOnlineDB }
+  { path: 'register-online-DB', component: UserRegisterOnlineDB },
+  { path: 'user-recipe-onlinedb', component:  UserRecipeOnlineDBComponent}, //, canActivate: [UserRecipeGuard]
+  { path: 'user-panel-onlinedb', component:  UserPanelOnlineDBComponent, }, //, canActivate: [UserRecipeGuard]
+  { path: 'admin-panel-onlinedb', component:  AdminPanelOnlineDBComponent, }, //, canActivate: [UserRecipeGuard]
+
 ];
 
 // old but gold

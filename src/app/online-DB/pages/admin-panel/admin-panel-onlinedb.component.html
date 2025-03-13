@@ -17,9 +17,11 @@
         </div>
       </div>    
       <!-- Показва регистрационната форма само ако showAdminForm е true -->
-      <app-register-form-component-my-sql *ngIf="showAdminForm" [isAdmin]="isAdmin"></app-register-form-component-my-sql>
-      <hr *ngIf="showAdminForm">
+      <app-register-form-component-online-db *ngIf="showAdminForm" [isAdmin]="isAdmin">        
+      </app-register-form-component-online-db>
+      <br>
 
+      <hr *ngIf="showAdminForm">
       <!-- таблици -->
       <h2>Управление на потребители</h2>
       <table>

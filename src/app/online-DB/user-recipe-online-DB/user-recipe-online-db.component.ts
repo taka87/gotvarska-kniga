@@ -13,8 +13,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   templateUrl: './user-recipe-online-db.component.html',
   styleUrl: './user-recipe-online-db.component.css'
 })
-export class UserRecipeMysqlComponent {
- title= "Добавете рецепта в нашата кулинарна книга";
+export class UserRecipeOnlineDBComponent {
+ title= "Онлайн База Добавете рецепта в нашата кулинарна книга";
 
  userName: string | null = null;
 
