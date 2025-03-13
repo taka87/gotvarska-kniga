@@ -3,11 +3,9 @@ import { FormBuilder,FormGroup,Validators,FormsModule  } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
-import { provideRouter } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
-import { UserSessionService} from '../../services/user-session.service';
 import { AuthService } from '../../mysql-services/auth-service.service';   //следвай пътя за SQL
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { AuthServiceOnlineDB } from '../online-DB-services/auth-service-online-db.service';
 
 @Component({
   selector: 'app-user-control-online-db',
@@ -19,7 +17,8 @@ export class UserControlOnlineDBComponent {
   email = '';
   password = '';
 
-  constructor(private authService: AuthService,
+  constructor(
+    private authServiceOnlineDB: AuthServiceOnlineDB,
     private router: Router,
     private snackBar: MatSnackBar
   ) {}
@@ -34,19 +33,27 @@ export class UserControlOnlineDBComponent {
   }
 
   async login() {
-    const user = await this.authService.login(this.email, this.password);
-
-    if (user) {
-       console.log("🎉 Успешен вход:", user);
-       this.showMessage("🎉 Успешен вход:");
-       this.router.navigate(['/']); // 👉 Пренасочваме към главната страница
-     } else {
-       this.showMessage('❌ Грешно потребителско име или парола!');
-     }
+    try {
+      const user = await this.authServiceOnlineDB.login(this.email, this.password);
+  
+      if (user) {
+        console.log("🎉 Успешен вход:", user);
+        this.showMessage("🎉 Успешен вход:");
+        
+        // 🔹 Викаме checkSessionOnlineDB, а НЕ checkSession!
+        this.authServiceOnlineDB.checkSessionOnlineDB();
+        
+        this.router.navigate(['/']);
+      } else {
+        this.showMessage('❌ Грешно потребителско име или парола!');
+      }
+    } catch (err) {
+      console.error("❌ Грешка при логин:", err);
+    }
   }
 
   logout() {
-    this.authService.logout();
+    this.authServiceOnlineDB.logout();
   }
 
   navigateToRegister() {

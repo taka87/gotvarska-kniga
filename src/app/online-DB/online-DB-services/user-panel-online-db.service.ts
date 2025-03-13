@@ -6,7 +6,7 @@ import { HttpHeaders } from '@angular/common/http';
 @Injectable({
   providedIn: 'root'
 })
-export class UserPanelService {
+export class UserPanelServiceOnlineDB {
   private apiUrl = 'http://localhost:5000/api'; 
 
   constructor(private http: HttpClient) { }

@@ -44,9 +44,9 @@
       (click)="toggleMySqlRegistrationForm()" 
       class="toggle-favorites-button"
       >
-      {{ showRegisterForm ? 'Скрий ВХОД/Регистрация &uArr;' : 'ВХОД / Регистрация &dArr;' }}
+      {{ showRegisterFormMysql ? 'Скрий ВХОД/Регистрация &uArr;' : 'ВХОД / Регистрация &dArr;' }}
     </button>
-    <div *ngIf="showRegisterForm || isLoggedMySQL">
+    <div *ngIf="showRegisterFormMysql || isLoggedMySQL">
       <div *ngIf="!isLoggedMySQL">  
         <app-user-control-mysql></app-user-control-mysql>
       </div>
@@ -66,15 +66,15 @@
       (click)="toggleOnlineDBRegistrationForm()" 
       class="toggle-favorites-button"
       >
-      {{ showRegisterForm ? 'Скрий ВХОД/Регистрация &uArr;OnlineDB' : 'ВХОД / Регистрация &dArr; OnlineDB' }}
+      {{ showRegisterFormOnlineDB ? 'Скрий ВХОД/Регистрация &uArr;OnlineDB' : 'ВХОД / Регистрация &dArr; OnlineDB' }}
     </button>
     <div *ngIf="showRegisterFormOnlineDB || isLoggedOnlineDB">
       <div *ngIf="!isLoggedOnlineDB">  
         <app-user-control-online-db></app-user-control-online-db>
       </div>
       <div *ngIf="isLoggedOnlineDB">
-        <h2>Добре дошъл: {{ userNameMySQL }}</h2>
-        <app-logged-button-online-db></app-logged-button-online-db>
+        <h2>Добре дошъл: {{ userNameOnlineDB }}</h2>
+        <app-logged-button-onlinedb></app-logged-button-onlinedb>
       </div>
     </div>
   </div>

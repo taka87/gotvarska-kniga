@@ -54,16 +54,6 @@ export class UserRecipeComponent {
       this.resetForm();
     });
   }
-      // OLD-hard codded USER
-      // saveRecipe() {
-      //   this.authService.getCurrentUser().subscribe((user) => {
-      //     this.newRecipe.createdBy = user.name || 'Няма потребител';
-      //     this.recipeService.addRecipe(this.newRecipe).subscribe(() => {
-      //       alert('Рецептата е успешно добавена!');
-      //       this.resetForm();
-      //     });
-      //   });
-      // }
 
   goBack(): void {
     this.router.navigate(['/']);

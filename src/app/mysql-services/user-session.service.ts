@@ -37,28 +37,16 @@ export class UserSessionService {
   // от стария компонент
     private loggedInUser = new BehaviorSubject<string | null>(localStorage.getItem('loggedUser'));
     currentUser$ = this.loggedInUser.asObservable();
-  
-    // ?????????????????
-    // setUser(userData: string): void {
-    //   localStorage.setItem('loggedUser', userData);
-    //   this.loggedInUser.next(userData); // Уведомяваме всички компоненти
-    // }
-  
-    // clearUser(): void {
-    //   localStorage.removeItem('loggedUser');
-    //   this.loggedInUser.next(null); // Нулираме потребителя
-    // }
-    //----------------------------------
 
-// user-session.service.ts
-deleteOwnAccount(userId: number): Observable<any> {
-  console.log("📢 Опит за изтриване на user с ID:", userId);
+  // user-session.service.ts
+  deleteOwnAccount(userId: number): Observable<any> {
+    console.log("📢 Опит за изтриване на user с ID:", userId);
 
-  return this.http.delete(`${this.apiUrl}/user/${userId}`, { responseType: 'text' });
-  // return this.http.delete(`${this.apiUrl}/user/${userId}`, { headers: this.authHeader }).pipe(
-  //   tap(() => console.log("✅ Потребителят е изтрит"))
-  // );
-}
+    return this.http.delete(`${this.apiUrl}/user/${userId}`, { responseType: 'text' });
+    // return this.http.delete(`${this.apiUrl}/user/${userId}`, { headers: this.authHeader }).pipe(
+    //   tap(() => console.log("✅ Потребителят е изтрит"))
+    // );
+  }
 
   // ⬇️ Изчистваме локално user-а
   clearUser(): void {

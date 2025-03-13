@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { UserPanelService } from './user-panel.service';
+import { UserPanelServiceOnlineDB } from './user-panel-online-db.service';
 
 describe('UserPanelService', () => {
-  let service: UserPanelService;
+  let service: UserPanelServiceOnlineDB;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(UserPanelService);
+    service = TestBed.inject(UserPanelServiceOnlineDB);
   });
 
   it('should be created', () => {

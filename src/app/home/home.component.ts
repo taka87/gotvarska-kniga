@@ -17,8 +17,10 @@ import { AuthService } from '../mysql-services/auth-service.service';
 import Swiper from 'swiper';
 import { Navigation, Pagination, Autoplay } from 'swiper/modules';
 import { UserRegisterOnlineDB } from '../online-DB/user-register-online-DB/user-register-online-db.component';
-import { LoggedButtonOnlineDBComponent } from '../online-DB/logged-button-online-DB/logged-button-online-db.component';
+// import { LoggedButtonOnlineDBComponent } from '../online-DB/logged-button-online-DB/logged-button-online-db.component';
+import { LoggedButtonOnlinedbComponent } from '../online-DB/logged-button-onlinedb/logged-button-onlinedb.component';
 import { UserControlOnlineDBComponent } from '../online-DB/user-control-online-DB/user-control-online-db.component';
+import { AuthServiceOnlineDB } from '../online-DB/online-DB-services/auth-service-online-db.service';
 
 @Component({
   selector: 'app-home',
@@ -34,7 +36,7 @@ import { UserControlOnlineDBComponent } from '../online-DB/user-control-online-D
     UserControlMysqlComponent, 
     LoggedButtonMysqlComponent,
     UserControlOnlineDBComponent,
-    LoggedButtonOnlineDBComponent
+    LoggedButtonOnlinedbComponent
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA], // Добави този ред
 
@@ -42,25 +44,27 @@ import { UserControlOnlineDBComponent } from '../online-DB/user-control-online-D
 })
 export class HomeComponent {
   title = 'Потопете се в магията на нашия кулинарен свят';
-  showRegisterForm = false;
+  showRegisterFormMysql = false;
   showRegisterFormOnlineDB = false;
   swiper: Swiper | null = null;
 
+  //LocalDB
+  isLogged = false;  
+  userName = 'user'; 
+
   //MYSQl
   isLoggedMySQL = false;  
-  isLogged = false;  
   userNameMySQL: string | null = null;  
-  userName = 'user'; 
+  isMenuOpen = false; // Контролира видимостта на менюто
 
   
   //OnlineDB
   isLoggedOnlineDB = false;  
   userNameOnlineDB: string | null = null;  
-
+  isMenuOpenOnlineDB = false; // Контролира видимостта на менюто
 
   showFavorites = false;
   showCategories = true;
-  isMenuOpen = false; // Контролира видимостта на менюто
 
   //swiper
   swiperKey = 0;
@@ -73,7 +77,7 @@ export class HomeComponent {
   constructor(
     private userSession: UserSessionService, 
     private authService: AuthService,
-
+    private authServiceOnlineDB: AuthServiceOnlineDB
   ) {}
 
   ngOnChanges() {
@@ -100,9 +104,9 @@ export class HomeComponent {
 
   ];
 
-  toggleCategories() {
-    this.showCategories = !this.showCategories;
-  }
+  // toggleCategories() {
+  //   this.showCategories = !this.showCategories;
+  // }
 
   favoriteRecipes = [
     { name: 'Торта Гараш', description: 'Класическа шоколадова торта с богат вкус.' },
@@ -115,7 +119,7 @@ export class HomeComponent {
   }
 
   toggleMySqlRegistrationForm() {
-    this.showRegisterForm = !this.showRegisterForm;
+    this.showRegisterFormMysql = !this.showRegisterFormMysql;
   }
 
   //ONLINE DB
@@ -126,13 +130,19 @@ export class HomeComponent {
   // секция за логин/регистрация MYSQL
   ngOnInit(): void {
     this.checkLoginStatus();
+    this.checkLoginStatusOnlineDB();
 
     // Следим в реално време, ако AuthService засече промяна
     this.authService.userLoggedIn$.subscribe(() => {
       this.checkLoginStatus();
     });
 
-    //try JSON Server
+    // Следим в реално време, ако AuthService засече промяна ONLINEDB
+    this.authServiceOnlineDB.userLoggedIn$.subscribe(() => {
+      this.checkLoginStatusOnlineDB();
+    });
+
+    //JSON Server
     this.isLogged = this.userSession.isLoggedIn(); // Проверяваме дали потребителят е логнат
 
     if (this.isLogged) {
@@ -161,6 +171,7 @@ export class HomeComponent {
     });
   }
 
+  //MYSQL
   checkLoginStatus(): void {
     const token = localStorage.getItem('token');
     const userData = localStorage.getItem('loggedUser');
@@ -176,6 +187,26 @@ export class HomeComponent {
     } else {
       this.isLoggedMySQL = false;
       this.userNameMySQL = null;
+    }
+  }
+
+  //ONLINEDB
+  checkLoginStatusOnlineDB(): void {
+    const userData = localStorage.getItem("loggedUser"); // 🔄 Използваме правилния ключ
+  
+    if (userData) {
+      try {
+        const parsedUser = JSON.parse(userData);
+        this.isLoggedOnlineDB = true;
+        this.userNameOnlineDB = parsedUser.email; // 👈 Или `parsedUser.firstName`
+        // console.log("✅ Потребителят е логнат:", parsedUser);
+      } catch (error) {
+        console.error("⚠️ Грешка при парсване на потребителските данни!", error);
+      }
+    } else {
+      this.isLoggedOnlineDB = false;
+      this.userNameOnlineDB = null;
+      console.log("❌ Няма логнат потребител (OnlineDB)");
     }
   }
 
@@ -203,7 +234,14 @@ export class HomeComponent {
     }
   }
 
-    // swiper - slide
+  toggleMenu() {
+    this.isMenuOpen = !this.isMenuOpen;
+  }  
+  toggleMenuOnlineDB() {
+    this.isMenuOpenOnlineDB = !this.isMenuOpenOnlineDB;
+  }
+
+    // SWIPER - slide
   ngAfterViewInit() {
     new Swiper('.swiper', {
       modules: [Navigation, Pagination, Autoplay],
@@ -222,7 +260,4 @@ export class HomeComponent {
       }
     });
   }  
-  toggleMenu() {
-    this.isMenuOpen = !this.isMenuOpen;
-  }
 }

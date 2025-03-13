@@ -1,9 +1,3 @@
-<!-- <div *ngIf="loggedUser" class="user-greeting"> -->
-    <!-- <p>Добре дошъл, {{ loggedUser.name }}!</p> -->
-    <!--<button (click)="addRecipe()"   routerLink="/add-recipe">Добави рецепта</button>
-    <button (click)="logOut()">Изход</button>
-</div> -->
-
 <div *ngIf="loggedUser" class="user-greeting">
        <!-- 🔥 Бутон за админ, който се показва само за администратори -->
        <button *ngIf="loggedUser.role === 'admin'" routerLink="admin-panel">Админ панел</button>

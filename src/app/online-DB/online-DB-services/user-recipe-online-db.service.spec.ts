@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { UserRecipeService } from './user-recipe.service';
+import { UserRecipeServiceOnlineDB } from './user-recipe-online-db.service';
 
 describe('UserRecipeService', () => {
-  let service: UserRecipeService;
+  let service: UserRecipeServiceOnlineDB;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(UserRecipeService);
+    service = TestBed.inject(UserRecipeServiceOnlineDB);
   });
 
   it('should be created', () => {

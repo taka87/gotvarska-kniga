@@ -6,7 +6,7 @@ import { HttpHeaders } from '@angular/common/http';
 @Injectable({
   providedIn: 'root'
 })
-export class AdminService {
+export class AdminServiceOnlineDB {
   private apiUrl = 'http://localhost:5000/api/admin'; // <--- Смени с реалния бекенд URL
   private apiUserUrl = 'http://localhost:5000/api/user'; // <--- за достъп до userController
   private apiRecipesUrl = 'http://localhost:5000/api/recipe';
