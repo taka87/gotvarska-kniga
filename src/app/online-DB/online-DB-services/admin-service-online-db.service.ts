@@ -3,9 +3,8 @@ import { HttpClient, HttpHeaders  } from '@angular/common/http';
 import { from, Observable,map } from 'rxjs';
 import { environment } from '../../../environments/environment';
 import { AuthServiceOnlineDB } from './auth-service-online-db.service';
+// import { supabase } from '../supabase-client';
 import { supabase } from '../../../../supabase';
-import { createClient, SupabaseClient } from '@supabase/supabase-js';
-// import { SupabaseClient } from '@supabase/supabase-js';
 
 @Injectable({
   providedIn: 'root'
@@ -21,26 +20,21 @@ export class AdminServiceOnlineDB {
     'apikey': environment.NEXT_PUBLIC_SUPABASE_ANON_KEY
   });
 
-  private supabase: SupabaseClient;
+  // private supabase: SupabaseClient;
 
 
   constructor(
     private http: HttpClient,
     private authServiceOnlineDB: AuthServiceOnlineDB) {
-    this.supabase = createClient(
-      environment.NEXT_PUBLIC_SUPABASE_URL,
-      environment.NEXT_PUBLIC_SUPABASE_ANON_KEY
-    );
+    // this.supabase = createClient(
+    //   environment.NEXT_PUBLIC_SUPABASE_URL,
+    //   environment.NEXT_PUBLIC_SUPABASE_ANON_KEY
+    // );
   }
 
-  getUsers(): Observable<any[]> {
+  grantAdmin(userId: string): Observable<any> {
     return from(
-      this.supabase.from('users').select('*')
-    ).pipe(
-      map(response => {
-        console.log("📌 Получени потребители от Supabase:", response);
-        return Array.isArray(response.data) ? response.data : [];
-      })
+      supabase.from('roles').upsert([{ user_id: userId, role: 'admin' }])
     );
   }
 
@@ -90,33 +84,36 @@ export class AdminServiceOnlineDB {
   //   return data?.role || 'user';
   // }
 
-  // // getUsers(): Observable<any[]> {
-  // //   const headers = new HttpHeaders({
-  // //     Authorization: `Bearer ${this.authServiceOnlineDB.getToken()}`,
-  // //     Role: this.authServiceOnlineDB.getRole() // 🔥 Тук изпращаш ролята като хедър
-  // //   });
-
-  // //   return this.http.get<any[]>(`${this.apiUrl}/users`);
-  // // }
-
-  // getRecipes(): Observable<any> {
-  //   return from(supabase.from('user_recipes').select('*'));
+  // getUsers(): Observable<any> {
+  //   return from(supabase.from('users').select('*'));
   // }
 
-  // deleteUser(userId: string) {
-  //   return from(supabase.from('users').delete().eq('id', userId));
+  // getUsers(): Observable<any[]> {
+  //   const headers = new HttpHeaders({
+  //     Authorization: `Bearer ${this.authServiceOnlineDB.getToken()}`,
+  //     Role: this.authServiceOnlineDB.getRole() // 🔥 Тук изпращаш ролята като хедър
+  //   });
+
+  //   return this.http.get<any[]>(`${this.apiUrl}/users`);
   // }
 
-  // deleteRecipe(recipeId: string): Observable<any> {
-  //   return from(supabase.from('user_recipes').delete().eq('id', recipeId));
+  getRecipes(): Observable<any> {
+    return from(supabase.from('user_recipes').select('*'));
+  }
+
+  deleteUser(userId: string): Observable<any> {
+    return from(supabase.from('users').delete().eq('id', userId));
+  }
+
+  deleteRecipe(recipeId: string): Observable<any> {
+    return from(supabase.from('user_recipes').delete().eq('id', recipeId));
+  }
+
+  // editRecipe(recipeId: number, updatedRecipe: any): Observable<any> {
+  //   return this.http.put<any>(`${this.apiRecipesUrl}/${recipeId}`, updatedRecipe);
   // }
 
-  // // //todo
-  // // editRecipe(recipeId: string, updatedRecipe: any): Observable<any> {
-  // //   return this.http.put<any>(`${this.apiRecipesUrl}/${recipeId}`, updatedRecipe);
-  // // }
-
-  // updateRecipe(recipeId: string, recipeData: any): Observable<any> {
-  //   return from(supabase.from('user_recipes').update(recipeData).eq('id', recipeId));
-  // }
+  updateRecipe(recipeId: string, recipeData: any): Observable<any> {
+    return from(supabase.from('user_recipes').update(recipeData).eq('id', recipeId));
+  }
 }

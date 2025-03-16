@@ -38,17 +38,24 @@
           <td>{{ user.email }}</td>
           <td>{{ user.role }}</td>
           <td>
+<<<<<<< HEAD
             <!-- <button *ngIf="user.role !== 'admin'" (click)="grantAdminRole(user.id)">Направи админ</button> -->
           </td>
           <td>
             <button (click)="deleteUser(user.id)">Изтрий</button>
             <button (click)="deleteUser(user.id)">Изтрий</button>
+=======
+            <button *ngIf="user.role !== 'admin'" (click)="grantAdmin(user.id)">Направи админ</button>
+          </td>
+          <td>
+            <button (click)="deleteUser(user.id)">Изтрий</button>
+>>>>>>> parent of 3063390 (Start again from load-Users step by step)
           </td>
         </tr>
       </table>
     
       <br>
-      <!-- <hr>
+      <hr>
       <h2>Управление на рецепти</h2>
       <table>
         <tr>
@@ -59,7 +66,7 @@
           <th>Действия</th>
         </tr>
         
-        <tr *ngFor="let recipe of recipes; trackBy: trackByRecipe">
+        <tr *ngFor="let recipe of recipes">
           <td>{{ recipe.author }}</td>
           <td>{{ recipe.recipeName }}</td>
           <td>{{ recipe.ingredients }}</td>
@@ -69,7 +76,7 @@
             <button (click)="deleteRecipe(recipe.id)">Изтрий</button>
           </td>
         </tr>
-      </table> -->
+      </table>
 
       <!-- редактиране на рецепти -->
       <div *ngIf="showEditForm">
@@ -83,7 +90,7 @@
         <label>Описание:</label>
         <textarea [(ngModel)]="selectedRecipe.description"></textarea>
       
-        <!-- <button (click)="updateRecipe()">Запази</button> -->
+        <button (click)="updateRecipe()">Запази</button>
         <button (click)="cancelEdit()">Откажи</button>
       </div>
 
