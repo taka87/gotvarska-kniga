@@ -1,0 +1,10 @@
+{
+  
+  "compilerOptions": {      
+  "lib": ["deno.ns", "deno.window"],      
+  "target": "esnext"  
+    },    
+  "tasks": {      
+  "start": "deno run --allow-net --allow-env index.ts"  
+    }
+}

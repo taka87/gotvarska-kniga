@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { AdminService } from '../../../mysql-services/admin-service.service';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { RegisterFormComponentOnlineDB } from '../../register-form-component-online-DB/register-form-component-online-db.component';
 import { AuthService } from '../../../mysql-services/auth-service.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { AdminServiceOnlineDB } from '../../online-DB-services/admin-service-online-db.service';
+// import { checkUserRole } from '../../../../../supabase/functions/check-user-role';
 
 @Component({
   selector: 'app-admin-panel-onlinedb',
@@ -31,7 +32,7 @@ export class AdminPanelOnlineDBComponent implements OnInit {
   showEditForm: boolean = false;
 
   constructor(
-    private adminService: AdminService, 
+    private adminServiceOnlineDB: AdminServiceOnlineDB, 
     private authService: AuthService,
     private snackBar:MatSnackBar
   ) {}
@@ -52,21 +53,39 @@ export class AdminPanelOnlineDBComponent implements OnInit {
     this.userName = user.firstName || 'Гост';
   }
 
+
+// const token = "your_token_here"; 
+// // Заменете с реален токен
+
+// checkUserRole(token)
+//   .then((result) => console.log(result))
+//   .catch((error) => console.error(error));
+
+  grantAdmin(userId: number) {
+    this.adminServiceOnlineDB.grantAdminRole(userId).subscribe({
+      next: () => {
+        this.showMessage("✅ Потребителят вече е администратор!");
+        this.loadUsers(); // 🔄 Обновяваме списъка
+      },
+      error: (error) => this.showMessage("❌ Грешка при задаване на роля: " + error.message),
+    });
+  }
+
   loadUsers() {
-    this.adminService.getUsers().subscribe((data) => {
-      this.users = data;
+    this.adminServiceOnlineDB.getUsers().subscribe((data) => {
+      this.users = Array.isArray(data) ? data : []; // 🔥 Уверяваме се, че е масив
     });
   }
 
   loadRecipes() {
-    this.adminService.getRecipes().subscribe((data) => {
+    this.adminServiceOnlineDB.getRecipes().subscribe((data) => {
       //console.log("Рецепти от API дава:", data); // ✅ Проверка
       this.recipes = data;
     });
   }
 
   deleteUser(userId: number) {
-    this.adminService.deleteUser(userId).subscribe({
+    this.adminServiceOnlineDB.deleteUser(userId).subscribe({
       next: (response) => {
         this.showMessage("✅ Потребителят е изтрит успешно!");
         // console.log("✅ Потребителят е изтрит успешно!", response);
@@ -83,7 +102,7 @@ export class AdminPanelOnlineDBComponent implements OnInit {
   }
   
   deleteRecipe(recipeId: number) {
-    this.adminService.deleteRecipe(recipeId).subscribe(
+    this.adminServiceOnlineDB.deleteRecipe(recipeId).subscribe(
       () => {
         this.showMessage("✅ Рецептата е изтрита успешно!");
         // console.log("✅ Рецептата е изтрита успешно!");
@@ -110,7 +129,7 @@ export class AdminPanelOnlineDBComponent implements OnInit {
     }
   
     console.log(this.selectedRecipe)
-    this.adminService.updateRecipe(this.selectedRecipe.id, this.selectedRecipe).subscribe({
+    this.adminServiceOnlineDB.updateRecipe(this.selectedRecipe.id, this.selectedRecipe).subscribe({
       next: (response) => {
         //console.log('Рецептата е обновена успешно!', response);
         this.showMessage('Рецептата е обновена успешно!');
@@ -125,7 +144,7 @@ export class AdminPanelOnlineDBComponent implements OnInit {
   }
 
   fetchRecipes() {
-    this.adminService.getRecipes().subscribe({
+    this.adminServiceOnlineDB.getRecipes().subscribe({
       next: (recipes) => {
         this.recipes = recipes;
       },
@@ -138,7 +157,7 @@ export class AdminPanelOnlineDBComponent implements OnInit {
 
   saveRecipe() {
     // console.log(this.selectedRecipe)
-    this.adminService.updateRecipe(this.selectedRecipe.id, this.selectedRecipe).subscribe(
+    this.adminServiceOnlineDB.updateRecipe(this.selectedRecipe.id, this.selectedRecipe).subscribe(
       (response) => {
         // console.log("✅ Успешно редактирана рецепта:", response);
         this.showMessage("✅ Успешно редактирана рецепта:");

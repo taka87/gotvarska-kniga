@@ -35,11 +35,7 @@ export class AuthServiceOnlineDB {
   }
 
   // ngOnInit() {
-  //   // this.checkSessionOnlineDB(); // 🔥 Добавяме това!
-  //   const loggedUser = localStorage.getItem("loggedUser");
-  //   this.userLoggedInOnlineDB.next(!!loggedUser); // Проверяваме дали има логнат user
-  //   console.log("📌 loggedUserOnlineDB от LocalStorage:", localStorage.getItem("loggedUserOnlineDB"));
-  //   console.log("🔹 Потребителят в AuthService е обновен:", this.userLoggedIn$);
+      // не работи в сървисите!!!
   // }
 
   async login(email: string, password: string): Promise<any> {
@@ -114,6 +110,14 @@ export class AuthServiceOnlineDB {
     } else {
       this.userLoggedInOnlineDB.next(null);
     }
+  }
+
+  getToken(): string | null {
+    return localStorage.getItem('token'); // 🔥 Взима токена от локалното хранилище
+  }
+
+  getRole(): string | null {
+    return localStorage.getItem('role'); // 🔥 Взима ролята от локалното хранилище
   }
   
   // ✔️ Логаут функция
