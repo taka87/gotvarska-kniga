@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders  } from '@angular/common/http';
 import { from, Observable,map } from 'rxjs';
 import { environment } from '../../../environments/environment';
 import { AuthServiceOnlineDB } from './auth-service-online-db.service';
@@ -11,14 +11,22 @@ import { createClient, SupabaseClient } from '@supabase/supabase-js';
   providedIn: 'root'
 })
 export class AdminServiceOnlineDB {
-  private apiUrl = `${environment.NEXT_PUBLIC_SUPABASE_URL}/api/admin`;
+  // private apiUrl = `${environment.NEXT_PUBLIC_SUPABASE_URL}/api/admin`;
   private apiUserUrl = `${environment.NEXT_PUBLIC_SUPABASE_URL}/api/user`;
-  private apiRecipesUrl = `${environment.NEXT_PUBLIC_SUPABASE_URL}/api/recipe`;
+  // private apiRecipesUrl = `${environment.NEXT_PUBLIC_SUPABASE_URL}/api/recipe`;
 
   // const supabase = createClient('SUPABASE_URL', 'SUPABASE_ANON_KEY');
+  private headers = new HttpHeaders({
+    'Content-Type': 'application/json',
+    'apikey': environment.NEXT_PUBLIC_SUPABASE_ANON_KEY
+  });
+
   private supabase: SupabaseClient;
 
-  constructor(private authServiceOnlineDB: AuthServiceOnlineDB) {
+
+  constructor(
+    private http: HttpClient,
+    private authServiceOnlineDB: AuthServiceOnlineDB) {
     this.supabase = createClient(
       environment.NEXT_PUBLIC_SUPABASE_URL,
       environment.NEXT_PUBLIC_SUPABASE_ANON_KEY
@@ -36,11 +44,39 @@ export class AdminServiceOnlineDB {
     );
   }
 
-  // grantAdminRole(userId: string): Observable<any> {
-  //   return from(
-  //     supabase.from('roles').upsert([{ user_id: userId, role: 'admin' }])
-  //   );
-  // }
+  grantAdminRole(userId: string): Observable<any> {
+    return from(
+      supabase.from('roles').upsert([{ user_id: userId, role: 'admin' }])
+    );
+  }
+
+  // Метод за изтриване на потребител
+  // Метод за изтриване на потребител
+  deleteUser(userId: string): Observable<any> {
+    const url = `${this.apiUserUrl}?id=eq.${userId}`;
+    return this.http.delete(url, {
+      headers: {
+        'Content-Type': 'application/json',
+        'apikey': environment.NEXT_PUBLIC_SUPABASE_ANON_KEY,
+      },
+    });
+  }
+
+  // Метод за зареждане на потребители
+  loadUsers(): Observable<any> {
+    return this.http.get(`${this.apiUserUrl}`, {
+      headers: {
+        'Content-Type': 'application/json',
+        'apikey': environment.NEXT_PUBLIC_SUPABASE_ANON_KEY,
+      },
+    });
+  }
+
+
+  updateUserRole(userId: string, isAdmin: boolean): Observable<any> {
+    const url = `${this.apiUserUrl}?id=eq.${userId}`;
+    return this.http.patch(url, { role: isAdmin ? 'admin' : 'user' }, { headers: this.headers });
+  }
 
   // async getUserRole(userId: string): Promise<string> {
   //   const { data, error } = await supabase
