@@ -8,6 +8,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { AdminServiceOnlineDB } from '../../online-DB-services/admin-service-online-db.service';
 // import { checkUserRole } from '../../../../../supabase/functions/check-user-role';
 
+
 @Component({
   selector: 'app-admin-panel-onlinedb',
   templateUrl: './admin-panel-onlinedb.component.html',
@@ -65,6 +66,18 @@ export class AdminPanelOnlineDBComponent implements OnInit {
       this.users = Array.isArray(data) ? data : []; // 🔥 Уверяваме се, че е масив
     });
   }
+
+  // // Метод за изтриване на потребител
+  // deleteUser(userId: string): void {
+  //   this.adminServiceOnlineDB.deleteUser(userId).subscribe({
+  //     next: () => {
+  //       console.log(`Потребител с ID ${userId} е изтрит.`);
+  //       this.loadUsers();  // Презареждаме потребителите, след като изтрием
+  //     },
+  //     error: (err) => console.error('Грешка при изтриване на потребител', err),
+  //   });
+  // }
+
 
   // trackByUser(index: number, user: any) {
   //   return user.id; // Ако id не се променя, Angular няма да прави излишни ререндери.
