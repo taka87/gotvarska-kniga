@@ -1,64 +1,56 @@
 <div class="page-wrapper">
-    <h1>{{ title }}</h1>
+  <h1>{{ title }}</h1>
+
+  <!-- средна част за стилизиране -->
+  <div class="admin-panel">
+    <p>Логнат като:"{{ userName }}"</p>
+    <!-- <h1>Админ Панел</h1> -->
+
+    <div class="admin-register-container">
+      <button (click)="showAdminForm = !showAdminForm" class="toggle-btn">
+          {{ showAdminForm ? 'Скрий регистрацията' : 'Регистрирай Админ или Потребител' }}
+      </button>
   
-    <!-- средна част за стилизиране -->
-    <div class="admin-panel">
-      <p>Логнат като:"{{ userName }}"</p>
-      <!-- <h1>Админ Панел</h1> -->
+      <div  *ngIf="showAdminForm"  class="checkbox-box">
+          <input type="checkbox" [(ngModel)]="isAdmin" id="adminCheck">
+          <label for="adminCheck">Регистрация като администратор</label>
+      </div>
+    </div>    
+    <!-- Показва регистрационната форма само ако showAdminForm е true -->
+    <app-register-form-component-online-db *ngIf="showAdminForm" [isAdmin]="isAdmin">        
+    </app-register-form-component-online-db>
+    <br>
 
-      <div class="admin-register-container">
-        <button (click)="showAdminForm = !showAdminForm" class="toggle-btn">
-            {{ showAdminForm ? 'Скрий регистрацията' : 'Регистрирай Админ или Потребител' }}
-        </button>
-    
-        <div  *ngIf="showAdminForm"  class="checkbox-box">
-          <!-- <input type="checkbox" [checked]="user.role === 'admin'" (change)="grantAdminRole(user.id, $event.target.checked)"> -->
-          <label>Админ</label>
-        </div>
-      </div>    
-      <!-- Показва регистрационната форма само ако showAdminForm е true -->
-      <app-register-form-component-online-db *ngIf="showAdminForm" [isAdmin]="isAdmin">        
-      </app-register-form-component-online-db>
-      <br>
-
-      <hr *ngIf="showAdminForm">
-      <!-- таблици -->
-      <h2>Управление на потребители</h2>
-      <table>
-        <tr>
-          <th>ID</th>
-          <th>Име</th>
-          <th>Имейл</th>
-          <th>Роля</th>
-          <th>Действия</th>
-        </tr>
-        <tr *ngFor="let user of users">
-          <td>{{ user.id }}</td>
-          <td>{{ user.first_name }} {{ user.last_name }} </td>
-          <td>{{ user.email }}</td>
-          <td>{{ user.role }}</td>
-          <td>
-<<<<<<< HEAD
-            <!-- <button *ngIf="user.role !== 'admin'" (click)="grantAdminRole(user.id)">Направи админ</button> -->
-          </td>
-          <td>
-            <button (click)="deleteUser(user.id)">Изтрий</button>
-            <button (click)="deleteUser(user.id)">Изтрий</button>
-=======
-            <button *ngIf="user.role !== 'admin'" (click)="grantAdmin(user.id)">Направи админ</button>
-          </td>
-          <td>
-            <button (click)="deleteUser(user.id)">Изтрий</button>
->>>>>>> parent of 3063390 (Start again from load-Users step by step)
-          </td>
-        </tr>
-      </table>
-    
-      <br>
-      <hr>
-      <h2>Управление на рецепти</h2>
-      <table>
-        <tr>
+    <hr *ngIf="showAdminForm">
+    <!-- таблици -->
+    <h2>Управление на потребители</h2>
+    <table>
+      <tr>
+        <th>ID</th>
+        <th>Име</th>
+        <th>Имейл</th>
+        <th>Роля</th>
+        <th>Действия</th>
+      </tr>
+      <tr *ngFor="let user of users">
+        <td>{{ user.id }}</td>
+        <td>{{ user.firstName }} {{ user.lastName }}</td>
+        <td>{{ user.email }}</td>
+        <td>{{ user.role }}</td>
+        <td>
+          <!-- <button *ngIf="user.role !== 'admin'" (click)="grantAdmin(user.id)">Направи админ</button> -->
+        </td>
+        <td>
+          <!-- <button (click)="deleteUser(user.id)">Изтрий</button> -->
+        </td>
+      </tr>
+    </table>
+  
+    <br>
+    <!-- <hr>
+    <h2>Управление на рецепти</h2>
+    <table>
+              <tr>
           <th>Автор рецепта</th>
           <th>Име Рецепта</th>
           <th>Съставки</th>
@@ -66,7 +58,7 @@
           <th>Действия</th>
         </tr>
         
-        <tr *ngFor="let recipe of recipes">
+        <tr *ngFor="let recipe of recipes; trackBy: trackByRecipe">
           <td>{{ recipe.author }}</td>
           <td>{{ recipe.recipeName }}</td>
           <td>{{ recipe.ingredients }}</td>
@@ -76,7 +68,7 @@
             <button (click)="deleteRecipe(recipe.id)">Изтрий</button>
           </td>
         </tr>
-      </table>
+      </table> -->
 
       <!-- редактиране на рецепти -->
       <div *ngIf="showEditForm">
@@ -86,11 +78,10 @@
       
         <label>Съставки:</label>
         <input [(ngModel)]="selectedRecipe.ingredients" />
-      
         <label>Описание:</label>
         <textarea [(ngModel)]="selectedRecipe.description"></textarea>
       
-        <button (click)="updateRecipe()">Запази</button>
+        <!-- <button (click)="updateRecipe()">Запази</button> -->
         <button (click)="cancelEdit()">Откажи</button>
       </div>
 
