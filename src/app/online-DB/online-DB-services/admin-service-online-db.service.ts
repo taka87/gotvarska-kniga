@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { from, Observable } from 'rxjs';
 import { HttpHeaders } from '@angular/common/http';
 import { environment } from '../../../environments/environment';
 import { AuthServiceOnlineDB } from './auth-service-online-db.service';
 // import { supabase } from '../supabase-client';
-import { supabase } from '../../../../supabase.ts';
+import { supabase } from '../../../../supabase';
 
 @Injectable({
   providedIn: 'root'
