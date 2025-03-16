@@ -67,16 +67,16 @@ export class AdminPanelOnlineDBComponent implements OnInit {
     });
   }
 
-  // Метод за изтриване на потребител
-  deleteUser(userId: string): void {
-    this.adminServiceOnlineDB.deleteUser(userId).subscribe({
-      next: () => {
-        console.log(`Потребител с ID ${userId} е изтрит.`);
-        this.loadUsers();  // Презареждаме потребителите, след като изтрием
-      },
-      error: (err) => console.error('Грешка при изтриване на потребител', err),
-    });
-  }
+  // // Метод за изтриване на потребител
+  // deleteUser(userId: string): void {
+  //   this.adminServiceOnlineDB.deleteUser(userId).subscribe({
+  //     next: () => {
+  //       console.log(`Потребител с ID ${userId} е изтрит.`);
+  //       this.loadUsers();  // Презареждаме потребителите, след като изтрием
+  //     },
+  //     error: (err) => console.error('Грешка при изтриване на потребител', err),
+  //   });
+  // }
 
 
   // trackByUser(index: number, user: any) {
