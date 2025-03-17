@@ -14,7 +14,7 @@ export class AdminServiceOnlineDB {
   // private apiUrl = `${environment.NEXT_PUBLIC_SUPABASE_URL}/api/admin`;
   private apiUserUrl = `${environment.NEXT_PUBLIC_SUPABASE_URL}/api/user`;
   // private apiRecipesUrl = `${environment.NEXT_PUBLIC_SUPABASE_URL}/api/recipe`;
-  private deleteUserUrl = environment.supabaseDeleteUserUrl;
+  private deleteUserUrl = "https://gryzvkmsfnkbzswnzjyf.functions.supabase.co/deleteUser";
 
   // const supabase = createClient('SUPABASE_URL', 'SUPABASE_ANON_KEY');
   private headers = new HttpHeaders({

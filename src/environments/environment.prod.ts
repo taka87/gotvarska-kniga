@@ -3,7 +3,6 @@ export const environment = {
   googleMapsApiKey: 'googleMapsApiKey',
   NEXT_PUBLIC_SUPABASE_URL: 'NEXT_PUBLIC_SUPABASE_URL',
   NEXT_PUBLIC_SUPABASE_ANON_KEY: 'NEXT_PUBLIC_SUPABASE_ANON_KEY',
-  supabaseDeleteUserUrl: 'https://gryzvkmsfnkbzswnzjyf.functions.supabase.co/deleteUser'
 };
 
 console.log("✅ Production environment loaded!");
