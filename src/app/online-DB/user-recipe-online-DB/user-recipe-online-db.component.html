@@ -6,11 +6,11 @@
     <p>Добави рецепта, потребител: {{ userName }}</p>
 
     <form (ngSubmit)="saveRecipe()">
-        <input type="text" placeholder="Име на рецепта" [(ngModel)]="newRecipe.recipeName" name="name" required />
-        <textarea placeholder="Съставки" [(ngModel)]="newRecipe.ingredients" name="ingredients"></textarea>
-        <textarea placeholder="Описание" [(ngModel)]="newRecipe.description" name="description"></textarea>
-        <button type="submit">Запази</button>
-        <button (click) = "goBack()">Назад към начална страница</button>
+      <input type="text" placeholder="Име на рецепта" [(ngModel)]="newRecipe.recipe_name" name="name" required />
+      <textarea placeholder="Съставки" [(ngModel)]="newRecipe.ingredients" name="ingredients"></textarea>
+      <textarea placeholder="Описание" [(ngModel)]="newRecipe.description" name="description"></textarea>
+      <button type="submit">Запази</button>
+      <button (click)="goBack()">Назад към начална страница</button>
     </form>
 
   

@@ -1,22 +1,27 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { environment } from '../../../environments/environment';
+import { AuthServiceOnlineDB } from './auth-service-online-db.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserRecipeServiceOnlineDB {
-  private apiUrl = 'http://localhost:5000/api/recipe';
+  private apiKey = environment.NEXT_PUBLIC_SUPABASE_ANON_KEY;
 
-  constructor(private http: HttpClient) {}
+  constructor(
+    private authServiceOnlineDB: AuthServiceOnlineDB,
+    private http: HttpClient
+  ) {}
 
-  addRecipe(recipeData: any): Observable<any> {
-    const token = localStorage.getItem('token');
-    const headers = new HttpHeaders({
-      Authorization: `Bearer ${token}`,
-      'Content-Type': 'application/json'
+  addRecipe(recipeData: any) {
+    return this.http.post('https://gryzvkmsfnkbzswnzjyf.supabase.co/rest/v1/user_recipes', recipeData, {
+      headers: {
+        'Content-Type': 'application/json',
+        'apikey': this.apiKey,
+        'Authorization': `Bearer ${this.authServiceOnlineDB.getToken()}`
+      }
     });
-
-    return this.http.post(`${this.apiUrl}`, recipeData, { headers });
   }
 }

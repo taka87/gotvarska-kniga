@@ -42,15 +42,13 @@ export class AuthServiceOnlineDB {
     try {
       const { data, error } = await this.supabase.auth.signInWithPassword({ email, password });
   
-      console.log("🛠️ Supabase login response:", data, error); // 🔹 Добавяме логване
-
+      console.log("🛠️ Supabase login response:", data, error); // 🔹 Debugging
+  
       if (error || !data.session) {
         console.error("❌ Грешка при вход:", error?.message || "Няма сесия!");
         this.showMessage("❌ Грешка при вход!");
         return null;
       }
-  
-      // console.log("✅ Успешен вход, данни от Supabase:", data); // 🔍 Debug
   
       const userId = data.user?.id;
       const token = data.session.access_token;
@@ -60,41 +58,50 @@ export class AuthServiceOnlineDB {
         return null;
       }
   
-      // 🔹 Взимаме допълнителни данни за потребителя (напр. роля)
+      // 🔹 Взимаме допълнителни данни за потребителя (роля + first_name, last_name)
       const { data: userData, error: userError } = await this.supabase
         .from("users") // 🛑 Име на таблицата в Supabase
-        .select("role")
+        .select("role, first_name, last_name") // 👈 Взимаме имената
         .eq("id", userId)
         .single();
   
       if (userError) {
-        console.error("⚠️ Грешка при вземане на роля:", userError.message);
+        console.error("⚠️ Грешка при вземане на потребителски данни:", userError.message);
       }
   
       const userRole = userData?.role || "user"; // 👈 Ако няма роля, приемаме "user"
+      const firstName = userData?.first_name || "";
+      const lastName = userData?.last_name || "";
   
-      // 🔹 Запазваме потребителските данни
+      // 🔹 Запазваме потребителските данни в localStorage
       localStorage.setItem("token", token);
       localStorage.setItem(
         "loggedUser",
         JSON.stringify({
           userId,
           email: data.user.email,
-          role: userRole,
+          first_name: firstName, // ✅ Добавено
+          last_name: lastName,   // ✅ Добавено
+          role: userRole
         })
       );
   
       this.userLoggedInOnlineDB.next({
         userId,
         email: data.user.email,
+        first_name: firstName, // ✅ Добавено
+        last_name: lastName,   // ✅ Добавено
         role: userRole
       });
-      console.log("✅ Успешен вход, записан в localStorage:", { userId, email: data.user.email, role: userRole });
+  
+      console.log("✅ Успешен вход, записан в localStorage:", { userId, email: data.user.email, first_name: firstName, last_name: lastName, role: userRole });
       this.showMessage("✅ Успешен вход!");
-      
+  
       return {
         userId,
         email: data.user.email,
+        first_name: firstName, // ✅ Добавено
+        last_name: lastName,   // ✅ Добавено
         role: userRole
       };
     } catch (err) {
@@ -103,13 +110,85 @@ export class AuthServiceOnlineDB {
     }
   }
 
+  // async login(email: string, password: string): Promise<any> {
+  //   try {
+  //     const { data, error } = await this.supabase.auth.signInWithPassword({ email, password });
+  
+  //     console.log("🛠️ Supabase login response:", data, error); // 🔹 Добавяме логване
+
+  //     if (error || !data.session) {
+  //       console.error("❌ Грешка при вход:", error?.message || "Няма сесия!");
+  //       this.showMessage("❌ Грешка при вход!");
+  //       return null;
+  //     }
+  
+  //     // console.log("✅ Успешен вход, данни от Supabase:", data); // 🔍 Debug
+  
+  //     const userId = data.user?.id;
+  //     const token = data.session.access_token;
+  
+  //     if (!userId) {
+  //       console.error("⚠️ Липсва userId! Възможно е грешка в Supabase.");
+  //       return null;
+  //     }
+  
+  //     // 🔹 Взимаме допълнителни данни за потребителя (напр. роля)
+  //     const { data: userData, error: userError } = await this.supabase
+  //       .from("users") // 🛑 Име на таблицата в Supabase
+  //       .select("role")
+  //       .eq("id", userId)
+  //       .single();
+  
+  //     if (userError) {
+  //       console.error("⚠️ Грешка при вземане на роля:", userError.message);
+  //     }
+  
+  //     const userRole = userData?.role || "user"; // 👈 Ако няма роля, приемаме "user"
+  
+  //     // 🔹 Запазваме потребителските данни
+  //     localStorage.setItem("token", token);
+  //     localStorage.setItem(
+  //       "loggedUser",
+  //       JSON.stringify({
+  //         userId,
+  //         email: data.user.email,
+  //         role: userRole,
+  //       })
+  //     );
+  
+  //     this.userLoggedInOnlineDB.next({
+  //       userId,
+  //       email: data.user.email,
+  //       role: userRole
+  //     });
+  //     console.log("✅ Успешен вход, записан в localStorage:", { userId, email: data.user.email, role: userRole });
+  //     this.showMessage("✅ Успешен вход!");
+      
+  //     return {
+  //       userId,
+  //       email: data.user.email,
+  //       role: userRole
+  //     };
+  //   } catch (err) {
+  //     console.error("❌ Грешка при изпълнение на login:", err);
+  //     return null;
+  //   }
+  // }
+
   checkSessionOnlineDB(): void {
-    const userData = localStorage.getItem("loggedUserOnlineDB"); // 🔹 Променяме ключа в localStorage
+    // const userData = localStorage.getItem("loggedUserOnlineDB"); // 🔹 Променяме ключа в localStorage
+    const userData = localStorage.getItem("loggedUser"); // 🔹 Променяме ключа в localStorage
     if (userData) {
       this.userLoggedInOnlineDB.next(JSON.parse(userData));
     } else {
       this.userLoggedInOnlineDB.next(null);
     }
+  }
+
+  getUserInfo(): any {
+    // const userData = localStorage.getItem("loggedUserOnlineDB");
+    const userData = localStorage.getItem("loggedUser");
+    return userData ? JSON.parse(userData) : null;
   }
 
   getToken(): string | null {

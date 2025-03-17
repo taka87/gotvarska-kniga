@@ -3,9 +3,11 @@ import { Component } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { Recipe } from '../../../models/userRecipe';
 import { FormsModule } from '@angular/forms';
-import { AuthService } from '../../mysql-services/auth-service.service';
-import { UserRecipeService } from '../../mysql-services/user-recipe.service';
+// import { AuthService } from '../../mysql-services/auth-service.service';
+// import { UserRecipeService } from '../../mysql-services/user-recipe.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { AuthServiceOnlineDB } from '../online-DB-services/auth-service-online-db.service';
+import { UserRecipeServiceOnlineDB } from '../online-DB-services/user-recipe-online-db.service';
 
 @Component({
   selector: 'app-user-recipe-online-db',
@@ -19,9 +21,9 @@ export class UserRecipeOnlineDBComponent {
  userName: string | null = null;
 
  constructor(
-    private authService: AuthService,
+    private authServiceOnlineDB: AuthServiceOnlineDB,
     private router: Router,
-    private userRecipeService: UserRecipeService,
+    private userRecipeOnlineDBService: UserRecipeServiceOnlineDB,
     private snackBar: MatSnackBar
   ) {}
 
@@ -33,31 +35,44 @@ export class UserRecipeOnlineDBComponent {
     });
   }
 
- ngOnInit(): void {
-  //Check user is in cash or not
-  const user = this.authService.getUserInfo();
-  if (!user) {
-    this.router.navigate(['/']); // Пренасочваме към страницата за вход
+  ngOnInit(): void {
+    //Check user is in cash or not
+    const user = this.authServiceOnlineDB.getUserInfo();
+    if (!user) {
+      this.router.navigate(['/']); // Пренасочваме към страницата за вход
+    }
+    console.log('🔍 User data:', user); // ⬅️ Debugging
+    console.log('🔍 User data:', user.first_name); // ⬅️ Debugging
+    console.log('🔍 User data:', this.userName); // ⬅️ Debugging
+    //  const user = this.authService.getUserInfo();
+    this.userName = user ? user.first_name || 'Гост' : 'Гост'; 
   }
 
-  //  const user = this.authService.getUserInfo();
-  this.userName = user.firstName || 'Гост';
- }
-
- newRecipe = { recipeName: '', ingredients: '', description: '' };
+ newRecipe = { recipe_name: '', ingredients: '', description: '', user_id: '' };
 
  saveRecipe() {
-   this.userRecipeService.addRecipe(this.newRecipe).subscribe({
-     next: (response) => {
-      //  alert(response.message);
-       this.showMessage('Рецептата добавена успешно!')
-       this.newRecipe = { recipeName: '', ingredients: '', description: '' }; // ✅ Зануляваме формата
-     },
-     error: (err) => {
-       console.error('Грешка при добавяне на рецепта:', err);
-     }
-   });
- }
+  const user = this.authServiceOnlineDB.getUserInfo(); // Взимаме текущия потребител
+  if (!user) {
+    this.showMessage('Трябва да сте влезли в профила си!');
+    return;
+  }
+
+  // Добавяме user_id в рецептата!
+  const recipeData = {
+    ...this.newRecipe,
+    user_id: user.userId // 👈 Задаваме ID-то на потребителя
+  };
+
+  this.userRecipeOnlineDBService.addRecipe(recipeData).subscribe({
+    next: (response) => {
+      this.showMessage('Рецептата добавена успешно!');
+      this.newRecipe = { recipe_name: '', ingredients: '', description: '', user_id: '' }; // ✅ Зануляваме формата
+    },
+    error: (err) => {
+      console.error('Грешка при добавяне на рецепта:', err);
+    }
+  });
+}
 
   goBack(): void {
     this.router.navigate(['/']);
