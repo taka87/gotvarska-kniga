@@ -14,6 +14,7 @@ export class AdminServiceOnlineDB {
   // private apiUrl = `${environment.NEXT_PUBLIC_SUPABASE_URL}/api/admin`;
   private apiUserUrl = `${environment.NEXT_PUBLIC_SUPABASE_URL}/api/user`;
   // private apiRecipesUrl = `${environment.NEXT_PUBLIC_SUPABASE_URL}/api/recipe`;
+  private deleteUserUrl = environment.supabaseDeleteUserUrl;
 
   // const supabase = createClient('SUPABASE_URL', 'SUPABASE_ANON_KEY');
   private headers = new HttpHeaders({
@@ -50,16 +51,10 @@ export class AdminServiceOnlineDB {
   }
 
   // Метод за изтриване на потребител
-  // Метод за изтриване на потребител
-  deleteUser(userId: string): Observable<any> {
-    const url = `${this.apiUserUrl}?id=eq.${userId}`;
-    return this.http.delete(url, {
-      headers: {
-        'Content-Type': 'application/json',
-        'apikey': environment.NEXT_PUBLIC_SUPABASE_ANON_KEY,
-      },
-    });
+  deleteUser(userId: string) {
+    return this.http.delete(`${this.deleteUserUrl}?id=${userId}`);
   }
+
   // Метод за зареждане на потребители
   loadUsers(): Observable<any> {
     return this.http.get(`${this.apiUserUrl}`, {

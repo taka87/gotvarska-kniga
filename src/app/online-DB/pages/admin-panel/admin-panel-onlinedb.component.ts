@@ -59,7 +59,7 @@ export class AdminPanelOnlineDBComponent implements OnInit {
     // this.loadRecipes();
 
     const user = this.authService.getUserInfo();
-    this.userName = user.firstName || 'Гост';
+    this.userName = user.first_name || 'Гост';
   }
 
   loadUsers() {
@@ -69,13 +69,13 @@ export class AdminPanelOnlineDBComponent implements OnInit {
   }
 
   // Метод за изтриване на потребител
-  deleteUser(userId: string): void {
+  deleteUser(userId: string) {
     this.adminServiceOnlineDB.deleteUser(userId).subscribe({
       next: () => {
-        console.log(`Потребител с ID ${userId} е изтрит.`);
-        this.loadUsers();  // Презареждаме потребителите, след като изтрием
+        console.log('User deleted successfully');
+        this.loadUsers(); // Презареждаме списъка с потребители
       },
-      error: (err) => console.error('Грешка при изтриване на потребител', err),
+      error: (err) => console.error('Error deleting user:', err)
     });
   }
 

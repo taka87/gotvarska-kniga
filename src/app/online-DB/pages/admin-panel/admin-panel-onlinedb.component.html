@@ -34,14 +34,12 @@
       </tr>
       <tr *ngFor="let user of users">
         <td>{{ user.id }}</td>
-        <td>{{ user.firstName }} {{ user.lastName }}</td>
+        <td>{{ user.first_name }} {{ user.last_name }}</td>
         <td>{{ user.email }}</td>
         <td>{{ user.role }}</td>
         <td>
-          <!-- <button *ngIf="user.role !== 'admin'" (click)="grantAdmin(user.id)">Направи админ</button> -->
-        </td>
-        <td>
           <button (click)="deleteUser(user.id)">Изтрий</button>
+          <!-- <button *ngIf="user.role !== 'admin'" (click)="grantAdmin(user.id)">Направи админ</button> -->
         </td>
       </tr>
     </table>
