@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders  } from '@angular/common/http';
-import { from, Observable,map } from 'rxjs';
+import { from, Observable,map,tap } from 'rxjs';
 import { environment } from '../../../environments/environment';
 import { AuthServiceOnlineDB } from './auth-service-online-db.service';
 import { supabase } from '../../../../supabase';
@@ -38,7 +38,7 @@ export class AdminServiceOnlineDB {
       this.supabase.from('users').select('*')
     ).pipe(
       map(response => {
-        console.log("📌 Получени потребители от Supabase:", response);
+        // console.log("📌 Получени потребители от Supabase:", response);
         return Array.isArray(response.data) ? response.data : [];
       })
     );
@@ -65,48 +65,61 @@ export class AdminServiceOnlineDB {
     });
   }
 
+  getUserRecipes() {
+    return this.http.get<any[]>(`${environment.NEXT_PUBLIC_SUPABASE_URL}/rest/v1/user_recipes?select=id,recipe_name,description,ingredients,user:users(id,first_name,last_name)`, {
+      headers: {
+        'apikey': environment.NEXT_PUBLIC_SUPABASE_ANON_KEY,
+        'Authorization': `Bearer ${environment.NEXT_PUBLIC_SUPABASE_ANON_KEY}`
+      }
+    });
+    // .pipe(
+    //   tap(data => console.log("Recipes with users:", data)) // Логваме да проверим резултата
+    // );
+  }
+
+  // getUserRecipes() {
+  //   return this.http.get<any[]>(`${environment.NEXT_PUBLIC_SUPABASE_URL}/rest/v1/user_recipes`, {
+  //     headers: {
+  //       'apikey': environment.NEXT_PUBLIC_SUPABASE_ANON_KEY,
+  //       'Authorization': `Bearer ${environment.NEXT_PUBLIC_SUPABASE_ANON_KEY}`
+  //     }
+  //   });
+  // }
+
+  //2
+  deleteUserRecipe(recipeId: string) {
+    return this.http.delete(`${environment.NEXT_PUBLIC_SUPABASE_URL}/rest/v1/user_recipes?id=eq.${recipeId}`, {
+      headers: {
+        'apikey': environment.NEXT_PUBLIC_SUPABASE_ANON_KEY,
+        'Authorization': `Bearer ${environment.NEXT_PUBLIC_SUPABASE_ANON_KEY}`
+      }
+    });
+  }
+
+  //3
+  editUserRecipe(recipeId: string, updatedData: any) {
+    return this.http.patch(`${environment.NEXT_PUBLIC_SUPABASE_URL}/rest/v1/user_recipes?id=eq.${recipeId}`, updatedData, {
+      headers: {
+        'apikey': environment.NEXT_PUBLIC_SUPABASE_ANON_KEY,
+        'Authorization': `Bearer ${environment.NEXT_PUBLIC_SUPABASE_ANON_KEY}`,
+        'Content-Type': 'application/json'
+      }
+    });
+  }
 
   updateUserRole(userId: string, isAdmin: boolean): Observable<any> {
     const url = `${this.apiUserUrl}?id=eq.${userId}`;
     return this.http.patch(url, { role: isAdmin ? 'admin' : 'user' }, { headers: this.headers });
   }
 
-  // async getUserRole(userId: string): Promise<string> {
-  //   const { data, error } = await supabase
-  //     .from('roles')
-  //     .select('role')
-  //     .eq('user_id', userId)
-  //     .single();
-      
-  //   return data?.role || 'user';
-  // }
-
-  // // getUsers(): Observable<any[]> {
-  // //   const headers = new HttpHeaders({
-  // //     Authorization: `Bearer ${this.authServiceOnlineDB.getToken()}`,
-  // //     Role: this.authServiceOnlineDB.getRole() // 🔥 Тук изпращаш ролята като хедър
-  // //   });
-   // //   return this.http.get<any[]>(`${this.apiUrl}/users`);
-  // // }
-
-  // getRecipes(): Observable<any> {
-  //   return from(supabase.from('user_recipes').select('*'));
-  // }
-
-  // deleteUser(userId: string) {
-  //   return from(supabase.from('users').delete().eq('id', userId));
-  // }
-
-  // deleteRecipe(recipeId: string): Observable<any> {
-  //   return from(supabase.from('user_recipes').delete().eq('id', recipeId));
-  // }
-
-  // // //todo
-  // // editRecipe(recipeId: string, updatedRecipe: any): Observable<any> {
-  // //   return this.http.put<any>(`${this.apiRecipesUrl}/${recipeId}`, updatedRecipe);
-  // // }
-
-  // updateRecipe(recipeId: string, recipeData: any): Observable<any> {
-  //   return from(supabase.from('user_recipes').update(recipeData).eq('id', recipeId));
-  // }
+  //4 ??
+  registerUser(userData: any) {
+    return this.http.post(`${environment.NEXT_PUBLIC_SUPABASE_URL}/rest/v1/users`, userData, {
+      headers: {
+        'apikey': environment.NEXT_PUBLIC_SUPABASE_ANON_KEY,
+        'Authorization': `Bearer ${environment.NEXT_PUBLIC_SUPABASE_ANON_KEY}`,
+        'Content-Type': 'application/json'
+      }
+    });
+  }
 }

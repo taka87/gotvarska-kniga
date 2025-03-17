@@ -51,12 +51,12 @@ export class AdminPanelOnlineDBComponent implements OnInit {
 
   ngOnInit(): void {
     this.adminServiceOnlineDB.getUsers().subscribe(response => {
-      console.log("📌 Какво връща Supabase?", response);
+      // console.log("📌 Какво връща Supabase?", response);
     });
 
     // this.checkAdmin();
     this.loadUsers();
-    // this.loadRecipes();
+    this.loadRecipes();
 
     const user = this.authService.getUserInfo();
     this.userName = user.first_name || 'Гост';
@@ -79,116 +79,93 @@ export class AdminPanelOnlineDBComponent implements OnInit {
     });
   }
 
+  loadRecipes() {
+    this.adminServiceOnlineDB.getUserRecipes().subscribe(
+      (data) => {
+        this.recipes = data;
+      },
+      (error) => {
+        console.error("Error loading recipes:", error);
+      }
+    );
+  }
 
-  // trackByUser(index: number, user: any) {
-  //   return user.id; // Ако id не се променя, Angular няма да прави излишни ререндери.
-  // }
+  //2
+  deleteRecipe(recipeId: string) {
+    this.adminServiceOnlineDB.deleteUserRecipe(recipeId).subscribe(
+      () => {
+        this.recipes = this.recipes.filter(r => r.id !== recipeId);
+      },
+      (error) => {
+        console.error("Error deleting recipe:", error);
+      }
+    );
+  }
 
-  // trackByRecipe(index: number, recipe: any) {
-  //   return recipe.id;
-  // }
+  //✅ Метод за отваряне на формата за редакция:
+  editRecipe(recipe: any) {
+    console.log("Editing recipe:", recipe);
+    
+    if (!recipe || !recipe.id) {
+      console.error("Error: Recipe has no ID!");
+      return;
+    }
+  
+    if (!recipe.user || !recipe.user.id) {
+      console.error("Error: Recipe has no associated user ID!");
+      return;
+    }
+  
+    this.selectedRecipe = { 
+      ...recipe, 
+      userId: recipe.user.id  // Запазваме user ID
+    };
+  
+    this.showEditForm = true;
+  }
+  
+  //✅ Метод за обновяване на рецептата:
+  updateRecipe() {
+    if (!this.selectedRecipe || !this.selectedRecipe.id) {
+      console.error("Error: No recipe ID found!");
+      return;
+    }
+  
+    console.log("Updating recipe:", this.selectedRecipe);
+  
+    const updatedData = {
+      recipe_name: this.selectedRecipe.recipe_name,
+      description: this.selectedRecipe.description,
+      ingredients: this.selectedRecipe.ingredients,
+      user_id: this.selectedRecipe.userId // Изпращаме user ID
+    };
+  
+    this.adminServiceOnlineDB.editUserRecipe(this.selectedRecipe.id, updatedData).subscribe(
+      () => {
+        this.showEditForm = false;
+        this.loadRecipes(); // Презареждаме рецептите след успешен ъпдейт
+      },
+      (error) => {
+        console.error("Error updating recipe:", error);
+      }
+    );
+  }
 
-  // grantAdmin(userId: string) {
-  //   this.adminServiceOnlineDB.grantAdminRole(userId).subscribe({
-  //     next: () => {
-    //       this.showMessage("✅ Потребителят вече е администратор!");
-  //       this.loadUsers(); // 🔄 Обновяваме списъка
-  //     },
-  //     error: (error) => this.showMessage("❌ Грешка при задаване на роля: " + error.message),
-  //   });
-  // }
-
-  // loadRecipes() {
-  //   this.adminServiceOnlineDB.getRecipes().subscribe((data) => {
-  //     console.log("🍽️ Получени рецепти:", data);
-  //     this.recipes = data;
-  //   });
-  // }
-
-  // deleteUser(userId: string) {
-  //   this.adminServiceOnlineDB.deleteUser(userId).subscribe({
-  //     next: (response) => {
-  //       this.showMessage("✅ Потребителят е изтрит успешно!");
-  //       // console.log("✅ Потребителят е изтрит успешно!", response);
-  //       this.loadUsers();
-  //     },
-  //     error: (error) => {
-  //       this.showMessage("⚠️ Получихме грешка, но ще обновим списъка");
-  //       // console.warn("⚠️ Получихме грешка, но ще обновим списъка", error);
-  //       if (error.status === 200) {
-  //         this.loadUsers(); // Дори при "грешка" с 200, презареждаме списъка
-  //       }
-  //     }
-  //   });
-  // }
-  // deleteRecipe(recipeId: string) {
-  //   this.adminServiceOnlineDB.deleteRecipe(recipeId).subscribe(
+  // //todo
+  // registerUser() {
+  //   const userData = {
+  //     email: this.email,
+  //     password: this.password,
+  //     isAdmin: this.isAdmin ? true : false  // ако тикчето е включено, ще е админ
+  //   };
+  
+  //   this.adminServiceOnlineDB.registerUser(userData).subscribe(
   //     () => {
-  //       this.showMessage("✅ Рецептата е изтрита успешно!");
-  //       // console.log("✅ Рецептата е изтрита успешно!");
-  //       this.loadRecipes(); // 🔄 Обновяваме списъка
+  //       console.log("User registered successfully");
   //     },
-  //     // (error) => console.error("❌ Грешка при изтриване:", error)
-  //     (error) => this.showMessage("❌ Грешка при изтриване:")
-  //   );
-  // }
-
-  // editRecipe(recipe: any) {
-  //   this.selectedRecipe = {id: recipe.id,  ...recipe }; // Копираме обекта, за да не пипаме оригинала
-  //   //console.log("Избрана рецепта за редакция:", this.selectedRecipe);
-  //   this.showEditForm = true; // Показваме формата
-  // }
-  
-  // updateRecipe() {
-  //   if (!this.selectedRecipe || !this.selectedRecipe.id) {
-  //     this.showMessage("⚠️ Няма избрана рецепта за редакция!");
-  //     return;
-  //   }
-  //   console.log("✅ Запазване на рецепта:", this.selectedRecipe);
-  //   this.adminServiceOnlineDB.updateRecipe(this.selectedRecipe.id, this.selectedRecipe).subscribe({
-  //     next: (response) => {
-  //       this.showMessage("✅ Рецептата е обновена успешно!");
-  //       this.showEditForm = false;
-  //       this.fetchRecipes();
-  //     },
-  //     error: (error) => this.showMessage("❌ Грешка при обновяване на рецептата: " + error.message),
-  //   });
-  // }
-   // fetchRecipes() {
-  //   this.adminServiceOnlineDB.getRecipes().subscribe({
-  //     next: (recipes) => {
-  //       this.recipes = recipes;
-  //     },
-  //     error: (error) => {
-  //       // console.error('Грешка при зареждане на рецептите:', error);
-  //       this.showMessage('Грешка при зареждане на рецептите:');
+  //     (error) => {
+  //       console.error("Error registering user:", error);
   //     }
-  //   });
-  // }
-
-  // async checkAdmin() {
-  //   const user = this.authService.getUserInfo();
-  //   if (!user) {
-  //     console.warn("⚠️ Няма логнат потребител");
-  //     return;
-  //   }
-  
-  //   const role = await this.adminServiceOnlineDB.getUserRole(user.id);
-  //   console.log("🔹 Роля на потребителя:", role);
-  //   this.isAdmin = role === "admin";
-  // }
-
-  // saveRecipe() {
-  //   // console.log(this.selectedRecipe)
-  //   this.adminServiceOnlineDB.updateRecipe(this.selectedRecipe.id, this.selectedRecipe).subscribe(
-  //     (response) => {
-  //       // console.log("✅ Успешно редактирана рецепта:", response);
-  //       this.showMessage("✅ Успешно редактирана рецепта:");
-  //       this.loadRecipes(); // Презареждаме списъка
-  //       this.selectedRecipe = null; // Скриваме форма
-   //     },
-  //     // (error) => console.error("❌ Грешка при редактиране:", error)
-  //     (error) => this.showMessage("❌ Грешка при редактиране:")
   //   );
   // }
 
