@@ -8,6 +8,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { AdminServiceOnlineDB } from '../../online-DB-services/admin-service-online-db.service';
 // import { checkUserRole } from '../../../../../supabase/functions/check-user-role';
 
+
 @Component({
   selector: 'app-admin-panel-onlinedb',
   templateUrl: './admin-panel-onlinedb.component.html',
@@ -28,9 +29,10 @@ export class AdminPanelOnlineDBComponent implements OnInit {
   newAdmin = { username: '', password: '' };
   showAdminRegistrationForm = false;  
 
+  
   //edit recipe
   showEditForm: boolean = false;
-  
+
   constructor(
     private adminServiceOnlineDB: AdminServiceOnlineDB,
     private authService: AuthService,
@@ -66,6 +68,18 @@ export class AdminPanelOnlineDBComponent implements OnInit {
     });
   }
 
+  // Метод за изтриване на потребител
+  deleteUser(userId: string): void {
+    this.adminServiceOnlineDB.deleteUser(userId).subscribe({
+      next: () => {
+        console.log(`Потребител с ID ${userId} е изтрит.`);
+        this.loadUsers();  // Презареждаме потребителите, след като изтрием
+      },
+      error: (err) => console.error('Грешка при изтриване на потребител', err),
+    });
+  }
+
+
   // trackByUser(index: number, user: any) {
   //   return user.id; // Ако id не се променя, Angular няма да прави излишни ререндери.
   // }
@@ -77,7 +91,7 @@ export class AdminPanelOnlineDBComponent implements OnInit {
   // grantAdmin(userId: string) {
   //   this.adminServiceOnlineDB.grantAdminRole(userId).subscribe({
   //     next: () => {
-  //       this.showMessage("✅ Потребителят вече е администратор!");
+    //       this.showMessage("✅ Потребителят вече е администратор!");
   //       this.loadUsers(); // 🔄 Обновяваме списъка
   //     },
   //     error: (error) => this.showMessage("❌ Грешка при задаване на роля: " + error.message),
@@ -90,6 +104,7 @@ export class AdminPanelOnlineDBComponent implements OnInit {
   //     this.recipes = data;
   //   });
   // }
+
   // deleteUser(userId: string) {
   //   this.adminServiceOnlineDB.deleteUser(userId).subscribe({
   //     next: (response) => {
@@ -106,7 +121,6 @@ export class AdminPanelOnlineDBComponent implements OnInit {
   //     }
   //   });
   // }
-  
   // deleteRecipe(recipeId: string) {
   //   this.adminServiceOnlineDB.deleteRecipe(recipeId).subscribe(
   //     () => {
@@ -118,6 +132,7 @@ export class AdminPanelOnlineDBComponent implements OnInit {
   //     (error) => this.showMessage("❌ Грешка при изтриване:")
   //   );
   // }
+
   // editRecipe(recipe: any) {
   //   this.selectedRecipe = {id: recipe.id,  ...recipe }; // Копираме обекта, за да не пипаме оригинала
   //   //console.log("Избрана рецепта за редакция:", this.selectedRecipe);
@@ -139,8 +154,7 @@ export class AdminPanelOnlineDBComponent implements OnInit {
   //     error: (error) => this.showMessage("❌ Грешка при обновяване на рецептата: " + error.message),
   //   });
   // }
-
-  // fetchRecipes() {
+   // fetchRecipes() {
   //   this.adminServiceOnlineDB.getRecipes().subscribe({
   //     next: (recipes) => {
   //       this.recipes = recipes;
@@ -152,7 +166,7 @@ export class AdminPanelOnlineDBComponent implements OnInit {
   //   });
   // }
 
-   // async checkAdmin() {
+  // async checkAdmin() {
   //   const user = this.authService.getUserInfo();
   //   if (!user) {
   //     console.warn("⚠️ Няма логнат потребител");
@@ -171,14 +185,13 @@ export class AdminPanelOnlineDBComponent implements OnInit {
   //       // console.log("✅ Успешно редактирана рецепта:", response);
   //       this.showMessage("✅ Успешно редактирана рецепта:");
   //       this.loadRecipes(); // Презареждаме списъка
-  //       this.selectedRecipe = null; // Скриваме формата
-  //     },
+  //       this.selectedRecipe = null; // Скриваме форма
+   //     },
   //     // (error) => console.error("❌ Грешка при редактиране:", error)
   //     (error) => this.showMessage("❌ Грешка при редактиране:")
   //   );
   // }
 
-  
   cancelEdit() {
     this.showEditForm = false;
     this.selectedRecipe = null;
