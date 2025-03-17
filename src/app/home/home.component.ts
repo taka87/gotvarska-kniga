@@ -206,7 +206,7 @@ export class HomeComponent {
     } else {
       this.isLoggedOnlineDB = false;
       this.userNameOnlineDB = null;
-      console.log("❌ Няма логнат потребител (OnlineDB)");
+      // console.log("❌ Няма логнат потребител (OnlineDB)");
     }
   }
 

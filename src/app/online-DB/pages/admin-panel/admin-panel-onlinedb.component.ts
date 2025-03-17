@@ -26,7 +26,7 @@ export class AdminPanelOnlineDBComponent implements OnInit {
 
   //добави админ променливи
   isAdmin = false;  
-  newAdmin = { username: '', password: '' };
+  // newAdmin = { username: '', password: '' };
   showAdminRegistrationForm = false;  
 
   

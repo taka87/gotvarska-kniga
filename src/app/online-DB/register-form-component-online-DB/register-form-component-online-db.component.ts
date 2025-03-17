@@ -43,8 +43,8 @@ export class RegisterFormComponentOnlineDB implements OnInit{
   ngOnInit(): void {
     //трябва да се преправи за Супабасе после
     this.apiUrl = this.isAdmin
-    ? 'http://localhost:5000/api/admin/register-admin' // 🔧 Коригирано
-    : 'http://localhost:5000/api/user/register'; // 👈 Различни URL за админ и потребител
+    ? 'https://gryzvkmsfnkbzswnzjyf.supabase.co/functions/v1/register-admin' // 🔧 Коригирано
+    : 'https://gryzvkmsfnkbzswnzjyf.supabase.co/functions/v1/register-user'; // 👈 Различни URL за админ и потребител
 
     this.registrationForm = this.fb.group({
       firstName: ['', Validators.required],
