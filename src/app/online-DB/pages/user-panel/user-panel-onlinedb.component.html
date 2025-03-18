@@ -14,8 +14,8 @@
               <th>Начин приготвяне</th>
               <th>Действия</th>
             </tr>
-            <tr *ngFor="let recipe of userRecipes">
-              <td>{{ recipe.recipeName }}</td>
+            <tr *ngFor="let recipe of recipes">
+              <td>{{ recipe.recipe_name }}</td>
               <td>{{ recipe.ingredients }}</td>
               <td>{{ recipe.description }}</td>
               <td>
@@ -27,22 +27,23 @@
 
 
         </div>   
-                          <!-- Форма за редактиране -->
-                          <div *ngIf="showEditForm">
-                            <h3>Редактиране на рецепта</h3>
-                            <label>Име:</label>
-                            <input [(ngModel)]="selectedRecipe.recipeName" />
-                  
-                            <label>Съставки:</label>
-                            <input [(ngModel)]="selectedRecipe.ingredients" />
-                  
-                            <label>Описание:</label>
-                            <textarea [(ngModel)]="selectedRecipe.description"></textarea>
-                          <div>
-                            <button (click)="updateRecipe()">Запази</button>
-                            <button (click)="cancelEdit()">Откажи</button>
-                          </div>     
-                        </div>
+        <!-- Форма за редактиране -->
+        <div *ngIf="showEditForm">
+          <h3>Редактиране на рецепта</h3>
+          <label>Име:</label>
+          <input [(ngModel)]="selectedRecipe.recipe_name
+          " />
+
+          <label>Съставки:</label>
+          <input [(ngModel)]="selectedRecipe.ingredients" />
+
+          <label>Описание:</label>
+          <textarea [(ngModel)]="selectedRecipe.description"></textarea>
+        <div>
+          <button (click)="updateRecipe()">Запази</button>
+          <button (click)="cancelEdit()">Откажи</button>
+        </div>     
+      </div>
 
 
         <button class="back-position" routerLink="/">⬅ Върни се към началната страница</button>

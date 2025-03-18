@@ -35,7 +35,7 @@ export class UserSessionServiceOnlineDB {
 
   // ✅ Изтриване на акаунта от Supabase
   deleteOwnAccount(userId: string): Observable<any> {
-    console.log("📢 Опит за изтриване на user с ID:", userId);
+    // console.log("📢 Опит за изтриване на user с ID:", userId);
 
     return from(
       supabase.from('users').delete().eq('id', userId)

@@ -44,12 +44,6 @@ export class AdminServiceOnlineDB {
     );
   }
 
-  grantAdminRole(userId: string): Observable<any> {
-    return from(
-      supabase.from('roles').upsert([{ user_id: userId, role: 'admin' }])
-    );
-  }
-
   // Метод за изтриване на потребител
   deleteUser(userId: string) {
     return this.http.delete(`${this.deleteUserUrl}?id=${userId}`);

@@ -177,7 +177,7 @@ button:hover {
 }
 
 .category-item {
-  background: #f0f0f0;
+  background: #ffcccb;
   text-align: center;
   padding: 20px;
   border-radius: 12px;
@@ -292,7 +292,7 @@ h1 {
 
 /* Категории с анимации */
 .category-item {
-  background: #f0f0f0;
+  background: #ffe2cb;
   text-align: center;
   padding: 40px;
   border-radius: 12px;
