@@ -37,15 +37,15 @@
   
         <div class="contact-form">
           <h2>📩 Contact form</h2>
-          <form>
+          <form (ngSubmit)="submitForm()">
             <div class="form-group">
-              <input type="text" placeholder="Your name" required>
+              <input type="text" placeholder="Your name" [(ngModel)]="name" name="name" required>
             </div>
             <div class="form-group">
-              <input type="email" placeholder="Your e-mail" required>
+              <input type="email" placeholder="Your e-mail" [(ngModel)]="email" name="email" required>
             </div>
             <div class="form-group">
-              <textarea rows="4" placeholder="Your contact message..."></textarea>
+              <textarea rows="4" placeholder="Your contact message..." [(ngModel)]="message" name="message"></textarea>
             </div>
             <button type="submit">Send Message</button>
           </form>
