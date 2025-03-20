@@ -43,7 +43,7 @@ import { AuthServiceOnlineDB } from '../online-DB/online-DB-services/auth-servic
   //imports: [UserControlComponent, LoggedButtonComponent, LoggedButtonMysqlqlComponent,  UserMysqlComponent, MapComponent]
 })
 export class HomeComponent {
-  title = 'Потопете се в магията на нашия кулинарен свят';
+  title = "Immerse yourself in the magic of our culinary world";
   showRegisterFormMysql = false;
   showRegisterFormOnlineDB = false;
   swiper: Swiper | null = null;
@@ -87,20 +87,20 @@ export class HomeComponent {
   // new
   getCategoryRoute(categoryName: string): string {
     switch (categoryName) {
-      case 'Супи': return '/soups';
-      case 'Основни ястия': return '/main-dishes';
-      case 'Салати': return '/salads';
-      case 'Десерти': return '/desserts';
+      case 'Soups': return '/soups';
+      case 'Main Dishes': return '/main-dishes';
+      case 'Salads': return '/salads';
+      case 'Desserts': return '/desserts';
 
       default: return '/';
     }
   }
 
   categories = [
-    { id: 1, name: 'Супи', image: 'assets/Soups/pustra_zelenchukova_supa.jpg' },  //ако смениш "супи"-> се чупи пътя ??
-    { id: 2, name: 'Основни ястия', image: 'assets/Maindishes/maindish.jpg' },
-    { id: 4, name: 'Салати', image: 'assets/Salads/salad.jpg' },
-    { id: 3, name: 'Десерти', image: 'assets/Desserts/dessert.jpg' },
+    { id: 1, name: 'Soups', image: 'assets/Soups/pustra_zelenchukova_supa.jpg' },  //ако смениш "супи"-> се чупи пътя ??
+    { id: 2, name: 'Main Dishes', image: 'assets/Maindishes/maindish.jpg' },
+    { id: 4, name: 'Salads', image: 'assets/Salads/salad.jpg' },
+    { id: 3, name: 'Desserts', image: 'assets/Desserts/dessert.jpg' },
 
   ];
 
@@ -146,7 +146,7 @@ export class HomeComponent {
     this.isLogged = this.userSession.isLoggedIn(); // Проверяваме дали потребителят е логнат
 
     if (this.isLogged) {
-      const userData = JSON.parse(localStorage.getItem('loggedUser') || '{}');
+      const userData = JSON.parse(localStorage.getItem('loggedUserJSON') || '{}');
       this.userName = userData.firstName || 'Гост';
     }
 
@@ -174,7 +174,7 @@ export class HomeComponent {
   //MYSQL
   checkLoginStatus(): void {
     const token = localStorage.getItem('token');
-    const userData = localStorage.getItem('loggedUser');
+    const userData = localStorage.getItem('loggedUserMYSQL');
 
     if (token && userData) {
       this.isLoggedMySQL = true;
@@ -212,7 +212,7 @@ export class HomeComponent {
 
   logOut(): void {
     localStorage.removeItem('token');  
-    localStorage.removeItem('loggedUser'); 
+    localStorage.removeItem('loggedUserMYSQL'); 
     this.isLoggedMySQL = false;
     this.userNameMySQL = null;
     if (typeof window !== 'undefined') {

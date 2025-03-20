@@ -20,7 +20,7 @@ export class AuthService {
       tap(user => {
         if (user) {
           console.log("Логин успешен!", user);
-          localStorage.setItem('loggedUser', JSON.stringify(user));
+          localStorage.setItem('loggedUserJSON', JSON.stringify(user));
         } else {
           console.warn("Грешен имейл или парола!");
         }

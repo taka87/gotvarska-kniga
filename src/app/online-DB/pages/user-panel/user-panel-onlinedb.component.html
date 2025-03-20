@@ -2,25 +2,26 @@
   <h1>{{ title }}</h1>
 
   <!-- Средна част -->
-    <p>Логнат като: "{{ userName }}"</p>
+  <h2>Administrate your recipes in Online DB</h2>
+    <p>Logged as: "{{ userName }}"</p>
 
       <div class="showEditForm">
-        <h2>Вашите рецепти:</h2>
+        <h4>Your Personal recipes: {{userName}}</h4>
         <div class="table-container">
           <table>
             <tr>
-              <th>Име Рецепта</th>
-              <th>Съставки</th>
-              <th>Начин приготвяне</th>
-              <th>Действия</th>
+              <th>Recipe Name</th>
+              <th>Ingredients</th>
+              <th>Description</th>
+              <th>Action</th>
             </tr>
             <tr *ngFor="let recipe of recipes">
               <td>{{ recipe.recipe_name }}</td>
               <td>{{ recipe.ingredients }}</td>
               <td>{{ recipe.description }}</td>
               <td>
-                <button (click)="editRecipe(recipe)">Редактирай</button>
-                <button (click)="deleteRecipe(recipe.id)" class="delete">Изтрий</button>
+                <button (click)="editRecipe(recipe)">Edit</button>
+                <button (click)="deleteRecipe(recipe.id)" class="delete">Delete Recipe</button>
               </td>
             </tr>
           </table>
@@ -29,32 +30,32 @@
         </div>   
         <!-- Форма за редактиране -->
         <div *ngIf="showEditForm">
-          <h3>Редактиране на рецепта</h3>
-          <label>Име:</label>
+          <h3>Edit Recipe</h3>
+          <label>Name:</label>
           <input [(ngModel)]="selectedRecipe.recipe_name
           " />
 
-          <label>Съставки:</label>
+          <label>Ingredients:</label>
           <input [(ngModel)]="selectedRecipe.ingredients" />
 
-          <label>Описание:</label>
+          <label>Description:</label>
           <textarea [(ngModel)]="selectedRecipe.description"></textarea>
         <div>
-          <button (click)="updateRecipe()">Запази</button>
-          <button (click)="cancelEdit()">Откажи</button>
+          <button (click)="updateRecipe()">Save</button>
+          <button (click)="cancelEdit()">Cancel Edit</button>
         </div>     
       </div>
 
 
-        <button class="back-position" routerLink="/">⬅ Върни се към началната страница</button>
+        <button class="back-position" routerLink="/">⬅ Back to Home Page</button>
       </div>
 
   <!-- Долна част (не я пипаме) -->
   <div class="footer">
     <a routerLink="/contact-info" class="about-link">
-      <h2> 🔗 За нас 🔗 </h2>
+      <h2> 🔗 About Us 🔗 </h2>
     </a>
-    <p>Следвайте ни в социалните мрежи:</p>
+    <p>Follow us on social media:</p>
     <div class="social-icons">
       <img src="assets/images/logos/facebook.jpg" alt="Facebook">
       <img src="assets/images/logos/instagram.jpg" alt="Instagram">
@@ -63,7 +64,7 @@
     </div>
   </div>
   <div class="site-footer">
-    <p>© 2024 MyRecipeBook. Всички права запазени.</p>
-    <p class="project-note">Проект за демонстрационни цели</p>
+    <p>© 2024 MyRecipeBook. All rights reserved.</p>
+    <p class="project-note">Project for demonstration purposes.</p>
   </div>
 </div>

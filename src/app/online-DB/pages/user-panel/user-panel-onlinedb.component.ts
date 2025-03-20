@@ -4,10 +4,7 @@ import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 //import { RegisterFormComponentMySqlComponent } from '../../register-form-component-my-sql/register-form-component-my-sql.component';
-import { AuthService } from '../../../mysql-services/auth-service.service';
-import { UserPanelService } from '../../../mysql-services/user-panel.service';
-import { Observable } from 'rxjs';
-import { HttpHeaders } from '@angular/common/http';
+import { AuthServiceOnlineDB } from '../../online-DB-services/auth-service-online-db.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { UserPanelServiceOnlineDB } from '../../online-DB-services/user-panel-online-db.service';
 
@@ -18,7 +15,7 @@ import { UserPanelServiceOnlineDB } from '../../online-DB-services/user-panel-on
   styleUrl: './user-panel-onlinedb.component.css'
 })
 export class UserPanelOnlineDBComponent {
-  title = "Управлявайте своите рецепти тук Online DB";
+  title = "Immerse yourself in the magic of our culinary world";
   recipes: any[] = [];
   selectedRecipe: any = null;
   userName: string = '';
@@ -28,7 +25,7 @@ export class UserPanelOnlineDBComponent {
 
   constructor(
     private userPanelOnlineDbService: UserPanelServiceOnlineDB,
-    private authService: AuthService,
+    private authServiceOnlineDB: AuthServiceOnlineDB,
     private snackBar:MatSnackBar
   ) {}
 
@@ -44,12 +41,12 @@ export class UserPanelOnlineDBComponent {
      // this.checkAdmin();
      this.loadRecipes();
  
-     const user = this.authService.getUserInfo();
+     const user = this.authServiceOnlineDB.getUserInfo();
      this.userName = user.first_name || 'Гост';
    }
  
    loadRecipes() {
-    const user = this.authService.getUserInfo();
+    const user = this.authServiceOnlineDB.getUserInfo();
     
     if (!user || !user.userId) {
       console.error("❌ Няма логнат потребител!");
@@ -62,7 +59,7 @@ export class UserPanelOnlineDBComponent {
           ...recipe,
           userId: recipe.user?.id || user.userId // Ако няма user, задаваме логнатия
         }));
-        console.log("✅ Заредени рецепти:", this.recipes);
+        // console.log("✅ Заредени рецепти:", this.recipes);
       },
       (error) => {
         console.error("❌ Грешка при зареждане на рецепти:", error);
@@ -84,7 +81,7 @@ export class UserPanelOnlineDBComponent {
  
    //✅ Метод за отваряне на формата за редакция:
    editRecipe(recipe: any) {
-    console.log("Editing recipe:", recipe);
+    // console.log("Editing recipe:", recipe);
   
     if (!recipe || !recipe.id) {
       console.error("❌ Error: Recipe has no ID!");
@@ -103,7 +100,7 @@ export class UserPanelOnlineDBComponent {
       userId: userId // Запазваме user ID с правилното име
     };
   
-    console.log("✅ Recipe selected for editing:", this.selectedRecipe);
+    // console.log("✅ Recipe selected for editing:", this.selectedRecipe);
     this.showEditForm = true;
   }
    
@@ -114,16 +111,16 @@ export class UserPanelOnlineDBComponent {
       return;
     }
   
-    console.log("🔄 Updating recipe:", this.selectedRecipe);
+    // console.log("🔄 Updating recipe:", this.selectedRecipe);
   
     const updatedData = {
       recipe_name: this.selectedRecipe.recipe_name,
       description: this.selectedRecipe.description,
       ingredients: this.selectedRecipe.ingredients,
-      user_id: this.selectedRecipe.userId || this.selectedRecipe.user_id // Винаги взимаме `user_id`
+      user_id: this.selectedRecipe.userId // Винаги взимаме `user_id`
     };
   
-    console.log("📤 Sending update data:", updatedData);
+    // console.log("📤 Sending update data:", updatedData);
   
     this.userPanelOnlineDbService.editUserRecipe(this.selectedRecipe.id, updatedData).subscribe(
       () => {
@@ -132,7 +129,8 @@ export class UserPanelOnlineDBComponent {
         this.loadRecipes(); // Презареждаме списъка с рецепти
       },
       (error) => {
-        console.error("❌ Error updating recipe:", error);
+        this.showMessage("❌ Error updating recipe:");
+        // console.error("❌ Error updating recipe:", error);
       }
     );
   }
@@ -140,9 +138,6 @@ export class UserPanelOnlineDBComponent {
    cancelEdit() {
      this.showEditForm = false;
      this.selectedRecipe = null;
-   }
- 
-   registerAdmin() {
    }
 }
 

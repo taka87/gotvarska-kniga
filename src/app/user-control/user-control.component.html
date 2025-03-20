@@ -1,18 +1,18 @@
 <div class="login-container">
-  <h2>Вход</h2>
+  <h2>Login</h2>
   
   <div class="input-group">
-    <label for="email">Имейл:</label>
-    <input id="email" [(ngModel)]="email" type="email" placeholder="Въведете имейл">
+    <label for="email">E-mail:</label>
+    <input id="email" [(ngModel)]="email" type="email" placeholder="Your E-mail:">
   </div>
 
   <div class="input-group">
-    <label for="password">Парола:</label>
-    <input id="password" [(ngModel)]="password" type="password" placeholder="Въведете парола">
+    <label for="password">Password:</label>
+    <input id="password" [(ngModel)]="password" type="password" placeholder="Please fill your password">
   </div>
 
   <div class="button-group">
-    <button (click)="login()">Вход</button>
-    <button routerLink="/register" class="register-button">Регистрация</button>
+    <button (click)="login()">Login</button>
+    <button routerLink="/register" class="register-button">Register</button>
   </div>
 </div>

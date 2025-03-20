@@ -15,7 +15,7 @@ import { FormsModule } from '@angular/forms';
 
 })
 export class SaladsComponent {
-  title = 'Раздел готови рецепти за:';
+  title = 'Ready recipes section for:';
 
     salads: any[] = [];
     selectedSalad: any = null;

@@ -14,7 +14,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   imports: [CommonModule,ReactiveFormsModule,RouterLink ],
 })
 export class UserRegistrationComponent implements OnInit {
-  title = 'Добре дошли в нашия кулинарен свят ... ';
+  title = 'Immerse yourself in the magic of our culinary world';
 
   registrationForm!: FormGroup;
   passwordsDoNotMatch: boolean = false;

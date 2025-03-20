@@ -1,19 +1,19 @@
 <div class="menu-container">
   <div class="header">
-    <h3>Изберете вашите рецепти като меню за деня:</h3>
+    <h3>Choose your recipes as your daily menu:</h3>
   </div>
 
   <div class="form-section">
     <!-- Супи -->
     <div class="input-container">
-      <label>Супа:</label>
+      <label>Soups:</label>
       <input 
         type="text"
         (input)="filterItems($any($event.target).value, 'soups')" 
         [(ngModel)]="selectedMenu['soup']" 
         (focus)="showDropdown('soups')"
         (blur)="hideDropdown('soups')"
-        placeholder="Изберете супа"
+        placeholder="Choose soup"
       >
       <div *ngIf="dropdownVisible['soups'] && filteredSoups.length" class="custom-dropdown">
         <div *ngFor="let soup of filteredSoups" 
@@ -26,14 +26,14 @@
 
     <!-- Десерти -->
     <div class="input-container">
-      <label>Десерт:</label>
+      <label>Dessert:</label>
       <input 
         type="text"
         (input)="filterItems($any($event.target).value, 'dessert')" 
         [(ngModel)]="selectedMenu['dessert']" 
         (focus)="showDropdown('dessert')"
         (blur)="hideDropdown('dessert')"
-        placeholder="Изберете десерт"
+        placeholder="Choose dessert"
       >
       <div *ngIf="dropdownVisible['dessert'] && filteredDesserts.length" class="custom-dropdown">
         <div *ngFor="let dessert of filteredDesserts" 
@@ -46,14 +46,14 @@
 
     <!-- Напитки -->
     <div class="input-container">
-      <label>Напитка:</label>
+      <label>Drinks:</label>
       <input 
         type="text"
         (input)="filterItems($any($event.target).value, 'filteredDrinks')" 
         [(ngModel)]="selectedMenu['drink']" 
         (focus)="showDropdown('drink')"
         (blur)="hideDropdown('drink')"
-        placeholder="Изберете напитка"
+        placeholder="Choose drink"
       >
       <div *ngIf="dropdownVisible['drink'] && filteredDrinks.length" class="custom-dropdown">
         <div *ngFor="let drink of filteredDrinks" 
@@ -66,14 +66,14 @@
 
     <!-- Салати -->
     <div class="input-container">
-      <label>Салата:</label>
+      <label>Salads:</label>
       <input 
         type="text"
         (input)="filterItems($any($event.target).value, 'filteredSalads')" 
         [(ngModel)]="selectedMenu['salad']" 
         (focus)="showDropdown('salad')"
         (blur)="hideDropdown('salad')"
-        placeholder="Изберете салата"
+        placeholder="Choose salad"
       >
       <div *ngIf="dropdownVisible['salad'] && filteredSalads.length" class="custom-dropdown">
         <div *ngFor="let salad of filteredSalads" 
@@ -84,6 +84,6 @@
       </div>
     </div>
 
-    <button (click)="submitMenu()">Избери</button>
+    <button (click)="submitMenu()">Select</button>
   </div>
 </div>

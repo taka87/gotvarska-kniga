@@ -2,7 +2,7 @@
   <!-- Заглавие на екрана -->
   <h1>{{title}}</h1>
 
-  <h2 class="screen-title">Супи</h2>
+  <h2 class="screen-title">Soups</h2>
 
   <!-- Навигационни бутони -->
   <app-navigation [activePage]="'/soups'"></app-navigation>
@@ -12,7 +12,7 @@
 
   <!-- Търсачка/Филтър за супите -->
   <div class="search-box-wrapper">
-    <p>Филтъра ограничен до 5</p>
+    <p>Filter Limited by 5</p>
     <div class="search-box-container">
       <input class="search-input" type="text" [(ngModel)]="searchQuery" (input)="filterSoups()" placeholder="Търси супа">
       <!-- <button class="search-button" (click)="filterSoups()">Търси 🔍</button> -->
@@ -76,9 +76,9 @@
  <!-- най-долна част , за инфо на приложението -->
  <div class="footer">
   <a routerLink="/contact-info" class="about-link">
-    <h2> 🔗 За нас 🔗  </h2>
+    <h2> 🔗 About Us 🔗  </h2>
   </a>
-  <p class="nadpis">Следвайте ни в социалните мрежи:</p>
+  <p class="nadpis">Follow us on social media:</p>
   <div class="social-icons">
     <img src="assets/images/logos/facebook.jpg" alt="Facebook">
     <img src="assets/images/logos/instagram.jpg" alt="Instagram">
@@ -88,8 +88,8 @@
 </div>
 
 <div class="site-footer">
-  <p>© 2024 MyRecipeBook. Всички права запазени.</p>
-  <p class="project-note">Проект за демонстрационни цели</p>
+  <p>© 2024 MyRecipeBook. All rights reserved.</p>
+  <p class="project-note">Project for demonstration purposes.</p>
 </div>
 </div>
 

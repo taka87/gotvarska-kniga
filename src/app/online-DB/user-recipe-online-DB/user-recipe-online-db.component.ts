@@ -16,7 +16,7 @@ import { UserRecipeServiceOnlineDB } from '../online-DB-services/user-recipe-onl
   styleUrl: './user-recipe-online-db.component.css'
 })
 export class UserRecipeOnlineDBComponent {
- title= "Онлайн База Добавете рецепта в нашата кулинарна книга";
+ title= "Immerse yourself in the magic of our culinary world";
 
  userName: string | null = null;
 
@@ -41,9 +41,9 @@ export class UserRecipeOnlineDBComponent {
     if (!user) {
       this.router.navigate(['/']); // Пренасочваме към страницата за вход
     }
-    console.log('🔍 User data:', user); // ⬅️ Debugging
-    console.log('🔍 User data:', user.first_name); // ⬅️ Debugging
-    console.log('🔍 User data:', this.userName); // ⬅️ Debugging
+    // console.log('🔍 User data:', user); // ⬅️ Debugging
+    // console.log('🔍 User data:', user.first_name); // ⬅️ Debugging
+    // console.log('🔍 User data:', this.userName); // ⬅️ Debugging
     //  const user = this.authService.getUserInfo();
     this.userName = user ? user.first_name || 'Гост' : 'Гост'; 
   }

@@ -19,8 +19,8 @@ export class AuthService {
   constructor(private http: HttpClient, private router:Router) {}
 
   ngOnInit() {
-    const loggedUser = localStorage.getItem("loggedUser");
-    this.userLoggedIn.next(!!loggedUser); // Проверяваме дали има логнат user
+    const loggedUserMYSQL = localStorage.getItem("loggedUserMYSQL");
+    this.userLoggedIn.next(!!loggedUserMYSQL); // Проверяваме дали има логнат user
   }
 
   login(email: string, password: string) {
@@ -30,7 +30,7 @@ export class AuthService {
     ).pipe(
       tap((response) => {
         localStorage.setItem('token', response.token);
-        localStorage.setItem('loggedUser', JSON.stringify({
+        localStorage.setItem('loggedUserMYSQL', JSON.stringify({
           userId: response.id,  // ✅ response.id вместо response.userId
           firstName: response.firstName,
           role: response.role
@@ -47,7 +47,7 @@ export class AuthService {
   
     // 🔹 Изчистваме LocalStorage
     localStorage.removeItem('token');
-    localStorage.removeItem('loggedUser');
+    localStorage.removeItem('loggedUserMYSQL');
   
     // 🔹 Нулираме BehaviorSubject (ако има такъв)
     this.userLoggedIn.next(false);
@@ -58,7 +58,7 @@ export class AuthService {
 
   //User info to use outside
   getUserInfo() {
-    const userData = localStorage.getItem('loggedUser');
+    const userData = localStorage.getItem('loggedUserMYSQL');
     return userData ? JSON.parse(userData) : null;
   }
 }

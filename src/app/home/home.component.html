@@ -23,14 +23,14 @@
   <!-- Секция за Вход и Регистрация .JSON LOCAL ISOLATED-->
     <!-- Бутон за вход (видим само ако НЕ е логнат) -->
   <!-- <div class="register-menu-position">    -->
-    <button class="toggle-favorites-button" *ngIf="!isLogged" (click)="toggleMenu()">Вход/Регистрация локален сървър</button>
+    <button class="toggle-favorites-button" *ngIf="!isLogged" (click)="toggleMenu()">Login/Register Local DB</button>
     <!-- Менюто (показва се само при отворено меню) -->
     <div *ngIf="!isLogged && isMenuOpen">
       <app-user-control></app-user-control>
     </div>
     <!-- След логин се показва само logged button -->
     <div *ngIf="isLogged">
-      <h2>Привет - {{ userName }}</h2>
+      <h2>Hello - {{ userName }} </h2>
       <app-logged-button></app-logged-button>
     </div>
   <!-- </div> -->
@@ -44,14 +44,14 @@
       (click)="toggleMySqlRegistrationForm()" 
       class="toggle-favorites-button"
       >
-      {{ showRegisterFormMysql ? 'Скрий ВХОД/Регистрация &uArr;' : 'ВХОД / Регистрация &dArr;' }}
+      {{ showRegisterFormMysql ? 'Hide Login/Register Tab &uArr;' : 'Login/Register Local Server &dArr;' }}
     </button>
     <div *ngIf="showRegisterFormMysql || isLoggedMySQL">
       <div *ngIf="!isLoggedMySQL">  
         <app-user-control-mysql></app-user-control-mysql>
       </div>
       <div *ngIf="isLoggedMySQL">
-        <h2>Добре дошъл: {{ userNameMySQL }}</h2>
+        <h2>Welcome: {{ userNameMySQL }}</h2>
        <app-logged-button-mysql></app-logged-button-mysql>
       </div>
     </div>
@@ -66,14 +66,14 @@
       (click)="toggleOnlineDBRegistrationForm()" 
       class="toggle-favorites-button"
       >
-      {{ showRegisterFormOnlineDB ? 'Скрий ВХОД/Регистрация &uArr;OnlineDB' : 'ВХОД / Регистрация &dArr; OnlineDB' }}
+      {{ showRegisterFormOnlineDB ? 'Hide Login/Register &uArr;OnlineDB' : 'Login/Register &dArr; OnlineDB' }}
     </button>
     <div *ngIf="showRegisterFormOnlineDB || isLoggedOnlineDB">
       <div *ngIf="!isLoggedOnlineDB">  
         <app-user-control-online-db></app-user-control-online-db>
       </div>
       <div *ngIf="isLoggedOnlineDB">
-        <h2>Добре дошъл: {{ userNameOnlineDB }}</h2>
+        <h2>Welcome: {{ userNameOnlineDB }}</h2>
         <app-logged-button-onlinedb></app-logged-button-onlinedb>
       </div>
     </div>
@@ -104,7 +104,7 @@
 
   <!-- Бутон за любими рецепти -->
   <button (click)="toggleFavorites()" class="toggle-favorites-button">
-    {{ showFavorites ? 'Скрий любими рецепти' : 'Покажи любими рецепти' }}
+    {{ showFavorites ? 'Hide favourtie recipes' : 'Show favorite recipes' }}
   </button>
   <!-- <ul *ngIf="showFavorites">
     <li *ngFor="let recipe of favoriteRecipes">
@@ -114,7 +114,7 @@
   </ul> -->
 
   <div class="favorites-section" *ngIf="showFavorites">
-    <h2>Любими Рецепти ❤️ </h2>
+    <h2>The choice for fevaourite recipes ❤️ </h2>
     <ul>
       <li *ngFor="let recipe of favoriteRecipes">
         <h3>{{ recipe.name }}</h3>
@@ -126,9 +126,9 @@
   <!-- най-долна част , за инфо на приложението -->
   <div class="footer">
     <a routerLink="/contact-info" class="about-link">
-      <h2> 🔗 За нас 🔗  </h2>
+      <h2> 🔗 About US 🔗  </h2>
     </a>
-    <p class="nadpis">Следвайте ни в социалните мрежи:</p>
+    <p class="nadpis">Follow us on social media:</p>
     <div class="social-icons">
       <img src="assets/images/logos/facebook.jpg" alt="Facebook">
       <img src="assets/images/logos/instagram.jpg" alt="Instagram">
@@ -138,7 +138,7 @@
   </div>
   
   <div class="site-footer">
-    <p>© 2024 MyRecipeBook. Всички права запазени.</p>
-    <p class="project-note">Проект за демонстрационни цели</p>
+    <p>© 2024 MyRecipeBook. All rights reserved.</p>
+    <p class="project-note">Project for demonstration purposes.</p>
   </div>
 </div>

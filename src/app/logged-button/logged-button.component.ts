@@ -9,17 +9,17 @@ import { Router, RouterLink } from '@angular/router';
   styleUrl: './logged-button.component.css'
 })
 export class LoggedButtonComponent {
-  loggedUser: any;
+  loggedUserJSON: any;
   
   constructor(private router: Router) { }
 
   ngOnInit(): void {
-    const userData = localStorage.getItem('loggedUser');
-    this.loggedUser = userData ? JSON.parse(userData) : null;
+    const userData = localStorage.getItem('loggedUserJSON');
+    this.loggedUserJSON = userData ? JSON.parse(userData) : null;
   }
 
   logOut(): void {
-    localStorage.removeItem('loggedUser');
+    localStorage.removeItem('loggedUserJSON');
     if (typeof window !== 'undefined') {
       // Кодът тук ще се изпълнява само в браузъра
     window.location.reload();

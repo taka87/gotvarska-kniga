@@ -2,14 +2,14 @@
 
 <div class="menu-container">
   <h1>{{ title }}</h1>
-  <h2 class="page-title">Меню по избор с рецепти:</h2>
+  <h2 class="page-title">Your fevourite menu for your meal today </h2>
 
   <button class="home-button" routerLink="/">
-    <i class="material-icons">home</i>Начална страница
+    <i class="material-icons">home</i>Home Page
   </button>
   <!-- Супи -->
   <div class="menu-section">
-    <h3 class="menu-title">Супа: {{ selectedMenu.soup }}</h3>
+    <h3 class="menu-title">Your selected Soup: {{ selectedMenu.soup ? selectedMenu.soup : "not chosen" }}</h3>
     <div class="section-content">
       <div class="ingredients">
         <p *ngIf="soupDetails">{{ soupDetails.ingredients }}</p>
@@ -17,13 +17,13 @@
       <div class="description">
         <p *ngIf="soupDetails">{{ soupDetails.description }}</p>
       </div>
-      <div class="image-placeholder">Място за снимка</div>
+      <div class="image-placeholder">Soup Picture</div>
     </div>
   </div>
 
   <!-- Десерт -->
   <div class="menu-section">
-    <h3 class="menu-title">Десерт: {{ selectedMenu.dessert }}</h3>
+    <h3 class="menu-title">Your selected Dessert: {{ selectedMenu.dessert ? selectedMenu.dessert : "not chosen" }}</h3>
     <div class="section-content">
       <div class="ingredients">
         <p *ngIf="dessertDetails">{{ dessertDetails.ingredients }}</p>
@@ -31,13 +31,13 @@
       <div class="description">
         <p *ngIf="dessertDetails">{{ dessertDetails.description }}</p>
       </div>
-      <div class="image-placeholder">Място за снимка</div>
+      <div class="image-placeholder">Dessert Picture</div>
     </div>
   </div>
 
   <!-- Напитка -->
   <div class="menu-section">
-    <h3 class="menu-title">Напитка: {{ selectedMenu.drink }}</h3>
+    <h3 class="menu-title">Your selected Drink: {{ selectedMenu.drink ? selectedMenu.drink : "not chosen" }}</h3>
     <div class="section-content">
       <div class="ingredients">
         <p *ngIf="drinkDetails">{{ drinkDetails.ingredients }}</p>
@@ -45,13 +45,13 @@
       <div class="description">
         <p *ngIf="drinkDetails">{{ drinkDetails.description }}</p>
       </div>
-      <div class="image-placeholder">Място за снимка</div>
+      <div class="image-placeholder">Drink Picture</div>
     </div>
   </div>
 
   <!-- Салата -->
   <div class="menu-section">
-    <h3 class="menu-title">Салата: {{ selectedMenu.salad }}</h3>
+    <h3 class="menu-title">Your selected Salad: {{ selectedMenu.salad ? selectedMenu.salad : "not chosen" }}</h3>
     <div class="section-content">
       <div class="ingredients">
         <p *ngIf="saladDetails">{{ saladDetails.ingredients }}</p>
@@ -59,15 +59,15 @@
       <div class="description">
         <p *ngIf="saladDetails">{{ saladDetails.description }}</p>
       </div>
-      <div class="image-placeholder">Място за снимка</div>
+      <div class="image-placeholder">Salad Picture</div>
     </div>
   </div>
      <!-- най-долна част , за инфо на приложението -->
      <div class="footer">
       <a routerLink="/contact-info" class="about-link">
-        <h2> 🔗 За нас 🔗  </h2>
+        <h2> 🔗 About Us 🔗  </h2>
       </a>
-      <p class="nadpis">Следвайте ни в социалните мрежи:</p>
+      <p class="nadpis">Follow us on social media:</p>
       <div class="social-icons">
         <img src="assets/images/logos/facebook.jpg" alt="Facebook">
         <img src="assets/images/logos/instagram.jpg" alt="Instagram">
@@ -77,7 +77,7 @@
     </div>
     
     <div class="site-footer">
-      <p>© 2024 MyRecipeBook. Всички права запазени.</p>
-      <p class="project-note">Проект за демонстрационни цели</p>
+      <p>© 2024 MyRecipeBook. All rights reserved.</p>
+      <p class="project-note">Project for demonstration purposes.</p>
     </div>
 </div>

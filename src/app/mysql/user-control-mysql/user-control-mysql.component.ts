@@ -40,13 +40,13 @@ export class UserControlMysqlComponent {
   
         // 🔹 Запазваме цялата информация за потребителя
         localStorage.setItem("token", response.token);
-        localStorage.setItem("loggedUser", JSON.stringify({
+        localStorage.setItem("loggedUserMYSQL", JSON.stringify({
           userId: response.id,  // 👈 Запазваме userId
           firstName: response.firstName,
           role: response.role
         }));
   
-        //console.log("🔥 Запазени данни в localStorage:", localStorage.getItem("loggedUser"));
+        //console.log("🔥 Запазени данни в localStorage:", localStorage.getItem("loggedUserMYSQL"));
       },
       error: (err) => {
         this.showMessage('❌ Грешно потребителско име или парола!');

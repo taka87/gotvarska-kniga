@@ -18,6 +18,7 @@ export class LoggedButtonOnlinedbComponent {
  loggedUser: any;
   private userLoggedIn = new BehaviorSubject<boolean>(false); // за взимане loggedInUser данните
 
+  
 
   constructor(
     private router: Router,

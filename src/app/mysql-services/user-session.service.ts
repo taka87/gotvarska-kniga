@@ -25,7 +25,7 @@ export class UserSessionService {
 
   //Това гарантира, че localStorage ще се изпълни само в браузър.
   getUserData(): string | null {
-      return localStorage.getItem('loggedUser');
+      return localStorage.getItem('loggedUserMYSQL');
   }
 
   private get authHeader() {
@@ -35,12 +35,12 @@ export class UserSessionService {
     };
   }
   // от стария компонент
-    private loggedInUser = new BehaviorSubject<string | null>(localStorage.getItem('loggedUser'));
+    private loggedInUser = new BehaviorSubject<string | null>(localStorage.getItem('loggedUserMYSQL'));
     currentUser$ = this.loggedInUser.asObservable();
 
   // user-session.service.ts
   deleteOwnAccount(userId: number): Observable<any> {
-    console.log("📢 Опит за изтриване на user с ID:", userId);
+    // console.log("📢 Опит за изтриване на user с ID:", userId);
 
     return this.http.delete(`${this.apiUrl}/user/${userId}`, { responseType: 'text' });
     // return this.http.delete(`${this.apiUrl}/user/${userId}`, { headers: this.authHeader }).pipe(
@@ -52,7 +52,7 @@ export class UserSessionService {
   clearUser(): void {
     console.log('🧹 Изчистваме потребителската сесия');
     
-    localStorage.removeItem('loggedUser');
+    localStorage.removeItem('loggedUserMYSQL');
     this.loggedInUser.next(null); // Нулираме BehaviorSubject
   }
 }

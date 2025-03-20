@@ -14,5 +14,5 @@ declare var google: any; // ⬅️ Декларираме google, защото �
   styleUrl: './map.component.css'
 })
 export class MapComponent {
-  title = "Добре дошли в нашия кулинарен свят";
+  title = "Immerse yourself in the magic of our culinary world";
 }

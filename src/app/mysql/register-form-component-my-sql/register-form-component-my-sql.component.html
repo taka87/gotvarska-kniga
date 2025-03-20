@@ -4,7 +4,7 @@
       <label>First Name:</label>
       <input formControlName="firstName" type="text">
       <p *ngIf="registrationForm.controls['firstName'].invalid && registrationForm.controls['firstName'].touched" class="error-message">
-        Моля, попълнете име.
+        Please enter your first name.
       </p>
     </div>
   
@@ -12,7 +12,7 @@
       <label>Last Name:</label>
       <input formControlName="lastName" type="text">
       <p *ngIf="registrationForm.controls['lastName'].invalid && registrationForm.controls['lastName'].touched" class="error-message">
-        Фамилията е задължителна!
+        Last name is required.
       </p>
     </div>
   
@@ -20,7 +20,7 @@
       <label>Email:</label>
       <input formControlName="email" type="email">
       <p *ngIf="registrationForm.controls['email'].invalid && registrationForm.controls['email'].touched" class="error-message">
-        Моля, попълнете валиден имейл адрес.
+        Please enter a valid email address.
       </p>
     </div>
   
@@ -28,7 +28,7 @@
       <label>Password:</label>
       <input formControlName="password" type="password">
       <p *ngIf="registrationForm.controls['password'].invalid && registrationForm.controls['password'].touched" class="error-message">
-        Паролата трябва да бъде поне 6 символа.
+        Password must be at least 6 characters long.
       </p>
     </div>
   
@@ -36,13 +36,13 @@
       <label>Confirm Password:</label>
       <input formControlName="confirmPassword" type="password">
       <p *ngIf="passwordsDoNotMatch" class="error-message">
-        Паролите не съвпадат!
+        Passwords do not match.
       </p>
     </div>
   
     <div class="button-group">
-      <button type="submit" class="primary-btn">Регистрация</button>
-      <button type="button" (click)="goBack()" class="secondary-btn">Назад</button>
+      <button type="submit" class="primary-btn">Register</button>
+      <button type="button" (click)="goBack()" class="secondary-btn">Home Page</button>
     </div>
   </form>
 </div>  

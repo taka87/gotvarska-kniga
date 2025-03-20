@@ -16,7 +16,7 @@ import { AdminServiceOnlineDB } from '../../online-DB-services/admin-service-onl
   imports:[CommonModule,RouterLink, FormsModule, RegisterFormComponentOnlineDB]
 })
 export class AdminPanelOnlineDBComponent implements OnInit {
-  title = "Добре дошли в Админ Панела на Online DB";
+  title = "Welcom to Admin page of Online DB";
   showAdminForm: boolean = false; // По подразбиране формата е скрита
 
   users: any[] = [];
@@ -104,7 +104,7 @@ export class AdminPanelOnlineDBComponent implements OnInit {
 
   //✅ Метод за отваряне на формата за редакция:
   editRecipe(recipe: any) {
-    console.log("Editing recipe:", recipe);
+    // console.log("Editing recipe:", recipe);
     
     if (!recipe || !recipe.id) {
       console.error("Error: Recipe has no ID!");
@@ -131,7 +131,7 @@ export class AdminPanelOnlineDBComponent implements OnInit {
       return;
     }
   
-    console.log("Updating recipe:", this.selectedRecipe);
+    // console.log("Updating recipe:", this.selectedRecipe);
   
     const updatedData = {
       recipe_name: this.selectedRecipe.recipe_name,
@@ -146,7 +146,8 @@ export class AdminPanelOnlineDBComponent implements OnInit {
         this.loadRecipes(); // Презареждаме рецептите след успешен ъпдейт
       },
       (error) => {
-        console.error("Error updating recipe:", error);
+        this.showMessage("Error updating recipe:");
+        // console.error("Error updating recipe:", error);
       }
     );
   }

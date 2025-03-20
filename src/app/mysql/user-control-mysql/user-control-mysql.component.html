@@ -1,16 +1,16 @@
 <div class="login-container">
-    <h2>MySQL Section</h2>
-    <h2>Вход</h2>
-    <label>Имейл:</label>
-    <input [(ngModel)]="email" type="email">
-    <label>Парола:</label>
-    <input [(ngModel)]="password" type="password">
+    <h2>Local Api Section</h2>
+    <h2>Login</h2>
+    <label>E-mail:</label>
+    <input [(ngModel)]="email" type="email" placeholder="Your E-mail:">
+    <label>Password:</label>
+    <input [(ngModel)]="password" type="password" placeholder="Your Password:">
     <br>
     <div class="button-group">
-      <button (click)="login()">Вход</button>
+      <button (click)="login()">Login</button>
       <!-- <button routerLink="/register" class="register-button">Регистрация</button> -->
       <button (click)="navigateToRegister()" class="register-button">
-        Регистрация
+        Register
       </button>
     </div>
 </div>

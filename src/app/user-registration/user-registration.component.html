@@ -1,25 +1,25 @@
 <div class="page-wrapper">
   <h1>{{ title }}</h1>
   <div class="registration-container">
-    <h2 class="page-title">Регистрация на потребител</h2>
+    <h2 class="page-title">Register New User</h2>
 
     
 
     <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
       <div class="form-group">
-        <label>Име:</label>
+        <label>First Name:</label>
         <input formControlName="firstName" type="text">
         <!-- Грешка за празно име -->
         <p *ngIf="registrationForm.controls['firstName'].invalid && registrationForm.controls['firstName'].touched" class="error-message">
-          Моля, попълнете име.
+          Please enter your first name.
         </p>
       </div>
 
       <div class="form-group">
-        <label>Фамилия:</label>
+        <label>Last Name:</label>
         <input formControlName="lastName" type="text">
         <p *ngIf="registrationForm.controls['lastName'].invalid && registrationForm.controls['lastName'].touched" class="error-message">
-          Фамилията е задължителна!
+          Last name is required.
         </p>
 
       </div>
@@ -28,44 +28,44 @@
       </div> -->
 
       <div class="form-group">
-        <label>Имейл:</label>
+        <label>E-mail:</label>
         <input formControlName="email" type="email">
         <!-- Грешка за празен или некоректен имейл -->
         <p *ngIf="registrationForm.controls['email'].invalid && registrationForm.controls['email'].touched" class="error-message">
-          Моля, попълнете валиден имейл адрес.
+          Please enter a valid email address.
         </p>
       </div>
       
       <div class="form-group">
-        <label>Парола:</label>
+        <label>Password:</label>
         <input formControlName="password" type="password">
         <!-- Грешка за празна или твърде кратка парола -->
         <p *ngIf="registrationForm.controls['password'].invalid && registrationForm.controls['password'].touched" class="error-message">
-          Паролата трябва да бъде поне 6 символа.
+          Password must be at least 6 characters long.
         </p>
       </div>
       
       <div class="form-group">
-        <label>Повторете паролата:</label>
+        <label>Repeat password:</label>
         <input formControlName="confirmPassword" type="password">
         <!-- Грешка при несъвпадение на паролите -->
         <p *ngIf="passwordsDoNotMatch" class="error-message">
-          Паролите не съвпадат!
+          Passwords do not match.
         </p>
       </div>
 
       <div class="button-group">
-        <button type="submit" class="primary-btn">Регистрация</button>
-        <button type="button" (click)="goBack()" class="secondary-btn">Назад към Началната страница</button>
+        <button type="submit" class="primary-btn">Register</button>
+        <button type="button" (click)="goBack()" class="secondary-btn">Back to Home Page</button>
       </div>
   </form>
   </div>
    <!-- най-долна част , за инфо на приложението -->
    <div class="footer">
     <a routerLink="/contact-info" class="about-link">
-      <h2> 🔗 За нас 🔗  </h2>
+      <h2> 🔗 About Us 🔗  </h2>
     </a>
-    <p class="nadpis">Следвайте ни в социалните мрежи:</p>
+    <p class="nadpis">Follow us on social media:</p>
     <div class="social-icons">
       <img src="assets/images/logos/facebook.jpg" alt="Facebook">
       <img src="assets/images/logos/instagram.jpg" alt="Instagram">
@@ -75,7 +75,7 @@
   </div>
   
   <div class="site-footer">
-    <p>© 2024 MyRecipeBook. Всички права запазени.</p>
-    <p class="project-note">Проект за демонстрационни цели</p>
+    <p>© 2024 MyRecipeBook. All rights reserved.</p>
+    <p class="project-note">Project for demonstration purposes.</p>
   </div>
 </div>

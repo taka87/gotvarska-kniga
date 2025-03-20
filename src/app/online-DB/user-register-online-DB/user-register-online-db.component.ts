@@ -9,6 +9,6 @@ import { RouterLink } from '@angular/router';
   styleUrl: './user-register-online-db.component.css'
 })
 export class UserRegisterOnlineDB {
-  title = 'Регистрирайте се за магията на нашия кулинарен свят';
+  title = 'Immerse yourself in the magic of our culinary world';
   @Input() isAdmin: boolean = false;
 }

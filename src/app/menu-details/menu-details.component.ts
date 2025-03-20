@@ -11,7 +11,7 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./menu-details.component.css']
 })
 export class MenuDetailsComponent implements OnInit {
-  title = 'Потопете се в магията на нашия кулинарен свят';
+  title = "Immerse yourself in the magic of our culinary world";
   
   selectedMenu: { soup?: string; dessert?: string; drink?: string; salad?: string } = {};
 

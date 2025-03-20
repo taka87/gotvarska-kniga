@@ -17,7 +17,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   styleUrl: './logged-button-mysql.component.css'
 })
 export class LoggedButtonMysqlComponent {
-  loggedUser: any;
+  loggedUserMYSQL: any;
   private userLoggedIn = new BehaviorSubject<boolean>(false); // за взимане loggedInUser данните
   
   constructor(
@@ -41,12 +41,12 @@ export class LoggedButtonMysqlComponent {
   }
 
   ngOnInit(): void {
-    const userData = localStorage.getItem('loggedUser'); //казва вземи данните от Локал и ги сложи в loggedYUSer
-    this.loggedUser = userData ? JSON.parse(userData) : null;  // казва сложените данни в UserData ги използвай за нашите нужди ... 
+    const userData = localStorage.getItem('loggedUserMYSQL'); //казва вземи данните от Локал и ги сложи в loggedYUSer
+    this.loggedUserMYSQL = userData ? JSON.parse(userData) : null;  // казва сложените данни в UserData ги използвай за нашите нужди ... 
   }
 
   // logOut(): void {
-  //   localStorage.removeItem('loggedUser');
+  //   localStorage.removeItem('loggedUserMYSQL');
   //   window.location.reload();
   // }
 
@@ -61,7 +61,7 @@ export class LoggedButtonMysqlComponent {
       return;
     }
 
-    const userData = localStorage.getItem('loggedUser');
+    const userData = localStorage.getItem('loggedUserMYSQL');
     //console.log("📌 Взет потребител преди изтриване:", userData);  
   
     if (!userData) {
@@ -79,9 +79,9 @@ export class LoggedButtonMysqlComponent {
           //тука изобщо не влиза !!!
 
         localStorage.removeItem('token');
-        localStorage.removeItem('loggedUser');
+        localStorage.removeItem('loggedUserMYSQL');
   
-        //console.log("🗑️ LocalStorage след изтриване:", localStorage.getItem('token'), localStorage.getItem('loggedUser'));
+        //console.log("🗑️ LocalStorage след изтриване:", localStorage.getItem('token'), localStorage.getItem('loggedUserMYSQL'));
   
         this.authService.userLoggedIn.next(false);
         this.router.navigate(['/']);
@@ -100,7 +100,7 @@ export class LoggedButtonMysqlComponent {
     console.log("🔴 Изпълнява се logout()"); // Добавяме лог
     localStorage.clear();
     // localStorage.removeItem('token');   //additional
-    // localStorage.removeItem('loggedUser');  //additional
+    // localStorage.removeItem('loggedUserMYSQL');  //additional
     this.userLoggedIn.next(false);
 
     if (typeof window !== 'undefined') {

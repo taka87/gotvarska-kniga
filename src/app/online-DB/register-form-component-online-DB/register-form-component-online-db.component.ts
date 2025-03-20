@@ -34,7 +34,7 @@ export class RegisterFormComponentOnlineDB implements OnInit{
 
   showMessage(message: string) {
     this.snackBar.open(message, 'Затвори', {
-      duration: 3000, // 3 секунди
+      duration: 13000, // 3 секунди
       horizontalPosition: 'center',
       verticalPosition: 'top'
     });
@@ -98,14 +98,14 @@ export class RegisterFormComponentOnlineDB implements OnInit{
       
       // 2️⃣ Регистрация в Supabase
       await this.registerUserWithSupabase();
-      this.showMessage('✅ Регистрация успешна в Supabase!');
+      this.showMessage('✅ Online register success! You will receive confirmation e-mail.');
   
       // ✅ Ако всичко мине успешно, пренасочваме потребителя
       this.registrationForm.reset();
       this.router.navigate(['/']);
     } catch (error) {
-      console.error('❌ Грешка при регистрация SUPA:', error);
-      this.showMessage('❌ Грешка при регистрация SUPA!');
+      // console.error('❌ Грешка при регистрация SUPA:', error);
+      this.showMessage('❌ Register failed!');
     }
   }
   goBack(): void {
@@ -132,8 +132,8 @@ export class RegisterFormComponentOnlineDB implements OnInit{
     });
 
     if (error) {
-      console.error('❌ Грешка при регистрация в Supabase:', error.message);
-      this.showMessage('❌ Грешка в Supabase!');
+      // console.error('❌ Грешка при регистрация в Supabase:', error.message);
+      this.showMessage('❌ Failes registration!');
       return;
     }
 
@@ -158,12 +158,12 @@ export class RegisterFormComponentOnlineDB implements OnInit{
       ]);
 
       if (dbError) {
-        console.error('❌ Грешка при запис в таблицата `users`:', dbError.message);
-        this.showMessage('❌ Грешка в Supabase Database!');
+        // console.error('❌ Грешка при запис в таблицата `users`:', dbError.message);
+        // this.showMessage('❌ Грешка в Supabase Database!');
         return;
       }
 
-      this.showMessage('✅ Успешна регистрация в Supabase!');
+      this.showMessage('✅ Online registration success!');
     }
   }
 
