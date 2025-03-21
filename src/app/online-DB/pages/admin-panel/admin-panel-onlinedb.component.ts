@@ -6,6 +6,7 @@ import { RegisterFormComponentOnlineDB } from '../../register-form-component-onl
 import { AuthService } from '../../../mysql-services/auth-service.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { AdminServiceOnlineDB } from '../../online-DB-services/admin-service-online-db.service';
+import { AuthServiceOnlineDB } from '../../online-DB-services/auth-service-online-db.service';
 // import { checkUserRole } from '../../../../../supabase/functions/check-user-role';
 
 
@@ -35,7 +36,7 @@ export class AdminPanelOnlineDBComponent implements OnInit {
 
   constructor(
     private adminServiceOnlineDB: AdminServiceOnlineDB,
-    private authService: AuthService,
+    private authServiceOnlineDB: AuthServiceOnlineDB,    
     private snackBar:MatSnackBar
   ) {}
 
@@ -58,7 +59,7 @@ export class AdminPanelOnlineDBComponent implements OnInit {
     this.loadUsers();
     this.loadRecipes();
 
-    const user = this.authService.getUserInfo();
+    const user = this.authServiceOnlineDB.getUserInfo();
     this.userName = user.first_name || 'Гост';
   }
 

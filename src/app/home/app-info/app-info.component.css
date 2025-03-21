@@ -7,6 +7,7 @@
     border-radius: 16px;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
     border: 2px solid #ddd;
+    text-align: center; /* Центрира h3 */
   }
   h1 {
     text-align: center;
@@ -18,28 +19,16 @@
     margin-bottom: 30px;
   }
 
-  h3{
-    /* background: #63b3ed;
-    color: white;
-    padding: 5px;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    font-weight: 600;
-    transition: all 0.3s ease;
-    width: 100%; */
+  h3 {
     background: #63b3ed;
-    color: white; /* За по-добър контраст */
-    padding: 8px 16px; /* Вътрешен padding */
-    border-radius: 4px; /* Закръглени ъгли */
-    /*display: inline-block;  Фонът да е колкото текста */
-    width: 50%;
-    height: 50px;
-    margin: 20px auto; /* Центриране */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Лека сянка */
+    color: white;
+    padding: 12px 24px;
+    border-radius: 8px;
+    display: inline-block;
+    margin: 20px auto;
     text-align: center;
-    font-size: 28px;
-    margin-bottom: 30px;
+    font-size: 24px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
   }
 
   /* бутон за главна страница  */
@@ -98,22 +87,27 @@
   /* средна част */
   .book-container {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    min-height: 100vh;
+    grid-template-columns: 1fr;
+    gap: 15px;
     background: #f5f3f0;
-    padding: 2rem;
-    gap: 20px;
-    position: relative;
-    border-radius: 3%;
+    padding: 1rem;
+    margin: 20px 0;
+    border-radius: 12px;
+  }
   
-    &::before {
+  @media (min-width: 768px) {
+    .book-container {
+      grid-template-columns: 1fr 1fr;
+      padding: 2rem;
+      position: relative;
+    }
+    
+    .book-container::before {
       content: '';
       position: absolute;
-      margin-top: 15px;
-      margin-bottom: 15px;
       left: 50%;
-      top: 0;
-      bottom: 0;
+      top: 20px;
+      bottom: 20px;
       width: 2px;
       background: #c5b9a8;
       box-shadow: 2px 0 8px rgba(0,0,0,0.1);
@@ -274,5 +268,21 @@
     
     .site-footer p {
       font-size: 0.85rem;
+    }
+
+    /* additional */
+    .home-button {
+      position: static;
+      width: 100%;
+      margin: 15px 0;
+    }
+  
+    h1 {
+      margin-top: 40px;
+    }
+  
+    .book-page {
+      margin: 0 10px !important;
+      border-radius: 8px !important;
     }
   }
