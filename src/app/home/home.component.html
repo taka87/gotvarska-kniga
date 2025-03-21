@@ -23,38 +23,56 @@
   <!-- Секция за Вход и Регистрация .JSON LOCAL ISOLATED-->
     <!-- Бутон за вход (видим само ако НЕ е логнат) -->
   <!-- <div class="register-menu-position">    -->
-    <button class="toggle-favorites-button" *ngIf="!isLogged" (click)="toggleMenu()">Login/Register Local DB</button>
-    <!-- Менюто (показва се само при отворено меню) -->
-    <div *ngIf="!isLogged && isMenuOpen">
-      <app-user-control></app-user-control>
-    </div>
-    <!-- След логин се показва само logged button -->
-    <div *ngIf="isLogged">
-      <h2>Hello - {{ userName }} </h2>
-      <app-logged-button></app-logged-button>
-    </div>
-  <!-- </div> -->
-
-  <hr>
-    
-  <!-- секция MYSQL LOGIN/REGISTER-->
-   <div class="register-menu-position">
+  <!-- Parent Button & Menu -->
+  <div class="auth-container">
     <button 
-      *ngIf="!isLoggedMySQL" 
-      (click)="toggleMySqlRegistrationForm()" 
-      class="toggle-favorites-button"
-      >
-      {{ showRegisterFormMysql ? 'Hide Login/Register Tab &uArr;' : 'Login/Register Local Server &dArr;' }}
+      class="main-auth-button"
+      (click)="toggleMainMenu()"
+    >
+      {{ isMainMenuOpen ? 'Hide Auth Options &uArr;' : 'Login/Register &dArr;' }}
     </button>
-    <div *ngIf="showRegisterFormMysql || isLoggedMySQL">
-      <div *ngIf="!isLoggedMySQL">  
+
+    <div *ngIf="isMainMenuOpen" class="auth-options">
+      <!-- Local DB Auth -->
+      <button 
+        class="auth-option-button"
+        *ngIf="!isLogged"
+        (click)="toggleMenu()"
+      >
+        {{ isMenuOpen ? 'Hide Local DB Auth' : 'Local DB Auth' }}
+      </button>
+      
+      <!-- MySQL Auth -->
+      <button 
+        class="auth-option-button"
+        *ngIf="!isLoggedMySQL"
+        (click)="toggleMySqlRegistrationForm()"
+      >
+        {{ showRegisterFormMysql ? 'Hide MySQL Auth' : 'MySQL Auth' }}
+      </button>
+    </div>
+
+    <!-- Auth Components -->
+    <div class="auth-components" *ngIf="isMainMenuOpen && (isMenuOpen || showRegisterFormMysql)">
+      <div *ngIf="isMenuOpen && !isLogged">
+        <app-user-control></app-user-control>
+      </div>
+      
+      <div *ngIf="showRegisterFormMysql && !isLoggedMySQL">
         <app-user-control-mysql></app-user-control-mysql>
       </div>
-      <div *ngIf="isLoggedMySQL">
-        <h2>Welcome: {{ userNameMySQL }}</h2>
-       <app-logged-button-mysql></app-logged-button-mysql>
-      </div>
     </div>
+  </div>
+
+  <!-- Logged State -->
+  <div *ngIf="isLogged">
+    <h2>Hello - {{ userName }}</h2>
+    <app-logged-button></app-logged-button>
+  </div>
+
+  <div *ngIf="isLoggedMySQL">
+    <h2>Welcome: {{ userNameMySQL }}</h2>
+    <app-logged-button-mysql></app-logged-button-mysql>
   </div>
 
     <hr>
@@ -64,7 +82,7 @@
     <button 
       *ngIf="!isLoggedOnlineDB" 
       (click)="toggleOnlineDBRegistrationForm()" 
-      class="toggle-favorites-button"
+      class="toggle-favorites-button-online"
       >
       {{ showRegisterFormOnlineDB ? 'Hide Login/Register &uArr;OnlineDB' : 'Login/Register &dArr; OnlineDB' }}
     </button>
@@ -93,12 +111,15 @@
   </button> -->
   <br>
   <!-- категории -->
-  <div *ngIf="showCategories" class="category-grid">
-    <div *ngFor="let category of categories" class="category-item">
-      <a [routerLink]="getCategoryRoute(category.name)">
-        <img [src]="category.image" alt="{{ category.name }}">
-        <p>{{ category.name }}</p>
-      </a>
+  <div class="categories-container">
+    <h3 class="grid-title">Delicate Curated Recipes for a Healthy and Balanced Lifestyle</h3>
+    <div *ngIf="showCategories" class="category-grid">    
+      <div *ngFor="let category of categories" class="category-item">
+        <a [routerLink]="getCategoryRoute(category.name)">
+          <img [src]="category.image" alt="{{ category.name }}">
+          <p>{{ category.name }}</p>
+        </a>
+      </div>
     </div>
   </div>
 
@@ -114,7 +135,7 @@
   </ul> -->
 
   <div class="favorites-section" *ngIf="showFavorites">
-    <h2>The choice for fevaourite recipes ❤️ </h2>
+    <h2>The choice for favourite recipes ❤️ </h2>
     <ul>
       <li *ngFor="let recipe of favoriteRecipes">
         <h3>{{ recipe.name }}</h3>

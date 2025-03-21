@@ -1,0 +1,76 @@
+<div class="page-wrapper">
+    <h1>{{ title }}</h1>
+    <hr> 
+    <!-- <div id="map" style="height: 500px; width: 100%;"></div> -->
+  
+    <div class="contact-container">
+      <!-- Лява колона с информация -->
+      <div class="contact-info">
+        <div class="content-wrapper">
+          <!-- Добавете някъде в шаблона -->
+          <button class="home-button" routerLink="/">
+              <i class="material-icons">home</i>Home Page
+          </button>
+          <h1 class="brand-title">🍳 Recipe Book</h1>
+          
+          <div class="description-box">
+            <p>Our website features an extensive collection of professionally curated recipes, meticulously updated and categorized for your convenience.</p>
+          </div>
+    
+          <div class="contact-details">
+            <h2>📍 Our Office</h2>
+            <div class="contact-item">
+              <i class="fas fa-phone"></i>
+              <span>Telephone: +359 ххх ххх ххх</span>
+            </div>
+            <div class="contact-item">
+              <i class="fas fa-mobile-alt"></i>
+              <!-- <span>Мобилен: +359 899 987 654</span> -->
+              <span>Mobile: +359 ххх ххх ххх</span>
+            </div>
+            <div class="contact-item">
+              <i class="fas fa-envelope"></i>
+              <!-- <span>Имейл: recipes@gotvarka.com</span> -->
+              <span>E-mail: gotvarska_kniga&commat;ххххххх.ххх</span>
+            </div>
+          </div>
+    
+          <!-- <div class="contact-form">
+            <h2>📩 Contact form</h2>
+            <form (ngSubmit)="submitForm()">
+              <div class="form-group">
+                <input type="text" placeholder="Your name" [(ngModel)]="name" name="name" required>
+              </div>
+              <div class="form-group">
+                <input type="email" placeholder="Your e-mail" [(ngModel)]="email" name="email" required>
+              </div>
+              <div class="form-group">
+                <textarea rows="4" placeholder="Your contact message..." [(ngModel)]="message" name="message"></textarea>
+              </div>
+              <button type="submit">Send Message</button>
+            </form>
+          </div> -->
+        </div>
+      </div>      
+
+    <!-- най-долна част , за инфо на приложението -->
+  
+    </div>
+    <div class="footer">
+      <a routerLink="/contact-info" class="about-link">
+        <h2> 🔗 About Us 🔗  </h2>
+      </a>
+      <p class="nadpis">Follow us on social media:</p>
+      <div class="social-icons">
+        <img src="assets/images/logos/facebook.jpg" alt="Facebook">
+        <img src="assets/images/logos/instagram.jpg" alt="Instagram">
+        <img src="assets/images/logos/youtube.jpg" alt="YouTube">
+        <img src="assets/images/logos/pinterest.jpg" alt="Pinterest">
+      </div>
+    </div>
+    
+    <div class="site-footer">
+      <p>© 2024 MyRecipeBook. All rights reserved.</p>
+      <p class="project-note">Project for demonstration purposes.</p>
+    </div>
+  </div>

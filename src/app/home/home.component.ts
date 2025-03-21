@@ -73,6 +73,11 @@ export class HomeComponent {
     'assets/images/swiper/maindish.jpg',
     'assets/images/swiper/salad.jpg'
   ];
+
+  // Добавете тези променливи във вашия компонент
+isMainMenuOpen: boolean = false;
+// isMenuOpen: boolean = false;
+// showRegisterFormMysql: boolean = false;
   
   constructor(
     private userSession: UserSessionService, 
@@ -118,9 +123,9 @@ export class HomeComponent {
     this.showFavorites = !this.showFavorites;
   }
 
-  toggleMySqlRegistrationForm() {
-    this.showRegisterFormMysql = !this.showRegisterFormMysql;
-  }
+  // toggleMySqlRegistrationForm() {
+  //   this.showRegisterFormMysql = !this.showRegisterFormMysql;
+  // }
 
   //ONLINE DB
   toggleOnlineDBRegistrationForm() {
@@ -234,9 +239,9 @@ export class HomeComponent {
     }
   }
 
-  toggleMenu() {
-    this.isMenuOpen = !this.isMenuOpen;
-  }  
+  // toggleMenu() {
+  //   this.isMenuOpen = !this.isMenuOpen;
+  // }  
   toggleMenuOnlineDB() {
     this.isMenuOpenOnlineDB = !this.isMenuOpenOnlineDB;
   }
@@ -260,4 +265,23 @@ export class HomeComponent {
       }
     });
   }  
+
+  toggleMainMenu() {
+    this.isMainMenuOpen = !this.isMainMenuOpen;
+    // Затваряне на всички подменюта при затваряне на главното меню
+    if (!this.isMainMenuOpen) {
+      this.isMenuOpen = false;
+      this.showRegisterFormMysql = false;
+    }
+  }
+  
+  toggleMenu() {
+    this.isMenuOpen = !this.isMenuOpen;
+    this.showRegisterFormMysql = false; // Затваряне на MySQL форма
+  }
+  
+  toggleMySqlRegistrationForm() {
+    this.showRegisterFormMysql = !this.showRegisterFormMysql;
+    this.isMenuOpen = false; // Затваряне на Local DB форма
+  }
 }
