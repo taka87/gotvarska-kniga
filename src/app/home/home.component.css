@@ -160,6 +160,39 @@ button:hover {
   transform: translateY(-2px);
 }
 
+.app-info-button {
+  background: #88dbeb;
+  color: #718096 ;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s;
+  display: flex;
+  align-items: center;
+  gap: 8px; /* Разстояние между иконата и текста */
+  padding: 10px 20px;
+  /* background-color: #63b3ed; */
+  /* color: white; */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+
+}
+.app-info-button:hover{
+  background-color:  #88dbebc9;
+  transform: translateY(-2px);
+}
+
+/* ICON */
+.svg-icon {
+  width: 30px; /* Размер на иконата */
+  height: 30px;
+  fill: white; /* Цвят на иконата */
+}
+
 
 /* Login REGISTER JSON+MYSQL */
 .auth-container {
@@ -182,6 +215,8 @@ button:hover {
     transform: translateY(-2px);
   }
 }
+
+
 
 .auth-options {
   display: flex;
