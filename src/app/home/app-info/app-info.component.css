@@ -94,6 +94,11 @@
     margin: 20px 0;
     border-radius: 12px;
   }
+
+  .formatted-text {
+    white-space: pre-line;
+    text-align: justify;
+  }
   
   @media (min-width: 768px) {
     .book-container {

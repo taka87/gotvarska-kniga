@@ -10,20 +10,57 @@
 
 
   <div class="book-container">
+  <!-- ENG-part -->
     <div class="book-page left-page">
-      <div class="content-section" *ngFor="let section of sections">
-        <h2>{{ section | titlecase }}</h2>
-        <p>{{ content[section].en }}</p>
+      <div class="content-section">
+        <h2>1. Brief Summary/Plan for the Application and Information About the Developer:</h2>
+        <div class="formatted-text" [innerHTML]="formatText(contentEN.section1)"></div>
+      </div>
+      <div class="content-section">
+        <h2>2. Scope of Application Development and Key Ideas in the Creation Process. Technologies and Methodologies Used</h2>
+        <div class="formatted-text" [innerHTML]="formatText(contentEN.section2)"></div>
+      </div>
+      <div class="content-section">
+        <h2>3. Part of the Main Implemented Functionalities</h2>
+        <div class="formatted-text" [innerHTML]="formatText(contentEN.section3)"></div>
+      </div>
+      <div class="content-section">
+        <h2>4. Acquired Knowledge During the Development of the Application</h2>
+        <div class="formatted-text" [innerHTML]="formatText(contentEN.section4)"></div>
+      </div>
+      <div class="content-section">
+        <h2>5. How It Fits into a Real Business Environment</h2>
+        <div class="formatted-text" [innerHTML]="formatText(contentEN.section5)"></div>
       </div>
     </div>
   
+
+    <!-- BG-Part -->
     <div class="book-page right-page">
-      <div class="content-section" *ngFor="let section of sections">
-        <h2>{{ section | titlecase }}</h2>
-        <p>{{ content[section].bg }}</p>
+      <!-- Първите две секции -->
+      <div class="content-section">
+        <h2>1. Кратко резюме/план за приложението и информация за разработчика:</h2>
+        <div class="formatted-text" [innerHTML]="formatText(content1)"></div>
+      </div>
+      <div class="content-section">
+        <h2>2. Обхват на разработката на приложението и основни идеи при създаване на приложението. Технологии и методологии, които са използвани:</h2>
+        <div class="formatted-text" [innerHTML]="formatText(content2)"></div>
+      </div>
+      <div class="content-section">
+        <h2>3. Част от основните имплементирани функционалности:</h2>
+        <div class="formatted-text" [innerHTML]="formatText(content3)"></div>
+      </div>
+      <div class="content-section">
+        <h2>4. Придобити знания при изграждането на приложението:</h2>
+        <div class="formatted-text" [innerHTML]="formatText(content4)"></div>
+      </div>
+      <div class="content-section">
+        <h2>5. Как се вписва в реална бизнес среда:</h2>
+        <div class="formatted-text" [innerHTML]="formatText(content5)"></div>
       </div>
     </div>
   </div>
+
     <!-- най-долна част , за инфо на приложението -->
     <div class="footer">
       <a routerLink="/contact-info" class="about-link">
