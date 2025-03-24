@@ -123,10 +123,6 @@ isMainMenuOpen: boolean = false;
     this.showFavorites = !this.showFavorites;
   }
 
-  // toggleMySqlRegistrationForm() {
-  //   this.showRegisterFormMysql = !this.showRegisterFormMysql;
-  // }
-
   //ONLINE DB
   toggleOnlineDBRegistrationForm() {
     this.showRegisterFormOnlineDB = !this.showRegisterFormOnlineDB;
