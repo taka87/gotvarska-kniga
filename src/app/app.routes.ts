@@ -22,6 +22,7 @@ import { UserRecipeOnlineDBComponent } from './online-DB/user-recipe-online-DB/u
 import { UserPanelOnlineDBComponent } from './online-DB/pages/user-panel/user-panel-onlinedb.component';
 import { AdminPanelOnlineDBComponent } from './online-DB/pages/admin-panel/admin-panel-onlinedb.component';
 import { AppInfoComponent } from './home/app-info/app-info.component';
+import { AppDocumentationComponent } from './home/app-documentation/app-documentation.component';
 
 
 export const routes: Routes = [
@@ -46,7 +47,7 @@ export const routes: Routes = [
   { path: 'user-panel-onlinedb', component:  UserPanelOnlineDBComponent, }, //, canActivate: [UserRecipeGuard]
   { path: 'admin-panel-onlinedb', component:  AdminPanelOnlineDBComponent, }, //, canActivate: [UserRecipeGuard]
   { path: 'app-info', component: AppInfoComponent }, 
-
+  { path: 'readme', component: AppDocumentationComponent }, 
 ];
 
 // old but gold

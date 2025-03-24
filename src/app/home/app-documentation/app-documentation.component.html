@@ -1,0 +1,32 @@
+<div class="page-wrapper">
+    <h1>{{ title }}</h1>
+    <hr> 
+  
+<!-- documentation.component.html -->
+<div class="doc-container">
+  <div class="markdown-content" [innerHTML]="readmeContent"></div>
+  <button class="download-btn" (click)="downloadReadme()">
+    📥 Download Full Documentation
+  </button>
+</div>
+  
+    <!-- най-долна част , за инфо на приложението -->  
+    <div class="footer">
+      <a routerLink="/contact-info" class="about-link">
+        <h2> 🔗 About Us 🔗  </h2>
+      </a>
+      <p class="nadpis">Follow us on social media:</p>
+      <div class="social-icons">
+        <img src="assets/images/logos/facebook.jpg" alt="Facebook">
+        <img src="assets/images/logos/instagram.jpg" alt="Instagram">
+        <img src="assets/images/logos/youtube.jpg" alt="YouTube">
+        <img src="assets/images/logos/pinterest.jpg" alt="Pinterest">
+      </div>
+    </div>
+    
+    <div class="site-footer">
+      <p>© 2024 MyRecipeBook. All rights reserved.</p>
+      <p class="project-note">Project for demonstration purposes.</p>
+    </div>
+  </div>
+  
