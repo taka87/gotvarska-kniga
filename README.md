@@ -1,10 +1,10 @@
 
-# 🍽️ Food Planner App  
+# 🍽️ Recipe Book App  
 *Web application for meal planning and recipe management*  
 
 ## 🌐 Live Demo  
 Access the app here : https://gotvarska-kniga.vercel.app/   
-Test acc: demo@test.com/demo123
+Test acc: demo@test.com / pass: demo123
 
 ## 🚀 Key Features  
 - Dietary preference-based recipe search  
@@ -59,6 +59,7 @@ ng serve
 Email: `demo@test.com`  
 Password: `demo123`
 
-## 📬 Contact  
+## 📬 Contact:
 - Please use Contact Form: https://gotvarska-kniga.vercel.app/contact-info
 - GitHub: https://github.com/taka87/gotvarska-kniga
+- Github Local API: https://github.com/taka87/recipe-book-api

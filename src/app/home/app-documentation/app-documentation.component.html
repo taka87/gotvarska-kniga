@@ -1,14 +1,18 @@
 <div class="page-wrapper">
     <h1>{{ title }}</h1>
     <hr> 
+
+    <button class="home-button" routerLink="/">
+      <i class="material-icons">home</i>Home Page
+    </button>
   
-<!-- documentation.component.html -->
-<div class="doc-container">
-  <div class="markdown-content" [innerHTML]="readmeContent"></div>
-  <button class="download-btn" (click)="downloadReadme()">
-    📥 Download Full Documentation
-  </button>
-</div>
+    <!-- documentation.component.html -->
+    <div class="doc-container">
+      <div class="markdown-content" [innerHTML]="readmeContent"></div>
+      <button class="download-btn" (click)="downloadReadme()">
+        📥 Download Full Documentation
+      </button>
+    </div>
   
     <!-- най-долна част , за инфо на приложението -->  
     <div class="footer">
