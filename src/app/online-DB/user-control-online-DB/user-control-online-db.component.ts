@@ -24,7 +24,7 @@ export class UserControlOnlineDBComponent {
   ) {}
 
   showMessage(message: string): void {
-    this.snackBar.open(message, 'Затвори', {
+    this.snackBar.open(message, 'Close', {
       duration: 3000, // 3 секунди
       horizontalPosition: 'center',
       verticalPosition: 'top',
@@ -38,14 +38,14 @@ export class UserControlOnlineDBComponent {
   
       if (user) {
         console.log("🎉 Успешен вход:", user);
-        this.showMessage("🎉 Успешен вход:");
+        this.showMessage("🎉 Login successfully:");
         
         // 🔹 Викаме checkSessionOnlineDB, а НЕ checkSession!
         this.authServiceOnlineDB.checkSessionOnlineDB();
         
         this.router.navigate(['/']);
       } else {
-        this.showMessage('❌ Грешно потребителско име или парола!');
+        this.showMessage('❌ Error Username or password!');
       }
     } catch (err) {
       console.error("❌ Грешка при логин:", err);

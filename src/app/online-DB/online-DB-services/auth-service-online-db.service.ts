@@ -46,7 +46,7 @@ export class AuthServiceOnlineDB {
   
       if (error || !data.session) {
         console.error("❌ Грешка при вход:", error?.message || "Няма сесия!");
-        this.showMessage("❌ Грешка при вход!");
+        this.showMessage("❌ Error login!");
         return null;
       }
   
@@ -95,7 +95,7 @@ export class AuthServiceOnlineDB {
       });
   
       console.log("✅ Успешен вход, записан в localStorage:", { userId, email: data.user.email, first_name: firstName, last_name: lastName, role: userRole });
-      this.showMessage("✅ Успешен вход!");
+      this.showMessage("✅ Login successfully!");
   
       return {
         userId,
@@ -204,7 +204,7 @@ export class AuthServiceOnlineDB {
     await this.supabase.auth.signOut();
 
     console.log('🚪 Излизане...');
-    this.showMessage('🚪 Изход Успешен...');
+    this.showMessage('🚪 Logout successfully...');
     localStorage.removeItem('token');
     localStorage.removeItem('loggedUser');
     this.userLoggedInOnlineDB.next(null);

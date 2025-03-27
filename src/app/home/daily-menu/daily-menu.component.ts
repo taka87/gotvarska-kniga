@@ -140,19 +140,19 @@ export class DailyMenuComponent implements OnInit {
   submitMenu(): void {
     // Проверяваме само попълнените полета
     if (this.selectedMenu["soup"] && !this.validateSelection('soups', this.selectedMenu["soup"])) {
-      this.showMessage('❌ Тази супа не съществува!');
+      this.showMessage('❌ Soup does not exist!');
       return;
     }
     if (this.selectedMenu["dessert"] && !this.validateSelection('desserts', this.selectedMenu["dessert"])) {
-      this.showMessage('❌ Този десерт не съществува!');
+      this.showMessage('❌ Dessert does not exist!');
       return;
     }
     if (this.selectedMenu["drink"] && !this.validateSelection('drinks', this.selectedMenu["drink"])) {
-      this.showMessage('❌ Тази напитка не съществува!');
+      this.showMessage('❌ Drink does not exist!');
       return;
     }
     if (this.selectedMenu["salad"] && !this.validateSelection('salads', this.selectedMenu["salad"])) {
-      this.showMessage('❌ Тази салата не съществува!');
+      this.showMessage('❌ Salad does not exist!');
       return;
     }
   

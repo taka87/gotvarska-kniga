@@ -28,7 +28,7 @@ export class UserRecipeOnlineDBComponent {
   ) {}
 
   showMessage(message: string) {
-    this.snackBar.open(message, 'Затвори', {
+    this.snackBar.open(message, 'Close', {
       duration: 3000, // 3 секунди
       horizontalPosition: 'center',
       verticalPosition: 'top'
@@ -65,7 +65,7 @@ export class UserRecipeOnlineDBComponent {
 
   this.userRecipeOnlineDBService.addRecipe(recipeData).subscribe({
     next: (response) => {
-      this.showMessage('Рецептата добавена успешно!');
+      this.showMessage('Recipe Added successfully!');
       this.newRecipe = { recipe_name: '', ingredients: '', description: '', user_id: '' }; // ✅ Зануляваме формата
     },
     error: (err) => {

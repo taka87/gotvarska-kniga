@@ -65,7 +65,8 @@ export class LoggedButtonMysqlComponent {
     //console.log("📌 Взет потребител преди изтриване:", userData);  
   
     if (!userData) {
-      this.showMessage('❌ Грешно потребителско име или парола!');
+      // this.showMessage('❌ Грешно потребителско име или парола!');
+      this.showMessage('❌ Wrong UserName or Password!');
       return;
     }
   

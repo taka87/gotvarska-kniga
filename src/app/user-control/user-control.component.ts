@@ -25,7 +25,7 @@ export class UserControlComponent {
   ) {}
 
   showMessage(message: string) {
-    this.snackBar.open(message, 'Затвори', {
+    this.snackBar.open(message, 'Close', {
       duration: 3000, // 3 секунди
       horizontalPosition: 'center',
       verticalPosition: 'top'
@@ -43,7 +43,7 @@ export class UserControlComponent {
       
       if (user) {
         // console.log("Успешен логин!", user);
-        this.showMessage("Успешен логин!");
+        this.showMessage("Login successfully!");
         this.userSession.setUser(JSON.stringify(user));
         this.router.navigate(['/']);
       } else {

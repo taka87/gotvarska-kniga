@@ -42,7 +42,7 @@ export class UserPanelOnlineDBComponent {
      this.loadRecipes();
  
      const user = this.authServiceOnlineDB.getUserInfo();
-     this.userName = user.first_name || 'Гост';
+     this.userName = user.first_name || 'Guest';
    }
  
    loadRecipes() {
@@ -124,7 +124,8 @@ export class UserPanelOnlineDBComponent {
   
     this.userPanelOnlineDbService.editUserRecipe(this.selectedRecipe.id, updatedData).subscribe(
       () => {
-        console.log("✅ Recipe updated successfully!");
+        // console.log("✅ Recipe updated successfully!");
+        this.showMessage("✅ Recipe updated successfully!");
         this.showEditForm = false;
         this.loadRecipes(); // Презареждаме списъка с рецепти
       },

@@ -36,7 +36,7 @@ export class UserRecipeComponent {
   ) {}
 
   showMessage(message: string) {
-    this.snackBar.open(message, 'Затвори', {
+    this.snackBar.open(message, 'Close', {
       duration: 3000, // 3 секунди
       horizontalPosition: 'center',
       verticalPosition: 'top'
@@ -49,7 +49,7 @@ export class UserRecipeComponent {
       this.newRecipe.createdBy = currentUserId;
     }
     this.recipeService.addRecipe(this.newRecipe).subscribe(() => {
-      this.showMessage('Рецептата е успешно добавена!');
+      this.showMessage('Recipe added successfully!');
       // alert('Рецептата е успешно добавена!');
       this.resetForm();
     });

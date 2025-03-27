@@ -29,7 +29,7 @@ export class UserRegistrationComponent implements OnInit {
   ) {}  
 
   showMessage(message: string) {
-    this.snackBar.open(message, 'Затвори', {
+    this.snackBar.open(message, 'Close', {
       duration: 3000, // 3 секунди
       horizontalPosition: 'center',
       verticalPosition: 'top'
@@ -78,7 +78,7 @@ export class UserRegistrationComponent implements OnInit {
     this.http.post(this.apiUrl, newUser).subscribe(() => {
       this.userSession.setUser(JSON.stringify(newUser));
       //alert('Регистрацията е успешна!');
-      this.showMessage('Регистрацията е успешна!');
+      this.showMessage('Register User successfully!');
       this.router.navigate(['/']);
     });
   }

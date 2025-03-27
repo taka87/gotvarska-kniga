@@ -9,7 +9,7 @@
   </button>
   <!-- Супи -->
   <div class="menu-section">
-    <h3 class="menu-title">Your selected Soup: {{ selectedMenu.soup ? selectedMenu.soup : "not chosen" }}</h3>
+    <h3 class="menu-title">Your selected Soup: {{ selectedMenu.soup ? selectedMenu.soup : "not selected" }}</h3>
     <div class="section-content">
       <div class="ingredients">
         <p *ngIf="soupDetails">{{ soupDetails.ingredients }}</p>
@@ -23,7 +23,7 @@
 
   <!-- Десерт -->
   <div class="menu-section">
-    <h3 class="menu-title">Your selected Dessert: {{ selectedMenu.dessert ? selectedMenu.dessert : "not chosen" }}</h3>
+    <h3 class="menu-title">Your selected Dessert: {{ selectedMenu.dessert ? selectedMenu.dessert : "not selected" }}</h3>
     <div class="section-content">
       <div class="ingredients">
         <p *ngIf="dessertDetails">{{ dessertDetails.ingredients }}</p>
@@ -37,7 +37,7 @@
 
   <!-- Напитка -->
   <div class="menu-section">
-    <h3 class="menu-title">Your selected Drink: {{ selectedMenu.drink ? selectedMenu.drink : "not chosen" }}</h3>
+    <h3 class="menu-title">Your selected Drink: {{ selectedMenu.drink ? selectedMenu.drink : "not selected" }}</h3>
     <div class="section-content">
       <div class="ingredients">
         <p *ngIf="drinkDetails">{{ drinkDetails.ingredients }}</p>
@@ -51,7 +51,7 @@
 
   <!-- Салата -->
   <div class="menu-section">
-    <h3 class="menu-title">Your selected Salad: {{ selectedMenu.salad ? selectedMenu.salad : "not chosen" }}</h3>
+    <h3 class="menu-title">Your selected Salad: {{ selectedMenu.salad ? selectedMenu.salad : "not selected" }}</h3>
     <div class="section-content">
       <div class="ingredients">
         <p *ngIf="saladDetails">{{ saladDetails.ingredients }}</p>

@@ -63,7 +63,7 @@ export class UserPanelComponent {
     this.userPanelService.deleteRecipe(recipeId).subscribe(
       () => {
         // console.log("✅ Рецептата е изтрита успешно!");
-        this.showMessage("✅ Рецептата е изтрита успешно!");
+        this.showMessage("✅ Recipe deleted successfully!");
         this.loadRecipes(); // 🔄 Обновяваме списъка
       },
       (error) => //console.error("❌ Грешка при изтриване:", error)
@@ -82,13 +82,13 @@ export class UserPanelComponent {
 
     if (!this.selectedRecipe || !this.selectedRecipe.id) {
       // console.error('Няма избрана рецепта за редакция!');
-      this.showMessage('Няма избрана рецепта за редакция!');
+      this.showMessage('Recipe not selected!');
     }
   
     //console.log('Избраната рецепта', this.selectedRecipe)
     this.userPanelService.updateRecipe(this.selectedRecipe.id, this.selectedRecipe).subscribe({
       next: (response) => {
-        this.showMessage('Рецептата е обновена успешно!');
+        this.showMessage('Recipe edited successfully!');
         // console.log('Рецептата е обновена успешно!', response);
         this.showEditForm = false; // Скриваме формата след успешна редакция
         this.fetchRecipes(); // Презареждаме списъка с рецепти

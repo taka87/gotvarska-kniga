@@ -68,7 +68,7 @@ export class AdminPanelComponent implements OnInit {
   deleteUser(userId: number) {
     this.adminService.deleteUser(userId).subscribe({
       next: (response) => {
-        this.showMessage("✅ Потребителят е изтрит успешно!");
+        this.showMessage("✅ User deleted successfully!");
         // console.log("✅ Потребителят е изтрит успешно!", response);
         this.loadUsers();
       },
@@ -90,7 +90,7 @@ export class AdminPanelComponent implements OnInit {
         this.loadRecipes(); // 🔄 Обновяваме списъка
       },
       // (error) => console.error("❌ Грешка при изтриване:", error)
-      (error) => this.showMessage("❌ Грешка при изтриване:")
+      (error) => this.showMessage("❌ Error during delete:")
     );
   }
 
@@ -105,7 +105,7 @@ export class AdminPanelComponent implements OnInit {
 
     if (!this.selectedRecipe || !this.selectedRecipe.id) {
       // console.error('Няма избрана рецепта за редакция!');
-      this.showMessage('Няма избрана рецепта за редакция!');
+      this.showMessage('Recipe not selected for edit!');
       return;
     }
   
@@ -113,7 +113,7 @@ export class AdminPanelComponent implements OnInit {
     this.adminService.updateRecipe(this.selectedRecipe.id, this.selectedRecipe).subscribe({
       next: (response) => {
         //console.log('Рецептата е обновена успешно!', response);
-        this.showMessage('Рецептата е обновена успешно!');
+        this.showMessage('Recipe edited successfully!');
         this.showEditForm = false; // Скриваме формата след успешна редакция
         this.fetchRecipes(); // Презареждаме списъка с рецепти
       },
@@ -131,7 +131,7 @@ export class AdminPanelComponent implements OnInit {
       },
       error: (error) => {
         // console.error('Грешка при зареждане на рецептите:', error);
-        this.showMessage('Грешка при зареждане на рецептите:');
+        this.showMessage('Error loading recipes:');
       }
     });
   }
@@ -141,7 +141,7 @@ export class AdminPanelComponent implements OnInit {
     this.adminService.updateRecipe(this.selectedRecipe.id, this.selectedRecipe).subscribe(
       (response) => {
         // console.log("✅ Успешно редактирана рецепта:", response);
-        this.showMessage("✅ Успешно редактирана рецепта:");
+        this.showMessage("✅ Recipe Edited successfully:");
         this.loadRecipes(); // Презареждаме списъка
         this.selectedRecipe = null; // Скриваме формата
       },
