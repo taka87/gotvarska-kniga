@@ -1,5 +1,4 @@
-
-# 🍽️ Food Planner App  
+# 🍽️ Recipe Book App  
 *Web application for meal planning and recipe management*  
 
 ## 🌐 Live Demo  
