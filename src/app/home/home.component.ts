@@ -71,7 +71,11 @@ export class HomeComponent {
   images = [
     'assets/images/swiper/image1.jpg',
     'assets/images/swiper/maindish.jpg',
-    'assets/images/swiper/salad.jpg'
+    'assets/images/swiper/salad.jpg',
+    'assets/images/swiper/image2.jpg',
+    'assets/images/swiper/image3.jpg',
+    'assets/images/swiper/image5.jpg',
+    'assets/images/swiper/image6.jpg',
   ];
 
   // Добавете тези променливи във вашия компонент
@@ -114,9 +118,9 @@ isMainMenuOpen: boolean = false;
   // }
 
   favoriteRecipes = [
-    { name: 'Торта Гараш', description: 'Класическа шоколадова торта с богат вкус.' },
+    { name: 'Шопска салата', description: 'Класическа традиционнна българска салата.' },
     { name: 'Мусака', description: 'Традиционно българско ястие с картофи и кайма.' },
-    { name: 'Шкембе чорба', description: 'Супа с шкембе, подходяща за махмурлук.' },
+    { name: 'Баница', description: 'Баница приготвена с точени кори и извара.' },
   ];
 
   toggleFavorites() {
