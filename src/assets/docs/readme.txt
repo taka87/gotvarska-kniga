@@ -58,6 +58,9 @@ ng serve
 Email: `demo@test.com`  
 Password: `demo123`
 
+## 🌐 Project Resources:
+- GitHub: https://github.com/taka87/gotvarska-kniga
+- Github Local API: https://github.com/taka87/recipe-book-api
+
 ## 📬 Contact  
 - Please use Contact Form: https://gotvarska-kniga.vercel.app/contact-info
-- GitHub: https://github.com/taka87/gotvarska-kniga

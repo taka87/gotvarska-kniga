@@ -24,7 +24,7 @@ export class AppDocumentationComponent {
   ) {
     this.readmeContent = this.sanitizer.bypassSecurityTrustHtml(this.generateReadmeHtml());
   }
-  
+
   showMessage(message: string) {
     this.snackBar.open(message, 'Затвори', {
       duration: 3000, // 3 секунди
@@ -94,11 +94,13 @@ export class AppDocumentationComponent {
       <p>Email: <code>demo@test.com</code><br>
       Password: <code>demo123</code></p>
 
-      <h2>📬 Contact</h2>
-      <p>Please use Contact Form: <a href="https://gotvarska-kniga.vercel.app/contact-info" target="_blank">Contact Page : https://gotvarska-kniga.vercel.app/contact-info </a></p>
+      <h2> 🌐 Project resources:</h2> 
       <p>GitHub: <a href="https://github.com/taka87/gotvarska-kniga" target="_blank">Project Repository : https://github.com/taka87/gotvarska-kniga</a></p>
       <p>GitHub Local API: <a href="https://github.com/taka87/recipe-book-api" target="_blank">Project Repository : https://github.com/taka87/recipe-book-api</a></p>
-    `;
+    
+      <h2>📬 Contact: </h2>
+      <p>Please use Contact Form: <a href="https://gotvarska-kniga.vercel.app/contact-info" target="_blank">Contact Page : https://gotvarska-kniga.vercel.app/contact-info </a></p>
+      `;
   }
 
   downloadReadme() {
@@ -173,9 +175,11 @@ ng serve
 Email: "demo@test.com"  
 Password: "demo123"
 
-## 📬 Contact:
-- Please use Contact Form: https://gotvarska-kniga.vercel.app/contact-info
+## 🌐 Project resources: 
 - GitHub: https://github.com/taka87/gotvarska-kniga
-- Github Local API: https://github.com/taka87/recipe-book-api`
+- Github Local API: https://github.com/taka87/recipe-book-api
+
+## 📬 Contact:
+- Please use Contact Form: https://gotvarska-kniga.vercel.app/contact-info`
   }
 }
