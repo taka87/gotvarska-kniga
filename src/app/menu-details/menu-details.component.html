@@ -2,13 +2,16 @@
 
 <div class="menu-container">
   <h1>{{ title }}</h1>
-  <h2 class="page-title">Your fevourite menu for your meal today </h2>
+  <h2 class="page-title">Your fevourite menu for your meal today: </h2>
 
   <button class="home-button" routerLink="/">
     <i class="material-icons">home</i>Home Page
   </button>
-  <!-- Супи -->
+
+   <!-- Супи -->
   <div class="menu-section">
+  <hr>
+
     <h3 class="menu-title">Your selected Soup: {{ selectedMenu.soup ? selectedMenu.soup : "not selected" }}</h3>
     <div class="section-content">
       <div class="ingredients">

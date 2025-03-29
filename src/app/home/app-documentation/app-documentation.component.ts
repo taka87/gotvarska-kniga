@@ -52,7 +52,7 @@ export class AppDocumentationComponent {
       <h2>Prerequisites</h2>
       <ul>
         <li>Node.js v18+</li>
-        <li>.NET 7 SDK</li>
+        <li>.NET 8 SDK</li>
         <li>MySQL Workbench 8.0</li>
       </ul>
 
@@ -65,7 +65,7 @@ export class AppDocumentationComponent {
 
       <h3>Backend</h3>
       <ul>
-        <li><strong>Local Development</strong>: .NET 7 Web API (C# 11) on port 5000, Entity Framework Core + MySQL</li>
+        <li><strong>Local Development</strong>: .NET 8 Web API (C# 11) on port 5000, Entity Framework Core + MySQL</li>
         <li><strong>Cloud Services</strong>: Supabase (PostgreSQL + Auth), Node.js/Express on port 3000</li>
       </ul>
 
@@ -127,7 +127,7 @@ Test acc: demo@test.com / pass: demo123
 
 ## Prerequisites
 - Node.js v18+
-- .NET 7 SDK
+- .NET 8 SDK
 - MySQL Workbench 8.0
 
 ## 🛠 Technologies  
@@ -143,7 +143,7 @@ Test acc: demo@test.com / pass: demo123
 
 ### **Backend**  
 - **Local Development**:  
-  - .NET 7 Web API (C# 11) on port 5000  
+  - .NET 8 Web API (C# 11) on port 5000  
   - Entity Framework Core + MySQL Workbench 8.0  
 - **Cloud Services**:  
   - Supabase (PostgreSQL database + Authentication)  

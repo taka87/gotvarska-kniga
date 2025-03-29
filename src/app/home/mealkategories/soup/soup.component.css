@@ -49,11 +49,20 @@ body {
   border-radius: 8px;
 }
 
+.navigation-app{
+    overflow: hidden; 
+  overflow-x: auto;
+  display: flex; /* За подравняване */
+  justify-content: center; /* Или 'space-between'/'flex-start' според дизайна */
+}
+
 /* Контейнер за съдържание */
 .content-container {
   display: grid;
   grid-template-columns: 1fr 2fr 2fr;
   gap: 20px;
+  overflow: hidden; 
+  overflow-x: auto;
 }
 /* search-box-section */
 .search-box-container {
@@ -155,6 +164,9 @@ body {
   padding: 1rem;
   border-radius: 12px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  list-style: none; /* Махаме точките */
+  padding-left: 15px; /* Премахва вътрешния отстъп, ако има */
+  margin: 0; /* Премахва външния отстъп, ако има */
 }
 
 .categories-list li {
@@ -444,5 +456,10 @@ button.back-to-home-btn:hover {
   
   .site-footer p {
     font-size: 0.85rem;
+  }
+
+  .navigation-app{
+    padding-left: 110px;
+    padding-right: 0px;
   }
 }

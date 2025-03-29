@@ -25,7 +25,7 @@ content1 = `
 - Angular 19+, базиран на TypeScript и JavaScript, при изграждане на логическите функционалности.<br><br>
 
 <strong>Back-End:</strong><br>
-- Локално изградено REST API на .NET 7 с C# 11 и Entity Framework Core;<br>
+- Локално изградено REST API на .NET 8 с C# 11 и Entity Framework Core;<br>
 - Релационна база данни MySQL Workbench 8.0;<br>
 - В облачна среда приложението използва PostgreSQL, с бекенд сървър и API, изградени на Node.js.<br><br>
 
@@ -100,7 +100,7 @@ contentEN = {
   - Angular 19+, based on TypeScript and JavaScript, for implementing the logical functionalities.<br><br>
 
   <strong>Back-End:</strong><br>
-  - Locally built REST API on .NET 7 with C# 11 and Entity Framework Core;<br>
+  - Locally built REST API on .NET 8 with C# 11 and Entity Framework Core;<br>
   - Relational database MySQL Workbench 8.0;<br>
   - In a cloud environment, the application uses PostgreSQL, with a backend server and API built on Node.js.<br><br>
 

@@ -27,6 +27,16 @@ h1 {
   color: #333;
 }
 
+.page-title {
+  font-size: 2.5rem;
+  text-align: center;
+  background-color: #fdf5e6;
+  padding: 0.5rem;
+  color: #ff7f50;
+  margin-bottom: 20px;
+  border-radius: 8px;
+}
+
   /* бутон за главна страница  */
   .home-button {
     background: #efaeae; 
@@ -65,17 +75,34 @@ h1 {
   }
 
 /* Всяка секция */
+/* предотвратява излизането, създава слайдер при излизане... */
 .menu-section {
-  margin-bottom: 40px;
+  margin-bottom: 50px;
+  margin-left: 50px;
+  margin-right: 50px;
   padding-bottom: 20px;
   border-bottom: 2px solid #ddd;
+  overflow: hidden; 
+  overflow-x: auto;
 }
+
+/* не рабачка има какво да се използва тук при излизане, предотвратява но ги реже */
+/* .menu-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%; /* Взима цялата ширина на контейнера */
+  /*max-width: 100%;  Не позволява разширяване */
+  /*overflow: hidden;  Предотвратява излизане */
+  /*position: relative;  Уверява се, че децата остават в контейнера */
+/*} */
 
 /* Заглавия на секции */
 .menu-title {
   font-size: 24px;
   color: #444;
   margin-bottom: 20px;
+  padding-left: 120px;
   font-weight: bold;
 }
 
@@ -280,5 +307,28 @@ h1 {
   
   .site-footer p {
     font-size: 0.85rem;
+  }
+
+    .menu-section {
+    padding: 10px;
+  }
+  
+  .image-placeholder {
+    max-width: 100%;
+    height: auto;
+  }
+
+  .menu-title {
+    padding-left: 20px; /* Намалява отстоянието */
+  }
+
+  .home-button {
+    margin-left: 50px; /* Намалява отстоянието */
+  }
+
+  .menu-section {
+    margin-bottom: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
   }
 }

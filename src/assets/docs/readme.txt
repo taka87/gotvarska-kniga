@@ -12,7 +12,7 @@ Test acc: demo@test.com/demo123
 
 ## Prerequisites
 - Node.js v18+
-- .NET 7 SDK
+- .8 SDK
 - MySQL Workbench 8.0
 
 ## 🛠 Technologies  
@@ -28,7 +28,7 @@ Test acc: demo@test.com/demo123
 
 ### **Backend**  
 - **Local Development**:  
-  - .NET 7 Web API (C# 11) on port 5000  
+  - .NET 8 Web API (C# 11) on port 5000  
   - Entity Framework Core + MySQL Workbench 8.0  
 - **Cloud Services**:  
   - Supabase (PostgreSQL database + Authentication)  

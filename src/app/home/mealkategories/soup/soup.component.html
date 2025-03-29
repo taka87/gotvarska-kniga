@@ -5,7 +5,9 @@
   <h2 class="screen-title">Soups</h2>
 
   <!-- Навигационни бутони -->
-  <app-navigation [activePage]="'/soups'"></app-navigation>
+  <div class="navigation-app">
+    <app-navigation [activePage]="'/soups'"></app-navigation>
+  </div>
 
   <!-- search-section -->
   <hr class="divider-line">
@@ -40,7 +42,6 @@
     <!-- Лява част: списък със супи -->
   <div class="content-container">
     <div class="categories-list">
-
       <ul>
         <!-- филтрираните супи по критерии изобразява с бутона в новата логика -->
         <li *ngFor="let soup of filteredSoups" (click)="selectSoup(soup)">
