@@ -13,9 +13,9 @@ export class NavigationComponent {
   @Input() activePage: string | null = null;
 
   navItems = [
-    { path: '/soups', label: 'Супи' },
-    { path: '/main-dishes', label: 'Основни ястия' },
-    { path: '/salads', label: 'Салати' },
-    { path: '/desserts', label: 'Десерти' }
+    { path: '/soups', label: 'Soups' },
+    { path: '/main-dishes', label: 'Main Dishes' },
+    { path: '/salads', label: 'Salads' },
+    { path: '/desserts', label: 'Desserts' }
   ];
 }

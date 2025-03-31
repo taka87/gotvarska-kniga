@@ -21,6 +21,7 @@ import { UserRegisterOnlineDB } from '../online-DB/user-register-online-DB/user-
 import { LoggedButtonOnlinedbComponent } from '../online-DB/logged-button-onlinedb/logged-button-onlinedb.component';
 import { UserControlOnlineDBComponent } from '../online-DB/user-control-online-DB/user-control-online-db.component';
 import { AuthServiceOnlineDB } from '../online-DB/online-DB-services/auth-service-online-db.service';
+import { FavoriteRecipesComponent } from './favorite-recipes/favorite-recipes.component';
 
 @Component({
   selector: 'app-home',
@@ -36,7 +37,8 @@ import { AuthServiceOnlineDB } from '../online-DB/online-DB-services/auth-servic
     UserControlMysqlComponent, 
     LoggedButtonMysqlComponent,
     UserControlOnlineDBComponent,
-    LoggedButtonOnlinedbComponent
+    LoggedButtonOnlinedbComponent,
+    FavoriteRecipesComponent
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA], // Добави този ред
 

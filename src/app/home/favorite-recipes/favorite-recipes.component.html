@@ -1,0 +1,43 @@
+<div class="demo-wrapper">
+    <!-- Заглавие (движи се като първи ред със снимки) -->
+    <section class="animated-row">
+      <div class="wrapper text-row">
+        <h1>FVOURITE RECIPES PREVIEW</h1>
+      </div>
+    </section>
+  
+    <!-- Ред 1 със снимки -->
+    <section class="animated-row">
+      <div class="wrapper">
+        <img *ngFor="let image of soups" [src]="image" alt="Soup">
+      </div>
+    </section>
+  
+    <!-- Ред 2 със снимки -->
+    <section class="animated-row">
+      <div class="wrapper">
+        <img *ngFor="let image of dishes" [src]="image" alt="Dish">
+      </div>
+    </section>
+  
+    <!-- Ред 3 със снимки -->
+    <section class="animated-row">
+      <div class="wrapper">
+        <img *ngFor="let image of salads" [src]="image" alt="Dish">
+      </div>
+    </section>
+  
+    <!-- Ред 4 със снимки -->
+    <section class="animated-row">
+      <div class="wrapper">
+        <img *ngFor="let image of desserts" [src]="image" alt="Dish">
+      </div>
+    </section>
+  
+    <!-- Последен надпис (движи се като последния ред със снимки) -->
+    <section class="animated-row">
+      <div class="wrapper text-row">
+        <h1>DELICIOUS IDEA FOR EVERY MEAL</h1>
+      </div>
+    </section>
+  </div>
