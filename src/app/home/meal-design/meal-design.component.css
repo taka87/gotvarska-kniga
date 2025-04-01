@@ -1,14 +1,13 @@
-@import url('https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap');
-/* @import url('https://unpkg.com/normalize.css') layer(normalize); */
-@import "normalize.css";
+@import url("https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap");
+@import url("https://unpkg.com/normalize.css");
 
 @layer normalize, base, demo, stick, effect, srollbar, debug;
 
 @layer debug {
-  [data-debug='true'] li {
+  [data-debug="true"] li {
     outline: 0.05em dashed currentColor;
   }
-  [data-debug='true'] :is(h2, li:last-of-type) {
+  [data-debug="true"] :is(h2, li:last-of-type) {
     outline: 0.05em dashed canvasText;
   }
 }
@@ -16,20 +15,20 @@
 @layer scrollbar {
   @property --hue {
     initial-value: 0;
-    syntax: '<number>';
+    syntax: "<number>";
     inherits: false;
   }
   @property --chroma {
     initial-value: 0;
-    syntax: '<number>';
+    syntax: "<number>";
     inherits: true;
   }
 
-  [data-sync-scrollbar='true'] {
+  [data-sync-scrollbar="true"] {
     scrollbar-color: oklch(var(--lightness) var(--chroma) var(--hue)) #0000;
   }
   @supports (animation-timeline: scroll()) and (animation-range: 0% 100%) {
-    [data-sync-scrollbar='true'][data-animate='true'] {
+    [data-sync-scrollbar="true"][data-animate="true"] {
       timeline-scope: --list;
       scrollbar-color: oklch(var(--lightness) var(--chroma, 0) var(--hue)) #0000;
       animation-name: change, chroma-on, chroma-off;
@@ -69,10 +68,10 @@
     --lightness: 65%;
     --base-chroma: 0.3;
   }
-  [data-theme='dark'] {
+  [data-theme="dark"] {
     --lightness: 75%;
   }
-  [data-theme='light'] {
+  [data-theme="light"] {
     --lightness: 65%;
   }
   @media (prefers-color-scheme: dark) {
@@ -91,7 +90,7 @@
   }
 
   @supports (animation-timeline: scroll()) and (animation-range: 0% 100%) {
-    [data-animate='true'] {
+    [data-animate="true"] {
       li {
         opacity: 0.2;
         animation-name: brighten;
@@ -163,7 +162,7 @@
     list-style-type: none;
   }
 
-  [data-snap='true'] {
+  [data-snap="true"] {
     scroll-snap-type: y proximity;
 
     li {
@@ -225,11 +224,11 @@
     color-scheme: light dark;
   }
 
-  [data-theme='light'] {
+  [data-theme="light"] {
     color-scheme: light only;
   }
 
-  [data-theme='dark'] {
+  [data-theme="dark"] {
     color-scheme: dark only;
   }
 
@@ -265,14 +264,14 @@
     place-items: center;
     background: light-dark(white, black);
     min-height: 100vh;
-    font-family: 'Geist', 'SF Pro Text', 'SF Pro Icons', 'AOS Icons',
-      'Helvetica Neue', Helvetica, Arial, sans-serif, system-ui;
+    font-family: "Geist", "SF Pro Text", "SF Pro Icons", "AOS Icons",
+      "Helvetica Neue", Helvetica, Arial, sans-serif, system-ui;
   }
 
   body::before {
     --size: 45px;
     --line: color-mix(in hsl, canvasText, transparent 70%);
-    content: '';
+    content: "";
     height: 100vh;
     width: 100vw;
     position: fixed;

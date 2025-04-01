@@ -4,8 +4,8 @@
 /* Основен стил за цялата страница */
 .page-wrapper {
   max-width: 90%; /* Ограничаваме ширината до 90% от екрана */
-  margin: 40px auto; /* Центрираме блока хоризонтално и добавяме вертикално отстояние */
-  padding: 40px;
+  margin: 30px auto; /* Центрираме блока хоризонтално и добавяме вертикално отстояние */
+  padding: 30px;
   background-color: #ffffff;
   border-radius: 16px;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
@@ -137,6 +137,13 @@ h1 {
 h2 {
   text-align: center;
   font-size: 2rem;
+  color: #666;
+  margin-top: 20px;
+}
+
+.about-us{
+  text-align: center;
+  font-size: 1.5rem;
   color: #666;
   margin-top: 20px;
 }
@@ -528,6 +535,20 @@ h1 {
 }
 
 
+/* Линк */
+.link-container {
+  margin-top: 15px;
+  text-align: center;
+}
+
+.link-container a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.link-container a:hover {
+  text-decoration: underline;
+}
 /* Секция „За нас“ и социални връзки */
 .footer {
   background-color: #eebcbc;
@@ -555,48 +576,6 @@ h1 {
 .footer .social-icons img:hover {
   transform: scale(1.2);
 }
-
-.footer .social-icons img {
-  width: 30px;
-  height: 30px;
-  cursor: pointer;
-  transition: transform 0.2s;
-  animation: pulse 3s infinite;
-}
-
-/* Потрепване на социални икони */
-@keyframes pulse {
-  0%, 100% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.1);
-  }
-}
-
-/* Footer анимация */
-.footer {
-  background-color: #eebcbc;
-  color: white;
-  text-align: center;
-  padding: 20px;
-  margin-top: 40px;
-  border-radius: 8px;
-  animation: slideUp 1.5s ease-out;
-}
-
-@keyframes slideUp {
-  from {
-    transform: translateY(50px);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
-
-/* Линка "ЗА НАС" */
 .about-link {
   text-decoration: none;
   color: #2c3e50;

@@ -22,6 +22,7 @@ import { LoggedButtonOnlinedbComponent } from '../online-DB/logged-button-online
 import { UserControlOnlineDBComponent } from '../online-DB/user-control-online-DB/user-control-online-db.component';
 import { AuthServiceOnlineDB } from '../online-DB/online-DB-services/auth-service-online-db.service';
 import { FavoriteRecipesComponent } from './favorite-recipes/favorite-recipes.component';
+import { FavouriteMenuComponent } from './favourite-menu/favourite-menu.component';
 
 @Component({
   selector: 'app-home',
@@ -38,7 +39,8 @@ import { FavoriteRecipesComponent } from './favorite-recipes/favorite-recipes.co
     LoggedButtonMysqlComponent,
     UserControlOnlineDBComponent,
     LoggedButtonOnlinedbComponent,
-    FavoriteRecipesComponent
+    FavoriteRecipesComponent,
+    FavouriteMenuComponent
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA], // Добави този ред
 
@@ -72,9 +74,9 @@ export class HomeComponent {
   swiperKey = 0;
   images = [
     'assets/images/swiper/image1.jpg',
-    'assets/images/swiper/maindish.jpg',
+    'assets/images/swiper/maindish.jpg', //
     'assets/images/swiper/salad.jpg',
-    'assets/images/swiper/image2.jpg',
+    'assets/images/swiper/image2.jpg',//
     'assets/images/swiper/image3.jpg',
     'assets/images/swiper/image5.jpg',
     'assets/images/swiper/image6.jpg',

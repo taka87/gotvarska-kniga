@@ -25,6 +25,8 @@ import { AppInfoComponent } from './home/app-info/app-info.component';
 import { AppDocumentationComponent } from './home/app-documentation/app-documentation.component';
 import { FavoriteRecipesComponent } from './home/favorite-recipes/favorite-recipes.component';
 import { MealDesignComponent } from './home/meal-design/meal-design.component';
+import { MealScrollComponent } from './home/meal-scroll/meal-scroll.component';
+import { FavouriteMenuComponent } from './home/favourite-menu/favourite-menu.component';
 
 
 export const routes: Routes = [
@@ -51,7 +53,9 @@ export const routes: Routes = [
   { path: 'app-info', component: AppInfoComponent }, 
   { path: 'readme', component: AppDocumentationComponent }, 
   { path: 'pen', component: FavoriteRecipesComponent }, 
-  { path: 'meal-design', component: MealDesignComponent }, 
+  // { path: 'meal-design', component: MealDesignComponent }, 
+  { path: 'meal-scroll', component: MealScrollComponent }, 
+  { path: 'favourite-menu', component: FavouriteMenuComponent }, 
 ];
 
 // old but gold

@@ -3,6 +3,8 @@ import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
 import { Pane } from 'tweakpane';
 
+// Регистрирай ScrollTrigger плагина
+gsap.registerPlugin(ScrollTrigger);
 
 @Component({
   selector: 'app-meal-design',
