@@ -1,0 +1,65 @@
+<div class="page-wrapper">
+    <h1>{{ title }}</h1>
+    <hr> 
+    
+    <button class="home-button" routerLink="/">
+      <i class="material-icons">home</i>Home Page
+    </button>
+  
+    <!-- основа -->
+    <div class="recipe-search-container">
+        <h2>Търсене на рецепти</h2>
+        
+        <input 
+          type="text" 
+          [(ngModel)]="searchQuery" 
+          placeholder="Въведи име на ястие..." 
+          (keyup.enter)="searchRecipes()" 
+        />
+      
+        <button (click)="searchRecipes()">🔍 Търси</button>
+      
+        <div *ngIf="loading" class="loading">Зареждане...</div>
+        <div *ngIf="errorMessage" class="error">{{ errorMessage }}</div>
+      
+        <div class="recipes-list" *ngIf="recipes.length > 0">
+          <div *ngFor="let recipe of recipes" class="recipe-card">
+            <img [src]="recipe.strMealThumb" [alt]="recipe.strMeal" />
+            <h3>{{ recipe.strMeal }}</h3>
+            <p><strong>Категория:</strong> {{ recipe.strCategory }}</p>
+            <p><strong>Страна:</strong> {{ recipe.strArea }}</p>
+            
+            <button (click)="viewRecipe(recipe)">📖 Виж рецептата</button>
+          </div>
+        </div>
+      </div>
+      
+      <!-- МОДАЛЕН ПРОЗОРЕЦ -->
+      <div class="modal" *ngIf="selectedRecipe" (click)="closeModal($event)">
+        <div class="modal-content">
+          <span class="close-btn" (click)="selectedRecipe = null">&times;</span>
+          <h2>{{ selectedRecipe.strMeal }}</h2>
+          <img [src]="selectedRecipe.strMealThumb" [alt]="selectedRecipe.strMeal" />
+          <p><strong>Описание:</strong> {{ selectedRecipe.strInstructions }}</p>
+        </div>
+      </div>
+
+    <!-- най-долна част -->
+    <div class="footer">
+      <a routerLink="/contact-info" class="about-link">
+        <h2> 🔗 About Us 🔗  </h2>
+      </a>
+      <p class="nadpis">Follow us on social media:</p>
+      <div class="social-icons">
+        <img src="assets/images/logos/facebook.jpg" alt="Facebook">
+        <img src="assets/images/logos/instagram.jpg" alt="Instagram">
+        <img src="assets/images/logos/youtube.jpg" alt="YouTube">
+        <img src="assets/images/logos/pinterest.jpg" alt="Pinterest">
+      </div>
+    </div>
+    
+    <div class="site-footer">
+      <p>© 2024 MyRecipeBook. All rights reserved.</p>
+      <p class="project-note">Project for demonstration purposes.</p>
+    </div>
+  </div>

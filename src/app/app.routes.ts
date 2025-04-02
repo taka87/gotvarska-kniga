@@ -28,6 +28,7 @@ import { MealDesignComponent } from './home/meal-design/meal-design.component';
 import { MealScrollComponent } from './home/meal-scroll/meal-scroll.component';
 import { FavouriteMenuComponent } from './home/favourite-menu/favourite-menu.component';
 import { FoodSearchComponent } from './home/food-search/food-search.component';
+import { ApiRecipesComponent } from './home/api-recipes/api-recipes.component';
 
 
 export const routes: Routes = [
@@ -58,6 +59,7 @@ export const routes: Routes = [
   { path: 'meal-scroll', component: MealScrollComponent }, 
   { path: 'favourite-menu', component: FavouriteMenuComponent }, 
   { path: 'food-search', component: FoodSearchComponent }, 
+  { path: 'outer-recipes', component: ApiRecipesComponent }, 
 ];
 
 // old but gold
