@@ -14,4 +14,4 @@ export const environment = {
 `;
 
 fs.writeFileSync(envFilePath, envContent);
-console.log('Generated environment.ts');
+// console.log('Generated environment.ts');

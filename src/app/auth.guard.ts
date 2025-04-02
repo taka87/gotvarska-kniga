@@ -6,7 +6,10 @@ import { AuthService } from './mysql-services/auth-service.service';
   providedIn: 'root'
 })
 export class AuthGuard implements CanActivate {
-  constructor(private router: Router, private authService: AuthService) {}
+  constructor(
+    private router: Router, 
+    private authService: AuthService
+  ) {}
 
   canActivate(): boolean {
     const isLoggedIn = this.authService.userLoggedIn.getValue();

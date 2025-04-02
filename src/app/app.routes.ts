@@ -29,6 +29,7 @@ import { MealScrollComponent } from './home/meal-scroll/meal-scroll.component';
 import { FavouriteMenuComponent } from './home/favourite-menu/favourite-menu.component';
 import { FoodSearchComponent } from './home/food-search/food-search.component';
 import { ApiRecipesComponent } from './home/api-recipes/api-recipes.component';
+import { adminOnlineDBGuard } from './online-DB/guard/admin-online-db.guard';
 
 
 export const routes: Routes = [
@@ -55,11 +56,11 @@ export const routes: Routes = [
   { path: 'app-info', component: AppInfoComponent }, 
   { path: 'readme', component: AppDocumentationComponent }, 
   { path: 'pen', component: FavoriteRecipesComponent }, 
-  // { path: 'meal-design', component: MealDesignComponent }, 
-  { path: 'meal-scroll', component: MealScrollComponent }, 
-  { path: 'favourite-menu', component: FavouriteMenuComponent }, 
-  { path: 'food-search', component: FoodSearchComponent }, 
-  { path: 'outer-recipes', component: ApiRecipesComponent }, 
+  // { path: 'meal-design', component: MealDesignComponent },     //Home feature
+  // { path: 'meal-scroll', component: MealScrollComponent },     //Home feature
+  { path: 'favourite-menu', component: FavouriteMenuComponent },  //Home feature
+  { path: 'food-search', component: FoodSearchComponent, canActivate: [adminOnlineDBGuard] },      //Product macros Window
+  { path: 'outer-recipes', component: ApiRecipesComponent, canActivate: [adminOnlineDBGuard] },    //Search recipes Window
 ];
 
 // old but gold
