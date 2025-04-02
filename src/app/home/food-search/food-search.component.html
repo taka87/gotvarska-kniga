@@ -1,0 +1,50 @@
+<div class="page-wrapper">
+  <h1>{{ title }}</h1>
+  <hr> 
+  
+  <button class="home-button" routerLink="/">
+    <i class="material-icons">home</i>Home Page
+  </button>
+
+  <div class="food-search-container">
+    <h2>Searching the product:</h2>
+    
+    <input 
+      type="text" 
+      [(ngModel)]="searchQuery" 
+      placeholder="Search product: (banana, milk, avocado etc.)" 
+    />
+    <button (click)="searchFood()">Search</button>
+  
+    <div *ngIf="products.length > 0">
+      <h3>Result:</h3>
+      <div *ngFor="let product of products" class="product-card">
+        <h4>{{ product.product_name || 'No Name' }}</h4>
+        <img *ngIf="product.image_url" [src]="product.image_url" alt="Product image" />
+        <p><strong>Kategory:</strong> {{ product.categories || 'Unknown' }}</p>
+        <p><strong>Calories:</strong> {{ product.nutriments?.['energy-kcal'] || 'No data' }} kCal</p>
+      </div>
+    </div>
+  
+    <p *ngIf="errorMessage">{{ errorMessage }}</p>
+  </div>
+
+  <!-- най-долна част -->
+  <div class="footer">
+    <a routerLink="/contact-info" class="about-link">
+      <h2> 🔗 About Us 🔗  </h2>
+    </a>
+    <p class="nadpis">Follow us on social media:</p>
+    <div class="social-icons">
+      <img src="assets/images/logos/facebook.jpg" alt="Facebook">
+      <img src="assets/images/logos/instagram.jpg" alt="Instagram">
+      <img src="assets/images/logos/youtube.jpg" alt="YouTube">
+      <img src="assets/images/logos/pinterest.jpg" alt="Pinterest">
+    </div>
+  </div>
+  
+  <div class="site-footer">
+    <p>© 2024 MyRecipeBook. All rights reserved.</p>
+    <p class="project-note">Project for demonstration purposes.</p>
+  </div>
+</div>

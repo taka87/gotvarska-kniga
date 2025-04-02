@@ -3,6 +3,7 @@ export const environment = {
   googleMapsApiKey: 'googleMapsApiKey',
   NEXT_PUBLIC_SUPABASE_URL: 'NEXT_PUBLIC_SUPABASE_URL',
   NEXT_PUBLIC_SUPABASE_ANON_KEY: 'NEXT_PUBLIC_SUPABASE_ANON_KEY',
+  apiFoodSearchUrl: 'apiFoodSearchUrl'
 };
 
 console.log("✅ Production environment loaded!");

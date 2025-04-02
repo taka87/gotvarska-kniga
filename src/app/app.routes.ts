@@ -27,6 +27,7 @@ import { FavoriteRecipesComponent } from './home/favorite-recipes/favorite-recip
 import { MealDesignComponent } from './home/meal-design/meal-design.component';
 import { MealScrollComponent } from './home/meal-scroll/meal-scroll.component';
 import { FavouriteMenuComponent } from './home/favourite-menu/favourite-menu.component';
+import { FoodSearchComponent } from './home/food-search/food-search.component';
 
 
 export const routes: Routes = [
@@ -56,6 +57,7 @@ export const routes: Routes = [
   // { path: 'meal-design', component: MealDesignComponent }, 
   { path: 'meal-scroll', component: MealScrollComponent }, 
   { path: 'favourite-menu', component: FavouriteMenuComponent }, 
+  { path: 'food-search', component: FoodSearchComponent }, 
 ];
 
 // old but gold

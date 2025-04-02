@@ -411,6 +411,7 @@ button.back-to-home-btn:hover {
 .about-link h2 {
   margin: 0;
   padding: 0.5rem 1.5rem;
+  font-size: 1.5rem;
   border-radius: 8px;
   background: linear-gradient(145deg, #f8f9fa 0%, #e9ecef 100%);
   box-shadow: 
