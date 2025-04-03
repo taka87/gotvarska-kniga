@@ -120,56 +120,94 @@
   }
   
  /* Корекции за контактната форма */
-.contact-form {
-    background: white;
-    padding: 2rem;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.06);
-    box-sizing: border-box; /* Важно */
-    overflow: hidden; /* Предотвратява излизане */
-  }
-  
-  .form-group {
-    margin-bottom: 1.5rem;
-    width: 100%;
-    box-sizing: border-box;
-  }
-  
-  input, textarea {
-    width: calc(100% - 2px); /* Корекция за границите */
-    padding: 1rem;
-    border: 2px solid #e2e8f0;
-    border-radius: 8px;
-    font-size: 1rem;
-    transition: all 0.3s ease;
-    box-sizing: border-box; /* Решава проблема с размерите */
-    max-width: 100%; /* Гарантира че няма да надхвърлят */
-    display: block;
-    margin: 0 auto;
-  }
-  
-  input:focus, textarea:focus {
-    outline: none;
-    border-color: #63b3ed;
-    box-shadow: 0 0 0 3px rgba(99,179,237,0.2);
-  }
-  
-  button[type="submit"] {
-    background: #63b3ed;
-    color: white;
-    padding: 1rem 2rem;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    font-weight: 600;
-    transition: all 0.3s ease;
-    width: 100%;
-  }
-  
-  button[type="submit"]:hover {
-    background: #4299e1;
-    transform: translateY(-2px);
-  }
+ .contact-form {
+  background: rgba(255, 255, 255, 0.8);
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  box-sizing: border-box;
+  backdrop-filter: blur(10px);
+  text-align: center;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+/* Описание (P) */
+.contact-form p {
+  color: #007bff; /* Ярък червеникаво-оранжев нюанс */
+  font-weight: bold;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  /* animation: blink 2.5s infinite; */
+}
+
+/* Заглавие (H2) */
+.contact-form h2 {
+  font-size: 2rem;
+  font-weight: 800;
+  margin-bottom: 2rem;
+  padding: 10px;
+  color: white;
+  background: linear-gradient(90deg, #007bff, #f38686);
+  border-radius: 8px;
+  display: inline-block;
+  animation: blink 2.5s infinite;
+}
+
+/* Формови елементи */
+.form-group {
+  margin-bottom: 1.5rem;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+input, textarea {
+  width: calc(100% - 2px);
+  padding: 1rem;
+  border: 2px solid #e2e8f0;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  box-sizing: border-box;
+  max-width: 100%;
+  display: block;
+  margin: 0 auto;
+  background: rgba(255, 255, 255, 0.5);
+}
+
+input:focus, textarea:focus {
+  outline: none;
+  border-color: #ff4500;
+  box-shadow: 0 0 0 3px rgba(255, 69, 0, 0.3);
+}
+
+/* Бутон */
+button[type="submit"] {
+  background: linear-gradient(90deg,#007bff, #f38686);
+  color: white;
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  width: 100%;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  box-shadow: 0 5px 15px rgba(255, 69, 0, 0.3);
+}
+
+button[type="submit"]:hover {
+  background: linear-gradient(90deg,  #f38686,#007bff);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(255, 69, 0, 0.4);
+}
+
+/* Анимация за P (подчертаване на работеща форма) */
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
   
   /* Дясна колона с карта */
 /* Основен контейнер */
@@ -226,146 +264,154 @@
   .map-wrapper {
     height: 700px; /* Увеличаваме височината за по-широки екрани */
   }
+}  
+/* Линк */
+.link-container {
+  margin-top: 15px;
+  text-align: center;
 }
 
+.link-container a {
+  color: #007bff;
+  text-decoration: none;
+}
 
-  
-  /* Линк */
-  .link-container {
-    margin-top: 15px;
-    text-align: center;
-  }
-  
-  .link-container a {
-    color: #007bff;
-    text-decoration: none;
-  }
-  
-  .link-container a:hover {
-    text-decoration: underline;
-  }
-  /* Секция „За нас“ и социални връзки */
-  .footer {
-    background-color: #eebcbc;
-    color: white;
-    text-align: center;
-    padding: 20px;
-    margin-top: 40px;
-    border-radius: 8px;
-  }
-  
-  .footer .social-icons {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    margin-top: 10px;
-  }
-  
-  .footer .social-icons img {
-    width: 30px;
-    height: 30px;
-    cursor: pointer;
-    transition: transform 0.2s;
-  }
-  
-  .footer .social-icons img:hover {
-    transform: scale(1.2);
-  }
-  .about-link {
-    text-decoration: none;
-    color: #2c3e50;
-    transition: all 0.3s ease;
-    display: inline-block;
-    position: relative;
-    cursor: pointer;
-    margin: 1rem 0;
-  }
-  
-  .about-link h2 {
-    margin: 0;
-    padding: 0.5rem 1.5rem;
-    border-radius: 8px;
-    background: linear-gradient(145deg, #f8f9fa 0%, #e9ecef 100%);
-    box-shadow: 
-      0 4px 12px rgba(0,0,0,0.08),
-      inset 0 0 0 1px rgba(255,255,255,0.4);
-  }
-  
-  .about-link:hover {
-    transform: translateY(-2px);
-  }
-  
-  .nadpis {
-    color:  rgba(0, 0, 0, 0.531);
-  }
-  
-  .about-link:hover h2 {
-    color: #2b6cb0;
-    box-shadow: 
-      0 6px 16px rgba(43,108,176,0.15),
-      inset 0 0 0 1px rgba(66,153,225,0.2);
-  }
-  
-  .about-link:active {
-    transform: translateY(1px);
-  }
-  
-  /* bottom */
+.link-container a:hover {
+  text-decoration: underline;
+}
+/* Секция „За нас“ и социални връзки */
+.footer {
+  background-color: #eebcbc;
+  color: white;
+  text-align: center;
+  padding: 20px;
+  margin-top: 40px;
+  border-radius: 8px;
+}
+
+.footer .social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.footer .social-icons img {
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.footer .social-icons img:hover {
+  transform: scale(1.2);
+}
+.about-link {
+  text-decoration: none;
+  color: #2c3e50;
+  transition: all 0.3s ease;
+  display: inline-block;
+  position: relative;
+  cursor: pointer;
+  margin: 1rem 0;
+}
+
+.about-link h2 {
+  margin: 0;
+  padding: 0.5rem 1.5rem;
+  border-radius: 8px;
+  background: linear-gradient(145deg, #f8f9fa 0%, #e9ecef 100%);
+  box-shadow: 
+    0 4px 12px rgba(0,0,0,0.08),
+    inset 0 0 0 1px rgba(255,255,255,0.4);
+}
+
+.about-link:hover {
+  transform: translateY(-2px);
+}
+
+.nadpis {
+  color:  rgba(0, 0, 0, 0.531);
+}
+
+.about-link:hover h2 {
+  color: #2b6cb0;
+  box-shadow: 
+    0 6px 16px rgba(43,108,176,0.15),
+    inset 0 0 0 1px rgba(66,153,225,0.2);
+}
+
+.about-link:active {
+  transform: translateY(1px);
+}
+
+/* bottom */
+.site-footer {
+  background: linear-gradient(145deg, #f8fafb 0%, #eef2f6 100%);
+  padding: 1.5rem 2rem;
+  text-align: center;
+  border-top: 1px solid rgba(255,255,255,0.4);
+  box-shadow: 0 -4px 16px rgba(0,0,0,0.05);
+  margin-top: 4rem;
+  border-radius: 12px 12px 0 0;
+  position: relative;
+}
+
+.site-footer::before {
+  content: '';
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60%;
+  height: 4px;
+  background: #63b3ed;
+  border-radius: 2px;
+  opacity: 0.3;
+}
+
+.site-footer p {
+  margin: 0.4rem 0;
+  color: #4a5568;
+  font-size: 0.9rem;
+  letter-spacing: 0.3px;
+}
+
+.project-note {
+  font-size: 0.8rem !important;
+  color: #718096 !important;
+  font-style: italic;
+}
+
+/* Анимация при скрол */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.site-footer {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
   .site-footer {
-    background: linear-gradient(145deg, #f8fafb 0%, #eef2f6 100%);
-    padding: 1.5rem 2rem;
-    text-align: center;
-    border-top: 1px solid rgba(255,255,255,0.4);
-    box-shadow: 0 -4px 16px rgba(0,0,0,0.05);
-    margin-top: 4rem;
-    border-radius: 12px 12px 0 0;
-    position: relative;
-  }
-  
-  .site-footer::before {
-    content: '';
-    position: absolute;
-    top: -10px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 60%;
-    height: 4px;
-    background: #63b3ed;
-    border-radius: 2px;
-    opacity: 0.3;
+    padding: 1rem;
+    margin-top: 2rem;
   }
   
   .site-footer p {
-    margin: 0.4rem 0;
-    color: #4a5568;
-    font-size: 0.9rem;
-    letter-spacing: 0.3px;
+    font-size: 0.85rem;
   }
-  
-  .project-note {
-    font-size: 0.8rem !important;
-    color: #718096 !important;
-    font-style: italic;
+
+  .contact-form h2 {
+    font-size: 1.5rem;
   }
-  
-  /* Анимация при скрол */
-  @keyframes fadeInUp {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
+
+  .brand-title {
+    font-size: 2rem;
   }
-  
-  .site-footer {
-    animation: fadeInUp 0.6s ease-out;
+  h1{
+    font-size: 2.2rem;
   }
-  
-  /* Responsive Design */
-  @media (max-width: 768px) {
-    .site-footer {
-      padding: 1rem;
-      margin-top: 2rem;
-    }
-    
-    .site-footer p {
-      font-size: 0.85rem;
-    }
-  }
+}

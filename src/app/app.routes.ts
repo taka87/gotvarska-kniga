@@ -30,6 +30,7 @@ import { FavouriteMenuComponent } from './home/favourite-menu/favourite-menu.com
 import { FoodSearchComponent } from './home/food-search/food-search.component';
 import { ApiRecipesComponent } from './home/api-recipes/api-recipes.component';
 import { adminOnlineDBGuard } from './online-DB/guard/admin-online-db.guard';
+import { unlockCodeGuard } from './online-DB/guard/unlock-code.guard';
 
 
 export const routes: Routes = [
@@ -52,15 +53,15 @@ export const routes: Routes = [
   { path: 'register-online-DB', component: UserRegisterOnlineDB },
   { path: 'user-recipe-onlinedb', component:  UserRecipeOnlineDBComponent}, //, canActivate: [UserRecipeGuard]
   { path: 'user-panel-onlinedb', component:  UserPanelOnlineDBComponent, }, //, canActivate: [UserRecipeGuard]
-  { path: 'admin-panel-onlinedb', component:  AdminPanelOnlineDBComponent, }, //, canActivate: [UserRecipeGuard]
+  { path: 'admin-panel-onlinedb', component:  AdminPanelOnlineDBComponent, canActivate: [adminOnlineDBGuard]}, //, canActivate: [UserRecipeGuard]
   { path: 'app-info', component: AppInfoComponent }, 
   { path: 'readme', component: AppDocumentationComponent }, 
-  { path: 'pen', component: FavoriteRecipesComponent }, 
+  { path: 'scroll-effect', component: FavoriteRecipesComponent }, 
   // { path: 'meal-design', component: MealDesignComponent },     //Home feature
   // { path: 'meal-scroll', component: MealScrollComponent },     //Home feature
   { path: 'favourite-menu', component: FavouriteMenuComponent },  //Home feature
-  { path: 'food-search', component: FoodSearchComponent, canActivate: [adminOnlineDBGuard] },      //Product macros Window
-  { path: 'outer-recipes', component: ApiRecipesComponent, canActivate: [adminOnlineDBGuard] },    //Search recipes Window
+  { path: 'food-search', component: FoodSearchComponent, canActivate: [unlockCodeGuard] },      //Product macros Window
+  { path: 'outer-recipes', component: ApiRecipesComponent, canActivate: [unlockCodeGuard] },    //Search recipes Window
 ];
 
 // old but gold

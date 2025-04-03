@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
-// import { environment } from '../../../environments/environment';
+import { environment } from '../../../environments/environment';
 import { RouterLink } from '@angular/router';
 
 
@@ -28,22 +28,22 @@ export class FoodSearchComponent {
       return;
     }
 
-    // const apiUrl = `${environment.apiFoodSearchUrl}?search_terms=${this.searchQuery}&json=1`;
+    const apiUrl = `${environment.apiFoodSearchUrl}?search_terms=${this.searchQuery}&json=1`;
 
-    // this.http.get(apiUrl).subscribe(
-    //   (data: any) => {
-    //     if (data.products.length > 0) {
-    //       this.products = data.products.slice(0, 5); // Вземаме само първите 5 продукта
-    //       this.errorMessage = '';
-    //     } else {
-    //       this.errorMessage = 'Продуктът не е намерен.';
-    //       this.products = [];
-    //     }
-    //   },
-    //   (error) => {
-    //     this.errorMessage = 'Грешка при търсенето на продукта.';
-    //     this.products = [];
-    //   }
-    // );
+    this.http.get(apiUrl).subscribe(
+      (data: any) => {
+        if (data.products.length > 0) {
+          this.products = data.products.slice(0, 5); // Вземаме само първите 5 продукта
+          this.errorMessage = '';
+        } else {
+          this.errorMessage = 'Продуктът не е намерен.';
+          this.products = [];
+        }
+      },
+      (error) => {
+        this.errorMessage = 'Грешка при търсенето на продукта.';
+        this.products = [];
+      }
+    );
   }
 }

@@ -8,16 +8,16 @@
   
     <!-- основа -->
     <div class="recipe-search-container">
-        <h2>Търсене на рецепти</h2>
+        <h2>Searching for Meal Recipes:</h2>
         
         <input 
           type="text" 
           [(ngModel)]="searchQuery" 
-          placeholder="Въведи име на ястие..." 
+          placeholder="Input meal:" 
           (keyup.enter)="searchRecipes()" 
         />
       
-        <button (click)="searchRecipes()">🔍 Търси</button>
+        <button (click)="searchRecipes()">🔍 Search</button>
       
         <div *ngIf="loading" class="loading">Зареждане...</div>
         <div *ngIf="errorMessage" class="error">{{ errorMessage }}</div>

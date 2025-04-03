@@ -69,23 +69,27 @@ h1 {
     text-align: center;
   }
   
+
   input {
-    width: 80%;
+    width: 60%;
     padding: 10px;
     margin: 10px 0;
-    border: 1px solid #ddd;
+    border: 1px solid #ccc;
+    border-radius: 5px;
   }
   
   button {
-    padding: 10px 20px;
-    background-color: #007bff;
+    background: #ff5722;
     color: white;
     border: none;
+    padding: 10px 15px;
+    margin-left: 10px;
+    border-radius: 5px;
     cursor: pointer;
   }
   
   button:hover {
-    background-color: #0056b3;
+    background: #e64a19;
   }
   
   .product-card {

@@ -67,7 +67,7 @@
   }
   
   input {
-    width: 70%;
+    width: 60%;
     padding: 10px;
     margin: 10px 0;
     border: 1px solid #ccc;
@@ -79,6 +79,7 @@
     color: white;
     border: none;
     padding: 10px 15px;
+    margin-left: 10px;
     border-radius: 5px;
     cursor: pointer;
   }
