@@ -27,7 +27,7 @@ export class ApiRecipesComponent {
 
   searchRecipes() {
     if (!this.searchQuery.trim()) {
-      this.errorMessage = "Моля, въведете име на ястие!";
+      this.errorMessage = "Please select meal recipe.";
       return;
     }
   
@@ -48,12 +48,12 @@ export class ApiRecipesComponent {
         console.log('API Response Headers:', response.headers);
         this.recipes = response.body?.meals || [];
         if (this.recipes.length === 0) {
-          this.errorMessage = "Няма намерени рецепти.";
+          this.errorMessage = "Recipe not found.";
         }
         this.loading = false;
       },
       (error) => {
-        this.errorMessage = "Грешка при заявката. Опитайте отново!";
+        this.errorMessage = "Request error. Try again!";
         this.loading = false;
       }
     );
@@ -76,20 +76,20 @@ export class ApiRecipesComponent {
   // ShowAlertMessage
   promptForAccess() {
     Swal.fire({
-      title: 'Въведете код за достъп',
+      title: 'Please fill code',
       input: 'password',
-      inputPlaceholder: 'Въведете вашия код',
+      inputPlaceholder: 'Please enter your code',
       showCancelButton: true,
-      confirmButtonText: 'ОК',
-      cancelButtonText: 'Отказ'
+      confirmButtonText: 'OK',
+      cancelButtonText: 'Cancel'
     }).then((result) => {
       if (result.isConfirmed) {
         const enteredCode = result.value;
-        if (enteredCode === '1234') { // 🔹 Замени с твой код
+        if (enteredCode === 'sesame') { // 🔹 Замени с твой код
           localStorage.setItem('hasAccess', 'true');
           this.router.navigate(['/outer-recipes']); // 🔹 Пренасочване към страницата
         } else {
-          Swal.fire('Грешен код', 'Опитайте отново!', 'error');
+          Swal.fire('Error code', 'Try again!', 'error');
         }
       }
     });

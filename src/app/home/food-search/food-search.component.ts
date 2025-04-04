@@ -24,7 +24,7 @@ export class FoodSearchComponent {
 
   searchFood() {
     if (!this.searchQuery.trim()) {
-      this.errorMessage = 'Моля, въведете име на продукт.';
+      this.errorMessage = 'Please select product.';
       return;
     }
 
@@ -36,12 +36,12 @@ export class FoodSearchComponent {
           this.products = data.products.slice(0, 5); // Вземаме само първите 5 продукта
           this.errorMessage = '';
         } else {
-          this.errorMessage = 'Продуктът не е намерен.';
+          this.errorMessage = 'Product not found.';
           this.products = [];
         }
       },
       (error) => {
-        this.errorMessage = 'Грешка при търсенето на продукта.';
+        this.errorMessage = 'Error selected product.';
         this.products = [];
       }
     );

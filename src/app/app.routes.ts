@@ -59,7 +59,7 @@ export const routes: Routes = [
   { path: 'scroll-effect', component: FavoriteRecipesComponent }, 
   // { path: 'meal-design', component: MealDesignComponent },     //Home feature
   // { path: 'meal-scroll', component: MealScrollComponent },     //Home feature
-  { path: 'favourite-menu', component: FavouriteMenuComponent },  //Home feature
+  // { path: 'favourite-menu', component: FavouriteMenuComponent },  //Home feature
   { path: 'food-search', component: FoodSearchComponent, canActivate: [unlockCodeGuard] },      //Product macros Window
   { path: 'outer-recipes', component: ApiRecipesComponent, canActivate: [unlockCodeGuard] },    //Search recipes Window
 ];
