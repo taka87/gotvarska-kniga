@@ -22,7 +22,7 @@ export class FoodSearchComponent {
   errorMessage: string = '';
 
   isBrowser: boolean = false;
-  
+
   constructor(
     private http: HttpClient,
     @Inject(PLATFORM_ID) private platformId: Object
@@ -36,7 +36,7 @@ export class FoodSearchComponent {
       return;
     }
 
-    const apiUrl = `${environment.apiFoodSearchUrl}?search_terms=${this.searchQuery}&json=1`;
+    const apiUrl = `${environment.apiFoodSearchUrl}?search_terms=${this.searchQuery}`;
 
     this.http.get(apiUrl).subscribe(
       (data: any) => {
