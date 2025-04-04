@@ -4,7 +4,8 @@ import { FormsModule } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../environments/environment';
 import { RouterLink } from '@angular/router';
-
+import { PLATFORM_ID, Inject } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 
 
 @Component({
@@ -20,7 +21,14 @@ export class FoodSearchComponent {
   products: any[] = [];
   errorMessage: string = '';
 
-  constructor(private http: HttpClient) {}
+  isBrowser: boolean = false;
+  
+  constructor(
+    private http: HttpClient,
+    @Inject(PLATFORM_ID) private platformId: Object
+  ) {
+    this.isBrowser = isPlatformBrowser(this.platformId);
+  }
 
   searchFood() {
     if (!this.searchQuery.trim()) {
