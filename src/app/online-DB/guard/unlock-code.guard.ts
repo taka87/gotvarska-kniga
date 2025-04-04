@@ -4,48 +4,54 @@ import { inject } from '@angular/core';
 import { Router } from '@angular/router';
 
 export const unlockCodeGuard: CanActivateFn = async (route, state) => {
-  // Проверяваме дали кодът е изтекъл
   const unlockCodeTime = localStorage.getItem('unlockCodeTime');
   const currentTime = new Date().getTime();
-
-   // Проверяваме дали кодът за достъп съществува
-  const router = inject(Router); // Използваме inject за да вземем Router
+  const router = inject(Router);
 
   if (unlockCodeTime && (currentTime - parseInt(unlockCodeTime)) > 3600000) {
-    // Ако кодът е невалиден след 24 часа, премахваме стойността и времето
     localStorage.removeItem('unlockCode');
     localStorage.removeItem('unlockCodeTime');
   }
 
-  // Ако няма ключ за отворен достъп, показваме модала
   const isUnlocked = localStorage.getItem('unlockCode') === 'open-sesame';
 
   if (!isUnlocked) {
-    // Връщаме Promise от SweetAlert2
-    const result = await Swal.fire({
-      title: 'Please insert code',
-      input: 'password',
-      inputPlaceholder: 'Enter Your Code',
-      showCancelButton: true,
-      confirmButtonText: 'OK',
-      cancelButtonText: 'Cancel'
-    });
+    let accessGranted = false;
 
-    if (result.isConfirmed) {
-      const enteredCode = result.value;
-      if (enteredCode === 'sesame') { // 🔹 Замени с твой код
-        localStorage.setItem('unlockCode', 'open-sesame'); // Записваме, че достъпът е отворен
-        localStorage.setItem('unlockCodeTime', new Date().getTime().toString()); // Записваме времето на въвеждане
-        return true; // Позволяваме достъп
+    while (!accessGranted) {
+      const result = await Swal.fire({
+        title: '🔐 Enter Access Code',
+        input: 'password',
+        inputPlaceholder: 'Type your secret code',
+        showCancelButton: true,
+        confirmButtonText: 'Unlock',
+        cancelButtonText: 'Cancel',
+        allowOutsideClick: false
+      });
+
+      if (result.isConfirmed) {
+        const enteredCode = result.value;
+
+        if (enteredCode === 'sesame') {
+          localStorage.setItem('unlockCode', 'open-sesame');
+          localStorage.setItem('unlockCodeTime', new Date().getTime().toString());
+          accessGranted = true;
+          return true;
+        } else {
+          await Swal.fire({
+            icon: 'error',
+            title: 'Invalid Code',
+            text: 'The code you entered is incorrect. Please try again.',
+            confirmButtonText: 'Try Again'
+          });
+          // Цикълът продължава
+        }
       } else {
-        Swal.fire('Code Incorrect', 'Try again!', 'error');
-        return false; // Не позволяваме достъп
+        router.navigate(['/']); // или какъвто маршрут искаш
+        return false;
       }
-    } else {
-      router.navigate(['/']);
-      return false; // Ако не е потвърдено или е натиснат "Отказ"
     }
-  } else {
-    return true; // Ако достъпът вече е разрешен
   }
+
+  return true;
 };
