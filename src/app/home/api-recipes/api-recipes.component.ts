@@ -34,7 +34,8 @@ export class ApiRecipesComponent {
     this.loading = true;
     this.errorMessage = '';
   
-    const apiUrl = `${this.foodSearchUrl}${this.searchQuery}`;
+    // const apiUrl = `${this.foodSearchUrl}${this.searchQuery}`;
+    const apiUrl = 'https://www.themealdb.com/api/json/v1/1/search.php?s=milk';
   
     this.http.get<HttpResponse<any>>(apiUrl, {
       headers: new HttpHeaders({

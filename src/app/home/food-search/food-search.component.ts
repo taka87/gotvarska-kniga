@@ -4,8 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../environments/environment';
 import { RouterLink } from '@angular/router';
-import { PLATFORM_ID, Inject } from '@angular/core';
-import { isPlatformBrowser } from '@angular/common';
+
 
 
 @Component({
@@ -21,14 +20,7 @@ export class FoodSearchComponent {
   products: any[] = [];
   errorMessage: string = '';
 
-  isBrowser: boolean = false;
-
-  constructor(
-    private http: HttpClient,
-    @Inject(PLATFORM_ID) private platformId: Object
-  ) {
-    this.isBrowser = isPlatformBrowser(this.platformId);
-  }
+  constructor(private http: HttpClient) {}
 
   searchFood() {
     if (!this.searchQuery.trim()) {
@@ -36,8 +28,9 @@ export class FoodSearchComponent {
       return;
     }
 
-    const apiUrl = `${environment.apiFoodSearchUrl}?search_terms=${this.searchQuery}`;
-
+    // const apiUrl = `${environment.apiFoodSearchUrl}?search_terms=${this.searchQuery}&json=1`;
+    const apiUrl = 'https://bg.openfoodfacts.org/cgi/search.pl?search_terms=banana&json=1';
+    
     this.http.get(apiUrl).subscribe(
       (data: any) => {
         if (data.products.length > 0) {
