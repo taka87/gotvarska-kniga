@@ -45,3 +45,4 @@ environment.variables.ts
 config.ts
 .vercel
 .env*.local
+proxy-server/
