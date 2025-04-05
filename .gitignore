@@ -6,10 +6,13 @@
 /out-tsc
 /bazel-out
 
-# Node
-/node_modules
+# Node.js
+node_modules/
 npm-debug.log
 yarn-error.log
+
+# Custom folders
+proxy-server/
 
 # IDEs and editors
 .idea/
@@ -45,4 +48,4 @@ environment.variables.ts
 config.ts
 .vercel
 .env*.local
-proxy-server/
+
