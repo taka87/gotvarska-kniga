@@ -28,7 +28,14 @@ export class SoupComponent {
     this.soupService.getSoups().subscribe((data) => {
       this.soups = data;
       this.filteredSoups = [...this.soups]; // Първоначално показваме всички супи
-    });
+
+      // console.log(this.soups);
+      
+      if(this.soups.length > 0)
+        {
+          this.selectSoup(this.soups[0]);
+        }
+    }); 
   }
   
   selectSoup(soup: any): void {

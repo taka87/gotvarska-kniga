@@ -27,6 +27,11 @@ export class DessertsComponent {
       this.dessertService.getDeserts().subscribe((data) => {
         this.desserts = data;
         this.filteredDesserts=[...this.desserts];
+
+        if(this.desserts.length > 0)
+          {
+            this.selectDessert(this.desserts[0]);
+          }
       });
     }
   

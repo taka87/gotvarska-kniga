@@ -65,7 +65,7 @@
       <p>{{ selectedSoup.description }}</p>
     </div>
   
-
+    <!-- дясна част зареждане на снимка -->
     <div *ngIf="selectedSoup?.images && selectedSoup?.images.length > 0">
       <div class="category-images-grid">
         <img *ngFor="let image of selectedSoup.images" [src]="image" [alt]="'Снимка на ' + selectedSoup.name">

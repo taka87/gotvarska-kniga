@@ -29,6 +29,11 @@ export class SaladsComponent {
       this.saladService.getSalads().subscribe((data) => {
         this.salads = data;
         this.filteredSalads=[...this.salads];
+
+        if(this.salads.length > 0)
+          {
+            this.selectSalad(this.salads[0]);
+          }
       });
     }
   

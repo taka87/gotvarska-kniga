@@ -69,7 +69,7 @@ export class AppDocumentationComponent {
         <li><strong>Cloud Services</strong>: Supabase (PostgreSQL + Auth), Node.js/Express on port 3000</li>
       </ul>
 
-      <h3>DevOps & Tools</h3>
+      <h3>Platforms & Tools</h3>
       <ul>
         <li>Docker Desktop</li>
         <li>Postman</li>
@@ -151,7 +151,7 @@ Test acc: demo@test.com / pass: demo123
   - Supabase (PostgreSQL database + Authentication)  
   - Node.js/Express mock server on port 3000   
 
-### **DevOps & Tools**  
+### **Platforms & Tools**  
 - Docker Desktop  
 - Postman  
 - Vercel  

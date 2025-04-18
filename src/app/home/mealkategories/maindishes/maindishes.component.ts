@@ -29,6 +29,11 @@ export class MaindishesComponent {
       this.mainDishService.getMainDishes().subscribe((data) => {
         this.mainDishes = data;
         this.filteredMainDishes=[...this.mainDishes]
+
+        if(this.mainDishes.length > 0)
+          {
+            this.selectMainDishes(this.mainDishes[0]);
+          }
       });
     }
   

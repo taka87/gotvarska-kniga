@@ -34,7 +34,7 @@ Test acc: demo@test.com/demo123
   - Supabase (PostgreSQL database + Authentication)  
   - Node.js/Express mock server on port 3000   
 
-### **DevOps & Tools**  
+### **Platforms & Tools**  
 - Docker Desktop  
 - Postman  
 - Vercel  
