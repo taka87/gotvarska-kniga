@@ -16,34 +16,34 @@ import { RouterLink } from '@angular/router';
 export class DessertsComponent {
   title = 'Ready recipes section for:';
 
-    desserts: any[] = [];
-    selectedDessert: any = null;
-    filteredDesserts: any[] = [];
+  desserts: any[] = [];
+  selectedDessert: any = null;
+  filteredDesserts: any[] = [];
 
+
+  constructor(private dessertService: DesertService) {} 
   
-    constructor(private dessertService: DesertService) {} 
-    
-    ngOnInit(): void {
-      this.dessertService.getDeserts().subscribe((data) => {
-        this.desserts = data;
-        this.filteredDesserts=[...this.desserts];
+  ngOnInit(): void {
+    this.dessertService.getDeserts().subscribe((data) => {
+      this.desserts = data;
+      this.filteredDesserts=[...this.desserts];
 
-        if(this.desserts.length > 0)
-          {
-            this.selectDessert(this.desserts[0]);
-          }
-      });
-    }
-  
-    selectDessert(dessert: any): void {
-      this.selectedDessert = dessert;
-    }
+      if(this.desserts.length > 0)
+        {
+          this.selectDessert(this.desserts[0]);
+        }
+    });
+  }
 
-    searchQuery: string = '';
+  selectDessert(dessert: any): void {
+    this.selectedDessert = dessert;
+  }
 
-    filterDesserts(): void {
-      this.filteredDesserts = this.desserts.filter(dessert => 
-        dessert.name.toLowerCase().includes(this.searchQuery.toLowerCase())
-      );
-    }
+  searchQuery: string = '';
+
+  filterDesserts(): void {
+    this.filteredDesserts = this.desserts.filter(dessert => 
+      dessert.name.toLowerCase().includes(this.searchQuery.toLowerCase())
+    );
+  }
 }

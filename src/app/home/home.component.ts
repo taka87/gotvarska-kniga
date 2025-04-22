@@ -1,6 +1,6 @@
 import { Component,OnInit,CUSTOM_ELEMENTS_SCHEMA  } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { FormBuilder,FormGroup,Validators } from '@angular/forms';
 import { UserControlComponent } from "../user-control/user-control.component";
 import { DailyMenuComponent } from './daily-menu/daily-menu.component';
@@ -90,7 +90,8 @@ isMainMenuOpen: boolean = false;
   constructor(
     private userSession: UserSessionService, 
     private authService: AuthService,
-    private authServiceOnlineDB: AuthServiceOnlineDB
+    private authServiceOnlineDB: AuthServiceOnlineDB,
+    private router: Router
   ) {}
 
   ngOnChanges() {
@@ -122,10 +123,24 @@ isMainMenuOpen: boolean = false;
   // }
 
   favoriteRecipes = [
-    { name: 'Шопска салата', description: 'Класическа традиционнна българска салата.' },
-    { name: 'Мусака', description: 'Традиционно българско ястие с картофи и кайма.' },
-    { name: 'Баница', description: 'Баница приготвена с точени кори и извара.' },
+    { name: 'Шопска салата', description: 'Класическа традиционнна българска салата...' },
+    { name: 'Мусака', description: 'Традиционно българско ястие с картофи и кайма...' },
+    { name: 'Шоколадово суфле', description: 'Приятен вкусен десерт приготвен със... ' },
   ];
+
+  goToSection(recipeName: string): void {
+    const lower = recipeName.toLowerCase();
+  
+    if (lower.includes('салата') || lower.includes('salad')) {
+      this.router.navigate(['/salads']);
+    } else if (lower.includes('мусака') || lower.includes('месо') || lower.includes('main')) {
+      this.router.navigate(['/main-dishes']);
+    } else if (lower.includes('десерт') || lower.includes('шоколад') || lower.includes('суфле')) {
+      this.router.navigate(['/desserts']);
+    } else {
+      this.router.navigate(['/recipes']); // fallback
+    }
+  }
 
   toggleFavorites() {
     this.showFavorites = !this.showFavorites;

@@ -144,9 +144,9 @@
   </ul> -->
 
   <div class="favorites-section" *ngIf="showFavorites">
-    <h2>The choice for favourite recipes ❤️ </h2>
+    <h2>The choice for favourite recipes ❤️</h2>
     <ul>
-      <li *ngFor="let recipe of favoriteRecipes">
+      <li *ngFor="let recipe of favoriteRecipes" (click)="goToSection(recipe.name)">
         <h3>{{ recipe.name }}</h3>
         <p>{{ recipe.description }}</p>
       </li>
